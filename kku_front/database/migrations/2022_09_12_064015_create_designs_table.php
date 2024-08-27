@@ -74,7 +74,7 @@ return new class extends Migration
                 'address' => 'จังหวัดเชียงราย',
                 'size' => '7500 sqf internal | 3500 sqf external.',
                 'status' => 'เสร็จสมบูรณ์',
-                'content' => 'Sited within the valley of the eastern-most seaside town of Wategos Beach, Larus Marinus is a multigenerational family retreat that perches lightly on the steeply contoured site, overlooking the Pacific Ocean. Responding to the client’s brief, the project is part of a multigenerational arrangement in which a mother and her daughter’s family sought to establish a new mode of living with the flexibility of two dwellings.',
+                'content_detail' => 'Sited within the valley of the eastern-most seaside town of Wategos Beach, Larus Marinus is a multigenerational family retreat that perches lightly on the steeply contoured site, overlooking the Pacific Ocean. Responding to the client’s brief, the project is part of a multigenerational arrangement in which a mother and her daughter’s family sought to establish a new mode of living with the flexibility of two dwellings.',
                 'category' => 6,
                 'status_display' => true,
                 'defaults' => true,
