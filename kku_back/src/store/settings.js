@@ -7,8 +7,8 @@ const appConfigDEV = {
     uploadPath:"http://localhost:8000/",
     webPath:"http://localhost:5173/",
     pages: {
-        categories: false,
-        subcategories: false,
+        categories: true,
+        subcategories: true,
         products: false,
         services: false,
         portfolios: true,

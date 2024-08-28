@@ -14,13 +14,13 @@
 
 <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
 
-<link rel="stylesheet" href="/css/global.min.css">
+{{-- <link rel="stylesheet" href="/css/global.min.css"> --}}
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
-<link rel="icon" href="/{{ $web_info->detail->favicon->link }}"/>
+{{-- <link rel="icon" href="/{{ $web_info->detail->favicon->link }}"/> --}}
 
 <style>
     .swal2-popup {

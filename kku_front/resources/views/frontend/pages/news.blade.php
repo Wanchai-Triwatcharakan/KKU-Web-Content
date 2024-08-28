@@ -5,7 +5,12 @@
 @endsection
 @section('content')
     <div class="about">
-        About Us
+      News Page
+      <div class="flex flex-col">
+        @foreach ($news as $new)
+        <p>{{$new->title}}</p>
+        @endforeach
+      </div>
     </div>
 @endsection
 @section('script')

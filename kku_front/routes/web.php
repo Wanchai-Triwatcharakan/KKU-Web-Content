@@ -1,5 +1,7 @@
 <?php
-namespace App\Http\Controllers\frontoffice;
+// namespace App\Http\Controllers\frontoffice;
+namespace App\Http\Controllers\frontend;
+
 
 use Illuminate\Support\Facades\Route;
 
@@ -16,9 +18,12 @@ use Illuminate\Support\Facades\Route;
 // \Artisan::call('cache:clear');
 // \Artisan::call('route:clear');
 
-Route::get('/', function () {
-    return "S_House_Design_API";
-});
+// Route::get('/', function () {
+//     return "S_House_Design_API";
+// });
+Route::get('/', [HomeController::class, 'indexPage']);
+Route::get('/news', [HomeController::class, 'NewsPage']);
+Route::get('/aboutus', [HomeController::class, 'AboutUsPage']);
 
 // Test debug
 // Route::get('/', [CategoryController::class, 'index']);

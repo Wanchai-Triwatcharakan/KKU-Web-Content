@@ -36,9 +36,9 @@ const addDataDefault = {
   priority: 1,
   display: true,
   pin: false,
-  // isMainContent: false,
+  isMainContent: false,
   language: "",
-  category: ",1," //,
+  category: "," //,
 }
 
 const addDataValidDefault = {
@@ -51,7 +51,7 @@ const addDataValidDefault = {
   description: false,
   slug: false,
   redirect: false,
-  // isMainContent: false,
+  isMainContent: false,
   thumbnail_name: false
 }
 const thumbnailDefault = { thumbnail: true, src: "", file: null, name: null, remove: false }
@@ -155,18 +155,18 @@ const ModalAddPost = (props) => {
   }
  
   const saveModalHandler = () => {
-    // const cateListId = checkboxList.filter(f => (f.checked)).reduce((o,n) => o + n.id + ",",",1,")
+    const cateListId = checkboxList.filter(f => (f.checked)).reduce((o,n) => o + n.id + ",",",")
     // console.log("cateListId",cateListId);
     /* Validator */
     setAddDataValid({
       ...addDataValid, 
       title: (addData.title === ""),
       slug: (addData.slug === ""),
-      // category: (cateListId === ","),
+      category: (cateListId === ","),
       description: (addData.description === "")
     })
 
-    if((addData.title === "") || (addData.description === "") || isFetching){ //(cateListId === ",") || 
+    if((addData.title === "") || (addData.description === "") || (cateListId === ",") || isFetching){ //(cateListId === ",") || 
       return false;
     }
 
@@ -192,7 +192,7 @@ const ModalAddPost = (props) => {
       }
     }
 
-    formData.append('category', addData.category) //cateListId
+    formData.append('category', cateListId) //cateListId
     formData.append('isMainContent', (addData.isMainContent)?1:0)
     formData.append('title', addData.title)
     formData.append('keyword', addData.keyword)
@@ -244,14 +244,14 @@ const ModalAddPost = (props) => {
           </div>
           <div className="modal-body overflow-scroll-custom">
             <fieldset className="modal-fieldset">
-              {/* <legend className="modal-legend">{t("ModalAddPostTitle")}</legend>
+              <legend className="modal-legend">{t("ModalAddPostTitle")}</legend>
               <CheckBoxUI 
                 className="cate-menu-list" 
-                // error={addDataValid.category}
+                error={addDataValid.category}
                 menuList={menuList}
                 data={checkboxList}
                 setData={setCheckBoxList} 
-                t={t} /> */}
+                t={t} />
 
               <div className="form-details">
                 <FieldsetUI className="image-setting" label={t("ข้อมูลรูปภาพ")}>

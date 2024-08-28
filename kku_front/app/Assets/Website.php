@@ -14,6 +14,7 @@ class Website
 {
     public function settings(){
         $pathname = \Request::segments();
+        // dd($pathname);
         $main_menu = Category::where(['is_menu' => true, 'is_topside' => true, 'is_main_page' => true, 'language' => $pathname[0], 'cate_level' => 0])->orderBy('cate_priority', 'ASC')->get();
         $lang = LanguageAvailable::orderby('defaults', 'DESC')->get();
         $footer = Category::where(['is_menu' => true, 'is_bottomside' => true, 'language' => $pathname[0], 'cate_level' => 0])->get();
