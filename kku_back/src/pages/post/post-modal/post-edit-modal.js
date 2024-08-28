@@ -343,13 +343,13 @@ const ModalEditPost = (props) => {
           <div className="modal-body overflow-scroll-custom">
             <fieldset className="modal-fieldset">
               <legend className="modal-legend">{t("ModalEditPostTitle")}</legend>
-              {/* <CheckBoxUI 
+              <CheckBoxUI 
                 className="cate-menu-list" 
                  error={editDataValid.category}
                  menuList={menuList}
                  data={checkboxList}
                  setData={setCheckBoxList} 
-                 t={t} /> */}
+                 t={t} />
 
               <div className="form-details">
                 <FieldsetUI className="image-setting" label={t("ข้อมูลรูปภาพ")}>

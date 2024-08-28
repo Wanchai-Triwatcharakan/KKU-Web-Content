@@ -39,8 +39,8 @@
                 }
                 .form-details {
                     @media screen and (min-width: $lg) {
-                        // width: calc(100% - 300px);
-                        width: 100%
+                        width: calc(100% - 300px);
+                        // width: 100%
                     }
                     .upload-image-preview {
                         @apply mt-auto;

@@ -46,11 +46,11 @@ const editDataValidDefault = {
   cate_url: false,
   // cate_thumbnail_title: false,
   // cate_thumbnail_alt: false,
-  // cate_keyword: false,
+  cate_keyword: false,
   // cate_description: false,
   // cate_redirect: false,
   // cate_position: false,
-  // cate_priority: false,
+  cate_priority: false,
   // is_menu: false,
   // is_main_page: false,
 };
@@ -272,7 +272,7 @@ const ModalEditCategory = (props) => {
                 label="Title"
                 size="small"
               />
-              {/* <TextField
+              <TextField
                 onChange={(e) => setEditData({...editData, cate_keyword: e.target.value})}
                 value={editData.cate_keyword}
                 className="text-field-custom"
@@ -281,7 +281,7 @@ const ModalEditCategory = (props) => {
                 id="cate-keyword"
                 label="Keyword"
                 size="small"
-              /> */}
+              />
               <TextField
                 onChange={(e) =>
                   setEditData({ ...editData, cate_description: e.target.value })
@@ -392,7 +392,7 @@ const ModalEditCategory = (props) => {
                       <FontAwesomeIcon icon={faAdd} />
                     </ButtonUI>
                   </div>
-                </div>
+                </div> */}
                 <div className="input-group">
                   <div className="inp"> 
                     <ButtonUI
@@ -401,13 +401,13 @@ const ModalEditCategory = (props) => {
                       <FontAwesomeIcon icon={faMinus} />
                     </ButtonUI>
                     <span className="title">
-                      {t("ความสำคัญ")} {editData.cate_priority}
+                      {t("ลำดับ")} {editData.cate_priority}
                     </span>
                     <ButtonUI onClick={(e) => setEditData({...editData, cate_priority: editData.cate_priority + 1}) }>
                       <FontAwesomeIcon icon={faAdd} />
                     </ButtonUI>
                   </div>
-                </div> */}
+                </div>
               </div>
             </div>
           </fieldset>

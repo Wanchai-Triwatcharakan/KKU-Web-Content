@@ -216,7 +216,7 @@ const ModalAddCategory = (props) => {
                 label="Title"
                 size="small"
               />
-              {/* <TextField
+              <TextField
                 onChange={(e) =>
                   setAddData((prevState) => {
                     return { ...prevState, cate_keyword: e.target.value }
@@ -229,7 +229,7 @@ const ModalAddCategory = (props) => {
                 id="cate-keyword"
                 label="Keyword"
                 size="small"
-              /> */}
+              />
               <TextField
                 onChange={(e) =>
                   setAddData((prevState) => {
@@ -306,7 +306,7 @@ const ModalAddCategory = (props) => {
                       <FontAwesomeIcon icon={faAdd} />
                     </ButtonUI>
                   </div>
-                </div>
+                </div> */}
                 <div className="input-group">
                   <div className="inp"> 
                     <ButtonUI
@@ -315,13 +315,13 @@ const ModalAddCategory = (props) => {
                       <FontAwesomeIcon icon={faMinus} />
                     </ButtonUI>
                     <span className="title">
-                      {t("ความสำคัญ")} {addData.cate_priority}
+                      {t("ลำดับ")} {addData.cate_priority}
                     </span>
                     <ButtonUI onClick={(e) => setAddData({...addData, cate_priority: addData.cate_priority + 1}) }>
                       <FontAwesomeIcon icon={faAdd} />
                     </ButtonUI>
                   </div>
-                </div> */}
+                </div>
               </div> 
             </div>
           </fieldset>
