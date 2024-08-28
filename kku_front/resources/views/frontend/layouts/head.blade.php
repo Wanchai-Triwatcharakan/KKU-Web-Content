@@ -20,7 +20,7 @@
 
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
-{{-- <link rel="icon" href="/{{ $web_info->detail->favicon->link }}"/> --}}
+<link rel="icon" href="{{ url($webInfo->detail->favicon->link) }}"/>
 
 <style>
     .swal2-popup {
