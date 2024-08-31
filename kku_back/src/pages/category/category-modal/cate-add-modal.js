@@ -61,10 +61,17 @@ const ModalAddCategory = (props) => {
 
   useEffect(() => {
     if(isOpen) { 
+      const priority = categoryData.map((item)=>(item.cate_priority));
+      let newPriority = 1;
+
+      while(priority.includes(newPriority)){
+        newPriority++;
+      }
+
       setCateId(0)
       setPreviews({ src: "", file: null, name: null })
       setAddDataValid(addDataValidDefault)
-      setAddData({...addDataDefault, cate_priority: totalData + 1 , cate_position: totalData + 1 })
+      setAddData({...addDataDefault, cate_priority: newPriority , cate_position: totalData + 1 })
     }  
   }, [isOpen])
 
