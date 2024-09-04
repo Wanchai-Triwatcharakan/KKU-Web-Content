@@ -28,6 +28,7 @@ const editDataDefault = {
   cate_thumbnail: "",
   cate_thumbnail_title: "",
   cate_thumbnail_alt: "",
+  cate_thumbnail_link: "",
   cate_title: "",
   cate_keyword: "",
   cate_description: "",
@@ -101,6 +102,11 @@ const ModalEditCategory = (props) => {
       }
     }
   }, [appEditData]);
+
+  console.log("appEditData",appEditData);
+  console.log("editData",editData);
+  console.log("editData.cate_thumbnail_link",editData.cate_thumbnail_link)
+  // console.log("previews",previews);
 
   const setPreviewHandler = (data) => {
     if (data.file) {

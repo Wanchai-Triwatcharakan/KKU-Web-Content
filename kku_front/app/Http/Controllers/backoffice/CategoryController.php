@@ -94,10 +94,13 @@ class CategoryController extends BaseController
         }
 
         try {
-            $checkURL = Category::where("language", "!==", $params['language'])
-                ->where('cate_url', $params['cate_url'])
+            $checkURL = Category::where("language", "=", $params['language'])
+                ->where("cate_url", $params['cate_url'])
                 ->get()
                 ->first();
+                // ->count();
+                // ->exists();
+            // dd($checkURL);
             if ($checkURL) {
                 return response([
                     'message' => 'error',
@@ -340,5 +343,15 @@ class CategoryController extends BaseController
             ORDER BY sub_categories.id DESC
         ) as subcate GROUP BY id DESC";
         return DB::select($sql, [':lang' => $language]);
+    }
+
+    private function getExistingThumbnail($productId, $language)
+    {
+        $existingThumbnail = DB::table('categories')
+            ->where('id', $productId)
+            ->where('language', $language)
+            ->value('cate_thumbnail_link');
+
+        return $existingThumbnail ?: null;
     }
 }

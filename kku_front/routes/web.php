@@ -2,7 +2,7 @@
 // namespace App\Http\Controllers\frontoffice;
 namespace App\Http\Controllers\frontend;
 
-
+use App\Http\Controllers\backoffice\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
