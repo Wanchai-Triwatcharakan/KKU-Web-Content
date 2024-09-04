@@ -17,6 +17,11 @@ class HomeController extends Controller
         $news = Post::where('category', 'LIKE', '%7%')->get();
         return view('frontend.pages.news', compact('news'));
     }
+
+    public function NewsDetailPage($id) {
+        $news = Post::find($id);
+        return view('frontend.pages.news-detail', compact('news'));
+    }
     
     public function AboutUsPage() {
         return view('frontend.pages.aboutus');
