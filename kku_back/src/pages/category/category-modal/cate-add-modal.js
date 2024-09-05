@@ -102,6 +102,7 @@ const ModalAddCategory = (props) => {
     }
    
     let c = categoryData.filter(d => parseInt(d.id) === parseInt(cateId))
+    console.log("c",c);
 
     formData.append('cate_parent_id', cateId)
     formData.append('cate_level', (cateId>0)?c[0].cate_level + 1:0)

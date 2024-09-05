@@ -103,11 +103,6 @@ const ModalEditCategory = (props) => {
     }
   }, [appEditData]);
 
-  console.log("appEditData",appEditData);
-  console.log("editData",editData);
-  console.log("editData.cate_thumbnail_link",editData.cate_thumbnail_link)
-  // console.log("previews",previews);
-
   const setPreviewHandler = (data) => {
     if (data.file) {
       setEditData({ ...editData, imageName: data.file.name });

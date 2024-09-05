@@ -120,6 +120,7 @@ class CategoryController extends BaseController
             $newFolder = "upload/" . date('Y') . "/" . date('m') . "/" . date('d') . "/";
             $imgSrc = (isset($files['Image'])) ? $this->uploadImage($newFolder, $files['Image'], "", "", $params['ImageName']) : "";
 
+            // dd($params['cate_root_id']);
 
             $creating = new Category();
             $creating->cate_thumbnail_link = $imgSrc;
@@ -143,7 +144,7 @@ class CategoryController extends BaseController
             $creating->defaults = 1;
             $creating->save();
             /* ถ้า ROOT ID = 0 ให้ใช้ Id ตัวเองเป็น ROOT */
-            if ($params['cate_root_id'] === 0) {
+            if ((int)$params['cate_root_id'] === 0) {
                 Category::find($creating->id)->update([
                     "cate_root_id" => $creating->id
                 ]);
