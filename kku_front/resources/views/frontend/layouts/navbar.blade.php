@@ -1,7 +1,7 @@
 <nav class="bg-white border-b border-gray-200 dark:bg-gray-900 dark:border-gray-700">
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="{{url('/')}}" class="flex items-center space-x-3 rtl:space-x-reverse">
-            <img src="{{url($webInfo->detail->image_1->link)}}" class="h-8" alt="Flowbite Logo" />
+    <div class="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-2">
+        <a href="{{ url('/') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img src="{{ url($webInfo->detail->image_1->link) }}" class="h-14" alt="kku Logo" />
         </a>
         {{-- @dd($webInfo->detail->favicon) --}}
         <button data-collapse-toggle="navbar-dropdown" type="button"
@@ -16,12 +16,13 @@
         </button>
         <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
             <ul
-                class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                class="flex flex-col w-full font-medium text-center  border border-gray-100 rounded-lg bg-gray-50 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                 @foreach ($main_cate as $cate)
                     <li>
-                        <a href="{{url($cate->cate_url)}}"
-                            class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent"
-                            aria-current="page">{{$cate->cate_title}}</a>
+                        <a href="{{ url($cate->cate_url) }}"
+                            class="block py-4 px-3 text-[1rem] text-center text-[#23404A] min-w-[135px] hover:text-white hover:bg-[#FF864E] 
+                        {{ request()->is($cate->cate_url) ? 'bg-[#B8D88F] text-white' : '' }}"
+                            aria-current="page">{{ $cate->cate_title }}</a>
                     </li>
                 @endforeach
                 {{-- <li>

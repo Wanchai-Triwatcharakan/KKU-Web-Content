@@ -23,7 +23,7 @@
 
     @include('frontend.layouts.navbar')
 
-    {{-- @include('frontend.layouts.swiper') --}}
+    @include('frontend.layouts.swiper')
 
     <div class="max-w-screen-xl mx-auto">
 
@@ -34,7 +34,7 @@
     {{-- @include('frontend.layouts.footer') --}}
 
     @yield('script')
-
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
 </body>
 
 </html>
