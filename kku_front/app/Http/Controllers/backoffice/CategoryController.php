@@ -98,9 +98,6 @@ class CategoryController extends BaseController
                 ->where("cate_url", $params['cate_url'])
                 ->get()
                 ->first();
-                // ->count();
-                // ->exists();
-            // dd($checkURL);
             if ($checkURL) {
                 return response([
                     'message' => 'error',
@@ -119,8 +116,6 @@ class CategoryController extends BaseController
             /* Upload Image */
             $newFolder = "upload/" . date('Y') . "/" . date('m') . "/" . date('d') . "/";
             $imgSrc = (isset($files['Image'])) ? $this->uploadImage($newFolder, $files['Image'], "", "", $params['ImageName']) : "";
-
-            // dd($params['cate_root_id']);
 
             $creating = new Category();
             $creating->cate_thumbnail_link = $imgSrc;
