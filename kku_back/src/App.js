@@ -25,6 +25,7 @@ import ServicePage from './pages/service/service.js'
 import MessagePage from './pages/message/message.js';
 import PortfolioPage from './pages/portfolio/portfolio.js';
 import DesignPage from './pages/design/design.js';
+import SlidePage from './pages/slide/slide.js';
 
 function App() {
   const pagesAllow = useSelector((state) => state.app.pages)
@@ -51,6 +52,7 @@ function App() {
             {pagesAllow.languages && <Route path="languages" element={<LangConfigPage />} /> }
             {pagesAllow.admins && <Route path="admins" element={<AdminPage />} /> }
             {pagesAllow.configs && <Route path="configs" element={<ConfigPage />} />  }
+            {pagesAllow.slides && <Route path="slides" element={<SlidePage />} />  }
             <Route path="*" element={<Navigate to="/messages" />} />
             {/* <Route path="*" element={<MessagePage />} /> */}
           </Route>
