@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     //
     public function indexPage() {
-        return view('frontend.pages.index');
+        return view('frontend.pages.home.index');
     }
 
     public function NewsPage() {
