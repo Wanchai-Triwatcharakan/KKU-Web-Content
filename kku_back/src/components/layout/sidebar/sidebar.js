@@ -310,6 +310,21 @@ const SidebarComponent = (props) => {
               <hr className="line-section gap" />
               <div className="title-section">{t("SettingsTitle")}</div>
               <ul className="nav-menu">
+                {pagesAllow.slides && (
+                  <NavLink
+                    onClick={closeSidebarhandler}
+                    to="slides"
+                    className={`navlink `}
+                    title={t("SlidesPage")}
+                    liClass="menu-link"
+                  >
+                    <figure className="faIcon">
+                      <FontAwesomeIcon icon={faImages} />
+                    </figure>
+                    <div className="menu-title">{t("SlidesPage")}</div>
+                  </NavLink>
+                )}
+
                 {pagesAllow.webinfo && (
                   <NavLink
                     onClick={closeSidebarhandler}

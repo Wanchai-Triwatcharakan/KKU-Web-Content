@@ -71,7 +71,7 @@ const ModalAddPost = (props) => {
   const [ckValue, setCkValue ] = useState("")
   const [displayDate, setDisplayDate] = useState(null);
   const [hiddenDate, setHiddenDate] = useState(null); 
-  const [isFetching, setIsFetching] = useState(false)
+  const [isFetching, setIsFetching] = useState(false);
 
   useEffect(() => {
     if(isOpen) {
@@ -121,8 +121,10 @@ const ModalAddPost = (props) => {
   }
   
   const setMoreImagePreviewHandler = (data) => {
+    console.log("data",data);
     if(data.file === undefined) {
       const result = moreImage.filter((m, index) => (index !== data.index))
+      console.log("result",result);
       setMoreImage(result)
     
     } else {

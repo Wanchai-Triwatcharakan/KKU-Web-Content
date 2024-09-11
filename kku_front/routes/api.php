@@ -141,5 +141,12 @@ Route::prefix('backoffice/v1')->group(function () {
 
         /* Utility */
         Route::post('ckeditor/upload/image', [UtilController::class, 'ckeditorUploadImage']);
+
+        /* Slide Page */
+        Route::get('slide/data', [SlideController::class, 'index']);
+        Route::get('slide/data/{id}', [SlideController::class, 'getSlideById']);
+        Route::post('slide/create', [SlideController::class, 'createSlide']);
+        Route::post('slide/update/{id}', [SlideController::class, 'updateSlideById']);
+        Route::delete('slide/{language}/{token}', [SlideController::class, 'deleteWebInfoByInfoId']);
     });
 });

@@ -19,6 +19,7 @@ const appConfigDEV = {
         languages: false,
         admins: true,
         configs: true,
+        slides: true,
         groups: {
             category: true,
             product: true,
