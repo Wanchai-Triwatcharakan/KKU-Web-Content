@@ -1,11 +1,11 @@
-<nav class="bg-white border-b shadow-sm border-gray-200 w-full fixed top-0 z-[99]">
+<nav class="bg-white border-b shadow-sm border-gray-200 w-full fixed top-0 z-[99] max-md:px-2">
     <div class="max-w-screen-2xl flex items-center justify-between mx-auto ">
         <a href="{{ url('/') }}" class="flex items-center">
             <img src="{{ url($webInfo->detail->image_1->link) }}" class="h-12" alt="kku Logo" />
         </a>
         {{-- @dd($webInfo->detail->favicon) --}}
         <button data-collapse-toggle="navbar-dropdown" type="button"
-            class="mobile-menu-button inline-flex items-center p-2 w-14 h-10 justify-center xl:hidden"
+            class="mobile-menu-button inline-flex items-center py-2 w-12 h-10 justify-center xl:hidden"
             aria-controls="navbar-dropdown" aria-expanded="false">
             <span class="sr-only">Open main menu</span>
             <svg class="ham hamRotate ham1" viewBox="0 0 100 100" width="80"

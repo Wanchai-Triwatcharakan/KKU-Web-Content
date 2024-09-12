@@ -4,20 +4,25 @@
     {{-- @vite('resources/css/app.css') --}}
     @vite('resources/css/home.css')
 @endsection
+
 @section('content')
+    @include('frontend.layouts.swiper')
     <div class="bg-white ">
         <section class="flex flex-col gap-4 relative pt-10 bg-white ">
-            <p class="text-[#23404A] font-bold text-center text-4xl max-md:text-2xl max-sm:text-xl z-40 max-md:px-2">First
+            <p class="text-[#23404A] font-bold text-center text-3xl max-md:text-xl max-sm:text-lg z-40 max-md:px-2"
+                data-aos="zoom-in" data-aos-duration="3000">First
                 Conference and Exhibition on Health and
                 Wellness Innovation
             </p>
-            <p class="text-[#23404A] font-medium text-center text-3xl max-md:text-xl max-sm:text-lg z-40">“Empowering
+            <p class="text-[#23404A] font-medium text-center text-2xl max-2xl:text-xl max-lg:text-lg max-sm:text-[1rem] z-40"
+                data-aos="zoom-in" data-aos-duration="3000">“Empowering
                 Invention to Innovation for Quality of
                 Life” </p>
 
-            <div class="flex max-xl:flex-col gap-6 justify-between w-8/12 max-md:w-full  mx-auto my-12 items-center">
+            <div class="relative z-40 flex max-xl:flex-col gap-6 justify-between w-[70%] max-md:w-full  mx-auto my-12 items-center"
+                data-aos="zoom-in" data-aos-duration="3000">
 
-                <div class="rounded-2xl ">
+                <div class="rounded-2xl">
                     <div
                         class="relative w-[600px] h-[400px] max-md:w-[500px] max-md:h-[350px] max-sm:w-[370px] max-sm:h-[350px] px-4 max-md:rouded-lg">
                         <div
@@ -33,7 +38,7 @@
                         <div class="w-[50px] h-[50px]">
                             <img src="/images/home/meeting-call.png" alt="" class="w-full h-full">
                         </div>
-                        <p class="text-[#4BCAFF] font-bold text-2xl max-md:text-lg">ที่มาของการสัมมนา</p>
+                        <p class="text-[#4BCAFF] font-bold text-3xl max-md:text-lg">ที่มาของการสัมมนา</p>
                     </div>
                     <div class="flex flex-col gap-y-6 text-[1rem] indent-8">
                         <p>ประเทศไทยมีศักยภาพในการเป็นผู้นำด้านสุขภาพ ด้วยทรัพยากร มนุษย์ แหล่งท่องเที่ยวธรรมชาติ
@@ -55,7 +60,7 @@
             </div>
 
 
-            <img src="/images/home/Group 50.png" alt="" class="absolute -top-[14rem] left-0">
+            <img src="/images/home/Group 50.png" alt="" class="absolute -top-[14rem] left-0 z-10">
             <img src="/images/home/Group 22.png" alt="" class="absolute bottom-36 right-0 w-24">
             <img src="/images/home/Group 49.png" alt=""
                 class="absolute  -bottom-[20rem] right-[40rem] max-lg:right-[20rem] max-sm:right-[8rem] w-80">
@@ -69,15 +74,17 @@
             </div>
 
 
-            <div class="bg-white w-[300px] max-sm:w-[250px]  py-4 px-4 rounded-r-2xl relative z-20 mt-14 max-sm:mt-20">
-                <p class="text-[#23404A] font-bold text-end text-4xl max-md:text-2xl max-sm:text-[2rem]">วิทยากร</p>
+            <div
+                class="bg-white w-[300px] max-sm:w-[250px]  py-4 px-4 rounded-r-2xl relative z-20 mt-14 max-sm:mt-20 shadow-md">
+                <p class="text-[#23404A] font-bold text-end text-4xl max-md:text-2xl max-sm:text-[2rem]" data-aos="zoom-in"
+                    data-aos-duration="3000">วิทยากร</p>
             </div>
 
             <div class="relative z-30 items-center mt-6">
                 <div class="swiper items-center w-4/5 mx-auto">
                     <div class="swiper-wrapper w-full mx-auto flex">
                         @for ($i = 0; $i < 8; $i++)
-                            <div class="swiper-slide">
+                            <div data-aos="fade-up" data-aos-duration="1000" class="swiper-slide" data-aos="flip-left">
                                 <div class="drop-shadow-md max-w-[350px] h-[100%] py-4">
                                     <div
                                         class="bg-white rounded-[15px] py-4 px-3 z-0 flex flex-col justify-center gap-y-4 ">
@@ -117,7 +124,8 @@
         </section>
 
         <section class="relative bg-white py-20 flex flex-col gap-4 Z-50">
-            <p class="text-[#23404A] font-bold text-center text-4xl max-md:text-2xl max-sm:text-xl z-50 max-md:px-2">
+            <p class="text-[#23404A] font-bold text-center text-4xl max-md:text-2xl max-sm:text-xl z-50 max-md:px-2"
+                data-aos="zoom-in" data-aos-duration="3000">
                 ลงทะเบียน
             </p>
 
@@ -125,7 +133,7 @@
                 <div class="swiper-wrapper w-full mx-auto flex">
 
                     @for ($i = 0; $i < 2; $i++)
-                        <div class="swiper-slide">
+                        <div class="swiper-slide" data-aos="fade-up" data-aos-duration="3000">
                             <div
                                 class=" flex max-xl:flex-col gap-6 justify-between max-md:w-full  mx-auto items-center p-4 ">
                                 <div
@@ -156,8 +164,9 @@
                                     </div>
                                 </div>
 
-                                <div
-                                    class="rounded-2xl drop-shadow-md w-full h-[450px] max-md:h-[350px] max-sm:h-[350px] max-md:rounded-lg">
+                                <div class="rounded-2xl drop-shadow-md w-full h-[450px] max-md:h-[350px] max-sm:h-[350px] max-md:rounded-lg"
+                                    data-aos="fade-left" data-aos-anchor="#example-anchor" data-aos-offset="500"
+                                    data-aos-duration="500">
                                     <img src="/images/home/111.png" alt=""
                                         class="w-full h-full relative z-20 rounded-2xl shadow-md object-cover">
                                 </div>
@@ -174,7 +183,8 @@
             <div class="absolute w-full h-full">
                 <img src="images/home/Group 240.png" alt="Your Image" class="w-full h-full">
             </div>
-            <p class="text-white font-bold text-center text-4xl max-md:text-2xl z-50 max-md:px-2 pt-10">
+            <p class="text-white font-bold text-center text-4xl max-md:text-2xl z-50 max-md:px-2 pt-10" data-aos="zoom-in"
+                data-aos-duration="3000">
                 ข่าวสาร
             </p>
 
@@ -182,7 +192,8 @@
                 class="w-4/5 max-ex:w-full grid grid-cols-4 gap-4 max-yy:grid-cols-3 max-dm:grid-cols-2 max-ex:grid-cols-1 mx-auto py-10 max-ex:py-4 content-center place-items-center">
                 @for ($i = 0; $i < 8; $i++)
                     <div class="drop-shadow-md max-w-[390px] max-es:w-[350px] flex justify-center h-[100%]">
-                        <div class="bg-white rounded-[15px] z-0 flex flex-col justify-center gap-y-4 ">
+                        <div class="bg-white rounded-[15px] z-0 flex flex-col justify-center gap-y-4 " data-aos="fade-up"
+                            data-aos-duration="1500">
                             <div class="w-full h-[300px] mx-auto rounded-t-xl ">
                                 <img src="images/home/111.png" alt=""
                                     class="w-full h-full object-cover rounded-t-xl">
@@ -233,15 +244,16 @@
 
         <section class="relative bg-white flex flex-col gap-4 Z-50 pb-8 ">
 
-            <p class="text-[#23404A] font-bold text-center text-4xl max-md:text-2xl z-50 max-md:px-2 pt-10">
+            <p class="text-[#23404A] font-bold text-center text-4xl max-md:text-2xl z-50 max-md:px-2 pt-10"
+                data-aos="zoom-in" data-aos-duration="3000">
                 ภาพกิจกรรม
             </p>
 
             <div
                 class="relative  z-50 w-4/5 max-ex:w-full grid grid-cols-3 gap-4 gap-y-6 max-yy:grid-cols-3 max-dm:grid-cols-2 max-ex:grid-cols-1 mx-auto py-10 max-ex:py-4 content-center place-items-center">
                 @for ($i = 0; $i < 6; $i++)
-                    <div
-                        class="shadow-md shadow-[#C6E2F6] max-w-[390px] max-es:w-[350px] flex justify-center h-[100%] rounded-xl">
+                    <div class="shadow-md shadow-[#C6E2F6] max-w-[390px] max-es:w-[350px] flex justify-center h-[100%] rounded-xl"
+                        data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
                         <div class="bg-white rounded-[15px] z-0 flex flex-col justify-center gap-y-4 ">
                             <div class="w-full h-[300px] mx-auto rounded-t-xl ">
                                 <img src="images/home/111.png" alt=""
@@ -272,19 +284,21 @@
         </section>
 
         <section class="relative bg-[#F4FCFF] flex flex-col gap-4 Z-50 pb-4">
-            <p class="text-[#23404A] font-bold text-center text-4xl max-md:text-2xl z-50 max-md:px-2 pt-16 max-sm:pt-8">
+            <p class="text-[#23404A] font-bold text-center text-4xl max-md:text-2xl z-50 max-md:px-2 pt-16 max-sm:pt-8"
+                data-aos="zoom-in" data-aos-duration="3000">
                 ที่พัก เส้นทาง และผังจัดงาน
             </p>
             <div class="mt-4 shadow-md w-full h-[450px] max-md:h-[300px] max-sm:h-[200px]">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30608.569988626525!2d102.8168053655897!3d16.47192959309335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31228ae99b598b43%3A0x56b4538d2ace7037!2z4Lij4Lix4Lia4LiX4Liz4LmA4Lin4LmH4Lia4LmE4LiL4LiV4LmMIOC4guC4reC4meC5geC4geC5iOC4mSBXWU5OU09GVCBTT0xVVElPTiBDTy4sTFRELg!5e0!3m2!1sth!2sth!4v1725960161398!5m2!1sth!2sth"
-                    class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy"
+                <iframe class="w-full h-full"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3826.022264172706!2d102.8194493751446!3d16.47441028426533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31228a8eb01c96f3%3A0xf6a47b89e419df87!2z4Lih4Lir4Liy4Lin4Li04LiX4Lii4Liy4Lil4Lix4Lii4LiC4Lit4LiZ4LmB4LiB4LmI4LiZ!5e0!3m2!1sth!2sth!4v1726040464805!5m2!1sth!2sth"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </section>
 
         <section class=" py-10 mt-15 bg-white items-center">
-            <p class="text-[#23404A] font-bold text-center text-4xl max-md:text-2xl max-md:px-2">
+            <p class="text-[#23404A] font-bold text-center text-4xl max-md:text-2xl max-md:px-2" data-aos="zoom-in"
+                data-aos-duration="3000">
                 ผู้สนับสนุน
             </p>
             <div class="relative z-30 items-center mt-8">
@@ -293,7 +307,8 @@
                         @for ($i = 0; $i < 10; $i++)
                             <div class="swiper-slide flex flex-col justify-center">
                                 <div class="flex justify-center">
-                                    <div class="w-[200px] h-[120px] flex justify-center">
+                                    <div class="w-[200px] h-[120px] flex justify-center" data-aos="zoom-in"
+                                        data-aos-duration="3000">
                                         <img src="images/home/Mask group (2).png" alt="" class="w-full h-full">
                                     </div>
                                 </div>

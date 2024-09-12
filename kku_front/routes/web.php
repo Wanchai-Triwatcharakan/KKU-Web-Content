@@ -22,9 +22,14 @@ use Illuminate\Support\Facades\Route;
 //     return "S_House_Design_API";
 // });
 Route::get('/', [HomeController::class, 'indexPage']);
-// Route::get('/news', [HomeController::class, 'NewsPage']);
-// Route::get('/news/{id}', [HomeController::class, 'NewsDetailPage']);
-// Route::get('/aboutus', [HomeController::class, 'AboutUsPage']);
+
+Route::prefix('seminar/')->group(function () {
+    Route::get('/', [SeminarController::class, 'indexPage']);
+});
+
+Route::get('/news/{id}', [HomeController::class, 'NewsDetailPage']);
+
+Route::get('/aboutus', [HomeController::class, 'AboutUsPage']);
 
 // Test debug
 // Route::get('/', [CategoryController::class, 'index']);

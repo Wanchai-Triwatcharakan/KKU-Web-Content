@@ -56,8 +56,8 @@
 <script src="/js/popup.js"></script> --}}
 
 
-    <footer class="">
-        <div class="bg-gradient-to-r from-[#8DD7FA] to-[#B8D88F] py-4">
+    <footer class="z-50 relative">
+        <div class="bg-gradient-to-r from-[#8DD7FA] to-[#B8D88F] py-4 ">
             <div class="w-4/5 max-yy:w-full mx-auto items-center px-4">
                 <div class="flex w-full max-xl:flex-col gap-2">
                     <div class="flex justify-start items-center">

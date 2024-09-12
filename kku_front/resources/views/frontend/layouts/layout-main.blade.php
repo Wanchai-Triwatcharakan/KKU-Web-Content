@@ -17,9 +17,9 @@
 
     @include('frontend.layouts.navbar')
 
-    @include('frontend.layouts.swiper')
+   
 
-    <div class="bg-white">
+    <div class="overflow-hidden">
     @yield('content')</div>
 
     @include('frontend.layouts.footer')

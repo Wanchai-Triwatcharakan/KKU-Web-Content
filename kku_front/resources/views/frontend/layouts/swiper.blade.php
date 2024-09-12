@@ -47,7 +47,7 @@
 </style>
 
 
-<swiper-container class="mySwiper mt-[4.5rem] max-xl:mt-[3rem] cursor-pointer" pagination="true"
+<swiper-container class="mySwiper mt-[4.5rem] max-xl:mt-[3rem] cursor-pointer relative z-50" pagination="true"
     pagination-dynamic-bullets="true" loop="true" autoplay-delay="6000">
     {{-- @if ($slide_image)
     @foreach ($slide_image as $image)
