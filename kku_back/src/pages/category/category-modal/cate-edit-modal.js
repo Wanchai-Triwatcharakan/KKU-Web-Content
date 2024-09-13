@@ -193,10 +193,10 @@ const ModalEditCategory = (props) => {
         </div>
         <div className="modal-body overflow-scroll-custom">
           <fieldset className="modal-fieldset">
-            <legend className="modal-legend">{t("แก้ไขหมวดหมู่หลัก")}</legend>
+            {/* <legend className="modal-legend">{t("แก้ไขหมวดหมู่หลัก")}</legend> */}
 
-            {/* <RadioBoxUI className="cate-menu-list" disabledId={editData.id} data={menuList} value={cateId} onChange={setCateId}/> */}
-            <div style={{ width: "100%" }} className="form-details">
+            <RadioBoxUI className="cate-menu-list" disabledId={editData.id} data={menuList} value={cateId} onChange={setCateId}/>
+            <div className="form-details">
               <FieldsetUI className="image-setting" label={t("ModalInfoImage")}>
                 <div style={{ position: "relative" }}>
                   <PreviewImageUI

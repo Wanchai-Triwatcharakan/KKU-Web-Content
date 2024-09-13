@@ -148,5 +148,7 @@ Route::prefix('backoffice/v1')->group(function () {
         Route::post('slide/create', [SlideController::class, 'createSlide']);
         Route::post('slide/update/{id}', [SlideController::class, 'updateSlideById']);
         Route::delete('slide/{language}/{token}', [SlideController::class, 'deleteWebInfoByInfoId']);
+
+        Route::get('lecture/data', [LecturerController::class, 'getLecturer']);
     });
 });

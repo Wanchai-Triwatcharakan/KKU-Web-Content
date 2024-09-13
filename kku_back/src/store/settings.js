@@ -14,6 +14,7 @@ const appConfigDEV = {
         portfolios: true,
         designs: true,
         posts: true,
+        lecturers: true,
         messages: true,
         webinfo: true,
         languages: false,
@@ -41,47 +42,48 @@ const appConfigDEV = {
         notify: false,
     }
 }
-// const appConfigPROD = {
-//     isDevMode: false,
-//     language: "th",
-//     timeZone: "Asia/Bangkok",
-//     languageAvailable: ["th"],  
-//     apiPath:"https://api.chaum2021.com/api/backoffice/v1/",
-//     uploadPath:"https://api.chaum2021.com/",
-//     webPath:"https://chaum2021.com/",
-//     pages: {
-//         categories: true,
-//         subcategories: true,
-//         products: true,
-//         services: true,
-//         portfolios: true,
-//         designs: true,
-//         posts: true,
-//         messages: true,
-//         webinfo: true,
-//         languages: false,
-//         admins: true,
-//         configs: true,
-//         groups: {
-//             category: true,
-//             product: true,
-//             article: true,
-//             system: true,
-//         }
-//     },
-//     features: {
-//         multilingual: true,
-//         flexibleCategory: true,
-//         multipleImage: true,
-//         seo: true,
-//         price: false,
-//         tag: true,
-//         iframe: true,
-//         redirect: true,
-//         social: false,
-//         notify: false,
-//     }
-// }
+const appConfigPROD = {
+    isDevMode: false,
+    language: "th",
+    timeZone: "Asia/Bangkok",
+    languageAvailable: ["th"],  
+    apiPath:"https://api.chaum2021.com/api/backoffice/v1/",
+    uploadPath:"https://api.chaum2021.com/",
+    webPath:"https://chaum2021.com/",
+    pages: {
+        categories: true,
+        subcategories: true,
+        products: true,
+        services: true,
+        portfolios: true,
+        designs: true,
+        posts: true,
+        lecturers: true,
+        messages: true,
+        webinfo: true,
+        languages: false,
+        admins: true,
+        configs: true,
+        groups: {
+            category: true,
+            product: true,
+            article: true,
+            system: true,
+        }
+    },
+    features: {
+        multilingual: true,
+        flexibleCategory: true,
+        multipleImage: true,
+        seo: true,
+        price: false,
+        tag: true,
+        iframe: true,
+        redirect: true,
+        social: false,
+        notify: false,
+    }
+}
 
 export default appConfigDEV;
 // export default appConfigPROD;

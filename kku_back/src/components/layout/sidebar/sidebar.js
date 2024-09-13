@@ -25,6 +25,7 @@ import {
   faFileCsv,
   faHome,
   faIcons,
+  faPersonHarassing,
   faEnvelope,
   faBook,
   faShoppingCart,
@@ -278,13 +279,27 @@ const SidebarComponent = (props) => {
                     onClick={closeSidebarhandler}
                     to="/posts"
                     className={`navlink `}
-                    title={t("โพสต์")}
+                    title={t("ข่าวสาร")}
                     liClass="menu-link"
                   >
                     <span className="collap-title">
                       <FontAwesomeIcon icon={faNewspaper} />
                     </span>
-                    <span className="menu-title">{t("โพสต์")}</span>
+                    <span className="menu-title">{t("ข่าวสาร")}</span>
+                  </NavLink>
+                )}
+                {pagesAllow.lecturers && (
+                  <NavLink
+                    onClick={closeSidebarhandler}
+                    to="/lecturers"
+                    className={`navlink `}
+                    title={t("วิทยากร")}
+                    liClass="menu-link"
+                  >
+                    <span className="collap-title">
+                      <FontAwesomeIcon icon={faPersonHarassing} />
+                    </span>
+                    <span className="menu-title">{t("วิทยากร")}</span>
                   </NavLink>
                 )}
                 {pagesAllow.messages && (

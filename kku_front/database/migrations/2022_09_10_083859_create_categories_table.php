@@ -57,7 +57,7 @@ return new class extends Migration
         DB::table('categories')->insert([
             [
                 'id' => 1,
-                'cate_url' => '',
+                'cate_url' => '/',
                 'cate_title' => 'หน้าแรก',
                 'is_menu' => true,
                 'is_topside' => true,
@@ -68,8 +68,8 @@ return new class extends Migration
             ],
             [
                 'id' => 2,
-                'cate_url' => 'product',
-                'cate_title' => 'สินค้าของเรา',
+                'cate_url' => '/ข้อมูลสัมมนา',
+                'cate_title' => 'ข้อมูลสัมมนา',
                 'is_menu' => true,
                 'is_topside' => true,
                 'is_bottomside' => true,
@@ -79,8 +79,8 @@ return new class extends Migration
             ],
             [
                 'id' => 3,
-                'cate_url' => 'portfolio',
-                'cate_title' => 'ผลงานของเรา',
+                'cate_url' => '/ลงทะเบียน',
+                'cate_title' => 'ลงทะเบียน',
                 'is_menu' => true,
                 'is_topside' => true,
                 'is_bottomside' => true,
@@ -90,8 +90,8 @@ return new class extends Migration
             ],
             [
                 'id' => 4,
-                'cate_url' => 'service',
-                'cate_title' => 'บริการของเรา',
+                'cate_url' => '/กำหนดการ',
+                'cate_title' => 'กำหนดการ',
                 'is_menu' => true,
                 'is_topside' => true,
                 'is_bottomside' => true,
@@ -101,8 +101,8 @@ return new class extends Migration
             ],
             [
                 'id' => 5,
-                'cate_url' => 'process',
-                'cate_title' => 'ขั้นตอนการทำงาน',
+                'cate_url' => '/ข่าวสาร',
+                'cate_title' => 'ข่าวสาร',
                 'is_menu' => true,
                 'is_topside' => true,
                 'is_bottomside' => true,
@@ -112,8 +112,30 @@ return new class extends Migration
             ],
             [
                 'id' => 6,
-                'cate_url' => 'etc',
-                'cate_title' => 'เพิ่มเติม',
+                'cate_url' => '/ภาพกิจกรรม',
+                'cate_title' => 'ภาพกิจกรรม',
+                'is_menu' => true,
+                'is_topside' => true,
+                'is_bottomside' => true,
+                'cate_position' => 1,
+                'language' => 'th',
+                'defaults' => true
+            ],
+            [
+                'id' => 7,
+                'cate_url' => '/ที่พักและเส้นทาง',
+                'cate_title' => 'ที่พักและเส้นทาง',
+                'is_menu' => true,
+                'is_topside' => true,
+                'is_bottomside' => true,
+                'cate_position' => 1,
+                'language' => 'th',
+                'defaults' => true
+            ],
+            [
+                'id' => 8,
+                'cate_url' => '/ติดต่อเรา',
+                'cate_title' => 'ติดต่อเรา',
                 'is_menu' => true,
                 'is_topside' => true,
                 'is_bottomside' => true,

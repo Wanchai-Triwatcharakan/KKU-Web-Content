@@ -157,8 +157,8 @@ const ModalAddCategory = (props) => {
         <div className="modal-body overflow-scroll-custom">
           <fieldset className="modal-fieldset">
             <legend className="modal-legend">{t("เพิ่มหมวดหมู่หลัก")}</legend>
-            {/* <RadioBoxUI className="cate-menu-list" data={menuList} value={cateId} onChange={setCateId}/> */}
-            <div style={{width: "100%"}} className="form-details">
+            <RadioBoxUI className="cate-menu-list" data={menuList} value={cateId} onChange={setCateId}/>
+            <div className="form-details">
    
               <FieldsetUI className="image-setting" label={t("ModalInfoImage")}>
                 <PreviewImageUI
