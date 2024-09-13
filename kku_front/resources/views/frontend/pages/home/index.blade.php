@@ -70,7 +70,7 @@
             <!-- รูปภาพทับพื้นหลัง -->
 
             <div class="absolute w-full h-full">
-                <img src="images/home/Group 438.png" alt="Your Image" class="w-full h-full">
+                <img src="/images/home/Group 438.png" alt="Your Image" class="w-full h-full">
             </div>
 
 
@@ -90,7 +90,7 @@
                                         class="bg-white rounded-[15px] py-4 px-3 z-0 flex flex-col justify-center gap-y-4 ">
                                         <div
                                             class="w-[215px] h-[215px] mx-auto bg-gradient-to-r from-[#8DD7FA] to-[#B8D88F] rounded-full p-1">
-                                            <img src="images/home/111.png" alt=""
+                                            <img src="/images/home/111.png" alt=""
                                                 class="w-full h-full object-cover rounded-full">
                                         </div>
 
@@ -189,13 +189,13 @@
             </p>
 
             <div
-                class="w-4/5 max-ex:w-full grid grid-cols-4 gap-4 max-yy:grid-cols-3 max-dm:grid-cols-2 max-ex:grid-cols-1 mx-auto py-10 max-ex:py-4 content-center place-items-center">
+                class="w-4/5 grid grid-cols-4 gap-4 max-yy:grid-cols-3 max-dm:grid-cols-2 max-ex:grid-cols-1 mx-auto py-10 max-ex:py-4 content-center place-items-center">
                 @for ($i = 0; $i < 8; $i++)
                     <div class="drop-shadow-md max-w-[390px] max-es:w-[350px] flex justify-center h-[100%]">
                         <div class="bg-white rounded-[15px] z-0 flex flex-col justify-center gap-y-4 " data-aos="fade-up"
                             data-aos-duration="1500">
                             <div class="w-full h-[300px] mx-auto rounded-t-xl ">
-                                <img src="images/home/111.png" alt=""
+                                <img src="/images/home/111.png" alt=""
                                     class="w-full h-full object-cover rounded-t-xl">
                             </div>
 
@@ -204,13 +204,13 @@
                                     การประชุมในครั้งนี้มุ่งเน้นที่การพัฒนานวัตกรรมเพื่อสุขภาพ</p>
                                 <div class="flex items-center gap-2">
                                     <div class="max-w-[20px] h-[20px]">
-                                        <img src="images/home/Group 176.png" alt=""
+                                        <img src="/images/home/Group 176.png" alt=""
                                             class="w-full h-full object-cover">
                                     </div>
                                     <p class="text-[#B9BBC7] text-md max-md:text-sm text-start">
                                         ข่าวสาร,ความรู้</p>
                                     <div class="max-w-[20px] h-[20px]">
-                                        <img src="images/home/Group 178.png" alt=""
+                                        <img src="/images/home/Group 178.png" alt=""
                                             class="w-full h-full object-cover">
                                     </div>
                                     <p class="text-[#B9BBC7] text-md max-md:text-sm text-start">
@@ -256,7 +256,7 @@
                         data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
                         <div class="bg-white rounded-[15px] z-0 flex flex-col justify-center gap-y-4 ">
                             <div class="w-full h-[300px] mx-auto rounded-t-xl ">
-                                <img src="images/home/111.png" alt=""
+                                <img src="/images/home/111.png" alt=""
                                     class="w-full h-full object-cover rounded-t-xl">
                             </div>
                             <div class="flex flex-col justify-center gap-y-4 px-3">
@@ -309,7 +309,7 @@
                                 <div class="flex justify-center">
                                     <div class="w-[200px] h-[120px] flex justify-center" data-aos="zoom-in"
                                         data-aos-duration="3000">
-                                        <img src="images/home/Mask group (2).png" alt="" class="w-full h-full">
+                                        <img src="/images/home/Mask group (2).png" alt="" class="w-full h-full">
                                     </div>
                                 </div>
                             </div>
@@ -321,8 +321,6 @@
                 <div class="swiper-button-prev swiper-button-prev1"></div>
             </div>
         </section>
-
-
     </div>
 @endsection
 @section('script')

@@ -27,7 +27,7 @@
             data-aos="zoom-in" data-aos-duration="3000">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 
         <div
-            class=" grid grid-cols-4 gap-4 max-yy:grid-cols-3 max-dm:grid-cols-2 max-ex:grid-cols-1 w-[70%] max-md:w-full mx-auto my-12 items-center ">
+            class=" grid grid-cols-4 gap-4 max-yy:grid-cols-3 max-dm:grid-cols-2 max-ex:grid-cols-1 w-[70%] mx-auto my-12 items-center place-items-center">
 
             @for ($i = 0; $i < 8; $i++)
                 <div data-aos="fade-up" data-aos-duration="1000" class="swiper-slide" data-aos="flip-left">
@@ -36,8 +36,8 @@
 
                         <div class="bg-white rounded-[15px] py-4 px-3 z-0 flex flex-col justify-center gap-y-4  ">
                             <div
-                                class="w-[215px] h-[215px] mx-auto bg-gradient-to-r from-[#8DD7FA] to-[#B8D88F] rounded-full p-1">
-                                <img src="images/home/111.png" alt=""
+                                class="w-[215px] h-[215px] max-2xl:w-[180px] max-2xl:h-[180px]  mx-auto bg-gradient-to-r from-[#8DD7FA] to-[#B8D88F] rounded-full p-1 ">
+                                <img src="/images/home/111.png" alt=""
                                     class="w-full h-full object-cover rounded-full">
                             </div>
 

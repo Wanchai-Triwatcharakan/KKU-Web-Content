@@ -62,7 +62,7 @@
                 <div class="flex w-full max-xl:flex-col gap-2">
                     <div class="flex justify-start items-center">
                         {{-- <div class="w-[150px] h-[90px]"> --}}
-                        <img src="images/home/LOGO-new.png" alt="" class="">
+                        <img src="/images/home/LOGO-new.png" alt="" class="">
                         {{-- </div> --}}
                         <div class="flex flex-col">
                             <p class="text-xl text-white text-wrap">First Conference and Exhibition on Health
@@ -101,7 +101,7 @@
             <div
                 class=" w-4/5 max-yy:w-full mx-auto flex justify-end max-lg:justify-start gap-2 items-center px-4 max-sm:items-start">
                 <div class="w-6 h-6 max-sm:w-10 max-sm:h-6">
-                    <img src="images/home/line.png" alt="" class="w-full h-full">
+                    <img src="/images/home/line.png" alt="" class="w-full h-full">
                 </div>
                 <p class="text-white text-lg max-xl:text-[1rem] max-sm:text-[1rem]">: 085-001-6805
                     ที่อยู่ 123 ถนนมิตรภาพ ตำบลในเมือง อำเภอเมือง จังหวัดขอนแก่น จ.ขอนแก่น 40000</p>

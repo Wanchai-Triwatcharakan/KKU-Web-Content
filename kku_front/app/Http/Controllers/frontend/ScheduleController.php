@@ -8,4 +8,8 @@ use Illuminate\Http\Request;
 class ScheduleController extends Controller
 {
     //
+    public function indexPage() {
+        // return view('frontend.pages.seminar.seminar');
+        return view('frontend.pages.schedule.schedule');
+    }
 }

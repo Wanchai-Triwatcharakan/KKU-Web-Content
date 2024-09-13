@@ -27,9 +27,17 @@ Route::prefix('seminar/')->group(function () {
     Route::get('/', [SeminarController::class, 'indexPage']);
 });
 
-Route::get('/news/{id}', [HomeController::class, 'NewsDetailPage']);
+Route::prefix('register/')->group(function () {
+    Route::get('/', [RegisterController::class, 'indexPage']);
+    Route::get('/detail', [RegisterController::class, 'dataDetail'])->name('register.detail');
+});
 
-Route::get('/aboutus', [HomeController::class, 'AboutUsPage']);
+Route::prefix('schedule/')->group(function () {
+    Route::get('/', [ScheduleController::class, 'indexPage']);
+    // Route::get('/detail', [RegisterController::class, 'dataDetail'])->name('register.detail');
+
+});
+
 
 // Test debug
 // Route::get('/', [CategoryController::class, 'index']);
