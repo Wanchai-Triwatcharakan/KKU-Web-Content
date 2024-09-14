@@ -143,6 +143,28 @@ return new class extends Migration
                 'language' => 'th',
                 'defaults' => true
             ],
+            [
+                'id' => 9,
+                'cate_url' => '/ที่มา',
+                'cate_title' => 'ที่มา',
+                'is_menu' => false,
+                'is_topside' => true,
+                'is_bottomside' => true,
+                'cate_position' => 1,
+                'language' => 'th',
+                'defaults' => true
+            ],
+            [
+                'id' => 10,
+                'cate_url' => '/วิทยากร',
+                'cate_title' => 'วิทยากร',
+                'is_menu' => false,
+                'is_topside' => true,
+                'is_bottomside' => true,
+                'cate_position' => 1,
+                'language' => 'th',
+                'defaults' => true
+            ],
         ]);
     }
 
