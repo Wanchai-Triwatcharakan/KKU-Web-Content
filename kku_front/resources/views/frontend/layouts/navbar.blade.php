@@ -18,15 +18,30 @@
             </svg>
         </button>
         <div class="hidden w-full xl:block xl:w-auto" id="navbar-dropdown">
-            <ul
-                class="flex flex-col w-full font-semibold text-center  border border-gray-100 rounded-lg bg-gray-50 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white">
-                @foreach ($main_cate as $cate)
+            <ul class="flex flex-col w-full font-semibold text-center border border-gray-100 rounded-lg bg-gray-50 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white">
+                @foreach ($main_cate as $main)
+                    @if (!$main->cate_parent_id)
                     <li>
-                        <a href="{{ url($cate->cate_url) }}"
-                            class=" block py-6 px-3 text-[1rem] font-semibold text-center text-[#23404A] min-w-[135px] hover:text-white hover:bg-[#FF864E] 
-                        {{ request()->is($cate->cate_url) ? 'bg-[#B8D88F] text-white' : '' }} "
-                            aria-current="page">{{ $cate->cate_title }}</a>
+                        <a href="{{ url($main->cate_url) }}"
+                            class="block py-6 px-3 text-[1rem] font-semibold text-center text-[#23404A] min-w-[135px] hover:text-white hover:bg-[#FF864E]
+                                {{ request()->is($main->cate_url) ? 'bg-[#B8D88F] text-white' : '' }} "
+                            aria-current="page">{{ $main->cate_title }}</a>
+                            {{-- sub menu --}}
+                        <ul class="ml-4 fixed">
+                            @foreach ($main_cate as $sub_cate)
+                                @if ($sub_cate->cate_parent_id == $main->id)
+                                <li>
+                                    <a href="{{ url($sub_cate->cate_url) }}"
+                                        class="block py-3 px-3 text-sm font-normal text-center text-[#23404A] min-w-[135px] hover:text-white hover:bg-[#FF864E]
+                                            {{ request()->is($sub_cate->cate_url) ? 'bg-[#B8D88F] text-white' : '' }}">
+                                        {{ $sub_cate->cate_title }}
+                                    </a>
+                                </li>
+                                @endif
+                            @endforeach
+                        </ul>
                     </li>
+                    @endif
                 @endforeach
             </ul>
         </div>
@@ -34,14 +49,30 @@
 
     <div class="m-nav w-[40%] max-md:w-[60%] absolute bg-white h-[100vh] shadow-md right-0 ">
         <ul>
-            @foreach ($main_cate as $cate)
-                <li>
-                    <a href="{{ url($cate->cate_url) }}"
-                        class=" block py-4 px-3 text-[1.2rem] font-medium text-strat text-[#23404A] min-w-[135px] hover:text-white hover:bg-[#FF864E] 
-                {{ request()->is($cate->cate_url) ? 'bg-[#B8D88F] text-white' : '' }} "
-                        aria-current="page">{{ $cate->cate_title }}</a>
-                </li>
-                <hr>
+            @foreach ($main_cate as $main)
+                @if (!$main->cate_parent_id)
+                    <li>
+                        <a href="{{ url($main->cate_url) }}"
+                            class=" block py-4 px-3 text-[1.2rem] font-medium text-strat text-[#23404A] min-w-[135px] hover:text-white hover:bg-[#FF864E] 
+                    {{ request()->is($main->cate_url) ? 'bg-[#B8D88F] text-white' : '' }} "
+                            aria-current="page">{{ $main->cate_title }}</a>
+                            {{-- sub menu --}}
+                            <ul class="">
+                                @foreach ($main_cate as $sub_cate)
+                                    @if ($sub_cate->cate_parent_id == $main->id)
+                                    <li>
+                                        <a href="{{ url($sub_cate->cate_url) }}"
+                                            class="block py-3 px-3 text-sm font-normal text-[#23404A] min-w-[135px] hover:text-white hover:bg-[#FF864E]
+                                                {{ request()->is($sub_cate->cate_url) ? 'bg-[#B8D88F] text-white' : '' }}">
+                                            {{ $sub_cate->cate_title }}
+                                        </a>
+                                    </li>
+                                    @endif
+                                @endforeach
+                            </ul>
+                    </li>
+                    <hr>
+                @endif
             @endforeach
         </ul>
     </div>
