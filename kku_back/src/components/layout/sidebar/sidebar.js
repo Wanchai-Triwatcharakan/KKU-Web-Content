@@ -89,7 +89,7 @@ const SidebarComponent = (props) => {
             />
           </figure>
           <div className="website-powerby">
-            <p>S-House Design</p>
+            <p>HHP&HP</p>
             <p className="sub-website">{t("Managements")}</p>
           </div>
         </Link>

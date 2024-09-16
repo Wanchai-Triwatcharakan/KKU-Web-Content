@@ -49,7 +49,7 @@ return new class extends Migration
                  'admin_level' => 3,
                  'language' => "th",
                  'defaults' => 1,
-                 'info_value' => '',
+                 'info_value' => 'HHP&HP',
                  'info_link' => '',
                  'info_iframe' => '',
                  'info_attribute' => ''
@@ -95,7 +95,7 @@ return new class extends Migration
                  'language' => "th",
                  'defaults' => 1,
                  'info_value' => '',
-                 'info_link' => '',
+                 'info_link' => 'upload/2024/09/14/117262855130.png',
                  'info_iframe' => '',
                  'info_attribute' => ''
             ],
@@ -155,7 +155,7 @@ return new class extends Migration
                  'language' => "th",
                  'defaults' => 1,
                  'info_value' => '',
-                 'info_link' => '',
+                 'info_link' => 'upload/2024/09/14/517262855380.png',
                  'info_iframe' => '',
                  'info_attribute' => ''
             ],

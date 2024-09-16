@@ -1,8 +1,10 @@
 import React, {  Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import DateMoment from "../../../components/ui/date-moment/date-moment";
+import ModalAddPost from "../post-modal/post-add-modal";
+import ModalEditPost from "../post-modal/post-edit-modal";
 import ContentCardUI from "../../../components/ui/content-card/content-card";
-
+ 
 import { faEyeSlash, faFolderOpen,  faMapPin, faLanguage, faLink, faPenNib, faStopwatch, faWindowRestore } from "@fortawesome/free-solid-svg-icons";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
@@ -22,16 +24,17 @@ import { useTranslation } from "react-i18next";
 const modalSwal = withReactContent(Swal);
 
 const tabLists = [
-  { value: "0", title: "ทั้งหมด", icon: <FontAwesomeIcon icon={faFolderOpen} /> },
-  { value: "1", title: "แสดงบนเว็บไซต์", icon: <FontAwesomeIcon icon={faWindowRestore} /> },
-  { value: "2", title: "ปักหมุด", icon: <FontAwesomeIcon icon={faMapPin} /> },
-  { value: "3", title: "ซ่อนบนเว็บไซต์", icon: <FontAwesomeIcon icon={faEyeSlash} /> },
+    { value: "0", title: "ทั้งหมด", icon: <FontAwesomeIcon icon={faFolderOpen} /> },
+    { value: "1", title: "แสดงบนเว็บไซต์", icon: <FontAwesomeIcon icon={faWindowRestore} /> },
+    { value: "2", title: "ปักหมุด", icon: <FontAwesomeIcon icon={faMapPin} /> },
+    { value: "3", title: "ซ่อนบนเว็บไซต์", icon: <FontAwesomeIcon icon={faEyeSlash} /> },
 ] 
 
-export default function LectureTab(props) {
+
+const PostTab = (props) => {
   const { postModalAdd,setPostModalAdd,menuList, postTab, postData, isRowDisplay, pageControl, category } = props;
   const { t } = useTranslation('post-page')
-//  console.log(category.length)
+ 
   const isSuerperAdmin = useSelector(state => state.auth.userPermission.superAdmin)
   const [totalData, setTotalData] = useState(-1)
   const [page, setPage] = useState(0)
@@ -44,42 +47,43 @@ export default function LectureTab(props) {
     isOpen: false
   })  
 
-  // useEffect(() => { 
-  //   if(category.length > 0) {
-  //     setPostFilterData().then(res => {
-  //       console.log(res)
-  //       setTotalData(res.length)
-  //       setFilteredData(res.slice(limited.begin, limited.end))
-  //     })
-  //   }
-  // }, [postTab, postData, page, rowsPerPage, pageControl, category]);
+  useEffect(() => { 
+    if(category.length > 0) {
+      setPostFilterData().then(res => {
+        setTotalData(res.length)
+        setFilteredData(res.slice(limited.begin, limited.end))
+      })
+    }
+  }, [postTab, postData, page, rowsPerPage, pageControl, category]);
 
-  // const setPostFilterData = async () => {
-  //   const filtered = await postData.filter((f) => { 
-  //     /* กรอง Tab */
-  //     if(postTab === "1" && f.status_display === 0){
-  //       return false;
-  //     } else if(postTab === "2" && f.pin === 0){
-  //       return false;
-  //     } else if(postTab === "3" && f.status_display === 1){
-  //       return false
-  //     }
-  //     /* กรอง Page */
-  //     if(pageControl !== "") {
-  //       let category = f.category.slice(1,-1).split(',')
-  //       if(!category.includes(`${pageControl}`)){
-  //         return false
-  //       } 
-  //     }
-  //     return f
-  //   })
-  //   const maped = await filtered.map((d) => {
-  //     let exp = d.category.slice(1,-1).split(',')
-  //     const cateLists = exp.map(cid => category[parseInt(cid)])
-  //     return {...d, cateLists}
-  //   }) 
-  //   return maped;
-  // }
+  const setPostFilterData = async () => {
+    const filtered = await postData.filter((f) => { 
+      /* กรอง Tab */
+      if(postTab === "0" && f.status_display === 0){
+        return false;
+      } else if(postTab === "1" && f.status_display === 0){
+        return false;
+      } else if(postTab === "2" && f.pin === 0){
+        return false;
+      } else if(postTab === "3" && f.status_display === 1){
+        return false
+      }
+      /* กรอง Page */
+      if(pageControl !== "") {
+        let category = f.category.slice(1,-1).split(',')
+        if(!category.includes(`${pageControl}`)){
+          return false
+        } 
+      }
+      return f
+    })
+    const maped = await filtered.map((d) => {
+      let exp = d.category.slice(1,-1).split(',')
+      const cateLists = exp.map(cid => category[parseInt(cid)])
+      return {...d, cateLists}
+    }) 
+    return maped;
+  }
 
   const handleTabChange = (event, newValue) => {
     props.setPostTab(newValue);
@@ -113,7 +117,6 @@ export default function LectureTab(props) {
     }) 
 
   } 
-
   const deleteHandler = (item) => {
     let buttonIcon = (item.is_maincontent === 1)?"question":"warning";
     let text = (item.is_maincontent === 1)?" ( Main Content )":" Content";
@@ -160,7 +163,7 @@ export default function LectureTab(props) {
           
             <TabPanel className={`post-tab-body ${(isRowDisplay)?"asRow":"asColumn"}`} value={tab.value} key={tab.value}>
               <div className="item-list"> 
-                {postData.map((item,index) => (
+                {filteredData.map((item,index) => (
                   <ContentCardUI 
                     key={index} 
                     onAddClick={() => addHandler(item)}
@@ -170,22 +173,20 @@ export default function LectureTab(props) {
                     className="post-card-content" 
                     data={{
                       alt: item.thumbnail_alt,
-                      image: item.profile_image,
-                      // language: item.language,
-                      language: "th",
+                      image: item.thumbnail_link,
+                      language: item.language,
                     }} 
                     isRowDisplay={isRowDisplay}  
                   >
-                    {console.log(item)}
                     <h3 className="title">
                       {isSuerperAdmin && <span className="id" title="ref id">[ {item.id} ]</span> }
-                      {item.lecture_name}
+                      {item.title}
                       {item.is_maincontent ? <span className="id" title="ref id"> ( Main Content )</span> : <></>}
                     </h3> 
                     <p className="desc">{item.description}</p>   
                     <p className="cate">
                       <span className="fa-icon" title="category"> <FontAwesomeIcon icon={faLink} /></span>
-                      {/* <span>{item.cateLists.map((c,index) => (index>0)?` , ${c.title}`:c.title) }</span> */}
+                      <span>{item.cateLists.map((c,index) => (index>0)?` , ${c.title}`:c.title) }</span>
                     </p>  
                     <p className="display">
                     { item.date_begin_display !== null && (
@@ -209,7 +210,7 @@ export default function LectureTab(props) {
                         </>
                       )}
                       <span className="fa-icon" title="editor"><FontAwesomeIcon icon={faLanguage} /></span>
-                      {/* <b>{item.language.toUpperCase()}</b>  */}
+                      <b>{item.language.toUpperCase()}</b> 
                     </p>   
                   </ContentCardUI>
                 ))}
@@ -228,7 +229,7 @@ export default function LectureTab(props) {
       </TabContext>
     </Box>
 
-    {/* {postModalAdd && 
+    {postModalAdd && 
       <ModalAddPost 
         category={category}
         menuList={menuList}
@@ -248,8 +249,10 @@ export default function LectureTab(props) {
         isOpen={postModalEdit.isOpen} 
         setClose={setPostModalEdit} 
       /> 
-    )} */}
+    )}
     
     </Fragment>
   )
 }
+
+export default PostTab;
