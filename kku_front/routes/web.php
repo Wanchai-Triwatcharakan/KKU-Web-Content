@@ -34,7 +34,7 @@ Route::prefix('register/')->group(function () {
 
 Route::prefix('schedule/')->group(function () {
     Route::get('/', [ScheduleController::class, 'indexPage']);
-    // Route::get('/detail', [RegisterController::class, 'dataDetail'])->name('register.detail');
+    Route::get('/detail', [ScheduleController::class, 'dataDetail'])->name('schedule.detail');
 
 });
 

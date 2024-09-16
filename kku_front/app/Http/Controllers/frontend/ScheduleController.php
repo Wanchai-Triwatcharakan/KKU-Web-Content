@@ -12,4 +12,8 @@ class ScheduleController extends Controller
         // return view('frontend.pages.seminar.seminar');
         return view('frontend.pages.schedule.schedule');
     }
+    public function dataDetail() {
+        // return view('frontend.pages.seminar.seminar');
+        return view('frontend.pages.schedule.scheduleDetail');
+    }
 }
