@@ -50,7 +50,7 @@
                         </div>
                         <div class="flex max-xs:flex-col gap-2">
                         <p class="text-[#23404A] text-[1rem]">สนใจสมัครได้ที่ :</p>
-                        <a href="" target="_blank" rel="noopener noreferrer" class="text-[#23404A] text-[1rem]">www.Test_HHPandHP.co.th</a></div>
+                        <a href="https://www.Test_HHPandHP.co.th" target="_blank" rel="noopener noreferrer" class="text-[#23404A] text-[1rem]">www.Test_HHPandHP.co.th</a></div>
                     </div>
                 </div>
 
