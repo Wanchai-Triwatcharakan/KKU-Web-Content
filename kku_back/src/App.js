@@ -27,6 +27,7 @@ import PortfolioPage from './pages/portfolio/portfolio.js';
 import DesignPage from './pages/design/design.js';
 import SlidePage from './pages/slide/slide.js';
 import LecturePage from './pages/lecturer/lecturer.js';
+import ActivityPhoto from './pages/activityphoto/activityphoto.js';
 
 function App() {
   const pagesAllow = useSelector((state) => state.app.pages)
@@ -49,6 +50,7 @@ function App() {
             {pagesAllow.designs && <Route path="designs" element={<DesignPage />} /> }
             {pagesAllow.posts && <Route path="posts" element={<PostPage />} /> }
             {pagesAllow.lecturers && <Route path="lecturers" element={<LecturePage />} /> }
+            {pagesAllow.activityphoto && <Route path="activityphoto" element={<ActivityPhoto />} /> }
             {pagesAllow.messages && <Route path="messages" element={<MessagePage />} /> }
             {pagesAllow.webinfo && <Route path="webinfo" element={<WebInfoPage />} /> }
             {pagesAllow.languages && <Route path="languages" element={<LangConfigPage />} /> }

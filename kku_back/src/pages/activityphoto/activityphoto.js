@@ -25,7 +25,7 @@ import PostTab from "./post-tab/post-tab";
 import { getMenuList, getPosts } from "../../services/post.service";
 import { appActions } from "../../store/app-slice";
 
-const LecturePage = () => {
+const ActivityPhoto = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation(["post-page"]);
   const pageAvailable = useSelector(
@@ -72,7 +72,7 @@ const LecturePage = () => {
     dispatch(appActions.isSpawnActive(true));
     getPosts(language).then((res) => {
       if (res.status) {
-        const filtered = res.data.filter(item => item.category.split(',').filter(Boolean).some(cat => ['10'].includes(cat)));
+        const filtered = res.data.filter(item => item.category.split(',').filter(Boolean).some(cat => ['6'].includes(cat)));
         setPostData(filtered);
       }
       dispatch(appActions.isSpawnActive(false));
@@ -96,9 +96,9 @@ const LecturePage = () => {
   return (
     <section id="post-page">
       <HeadPageComponent
-        h1={t("วิทยากร")}
+        h1={t("ภาพกิจกรรม")}
         icon={<FontAwesomeIcon icon={faNewspaper} />}
-        breadcrums={[{ title: t("วิทยากร"), link: false }]}
+        breadcrums={[{ title: t("ภาพกิจกรรม"), link: false }]}
       />
       <div className="card-control fixed-width">
         <div style={{ paddingBottom: "0" }} className="card-head">
@@ -145,7 +145,7 @@ const LecturePage = () => {
                 on="create"
                 icon={<FontAwesomeIcon icon={faAdd} />}
               >
-                {t("เพิ่มวิทยากร")}
+                {t("เพิ่มรูปภาพ")}
               </ButtonUI>
             )}
           </div>
@@ -201,4 +201,4 @@ const LecturePage = () => {
   );
 };
 
-export default LecturePage;
+export default ActivityPhoto;

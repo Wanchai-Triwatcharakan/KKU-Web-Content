@@ -151,7 +151,7 @@ const PostPage = () => {
               </ButtonUI>
             )}
           </div>
-          <div style={{ display: "flex", gap: "1rem", marginTop: "1rem" }}>
+          {/* <div style={{ display: "flex", gap: "1rem", marginTop: "1rem" }}>
             <Autocomplete
               disablePortal
               options={postData.map((data) => data.title)}
@@ -182,7 +182,7 @@ const PostPage = () => {
                 <TextField {...params} label="หมวดหมู่" />
               )}
             />
-          </div>
+          </div> */}
         </div>
 
         <PostTab

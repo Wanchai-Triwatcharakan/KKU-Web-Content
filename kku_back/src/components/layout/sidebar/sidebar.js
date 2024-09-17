@@ -302,6 +302,20 @@ const SidebarComponent = (props) => {
                     <span className="menu-title">{t("วิทยากร")}</span>
                   </NavLink>
                 )}
+                {pagesAllow.activityphoto && (
+                  <NavLink
+                    onClick={closeSidebarhandler}
+                    to="/activityphoto"
+                    className={`navlink `}
+                    title={t("ภาพกิจกรรม")}
+                    liClass="menu-link"
+                  >
+                    <span className="collap-title">
+                      <FontAwesomeIcon icon={faPersonHarassing} />
+                    </span>
+                    <span className="menu-title">{t("ภาพกิจกรรม")}</span>
+                  </NavLink>
+                )}
                 {pagesAllow.messages && (
                   <NavLink
                     onClick={closeSidebarhandler}
