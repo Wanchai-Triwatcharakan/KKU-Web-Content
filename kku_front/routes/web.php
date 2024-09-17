@@ -24,7 +24,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'indexPage']);
 
 Route::prefix('seminar/')->group(function () {
-    Route::get('/', [SeminarController::class, 'indexPage']);
+    Route::get('origin', [SeminarController::class, 'indexPageSeminar'])->name('seminar.origin');
+    Route::get('lecturer', [SeminarController::class, 'indexPage'])->name('seminar.lecturer');
 });
 
 Route::prefix('register/')->group(function () {
@@ -35,9 +36,4 @@ Route::prefix('register/')->group(function () {
 Route::prefix('schedule/')->group(function () {
     Route::get('/', [ScheduleController::class, 'indexPage']);
     Route::get('/detail', [ScheduleController::class, 'dataDetail'])->name('schedule.detail');
-
 });
-
-
-// Test debug
-// Route::get('/', [CategoryController::class, 'index']);

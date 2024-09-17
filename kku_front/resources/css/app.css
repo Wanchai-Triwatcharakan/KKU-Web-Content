@@ -88,3 +88,27 @@ body {
 .m-nav.hidden {
   display: none;
 }
+
+.submenu{
+  max-height: 0; /* Initially hide the submenu */
+  overflow: hidden; /* Hide overflow */
+  transition: max-height 0.5s ease-out; /* Smooth transition */
+}
+
+.submenu.open {
+  max-height: 500px; /* Adjust this value based on your submenu content */
+}
+
+.submenu.hidden {
+  max-height: 0;
+}
+
+.svg {
+  transition: transform 0.5s ease;
+}
+
+.room-btn.active {
+  background-color: #caf589; /* เปลี่ยนสีปุ่มที่ถูกเลือก */
+  transform: scale(1.1);
+  color: #000000;
+}

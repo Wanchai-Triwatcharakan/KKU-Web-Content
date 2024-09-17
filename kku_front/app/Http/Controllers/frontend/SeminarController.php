@@ -7,7 +7,10 @@ use Illuminate\Http\Request;
 
 class SeminarController extends Controller
 {
-    
+    public function indexPageSeminar() {
+        // return view('frontend.pages.seminar.seminar');
+        return view('frontend.pages.seminar.seminar');
+    }
     public function indexPage() {
         // return view('frontend.pages.seminar.seminar');
         return view('frontend.pages.seminar.lecturer');

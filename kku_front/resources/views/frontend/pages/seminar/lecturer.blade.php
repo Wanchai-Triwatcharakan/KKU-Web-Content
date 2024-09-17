@@ -27,7 +27,7 @@
             data-aos="zoom-in" data-aos-duration="3000">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 
         <div
-            class=" grid grid-cols-4 gap-4 max-yy:grid-cols-3 max-dm:grid-cols-2 max-ex:grid-cols-1 w-[70%] mx-auto my-12 items-center place-items-center">
+            class=" grid grid-cols-4 gap-4 max-yy:grid-cols-3 max-dm:grid-cols-2 max-ex:grid-cols-1 w-[70%] max-2xl:w-[80%] mx-auto my-12 items-center place-items-center">
 
             @for ($i = 0; $i < 8; $i++)
                 <div data-aos="fade-up" data-aos-duration="1000" class="swiper-slide" data-aos="flip-left">

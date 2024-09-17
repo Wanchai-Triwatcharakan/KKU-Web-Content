@@ -70,7 +70,7 @@ return new class extends Migration
             ],
             [
                 'id' => 2,
-                'cate_url' => '/ข้อมูลสัมมนา',
+                'cate_url' => '',
                 'cate_title' => 'ข้อมูลสัมมนา',
                 'cate_parent_id' => 0,
                 'is_menu' => true,
@@ -83,7 +83,7 @@ return new class extends Migration
             ],
             [
                 'id' => 3,
-                'cate_url' => '/ลงทะเบียน',
+                'cate_url' => 'register',
                 'cate_title' => 'ลงทะเบียน',
                 'cate_parent_id' => 0,
                 'is_menu' => true,
@@ -96,7 +96,7 @@ return new class extends Migration
             ],
             [
                 'id' => 4,
-                'cate_url' => '/กำหนดการ',
+                'cate_url' => 'schedule',
                 'cate_title' => 'กำหนดการ',
                 'cate_parent_id' => 0,
                 'is_menu' => true,
@@ -109,7 +109,7 @@ return new class extends Migration
             ],
             [
                 'id' => 5,
-                'cate_url' => '/ข่าวสาร',
+                'cate_url' => 'message',
                 'cate_title' => 'ข่าวสาร',
                 'cate_parent_id' => 0,
                 'is_menu' => true,
@@ -122,7 +122,7 @@ return new class extends Migration
             ],
             [
                 'id' => 6,
-                'cate_url' => '/ภาพกิจกรรม',
+                'cate_url' => 'activity',
                 'cate_title' => 'ภาพกิจกรรม',
                 'cate_parent_id' => 0,
                 'is_menu' => true,
@@ -135,7 +135,7 @@ return new class extends Migration
             ],
             [
                 'id' => 7,
-                'cate_url' => '/ที่พักและเส้นทาง',
+                'cate_url' => 'accommodation',
                 'cate_title' => 'ที่พักและเส้นทาง',
                 'cate_parent_id' => 0,
                 'is_menu' => true,
@@ -148,7 +148,7 @@ return new class extends Migration
             ],
             [
                 'id' => 8,
-                'cate_url' => '/ติดต่อเรา',
+                'cate_url' => 'contact',
                 'cate_title' => 'ติดต่อเรา',
                 'cate_parent_id' => 0,
                 'is_menu' => true,
@@ -161,7 +161,7 @@ return new class extends Migration
             ],
             [
                 'id' => 9,
-                'cate_url' => '/ที่มา',
+                'cate_url' => 'seminar/origin',
                 'cate_title' => 'ที่มา',
                 'cate_parent_id' => 2,
                 'is_menu' => true,
@@ -174,7 +174,7 @@ return new class extends Migration
             ],
             [
                 'id' => 10,
-                'cate_url' => '/วิทยากร',
+                'cate_url' => 'seminar/lecturer',
                 'cate_title' => 'วิทยากร',
                 'cate_parent_id' => 2,
                 'is_menu' => true,
@@ -185,6 +185,7 @@ return new class extends Migration
                 'language' => 'th',
                 'defaults' => true
             ],
+           
         ]);
     }
 

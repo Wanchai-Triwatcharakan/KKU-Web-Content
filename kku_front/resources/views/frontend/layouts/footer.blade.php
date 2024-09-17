@@ -73,26 +73,48 @@
                     <div class="w-full items-center hidden sm:block">
                         <ul role="list" class="marker:text-white list-disc pl-5 space-y-3 text-white text-[1rem]">
                             <div class="flex justify-between">
-                                <div class="">
-                                    <li>ข้อมูลสัมมนา</li>
-                                    <div class="pl-4">
-                                        <li>ที่มา</li>
-                                        <li>วิทยากร</li>
-                                    </div>
-                                </div>
-                                <li>ลงทะเบียน</li>
-                                <li>กำหนดการ</li>
-                                <li>ข่าวสาร</li>
-                                <li>ภาพบรรยากาศ</li>
-                                <li>ที่พักเเละเส้นทาง</li>
-                                <li>ติดต่อเรา</li>
+                                @foreach ($main_cate as $main )
+                                    @if (!$main->cate_parent_id)
+                                        <div class="flex flex-col">
+                                            <a href="{{ url($main->cate_url) }}" id="main-{{ $main->id }}" class="relative text-white hover:text-white cursor-pointer transition-all ease-in-out before:transition-[width] before:ease-in-out before:duration-700 before:absolute before:bg-white before:origin-center before:h-[1px] before:w-0 hover:before:w-[50%] before:bottom-0 before:left-[50%] after:transition-[width] after:ease-in-out after:duration-700 after:absolute after:bg-white after:origin-center after:h-[1px] after:w-0 hover:after:w-[50%] after:bottom-0 after:right-[50%]  {{ request()->is($main->cate_url) ? 'underline underline-offset-4' : '' }}">
+                                                {{ $main->cate_title }}</a>
+                                            @php
+                                                $hasSubMenu = $main_cate
+                                                    ->where('cate_parent_id', $main->id)
+                                                    ->isNotEmpty();
+                                            @endphp
+                                            @if ($hasSubMenu)
+                                                @php
+                                                    $subMenus = $main_cate->where('cate_parent_id', $main->id);
+                                                @endphp
+                                                @foreach ($subMenus as $sub_cate)
+                                                    <div class="pl-2">
+                                                        <a href="{{ url($sub_cate->cate_url) }}" class="flex ">
+                                                            <div class="w-6 h-6  hover:text-white">
+                                                                <svg viewBox="0 0 15 15"
+                                                                    class="flex-shrink-0 w-full h-full text-white transition duration-75 group-hover:text-white"
+                                                                    xmlns="http://www.w3.org/2000/svg">
+                                                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                                        stroke-linejoin="round"></g>
+                                                                    <g id="SVGRepo_iconCarrier">
+                                                                        <path
+                                                                            d="M9.875 7.5C9.875 8.81168 8.81168 9.875 7.5 9.875C6.18832 9.875 5.125 8.81168 5.125 7.5C5.125 6.18832 6.18832 5.125 7.5 5.125C8.81168 5.125 9.875 6.18832 9.875 7.5Z"
+                                                                            class="fill-current"></path>
+                                                                    </g>
+                                                                </svg>
+                                                            </div>
+                                                            <span class="relative text-white hover:text-white cursor-pointer transition-all ease-in-out before:transition-[width] before:ease-in-out before:duration-700 before:absolute before:bg-white before:origin-center before:h-[1px] before:w-0 hover:before:w-[50%] before:bottom-0 before:left-[50%] after:transition-[width] after:ease-in-out after:duration-700 after:absolute after:bg-white after:origin-center after:h-[1px] after:w-0 hover:after:w-[50%] after:bottom-0 after:right-[50%] {{ request()->is($sub_cate->cate_url) ? 'underline underline-offset-4' : '' }}">{{ $sub_cate->cate_title }}</span>
+                                                        </a>
+                                                    </div>
+                                                @endforeach
+                                            @endif
+                                        </div>
+                                    @endif
+                                @endforeach
                             </div>
                         </ul>
                     </div>
-                    {{-- <div class="sm:hidden">
-                       
-                    </div> --}}
-
                 </div>
             </div>
         </div>
