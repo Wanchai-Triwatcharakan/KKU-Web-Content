@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class RegisterController extends Controller
 {
     //
-    public function indexPage() {
+    public function indexPageRegister() {
         // return view('frontend.pages.seminar.seminar');
         return view('frontend.pages.register.register');
     }

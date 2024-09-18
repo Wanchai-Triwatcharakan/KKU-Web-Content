@@ -109,7 +109,7 @@ return new class extends Migration
             ],
             [
                 'id' => 5,
-                'cate_url' => 'message',
+                'cate_url' => 'post',
                 'cate_title' => 'ข่าวสาร',
                 'cate_parent_id' => 0,
                 'is_menu' => true,

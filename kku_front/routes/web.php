@@ -4,6 +4,7 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\backoffice\CategoryController;
 use Illuminate\Support\Facades\Route;
+use phpseclib3\File\ASN1\Maps\PostalAddress;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,11 +30,17 @@ Route::prefix('seminar/')->group(function () {
 });
 
 Route::prefix('register/')->group(function () {
-    Route::get('/', [RegisterController::class, 'indexPage']);
+    Route::get('/', [RegisterController::class, 'indexPageRegister']);
     Route::get('/detail', [RegisterController::class, 'dataDetail'])->name('register.detail');
 });
 
 Route::prefix('schedule/')->group(function () {
-    Route::get('/', [ScheduleController::class, 'indexPage']);
+    Route::get('/', [ScheduleController::class, 'indexPageSchedule']);
     Route::get('/detail', [ScheduleController::class, 'dataDetail'])->name('schedule.detail');
 });
+
+Route::prefix('post/')->group(function () {
+    Route::get('/', [PostController::class, 'indexPagePost']);
+    Route::get('/detail', [PostController::class, 'dataDetail'])->name('post.detail');
+});
+

@@ -110,5 +110,7 @@ body {
 .room-btn.active {
   background-color: #caf589; /* เปลี่ยนสีปุ่มที่ถูกเลือก */
   transform: scale(1.1);
-  color: #000000;
+  color: #37580C;
+  border-right: solid 4px #88bb3d;
+  border-bottom: solid 4px #88bb3d;
 }
