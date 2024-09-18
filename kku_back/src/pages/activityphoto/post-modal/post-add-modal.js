@@ -164,11 +164,11 @@ const ModalAddPost = (props) => {
       ...addDataValid, 
       title: (addData.title === ""),
       slug: (addData.slug === ""),
-      category: (cateListId === ","),
+      // category: (cateListId === ","),
       description: (addData.description === "")
     })
 
-    if((addData.title === "") || (addData.description === "") || (cateListId === ",") || isFetching){ //(cateListId === ",") || 
+    if((addData.title === "") || (addData.description === "") || isFetching){ //(cateListId === ",") || 
       return false;
     }
 
@@ -194,7 +194,7 @@ const ModalAddPost = (props) => {
       }
     }
 
-    formData.append('category', cateListId) //cateListId
+    formData.append('category', ",6,") //cateListId
     formData.append('isMainContent', (addData.isMainContent)?1:0)
     formData.append('title', addData.title)
     formData.append('keyword', addData.keyword)
@@ -247,15 +247,15 @@ const ModalAddPost = (props) => {
           <div className="modal-body overflow-scroll-custom">
             <fieldset className="modal-fieldset">
               <legend className="modal-legend">{t("ModalAddPostTitle")}</legend>
-              <CheckBoxUI 
+              {/* <CheckBoxUI 
                 className="cate-menu-list" 
                 error={addDataValid.category}
                 menuList={menuList}
                 data={checkboxList}
                 setData={setCheckBoxList} 
-                t={t} />
+                t={t} /> */}
 
-              <div className="form-details">
+              <div className="form-details" style={{width: "100%"}}>
                 <FieldsetUI className="image-setting" label={t("ข้อมูลรูปภาพ")}>
                   <PreviewImageUI
                     className="add-image" 

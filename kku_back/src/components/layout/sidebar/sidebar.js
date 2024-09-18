@@ -316,6 +316,20 @@ const SidebarComponent = (props) => {
                     <span className="menu-title">{t("ภาพกิจกรรม")}</span>
                   </NavLink>
                 )}
+                {pagesAllow.postscontent && (
+                  <NavLink
+                    onClick={closeSidebarhandler}
+                    to="/postscontent"
+                    className={`navlink `}
+                    title={t("อื่นๆ")}
+                    liClass="menu-link"
+                  >
+                    <span className="collap-title">
+                      <FontAwesomeIcon icon={faPersonHarassing} />
+                    </span>
+                    <span className="menu-title">{t("อื่นๆ")}</span>
+                  </NavLink>
+                )}
                 {pagesAllow.messages && (
                   <NavLink
                     onClick={closeSidebarhandler}
