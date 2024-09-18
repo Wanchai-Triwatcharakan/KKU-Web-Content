@@ -145,7 +145,8 @@ class Controller extends BaseController
                 WHERE c.is_menu = 1
                 ORDER BY c.id ASC ,  priority ASC";
         $result = DB::select($sql, [":lang" => $language]);
-        return $this->categoryConvertGroup($result);
+        // return $this->categoryConvertGroup($result);
+        return $result;
     }
 
     private function categoryConvertGroup($query) {
@@ -162,6 +163,7 @@ class Controller extends BaseController
                 }
             }
         }
+        dd($resultData);
         return ($resultData)?$resultData[0]:null;
     }
 
