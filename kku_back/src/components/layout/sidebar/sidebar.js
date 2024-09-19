@@ -155,7 +155,7 @@ const SidebarComponent = (props) => {
                           </span>
                         </NavLink>
                       )}
-                      {pagesAllow.subcategories && (
+                      {/* {pagesAllow.subcategories && (
                         <NavLink
                           onClick={closeSidebarhandler}
                           to="/subcategories"
@@ -170,7 +170,7 @@ const SidebarComponent = (props) => {
                             {t("หมวดหมู่ย่อย")}
                           </span>
                         </NavLink>
-                      )}
+                      )} */}
                     </ul>
                   </div>
                 </li>
@@ -314,6 +314,20 @@ const SidebarComponent = (props) => {
                       <FontAwesomeIcon icon={faPersonHarassing} />
                     </span>
                     <span className="menu-title">{t("ภาพกิจกรรม")}</span>
+                  </NavLink>
+                )}
+                {pagesAllow.seminarSchedule && (
+                  <NavLink
+                    onClick={closeSidebarhandler}
+                    to="/seminarschedule"
+                    className={`navlink `}
+                    title={t("ตารางการสัมมนา")}
+                    liClass="menu-link"
+                  >
+                    <span className="collap-title">
+                      <FontAwesomeIcon icon={faEnvelope} />
+                    </span>
+                    <span className="menu-title">{t("ตารางการสัมมนา")}</span>
                   </NavLink>
                 )}
                 {pagesAllow.postscontent && (
