@@ -434,14 +434,14 @@ const ModalAddPost = (props) => {
                   label="Topic"
                   size="small"
                 /> */}
-                <div style={{marginTop: "1rem"}} className="ck-content">
-                  {/* <label className="ck-add-post">Content</label> */}
+                {/* <div style={{marginTop: "1rem"}} className="ck-content">
+                  <label className="ck-add-post">Content</label>
                   <CKeditorComponent
                     ckNameId="ck-add-post"
                     value={ckValue} 
                     onUpdate={setCkValue} 
                   />
-                </div>
+                </div> */}
                 {/* <TextField
                   onChange={(e) =>
                     setAddData((prevState) => {

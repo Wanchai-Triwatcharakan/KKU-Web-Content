@@ -16,7 +16,8 @@ import IconButton from "@mui/material/IconButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAdd, faMinus, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FormControlLabel, FormGroup, Switch, TextField } from "@mui/material";
-import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
+// import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import moment from "moment";
@@ -375,7 +376,7 @@ const ModalAddPost = (props) => {
                   fullWidth={true}
                   error={addDataValid.title}
                   id="cate-title"
-                  label="Title"
+                  label="ชื่อวิทยากร"
                   size="small"
                 />
                 {/* <TextField
@@ -403,7 +404,7 @@ const ModalAddPost = (props) => {
                   fullWidth={true}
                   error={addDataValid.description}
                   id="cate-description"
-                  label="Description"
+                  label="รายละเอียด"
                   size="small"
                 />
                 {/* <TextField
@@ -433,7 +434,7 @@ const ModalAddPost = (props) => {
                   fullWidth={true}
                   error={addDataValid.topic}
                   id="inp-topic"
-                  label="Topic"
+                  label="สาขาวิชา"
                   size="small"
                 />
                 {/* <div style={{marginTop: "1rem"}} className="ck-content">
@@ -462,16 +463,16 @@ const ModalAddPost = (props) => {
 
                 <div className="input-date">
                   <div className="input-half pr">
-                    <DateTimePicker
+                    <DatePicker
                       className="date-input"
                       size="small"
-                      label={t("ModalDateDisplay")}
+                      label={t("วันที่สัมมนา")}
                       value={displayDate}
                       onChange={displayHandleChange}
                       renderInput={(params) => <TextField {...params} />}
                     />
                   </div>
-                  <div className="input-half pl">
+                  {/* <div className="input-half pl">
                     <DateTimePicker
                       className="date-input"
                       sx={{ width: 250 }}
@@ -480,7 +481,7 @@ const ModalAddPost = (props) => {
                       onChange={hiddenHandleChange}
                       renderInput={(params) => <TextField {...params} />}
                     />
-                  </div>
+                  </div> */}
                 </div>
 
                 <h3 className="post-detail-title">{t("การแสดงผล")}</h3>

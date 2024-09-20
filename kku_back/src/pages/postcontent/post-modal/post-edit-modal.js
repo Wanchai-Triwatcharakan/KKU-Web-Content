@@ -541,7 +541,7 @@ const ModalEditPost = (props) => {
                     <DateTimePicker
                       className="date-input"
                       size="small"
-                      label={t("ModalDateDisplay")}
+                      label={t("Date Display")}
                       value={displayDate}
                       onChange={displayHandleChange}
                       renderInput={(params) => <TextField {...params} />}
@@ -551,7 +551,7 @@ const ModalEditPost = (props) => {
                     <DateTimePicker
                       className="date-input"
                       sx={{ width: 250 }}
-                      label={t("ModalDateHidden")}
+                      label={t("Date Hidden")}
                       value={hiddenDate}
                       onChange={hiddenHandleChange}
                       renderInput={(params) => <TextField {...params} />}

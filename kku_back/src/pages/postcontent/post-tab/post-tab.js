@@ -167,6 +167,7 @@ const PostTab = (props) => {
                     onAddClick={() => addHandler(item)}
                     onEditClick={() => editHandler(item)}
                     onDeleteClick={() => deleteHandler(item)}
+                    allowDelete={item.allow_delete === 1 ? false  : true}
                     mainContent={item.is_maincontent}
                     className="post-card-content" 
                     data={{
@@ -176,6 +177,7 @@ const PostTab = (props) => {
                     }} 
                     isRowDisplay={isRowDisplay}  
                   >
+                  {console.log(item)}
                     <h3 className="title">
                       {isSuerperAdmin && <span className="id" title="ref id">[ {item.id} ]</span> }
                       {item.title}

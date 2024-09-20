@@ -10,7 +10,7 @@ import Swal from "sweetalert2";
 import './content-card.scss';
 
 const ContentCardUI = (props) => {
-    const { allowAdmin = true, data, isRowDisplay, onAddClick, onEditClick, onDeleteClick, mainContent = false } = props
+    const { allowAdmin = true, data, isRowDisplay, onAddClick, onEditClick, onDeleteClick, mainContent = false, allowDelete = false } = props
     const { t } = useTranslation('slide-page')
     const {uploadPath , language} = useSelector(state => state.app) 
     const userPermission = useSelector(state => state.auth.userPermission) 
@@ -51,10 +51,13 @@ const ContentCardUI = (props) => {
                     {data.language === language? (
                         <div className='box-action'>
                             <ButtonUI onClick={onEditClick} on="edit" className="btn-custom onEdit" icon={<FontAwesomeIcon icon={faEdit}/> }>{t("แก้ไข")}</ButtonUI>
-                            {(!mainContent)?(
+                            {/* {(!mainContent)?(
                                 <ButtonUI onClick={onDeleteClick} on="delete" className="btn-custom onDelete" icon={<FontAwesomeIcon icon={faTrash}/>} >{t("ลบ")}</ButtonUI> 
                                 ): userPermission.superAdmin && (
                                     <ButtonUI onClick={onDeleteClick} on="delete" className="btn-custom onDelete" icon={<FontAwesomeIcon icon={faTrash}/>} >{t("ลบ")}</ButtonUI> 
+                            )} */}
+                            {allowDelete && !mainContent && (
+                                <ButtonUI onClick={onDeleteClick} on="delete" className="btn-custom onDelete" icon={<FontAwesomeIcon icon={faTrash}/>} >{t("Delete")}</ButtonUI> 
                             )}
                         </div>
                     ):(

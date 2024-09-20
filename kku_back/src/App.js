@@ -43,7 +43,7 @@ function App() {
         <SpawnLoading />
         <Routes>
           <Route element={<PrivateRoutes />} >
-            <Route path="/" element={<Navigate to="/messages" />} />
+            <Route path="/" element={<Navigate to="/categories" />} />
             {pagesAllow.categories && <Route path="categories" element={<CategoryPage />} /> }
             {pagesAllow.subcategories && <Route path="subcategories" element={<SubCategoryPage />} /> }
             {pagesAllow.products && <Route path="products" element={<ProductPage />} /> }

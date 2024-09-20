@@ -43,9 +43,29 @@ return new class extends Migration
                 'page_id' => 1,
                 'ad_title' => '',
                 'ad_description' => '',
-                'ad_image' => 'images/slide-food.png',
+                'ad_image' => 'upload/2024/09/11/slide1.png',
                 'ad_position_id' => 2,
                 'ad_priority' => 1,
+                'language' => 'th',
+                'defaults' => true
+            ],
+            [
+                'page_id' => 1,
+                'ad_title' => '',
+                'ad_description' => '',
+                'ad_image' => 'upload/2024/09/11/slide2.png',
+                'ad_position_id' => 2,
+                'ad_priority' => 2,
+                'language' => 'th',
+                'defaults' => true
+            ],
+            [
+                'page_id' => 1,
+                'ad_title' => '',
+                'ad_description' => '',
+                'ad_image' => 'upload/2024/09/11/slide3.png',
+                'ad_position_id' => 2,
+                'ad_priority' => 3,
                 'language' => 'th',
                 'defaults' => true
             ],
