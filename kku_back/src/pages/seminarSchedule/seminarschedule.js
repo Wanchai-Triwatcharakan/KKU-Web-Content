@@ -25,7 +25,7 @@ import PostTab from "./post-tab/post-tab";
 import { getMenuList, getPosts } from "../../services/post.service";
 import { appActions } from "../../store/app-slice";
 
-const PostPage = () => {
+const SeminarSchedule = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation(["post-page"]);
   const pageAvailable = useSelector(
@@ -73,7 +73,7 @@ const PostPage = () => {
     getPosts(language).then((res) => {
       if (res.status) {
         const filtered = res.data.filter(item => 
-          item.category.split(',').filter(Boolean).every(cat => cat === '5')
+          item.category.split(',').filter(Boolean).every(cat => cat === '4')
         );
         setPostData(filtered);
       }
@@ -203,4 +203,4 @@ const PostPage = () => {
   );
 };
 
-export default PostPage;
+export default SeminarSchedule;

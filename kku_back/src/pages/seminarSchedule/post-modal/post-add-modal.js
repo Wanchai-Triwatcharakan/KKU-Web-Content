@@ -16,8 +16,7 @@ import IconButton from "@mui/material/IconButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAdd, faMinus, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FormControlLabel, FormGroup, Switch, TextField } from "@mui/material";
-// import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import moment from "moment";
@@ -158,7 +157,7 @@ const ModalAddPost = (props) => {
   }
  
   const saveModalHandler = () => {
-    // const cateListId = checkboxList.filter(f => (f.checked)).reduce((o,n) => o + n.id + ",",",")
+    const cateListId = checkboxList.filter(f => (f.checked)).reduce((o,n) => o + n.id + ",",",")
     // console.log("cateListId",cateListId);
     /* Validator */
     setAddDataValid({
@@ -195,13 +194,13 @@ const ModalAddPost = (props) => {
       }
     }
 
-    formData.append('category', ",10,") //cateListId
+    formData.append('category', ",4,") //cateListId
     formData.append('isMainContent', (addData.isMainContent)?1:0)
     formData.append('title', addData.title)
     formData.append('keyword', addData.keyword)
     formData.append('description', (addData.description?addData.description:""))
     formData.append('slug', addData.slug)
-    formData.append('topic', addData.topic) // สาขาวิชา
+    formData.append('topic', addData.topic)
     formData.append('content', ckValue)
     formData.append('redirect', addData.redirect)
     formData.append('display_date', displayDate?moment(displayDate).format():null)
@@ -235,7 +234,7 @@ const ModalAddPost = (props) => {
           <div className="modal-header">
             <h2>
               <FontAwesomeIcon icon={faAdd} />
-              <span>{t("เพิ่มวิทยากร")}</span>
+              <span>{t("เพิ่มโพส")}</span>
             </h2>
             <IconButton
               className="param-generator"
@@ -247,18 +246,16 @@ const ModalAddPost = (props) => {
           </div>
           <div className="modal-body overflow-scroll-custom">
             <fieldset className="modal-fieldset">
-              {/* <legend className="modal-legend">{t("ModalAddPostTitle")}</legend> */}
-              
+              <legend className="modal-legend">{t("ModalAddPostTitle")}</legend>
               {/* <CheckBoxUI 
                 className="cate-menu-list" 
                 error={addDataValid.category}
                 menuList={menuList}
                 data={checkboxList}
                 setData={setCheckBoxList} 
-                t={t} />
-              */}
+                t={t} /> */}
 
-              <div className="form-details" style={{width: "100%"}} >
+              <div className="form-details" style={{width: "100%"}}>
                 <FieldsetUI className="image-setting" label={t("ข้อมูลรูปภาพ")}>
                   <PreviewImageUI
                     className="add-image" 
@@ -362,8 +359,8 @@ const ModalAddPost = (props) => {
                       setPreviews={addMoreImage} 
                     />
                   </div>
+
                 </FieldsetUI> */}
-                
                 <h3 className="post-detail-title">{t("รายละเอียด")}</h3>
                 <TextField
                   onChange={(e) =>
@@ -376,7 +373,7 @@ const ModalAddPost = (props) => {
                   fullWidth={true}
                   error={addDataValid.title}
                   id="cate-title"
-                  label="ชื่อวิทยากร"
+                  label="Title"
                   size="small"
                 />
                 {/* <TextField
@@ -404,7 +401,7 @@ const ModalAddPost = (props) => {
                   fullWidth={true}
                   error={addDataValid.description}
                   id="cate-description"
-                  label="รายละเอียด"
+                  label="Description"
                   size="small"
                 />
                 {/* <TextField
@@ -422,7 +419,7 @@ const ModalAddPost = (props) => {
                   label={url}
                   size="small"
                 /> */}
-                <TextField
+                {/* <TextField
                   onChange={(e) =>
                     setAddData((prevState) => {
                       return { ...prevState, topic: e.target.value }
@@ -434,9 +431,9 @@ const ModalAddPost = (props) => {
                   fullWidth={true}
                   error={addDataValid.topic}
                   id="inp-topic"
-                  label="สาขาวิชา"
+                  label="Topic"
                   size="small"
-                />
+                /> */}
                 {/* <div style={{marginTop: "1rem"}} className="ck-content">
                   <label className="ck-add-post">Content</label>
                   <CKeditorComponent
@@ -463,16 +460,16 @@ const ModalAddPost = (props) => {
 
                 <div className="input-date">
                   <div className="input-half pr">
-                    <DatePicker
+                    <DateTimePicker
                       className="date-input"
                       size="small"
-                      label={t("วันที่สัมมนา")}
+                      label={t("ModalDateDisplay")}
                       value={displayDate}
                       onChange={displayHandleChange}
                       renderInput={(params) => <TextField {...params} />}
                     />
                   </div>
-                  {/* <div className="input-half pl">
+                  <div className="input-half pl">
                     <DateTimePicker
                       className="date-input"
                       sx={{ width: 250 }}
@@ -481,7 +478,7 @@ const ModalAddPost = (props) => {
                       onChange={hiddenHandleChange}
                       renderInput={(params) => <TextField {...params} />}
                     />
-                  </div> */}
+                  </div>
                 </div>
 
                 <h3 className="post-detail-title">{t("การแสดงผล")}</h3>

@@ -343,15 +343,15 @@ const ModalEditPost = (props) => {
           <div className="modal-body overflow-scroll-custom">
             <fieldset className="modal-fieldset">
               <legend className="modal-legend">{t("ModalEditPostTitle")}</legend>
-              <CheckBoxUI 
+              {/* <CheckBoxUI 
                 className="cate-menu-list" 
                  error={editDataValid.category}
                  menuList={menuList}
                  data={checkboxList}
                  setData={setCheckBoxList} 
-                 t={t} />
+                 t={t} /> */}
 
-              <div className="form-details">
+              <div className="form-details" style={{width: "100%"}}>
                 <FieldsetUI className="image-setting" label={t("ข้อมูลรูปภาพ")}>
                   <PreviewImageUI
                     setCurImg={setCurImg}
@@ -513,8 +513,8 @@ const ModalEditPost = (props) => {
                   label="Topic"
                   size="small"
                 /> */}
-                <div style={{marginTop: "1rem"}} className="ck-content">
-                  {/* <label className="ck-edit-post">Content</label> */}
+                {/* <div style={{marginTop: "1rem"}} className="ck-content">
+                  <label className="ck-edit-post">Content</label>
                   {ckValue !== null && (
                     <CKeditorComponent
                       ckNameId="ck-edit-post"
@@ -523,7 +523,7 @@ const ModalEditPost = (props) => {
                     />
                   )}
               
-                </div>
+                </div> */}
                 {/* <TextField
                   onChange={(e) => setEditData({...editData, redirect: e.target.value})}
                   placeholder="Link Url"
@@ -541,7 +541,7 @@ const ModalEditPost = (props) => {
                     <DateTimePicker
                       className="date-input"
                       size="small"
-                      label={t("ModalDateDisplay")}
+                      label={t("Date Display")}
                       value={displayDate}
                       onChange={displayHandleChange}
                       renderInput={(params) => <TextField {...params} />}
@@ -551,7 +551,7 @@ const ModalEditPost = (props) => {
                     <DateTimePicker
                       className="date-input"
                       sx={{ width: 250 }}
-                      label={t("ModalDateHidden")}
+                      label={t("Date Hidden")}
                       value={hiddenDate}
                       onChange={hiddenHandleChange}
                       renderInput={(params) => <TextField {...params} />}

@@ -25,8 +25,8 @@ const modalSwal = withReactContent(Swal);
 
 const tabLists = [
     { value: "0", title: "ทั้งหมด", icon: <FontAwesomeIcon icon={faFolderOpen} /> },
-    // { value: "1", title: "แสดงบนเว็บไซต์", icon: <FontAwesomeIcon icon={faWindowRestore} /> },
-    // { value: "2", title: "ปักหมุด", icon: <FontAwesomeIcon icon={faMapPin} /> },
+    { value: "1", title: "แสดงบนเว็บไซต์", icon: <FontAwesomeIcon icon={faWindowRestore} /> },
+    { value: "2", title: "ปักหมุด", icon: <FontAwesomeIcon icon={faMapPin} /> },
     { value: "3", title: "ซ่อนบนเว็บไซต์", icon: <FontAwesomeIcon icon={faEyeSlash} /> },
 ] 
 
@@ -59,9 +59,7 @@ const PostTab = (props) => {
   const setPostFilterData = async () => {
     const filtered = await postData.filter((f) => { 
       /* กรอง Tab */
-      if(postTab === "0" && f.status_display === 0){
-        return false;
-      } else if(postTab === "1" && f.status_display === 0){
+      if(postTab === "1" && f.status_display === 0){
         return false;
       } else if(postTab === "2" && f.pin === 0){
         return false;

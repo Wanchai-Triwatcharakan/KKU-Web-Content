@@ -72,7 +72,9 @@ const LecturePage = () => {
     dispatch(appActions.isSpawnActive(true));
     getPosts(language).then((res) => {
       if (res.status) {
-        const filtered = res.data.filter(item => item.category.split(',').filter(Boolean).some(cat => ['10'].includes(cat)));
+        const filtered = res.data.filter(item => 
+          item.category.split(',').filter(Boolean).every(cat => cat === '10')
+        );
         setPostData(filtered);
       }
       dispatch(appActions.isSpawnActive(false));

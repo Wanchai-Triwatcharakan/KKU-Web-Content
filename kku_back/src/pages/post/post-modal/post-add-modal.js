@@ -157,18 +157,18 @@ const ModalAddPost = (props) => {
   }
  
   const saveModalHandler = () => {
-    const cateListId = checkboxList.filter(f => (f.checked)).reduce((o,n) => o + n.id + ",",",")
+    // const cateListId = checkboxList.filter(f => (f.checked)).reduce((o,n) => o + n.id + ",",",")
     // console.log("cateListId",cateListId);
     /* Validator */
     setAddDataValid({
       ...addDataValid, 
       title: (addData.title === ""),
       slug: (addData.slug === ""),
-      category: (cateListId === ","),
+      // category: (cateListId === ","),
       description: (addData.description === "")
     })
 
-    if((addData.title === "") || (addData.description === "") || (cateListId === ",") || isFetching){ //(cateListId === ",") || 
+    if((addData.title === "") || (addData.description === "")|| isFetching){ //(cateListId === ",") || 
       return false;
     }
 
@@ -194,7 +194,7 @@ const ModalAddPost = (props) => {
       }
     }
 
-    formData.append('category', cateListId) //cateListId
+    formData.append('category', ",5,") //cateListId
     formData.append('isMainContent', (addData.isMainContent)?1:0)
     formData.append('title', addData.title)
     formData.append('keyword', addData.keyword)
@@ -247,15 +247,15 @@ const ModalAddPost = (props) => {
           <div className="modal-body overflow-scroll-custom">
             <fieldset className="modal-fieldset">
               <legend className="modal-legend">{t("ModalAddPostTitle")}</legend>
-              <CheckBoxUI 
+              {/* <CheckBoxUI 
                 className="cate-menu-list" 
                 error={addDataValid.category}
                 menuList={menuList}
                 data={checkboxList}
                 setData={setCheckBoxList} 
-                t={t} />
+                t={t} /> */}
 
-              <div className="form-details">
+              <div className="form-details" style={{width: "100%"}}>
                 <FieldsetUI className="image-setting" label={t("ข้อมูลรูปภาพ")}>
                   <PreviewImageUI
                     className="add-image" 
@@ -463,7 +463,7 @@ const ModalAddPost = (props) => {
                     <DateTimePicker
                       className="date-input"
                       size="small"
-                      label={t("ModalDateDisplay")}
+                      label={t("Date Display")}
                       value={displayDate}
                       onChange={displayHandleChange}
                       renderInput={(params) => <TextField {...params} />}
@@ -473,7 +473,7 @@ const ModalAddPost = (props) => {
                     <DateTimePicker
                       className="date-input"
                       sx={{ width: 250 }}
-                      label={t("ModalDateHidden")}
+                      label={t("Date Hidden")}
                       value={hiddenDate}
                       onChange={hiddenHandleChange}
                       renderInput={(params) => <TextField {...params} />}

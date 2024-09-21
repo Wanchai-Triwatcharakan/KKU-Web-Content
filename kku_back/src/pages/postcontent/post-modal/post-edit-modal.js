@@ -17,7 +17,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAdd, faEdit, faMinus, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FormControlLabel, FormGroup, Switch, TextField } from "@mui/material";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import moment from "moment";
@@ -344,15 +343,15 @@ const ModalEditPost = (props) => {
           <div className="modal-body overflow-scroll-custom">
             <fieldset className="modal-fieldset">
               <legend className="modal-legend">{t("ModalEditPostTitle")}</legend>
-              {/* <CheckBoxUI 
+              <CheckBoxUI 
                 className="cate-menu-list" 
                  error={editDataValid.category}
                  menuList={menuList}
                  data={checkboxList}
                  setData={setCheckBoxList} 
-                 t={t} /> */}
+                 t={t} />
 
-              <div className="form-details" style={{width: "100%"}}>
+              <div className="form-details">
                 <FieldsetUI className="image-setting" label={t("ข้อมูลรูปภาพ")}>
                   <PreviewImageUI
                     setCurImg={setCurImg}
@@ -361,7 +360,7 @@ const ModalEditPost = (props) => {
                     setPreviews={setPreviewHandler} />
                     
                   <div className="image-detail">
-                    {previews.file && (
+                    {/* {previews.file && (
                       <TextField
                         onChange={(e) => setEditData(prev => ({...prev, thumbnail_name: e.target.value}) )}
                         value={editData.thumbnail_name}
@@ -372,7 +371,7 @@ const ModalEditPost = (props) => {
                         label="Image name"
                         size="small"
                       />
-                    )}
+                    )} */}
                  
                     <TextField
                       onChange={(e) => setEditData(prev => ({...prev, thumbnail_title: e.target.value}) )} 
@@ -395,9 +394,9 @@ const ModalEditPost = (props) => {
                       size="small"
                     />
                   </div>
-                </FieldsetUI>
 
-                {/* <FieldsetUI className="more-image-setting" label={t("รูปภาพเพิ่มเติม")}>
+                </FieldsetUI>
+                <FieldsetUI className="more-image-setting" label={t("รูปภาพเพิ่มเติม")}>
              
                   {moreImage.map((m, index ) =>  (
                     <div className="image-control" key={index}>
@@ -460,7 +459,7 @@ const ModalEditPost = (props) => {
                     />
                   </div>
 
-                </FieldsetUI> */}
+                </FieldsetUI>
                 <h3 className="post-detail-title">{t("รายละเอียด")}</h3>
                 <TextField
                   onChange={(e) => setEditData({...editData, title: e.target.value})}
@@ -469,7 +468,7 @@ const ModalEditPost = (props) => {
                   fullWidth={true}
                   error={editDataValid.title}
                   id="cate-title"
-                  label="ชื่อวิทยากร"
+                  label="Title"
                   size="small"
                 />
                 {/* <TextField
@@ -489,7 +488,7 @@ const ModalEditPost = (props) => {
                   fullWidth={true}
                   error={editDataValid.description}
                   id="cate-description"
-                  label="รายละเอียด"
+                  label="Description"
                   size="small"
                 />
                 {/* <TextField
@@ -502,7 +501,7 @@ const ModalEditPost = (props) => {
                   id="cate-url"
                   label={url}
                   size="small"
-                /> */}
+                />
                 <TextField
                   onChange={(e) => setEditData({...editData, topic: e.target.value})}
                   placeholder="Topic Name"
@@ -511,11 +510,11 @@ const ModalEditPost = (props) => {
                   fullWidth={true}
                   error={editDataValid.topic}
                   id="inp-topic"
-                  label="สาขาวิชา"
+                  label="Topic"
                   size="small"
-                />
-                {/* <div style={{marginTop: "1rem"}} className="ck-content">
-                  <label className="ck-edit-post">Content</label>
+                /> */}
+                <div style={{marginTop: "1rem"}} className="ck-content">
+                  {/* <label className="ck-edit-post">Content</label> */}
                   {ckValue !== null && (
                     <CKeditorComponent
                       ckNameId="ck-edit-post"
@@ -523,7 +522,8 @@ const ModalEditPost = (props) => {
                       onUpdate={setCkValue} 
                     />
                   )}
-                </div> */}
+              
+                </div>
                 {/* <TextField
                   onChange={(e) => setEditData({...editData, redirect: e.target.value})}
                   placeholder="Link Url"
@@ -538,25 +538,25 @@ const ModalEditPost = (props) => {
 
                 <div className="input-date">
                   <div className="input-half pr">
-                    <DatePicker
+                    <DateTimePicker
                       className="date-input"
                       size="small"
-                      label={t("วันที่สัมมนา")}
+                      label={t("Date Display")}
                       value={displayDate}
                       onChange={displayHandleChange}
                       renderInput={(params) => <TextField {...params} />}
                     />
                   </div>
-                  {/* <div className="input-half pl">
+                  <div className="input-half pl">
                     <DateTimePicker
                       className="date-input"
                       sx={{ width: 250 }}
-                      label={t("ModalDateHidden")}
+                      label={t("Date Hidden")}
                       value={hiddenDate}
                       onChange={hiddenHandleChange}
                       renderInput={(params) => <TextField {...params} />}
                     />
-                  </div> */}
+                  </div>
                 </div>
 
                 <h3 className="post-detail-title">{t("การแสดงผล")}</h3>
