@@ -1,0 +1,21 @@
+#swiperPopup {
+    z-index: 999; /* Make sure this is higher than other elements */
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    z-index: 1000; /* Ensure buttons are above other content */
+}
+
+.swiper-button-next {
+    /* right: 7%;
+    position: absolute; */
+   color: #ffffff !important;
+}
+
+ .swiper-button-prev {
+    /* left: 7%;
+    position: absolute; */
+    color: #ffffff !important; 
+    widows: 50px;
+}

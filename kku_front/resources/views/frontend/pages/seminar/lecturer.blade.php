@@ -79,12 +79,12 @@
         </div>style="border: 1px solid #84B750; "
     </div> --}}
     
-    <div class="flex justify-center items-center gap-2 mb-12 "  >
-        <a href=""  class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-xl font-bold hover:bg-[#84B750] hover:text-white" data-aos="zoom-in" data-aos-duration="2000"> < </a>
-        <span class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-lg font-semibold cursor-pointer hover:bg-[#84B750] hover:text-white" data-aos="zoom-in" data-aos-duration="2000">1</span>
-        <span class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-lg font-semibold cursor-pointer hover:bg-[#84B750] hover:text-white" data-aos="zoom-in" data-aos-duration="2000">2</span>
-        <span class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-lg font-semibold cursor-pointer hover:bg-[#84B750] hover:text-white" data-aos="zoom-in" data-aos-duration="2000">3</span>
-        <a href="" class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-xl font-bold hover:bg-[#84B750] hover:text-white" data-aos="zoom-in" data-aos-duration="3000">></a>
+    <div class="flex justify-center items-center gap-2 mb-12 " >
+        <a href=""  class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-xl font-bold hover:bg-[#84B750] hover:text-white" > < </a>
+        <span class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-lg font-semibold cursor-pointer hover:bg-[#84B750] hover:text-white" >1</span>
+        <span class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-lg font-semibold cursor-pointer hover:bg-[#84B750] hover:text-white" >2</span>
+        <span class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-lg font-semibold cursor-pointer hover:bg-[#84B750] hover:text-white" >3</span>
+        <a href="" class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-xl font-bold hover:bg-[#84B750] hover:text-white">></a>
     </div>
 
 @endsection

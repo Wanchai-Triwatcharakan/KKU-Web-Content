@@ -59,8 +59,8 @@
     <footer class="z-50 relative">
         <div class="bg-gradient-to-r from-[#8DD7FA] to-[#B8D88F] py-4 ">
             <div class="w-4/5 max-yy:w-full mx-auto items-center px-4">
-                <div class="flex w-full max-xl:flex-col gap-2">
-                    <div class="flex justify-start items-center">
+                <div class="flex w-full max-xl:flex-col gap-4">
+                    <div class="flex justify-start items-center gap-4 ">
                         {{-- <div class="w-[150px] h-[90px]"> --}}
                         <img src="/images/home/LOGO-new.png" alt="" class="">
                         {{-- </div> --}}

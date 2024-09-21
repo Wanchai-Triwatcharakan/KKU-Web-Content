@@ -8,4 +8,7 @@ use Illuminate\Http\Request;
 class ContactController extends Controller
 {
     //
+    public function indexPageContact() {
+        return view('frontend.pages.contact.contact');
+    }
 }

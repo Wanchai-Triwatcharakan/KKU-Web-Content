@@ -51,7 +51,7 @@
                         </p>
                     </div>
                     <div class="flex justify-end">
-                        <a href="/"
+                        <a href="{{ route('seminar.origin') }}" target="_blank"
                             class="text-center bg-[#FF864E] text-white p-2 rounded-md text-[1rem] w-36 cursor-pointer hover:bg-[#f07a44] shadow-md">
                             อ่านเพิ่มเติม
                         </a>
@@ -84,7 +84,7 @@
                 <div class="swiper items-center w-4/5 mx-auto">
                     <div class="swiper-wrapper w-full mx-auto flex">
                         @for ($i = 0; $i < 8; $i++)
-                            <div data-aos="fade-up" data-aos-duration="1000" class="swiper-slide" data-aos="flip-left">
+                            <a href="{{ route('seminar.lecturer') }}" target="_blank" data-aos="fade-up" data-aos-duration="1000" class="swiper-slide" data-aos="flip-left">
                                 <div class="drop-shadow-md max-w-[350px] h-[100%] py-4">
                                     <div
                                         class="bg-white rounded-[15px] py-4 px-3 z-0 flex flex-col justify-center gap-y-4 ">
@@ -114,7 +114,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         @endfor
                     </div>
                 </div>
@@ -157,7 +157,7 @@
                                         </p>
                                     </div>
                                     <div class="flex justify-strat">
-                                        <a href="/"
+                                        <a href="{{ route('register.index') }}" target="_blank"
                                             class="text-center bg-[#FF864E] text-white p-2 rounded-md text-[1rem] w-36 cursor-pointer hover:bg-[#f07a44] shadow-md">
                                             รายละเอียด
                                         </a>
@@ -224,9 +224,9 @@
                             </div>
 
                             <div class="flex justify-end mt-4">
-                                <p
+                                <a href="{{ route('schedule.detail') }}" target="_blank"
                                     class="text-center font-medium text-[#FF864E] p-2 rounded-full text-[1rem] w-36 cursor-pointer hover:scale-105 transition duration-500">
-                                    ดูเพิ่มเติม >></p>
+                                    ดูเพิ่มเติม >></a>
                             </div>
                         </div>
                     </div>
@@ -235,9 +235,9 @@
 
             </div>
             <div class="relative flex justify-center mt-4 ">
-                <p
+                <a href="{{ route('schedule.index') }}" target="_blank"
                     class="text-center bg-[#FF864E] text-white p-2 rounded-md text-[1rem] w-36 cursor-pointer hover:bg-[#f07a44]">
-                    ดูทั้งหมด</p>
+                    ดูทั้งหมด</a>
             </div>
 
         </section>
@@ -252,26 +252,24 @@
             <div
                 class="relative  z-50 w-4/5 max-ex:w-full grid grid-cols-3 gap-4 gap-y-6 max-yy:grid-cols-3 max-dm:grid-cols-2 max-ex:grid-cols-1 mx-auto py-10 max-ex:py-4 content-center place-items-center">
                 @for ($i = 0; $i < 6; $i++)
-                    <div class="shadow-md shadow-[#C6E2F6] max-w-[390px] max-es:w-[350px] flex justify-center h-[100%] rounded-xl"
-                        data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
-                        <div class="bg-white rounded-[15px] z-0 flex flex-col justify-center gap-y-4 ">
-                            <div class="w-full h-[300px] mx-auto rounded-t-xl ">
-                                <img src="/images/home/111.png" alt=""
-                                    class="w-full h-full object-cover rounded-t-xl">
-                            </div>
-                            <div class="flex flex-col justify-center gap-y-4 px-3">
-                                <p class="text-[#686868] text-lg max-md:text-md text-center h-[120px] overflow-auto">
-                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque, officia
-                                    ipsum dolor sit amet consectetur
-                            </div>
+                <a href="{{ route('activity.detail') }}" target="_blank" class="shadow-md  shadow-[#C6E2F6] max-w-[390px] max-es:w-[350px] flex justify-center h-[100%] rounded-xl hover:scale-95">
+                    <div class="bg-white rounded-[15px] z-0 flex flex-col justify-center gap-y-4 " >
+                        <div class="w-full h-[300px] mx-auto rounded-t-xl ">
+                            <img src="/images/home/111.png" alt="" class="w-full h-full object-cover rounded-t-xl">
+                        </div>
+                        <div class="flex flex-col justify-center gap-y-4 px-3 " >
+                            <p class="text-[#686868] text-lg max-md:text-md text-center h-[120px] overflow-auto">
+                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque, officia
+                                ipsum dolor sit amet consectetur
                         </div>
                     </div>
+                </a>
                 @endfor
             </div>
             <div class="relative flex justify-center mt-4 z-50">
-                <p
+                <a href="{{ route('activity.index') }}" target="_blank"
                     class="text-center bg-[#FF864E] text-white p-2 rounded-md text-[1rem] w-36 cursor-pointer hover:bg-[#f07a44] shadow-md">
-                    ดูทั้งหมด</p>
+                    ดูทั้งหมด</a>
             </div>
 
             <img src="/images/home/Group 50.png" alt=""
@@ -289,10 +287,10 @@
                 ที่พัก เส้นทาง และผังจัดงาน
             </p>
             <div class="mt-4 shadow-md w-full h-[450px] max-md:h-[300px] max-sm:h-[200px]">
-                <iframe class="w-full h-full"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3826.022264172706!2d102.8194493751446!3d16.47441028426533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31228a8eb01c96f3%3A0xf6a47b89e419df87!2z4Lih4Lir4Liy4Lin4Li04LiX4Lii4Liy4Lil4Lix4Lii4LiC4Lit4LiZ4LmB4LiB4LmI4LiZ!5e0!3m2!1sth!2sth!4v1726040464805!5m2!1sth!2sth"
-                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3826.908230602374!2d102.82955227514358!3d16.429486484303464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31228a230449c587%3A0xc4b5ba4aaf738f68!2z4LmC4Lij4LiH4LmB4Lij4Lih4LmC4LiG4Lip4LiwIOC4guC4reC4meC5geC4geC5iOC4mSBLT1NBIEhPVEVMIEtIT05LQUVO!5e0!3m2!1sth!2sth!4v1726822460127!5m2!1sth!2sth"
+                class="w-full h-full outline-none" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </section>
 

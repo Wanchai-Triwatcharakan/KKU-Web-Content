@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     
-     public function indexPagePost() {
+    public function indexPagePost() {
         // return view('frontend.pages.seminar.seminar');
         return view('frontend.pages.post.post');
     }

@@ -8,4 +8,7 @@ use Illuminate\Http\Request;
 class AccommodationController extends Controller
 {
     //
+    public function indexPageAccommodation() {
+        return view('frontend.pages.accommodation.accom');
+    }
 }

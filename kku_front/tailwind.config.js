@@ -22,7 +22,7 @@ module.exports = {
                 yu: "1025px",
                 uy: "1400px",
                 yy: "1600px",
-                uu: "1919px",
+                uu: "1921px",
             },
         },
     },

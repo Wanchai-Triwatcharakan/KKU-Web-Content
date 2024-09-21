@@ -44,7 +44,7 @@
                                     Medical Device & Wellness Tech Business” (จัดร่วมกับ NIA)</p>
                             </div>
                             <div class="flex justify-end max-xl:justify-center">
-                                <a href="{{ route('schedule.detail') }}"
+                                <a href="{{ route('schedule.detail') }}" target="_blank"
                                     class="text-center bg-[#FF864E] text-white p-2 rounded-md text-[1rem] w-36 cursor-pointer hover:bg-[#f07a44] shadow-md">
                                     อ่านเพิ่มเติม
                                 </a>

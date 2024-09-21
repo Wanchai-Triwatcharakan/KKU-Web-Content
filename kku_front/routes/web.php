@@ -30,17 +30,29 @@ Route::prefix('seminar/')->group(function () {
 });
 
 Route::prefix('register/')->group(function () {
-    Route::get('/', [RegisterController::class, 'indexPageRegister']);
+    Route::get('/', [RegisterController::class, 'indexPageRegister'])->name('register.index');
     Route::get('/detail', [RegisterController::class, 'dataDetail'])->name('register.detail');
 });
 
 Route::prefix('schedule/')->group(function () {
-    Route::get('/', [ScheduleController::class, 'indexPageSchedule']);
+    Route::get('/', [ScheduleController::class, 'indexPageSchedule'])->name('schedule.index');
     Route::get('/detail', [ScheduleController::class, 'dataDetail'])->name('schedule.detail');
 });
 
 Route::prefix('post/')->group(function () {
-    Route::get('/', [PostController::class, 'indexPagePost']);
+    Route::get('/', [PostController::class, 'indexPagePost'])->name('post.index');
     Route::get('/detail', [PostController::class, 'dataDetail'])->name('post.detail');
 });
 
+Route::prefix('activity/')->group(function () {
+    Route::get('/', [ActivityController::class, 'indexPageActivity'])->name('activity.index');
+    Route::get('/detail', [ActivityController::class, 'dataDetail'])->name('activity.detail');
+});
+
+Route::prefix('accommodation/')->group(function () {
+    Route::get('/', [AccommodationController::class, 'indexPageAccommodation'])->name('accommodation.index');
+});
+
+Route::prefix('contact/')->group(function () {
+    Route::get('/', [ContactController::class, 'indexPageContact'])->name('contact.index');
+});

@@ -1,5 +1,5 @@
 @extends('frontend.layouts.layout-main')
-@section('title', 'Details')
+@section('title', 'Register')
 @section('style')
     {{-- <link rel="stylesheet" href="/css/aboutus.min.css"> --}}
 @endsection
