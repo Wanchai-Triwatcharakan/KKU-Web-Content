@@ -1,0 +1,12 @@
+@import "../../variables";
+
+#post-page {
+  .card-head {
+    border: 0;
+    display: flex;
+    h2 {
+      align-self: flex-end;
+      line-height: 35px;
+    }
+  }
+}

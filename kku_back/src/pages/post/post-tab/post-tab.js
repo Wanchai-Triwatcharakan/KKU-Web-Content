@@ -187,19 +187,19 @@ const PostTab = (props) => {
                       <span>{item.cateLists.map((c,index) => (index>0)?` , ${c.title}`:c.title) }</span>
                     </p>  
                     <p className="display">
-                    { item.date_begin_display !== null && (
-                      <Fragment>
-                        <span className="fa-icon" title="show"><FontAwesomeIcon icon={faStopwatch} /></span>
-                        <span><DateMoment format={"LLL"} date={item.date_begin_display} /></span>
-                      </Fragment>
-                    )}
-                    { item.date_end_display !== null && (
-                      <Fragment>
-                        <span className="fa-icon" title="hidden"><FontAwesomeIcon icon={faClock} /></span> 
-                        <span><DateMoment format={"LLL"} date={item.date_end_display} /></span>
-                      </Fragment>
-                    )}
-                  </p> 
+                      { item.date_begin_display !== null && (
+                        <Fragment>
+                          <span className="fa-icon" title="show"><FontAwesomeIcon icon={faStopwatch} /></span>
+                          <span><DateMoment format={"LLL"} date={item.date_begin_display} /></span>
+                        </Fragment>
+                      )}
+                      { item.date_end_display !== null && (
+                        <Fragment>
+                          <span className="fa-icon" title="hidden"><FontAwesomeIcon icon={faClock} /></span> 
+                          <span><DateMoment format={"LLL"} date={item.date_end_display} /></span>
+                        </Fragment>
+                      )}
+                    </p> 
                     <p className="editor">
                       {item.editorName && (
                         <>

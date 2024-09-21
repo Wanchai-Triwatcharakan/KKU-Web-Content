@@ -150,5 +150,6 @@ Route::prefix('backoffice/v1')->group(function () {
         Route::delete('slide/{language}/{token}', [SlideController::class, 'deleteWebInfoByInfoId']);
 
         Route::get('lecture/data', [LecturerController::class, 'getLecturer']);
+        Route::get('roomseminar/data', [RoomSeminarController::class, 'getSeminarRoom']);
     });
 });

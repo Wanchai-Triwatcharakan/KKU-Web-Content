@@ -330,6 +330,20 @@ const SidebarComponent = (props) => {
                     <span className="menu-title">{t("ตารางการสัมมนา")}</span>
                   </NavLink>
                 )}
+                {pagesAllow.seminarSchedule && (
+                  <NavLink
+                    onClick={closeSidebarhandler}
+                    to="/roomseminar"
+                    className={`navlink `}
+                    title={t("จัดการห้องสัมมนา")}
+                    liClass="menu-link"
+                  >
+                    <span className="collap-title">
+                      <FontAwesomeIcon icon={faEnvelope} />
+                    </span>
+                    <span className="menu-title">{t("จัดการห้องสัมมนา")}</span>
+                  </NavLink>
+                )}
                 {pagesAllow.postscontent && (
                   <NavLink
                     onClick={closeSidebarhandler}

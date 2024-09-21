@@ -30,6 +30,7 @@ import LecturePage from './pages/lecturer/lecturer.js';
 import ActivityPhoto from './pages/activityphoto/activityphoto.js';
 import PostContentPage from './pages/postcontent/postcontent.js';
 import SeminarSchedule from './pages/seminarSchedule/seminarschedule.js';
+import RoomSeminar from './pages/roomseminar/roomseminar.js';
 
 function App() {
   const pagesAllow = useSelector((state) => state.app.pages)
@@ -53,6 +54,7 @@ function App() {
             {pagesAllow.posts && <Route path="posts" element={<PostPage />} /> }
             {pagesAllow.postscontent && <Route path="postscontent" element={<PostContentPage />} /> }
             {pagesAllow.seminarSchedule && <Route path="seminarschedule" element={<SeminarSchedule />} /> }
+            {pagesAllow.roomSeminar && <Route path="roomseminar" element={<RoomSeminar />} /> }
             {pagesAllow.lecturers && <Route path="lecturers" element={<LecturePage />} /> }
             {pagesAllow.activityphoto && <Route path="activityphoto" element={<ActivityPhoto />} /> }
             {pagesAllow.messages && <Route path="messages" element={<MessagePage />} /> }
