@@ -46,7 +46,7 @@ Route::prefix('post/')->group(function () {
 
 Route::prefix('activity/')->group(function () {
     Route::get('/', [ActivityController::class, 'indexPageActivity'])->name('activity.index');
-    Route::get('/detail', [ActivityController::class, 'dataDetail'])->name('activity.detail');
+    Route::get('/detail/{id}', [ActivityController::class, 'dataDetail'])->name('activity.detail');
 });
 
 Route::prefix('accommodation/')->group(function () {

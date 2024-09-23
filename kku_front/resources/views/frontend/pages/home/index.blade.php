@@ -43,7 +43,8 @@
                     <div class="flex flex-col gap-y-6 text-[1rem] indent-8">
                         <p>ประเทศไทยมีศักยภาพในการเป็นผู้นำด้านสุขภาพ ด้วยทรัพยากร มนุษย์ แหล่งท่องเที่ยวธรรมชาติ
                             และองค์ความรู้ด้านการแพทย์แผนปัจจุบัน และ แผนไทย รวมถึงการผลิตสมุนไพร และผลิตภัณฑ์จากธรรมชาติ
-                            อีกทั้งการวิจัย และพัฒนาเพื่อเสริมสร้างสุขภาพยังเป็นที่ยอมรับในระดับนานาชาติ</p>
+                            อีกทั้งการวิจัย และพัฒนาเพื่อเสริมสร้างสุขภาพยังเป็นที่ยอมรับในระดับนานาชาติ
+                        </p>
                         <p>การประชุมในครั้งนี้มุ่งเน้นที่การพัฒนานวัตกรรมเพื่อสุขภาพ และความเป็นอยู่
                             ที่ดี โดยครอบคลุมหัวข้อที่สำคัญ ได้แก่ สุขภาพ สมรรถภาพทาง กายโภชนา
                             การ รูปลักษณ์ การนอนหลับ และการมีสติ โดยจะเน้นการ แสดงนวัตกรรม และ
@@ -83,39 +84,34 @@
             <div class="relative z-30 items-center mt-6">
                 <div class="swiper items-center w-4/5 mx-auto">
                     <div class="swiper-wrapper w-full mx-auto flex">
-                        @for ($i = 0; $i < 8; $i++)
+                        @foreach($lecturer as $lect)
                             <a href="{{ route('seminar.lecturer') }}" target="_blank" data-aos="fade-up" data-aos-duration="1000" class="swiper-slide" data-aos="flip-left">
                                 <div class="drop-shadow-md max-w-[350px] h-[100%] py-4">
                                     <div
                                         class="bg-white rounded-[15px] py-4 px-3 z-0 flex flex-col justify-center gap-y-4 ">
                                         <div
                                             class="w-[215px] h-[215px] mx-auto bg-gradient-to-r from-[#8DD7FA] to-[#B8D88F] rounded-full p-1">
-                                            <img src="/images/home/111.png" alt=""
+                                            <img src="{{url($lect->thumbnail_link)}}" alt=""
                                                 class="w-full h-full object-cover rounded-full">
                                         </div>
 
                                         <div class="flex flex-col justify-center gap-y-4">
-                                            <p class="text-[#23404A] font-bold text-center text-xl max-md:text-lg">Dr. khai
-                                                khem </p>
-                                            <p class="text-[#23404A] font-medium text-center text-lg max-md:text-md ">
-                                                เคมีวิทยา</p>
+                                            <p class="text-[#23404A] font-bold text-center text-xl max-md:text-lg">{{$lect->title}}</p>
+                                            <p class="text-[#23404A] font-medium text-center text-lg max-md:text-md ">{{$lect->topic}}</p>
                                             <p
                                                 class="text-[#23404A] font-medium text-lg max-md:text-md text-start h-[150px] overflow-auto">
-                                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque, officia
-                                                ipsum dolor sit amet consectetur, adipisicing elit. Atque, officia
-                                                adipisicing elit. Atque, officia
+                                                {{$lect->description}}
                                             </p>
                                         </div>
 
                                         <div class="flex justify-center mt-4">
                                             <p
-                                                class="text-center bg-[#FF864E] text-white p-2 rounded-full text-[1rem] w-36 ">
-                                                13 พ.ย. 2567</p>
+                                                class="text-center bg-[#FF864E] text-white p-2 rounded-full text-[1rem] w-36 ">{{ \Carbon\Carbon::parse($lect->date_begin_display)->locale('th')->translatedFormat('d M Y') }}</p>
                                         </div>
                                     </div>
                                 </div>
                             </a>
-                        @endfor
+                        @endforeach
                     </div>
                 </div>
                 <div class="swiper-button-next"></div>
@@ -132,7 +128,7 @@
             <div class="swiper mySwiper items-center w-4/5  max-ex:w-full mx-auto h-auto mt-4">
                 <div class="swiper-wrapper w-full mx-auto flex">
 
-                    @for ($i = 0; $i < 2; $i++)
+                    @foreach ($regispost as $post)
                         <div class="swiper-slide" data-aos="fade-up" data-aos-duration="3000">
                             <div
                                 class=" flex max-xl:flex-col gap-6 justify-between max-md:w-full  mx-auto items-center p-4 ">
@@ -145,11 +141,7 @@
                                         <p class="text-[#84B750] font-bold text-2xl max-md:text-lg">ผู้เข้าร่วมอบรม</p>
                                     </div>
                                     <div class="flex flex-col gap-y-6 text-[1rem] indent-8 text-start overflow-y-auto">
-                                        <p>ประเทศไทยมีศักยภาพในการเป็นผู้นำด้านสุขภาพ ด้วยทรัพยากร มนุษย์
-                                            แหล่งท่องเที่ยวธรรมชาติ
-                                            และองค์ความรู้ด้านการแพทย์แผนปัจจุบัน และ แผนไทย รวมถึงการผลิตสมุนไพร
-                                            และผลิตภัณฑ์จากธรรมชาติ
-                                            อีกทั้งการวิจัย และพัฒนาเพื่อเสริมสร้างสุขภาพยังเป็นที่ยอมรับในระดับนานาชาติ</p>
+                                        <p>{{$post->title}}</p>
                                         <p>การประชุมในครั้งนี้มุ่งเน้นที่การพัฒนานวัตกรรมเพื่อสุขภาพ และความเป็นอยู่
                                             ที่ดี โดยครอบคลุมหัวข้อที่สำคัญ ได้แก่ สุขภาพ สมรรถภาพทาง กายโภชนา
                                             การ รูปลักษณ์ การนอนหลับ และการมีสติ โดยจะเน้นการ แสดงนวัตกรรม และ
@@ -167,12 +159,12 @@
                                 <div class="rounded-2xl drop-shadow-md w-full h-[450px] max-md:h-[350px] max-sm:h-[350px] max-md:rounded-lg"
                                     data-aos="fade-left" data-aos-anchor="#example-anchor" data-aos-offset="500"
                                     data-aos-duration="500">
-                                    <img src="/images/home/111.png" alt=""
+                                    <img src="{{url($post->thumbnail_link)}}" alt=""
                                         class="w-full h-full relative z-20 rounded-2xl shadow-md object-cover">
                                 </div>
                             </div>
                         </div>
-                    @endfor
+                    @endforeach
                 </div>
             </div>
             <div class="swiper-pagination"></div>
@@ -190,18 +182,17 @@
 
             <div
                 class="w-4/5 grid grid-cols-4 gap-4 max-yy:grid-cols-3 max-dm:grid-cols-2 max-ex:grid-cols-1 mx-auto py-10 max-ex:py-4 content-center place-items-center">
-                @for ($i = 0; $i < 8; $i++)
+                @foreach ($allnews as $news)
                     <div class="drop-shadow-md max-w-[390px] max-es:w-[350px] flex justify-center h-[100%]">
                         <div class="bg-white rounded-[15px] z-0 flex flex-col justify-center gap-y-4 " data-aos="fade-up"
                             data-aos-duration="1500">
                             <div class="w-full h-[300px] mx-auto rounded-t-xl ">
-                                <img src="/images/home/111.png" alt=""
+                                <img src="{{url($news->thumbnail_link)}}" alt=""
                                     class="w-full h-full object-cover rounded-t-xl">
                             </div>
 
                             <div class="flex flex-col justify-center gap-y-4 px-3">
-                                <p class="text-[#23404A] font-bold text-lg max-md:text-md text-start">
-                                    การประชุมในครั้งนี้มุ่งเน้นที่การพัฒนานวัตกรรมเพื่อสุขภาพ</p>
+                                <p class="text-[#23404A] font-bold text-lg max-md:text-md text-start">{{$news->title}}</p>
                                 <div class="flex items-center gap-2">
                                     <div class="max-w-[20px] h-[20px]">
                                         <img src="/images/home/Group 176.png" alt=""
@@ -213,14 +204,11 @@
                                         <img src="/images/home/Group 178.png" alt=""
                                             class="w-full h-full object-cover">
                                     </div>
-                                    <p class="text-[#B9BBC7] text-md max-md:text-sm text-start">
-                                        26/08/2567</p>
+                                    <p class="text-[#B9BBC7] text-md max-md:text-sm text-start">{{ \Carbon\Carbon::parse($news->date_begin_display)->format('d/m/Y') }}</p>
 
                                 </div>
 
-                                <p class="text-[#686868] text-lg max-md:text-md text-start h-[120px] overflow-auto">
-                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque, officia
-                                    ipsum dolor sit amet consectetur</p>
+                                <p class="text-[#686868] text-lg max-md:text-md text-start h-[120px] overflow-auto">{{$news->description}}</p>
                             </div>
 
                             <div class="flex justify-end mt-4">
@@ -230,7 +218,7 @@
                             </div>
                         </div>
                     </div>
-                @endfor
+                @endforeach
 
 
             </div>
@@ -251,20 +239,19 @@
 
             <div
                 class="relative  z-50 w-4/5 max-ex:w-full grid grid-cols-3 gap-4 gap-y-6 max-yy:grid-cols-3 max-dm:grid-cols-2 max-ex:grid-cols-1 mx-auto py-10 max-ex:py-4 content-center place-items-center">
-                @for ($i = 0; $i < 6; $i++)
-                <a href="{{ route('activity.detail') }}" target="_blank" class="shadow-md  shadow-[#C6E2F6] max-w-[390px] max-es:w-[350px] flex justify-center h-[100%] rounded-xl hover:scale-95">
+                @foreach($photoactivity as $photo)
+                {{-- @dd($photo) --}}
+                <a href="{{ url('activity/detail/'.$photo->id) }}" target="_blank" class="shadow-md  shadow-[#C6E2F6] max-w-[390px] max-es:w-[350px] flex justify-center h-[100%] rounded-xl hover:scale-95">
                     <div class="bg-white rounded-[15px] z-0 flex flex-col justify-center gap-y-4 " >
                         <div class="w-full h-[300px] mx-auto rounded-t-xl ">
-                            <img src="/images/home/111.png" alt="" class="w-full h-full object-cover rounded-t-xl">
+                            <img src="{{url($photo->thumbnail_link)}}" alt="" class="w-full h-full object-cover rounded-t-xl">
                         </div>
                         <div class="flex flex-col justify-center gap-y-4 px-3 " >
-                            <p class="text-[#686868] text-lg max-md:text-md text-center h-[120px] overflow-auto">
-                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque, officia
-                                ipsum dolor sit amet consectetur
+                            <p class="text-[#686868] text-lg max-md:text-md text-center h-[120px] overflow-auto">{{$photo->title}}</p>
                         </div>
                     </div>
                 </a>
-                @endfor
+                @endforeach
             </div>
             <div class="relative flex justify-center mt-4 z-50">
                 <a href="{{ route('activity.index') }}" target="_blank"
@@ -294,24 +281,27 @@
             </div>
         </section>
 
+        {{-- @dd($postsupport) --}}
+        @if($postsupport)
         <section class=" py-10 mt-15 bg-white items-center">
             <p class="text-[#23404A] font-bold text-center text-4xl max-md:text-2xl max-md:px-2" data-aos="zoom-in"
                 data-aos-duration="3000">
-                ผู้สนับสนุน
+                {{$postsupport->title}}
             </p>
             <div class="relative z-30 items-center mt-8">
                 <div class="swiper swiper1 items-center w-11/12 mx-auto">
                     <div class="swiper-wrapper w-full mx-auto flex">
-                        @for ($i = 0; $i < 10; $i++)
+                        {{-- @dd($postsupport->images) --}}
+                        @foreach($postsupport->images as $image)
                             <div class="swiper-slide flex flex-col justify-center">
                                 <div class="flex justify-center">
                                     <div class="w-[200px] h-[120px] flex justify-center" data-aos="zoom-in"
                                         data-aos-duration="3000">
-                                        <img src="/images/home/Mask group (2).png" alt="" class="w-full h-full">
+                                        <img src="{{url($image->image_link)}}" alt="" class="w-full h-full">
                                     </div>
                                 </div>
                             </div>
-                        @endfor
+                        @endforeach
                     </div>
 
                 </div>
@@ -319,6 +309,7 @@
                 <div class="swiper-button-prev swiper-button-prev1"></div>
             </div>
         </section>
+        @endif
     </div>
 @endsection
 @section('script')

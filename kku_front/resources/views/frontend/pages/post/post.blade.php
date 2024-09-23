@@ -89,26 +89,24 @@
 
             <div
                 class="w-full p-2 grid grid-cols-3 gap-6 max-yy:grid-cols-2 max-dm:grid-cols-2 max-ex:grid-cols-1 place-items-center">
-                @for ($i = 0; $i < 9; $i++)
+                @foreach($allnews as $news)
                     <div class="drop-shadow-md max-w-[340px] max-es:w-[350px] flex justify-center h-[100%]">
                         <div class="bg-white rounded-[15px] z-0 flex flex-col justify-center gap-y-4 " data-aos="fade-up"
                             data-aos-duration="1500">
                             <div class="w-full h-[300px] mx-auto rounded-t-xl ">
-                                <img src="/images/home/111.png" alt=""
+                                <img src="{{url($news->thumbnail_link)}}" alt=""
                                     class="w-full h-full object-cover rounded-t-xl">
                             </div>
 
                             <div class="flex flex-col justify-center gap-y-4 px-3">
-                                <p class="text-[#23404A] font-bold text-lg max-md:text-md text-start">
-                                    การประชุมในครั้งนี้มุ่งเน้นที่การพัฒนานวัตกรรมเพื่อสุขภาพ</p>
+                                <p class="text-[#23404A] font-bold text-lg max-md:text-md text-start">{{$news->title}}</p>
                                 <div class="flex items-center gap-2">
 
                                     <div class="max-w-[20px] h-[20px]">
                                         <img src="/images/home/Group 178.png" alt=""
                                             class="w-full h-full object-cover">
                                     </div>
-                                    <p class="text-[#B9BBC7] text-md max-md:text-sm text-start">
-                                        26/08/2567</p>
+                                    <p class="text-[#B9BBC7] text-md max-md:text-sm text-start">{{ \Carbon\Carbon::parse($news->date_begin_display)->format('d/m/Y') }}</p>
 
                                     <div class="max-w-[20px] h-[20px]">
                                         <img src="/images/home/person.png" alt=""
@@ -119,9 +117,7 @@
 
                                 </div>
 
-                                <p class="text-[#686868] text-lg max-md:text-md text-start h-[80px] overflow-auto">
-                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque, officia
-                                    ipsum dolor sit amet consectetur</p>
+                                <p class="text-[#686868] text-lg max-md:text-md text-start h-[80px] overflow-auto">{{$news->description}}</p>
                             </div>
 
                             <div class="flex justify-end mt-4">
@@ -131,7 +127,7 @@
                             </div>
                         </div>
                     </div>
-                @endfor
+                @endforeach
             </div>
         </div>
     </section>

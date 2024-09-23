@@ -61,9 +61,11 @@
 
     {{-- @dd($path) --}}
 
-    <swiper-slide><img src="/images/home/Rectangle 48.png" alt="" class="w-full h-auto"></swiper-slide>
-    <swiper-slide><img src="/images/home/Rectangle 48.png" alt="" class="w-full h-auto"></swiper-slide>
-    <swiper-slide><img src="/images/home/Rectangle 48.png" alt="" class="w-full h-auto"></swiper-slide>
+    @foreach($adslide as $as)
+        <swiper-slide><img src="{{url($as->ad_image)}}" alt="" class="w-full h-auto"></swiper-slide>
+    @endforeach
+    {{-- <swiper-slide><img src="/images/home/Rectangle 48.png" alt="" class="w-full h-auto"></swiper-slide>
+    <swiper-slide><img src="/images/home/Rectangle 48.png" alt="" class="w-full h-auto"></swiper-slide> --}}
 
 </swiper-container>
 

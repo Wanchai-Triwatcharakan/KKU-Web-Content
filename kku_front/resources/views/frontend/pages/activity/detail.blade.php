@@ -9,10 +9,7 @@
         <div class="flex gap-6 max-xl:flex-col">
             <div class="bg-[#F7FAF3] flex flex-col justify-center items-left px-20 max-xl:p-6 shadow-md w-full max-xl:order-2"
                 data-aos="fade-right" data-aos-duration="3000">
-                <p class="text-[#23404A] font-semibold text-left text-3xl max-xl:text-xl max-sm:text-lg mb-4">
-                    อัลบั้ม งาน First Conference and Exhibition on Health and Wellness Innovation
-                    วันที่ 13 พฤศจิกายน 2567
-                </p>
+                <p class="text-[#23404A] font-semibold text-left text-3xl max-xl:text-xl max-sm:text-lg mb-4">{{$postsupport->title}}</p>
 
                 <div class="flex flex-col gap-4">
                     <div class="flex justify-start gap-8 max-xl:gap-1 max-md:flex-col text-lg max-md:text-[1rem]">
@@ -21,7 +18,11 @@
                     </div>
                     <div class="flex justify-start gap-8 max-xl:gap-1 max-md:flex-col text-lg max-md:text-[1rem]">
                         <p class="text-[#23404A] font-medium text-left w-[150px]  max-xl:w-[120px]">กำหนดเวลา :</p>
-                        <p class="text-[#23404A] font-light text-left ">13 พฤศจิกายน 2567 - 15 พฤศจิกายน 2567</p>
+                        <p class="text-[#23404A] font-light text-left ">
+                            {{ \Carbon\Carbon::parse($postsupport->date_begin_display)->locale('th')->isoFormat('D MMMM YYYY') }}
+                             - 
+                             {{ \Carbon\Carbon::parse($postsupport->date_end_display)->locale('th')->isoFormat('D MMMM YYYY') }}
+                        </p>
                     </div>
                     <div class="flex justify-start gap-8 max-xl:gap-1 max-md:flex-col text-lg max-md:text-[1rem]">
                         <p class="text-[#23404A] font-medium text-left w-[150px]  max-xl:w-[120px]">Google Drive :</p>
@@ -33,7 +34,7 @@
 
             <div class="w-[50%] max-xl:max-w-full max-xl:max-h-[300px] h-[350px] max-xl:w-full x-auto shadow-md"
                 data-aos="fade-left" data-aos-duration="3000">
-                <img src="/images/banner/image122.png" alt="" class="w-full h-full">
+                <img src="{{url($postsupport->thumbnail_link)}}" alt="" class="w-full h-full">
             </div>
         </div>
     </section>
@@ -44,22 +45,22 @@
                 <p class="text-[#84B750] text-center text-xl max-lg:text-lg max-sm:text-[1rem] z-40 max-md:px-2"
                     data-aos="zoom-in" data-aos-duration="3000">วันที่ 13 พฤศจิกายน 2567</p>
                 <p class="text-[#23404A] font-semibold text-center text-2xl max-md:text-xl z-40 max-md:px-2"
-                    data-aos="zoom-in" data-aos-duration="3000">อัลบั้ม งาน First Conference and Exhibition on Health
-                    and Wellness Innovation
+                    data-aos="zoom-in" data-aos-duration="3000">{{$postsupport->title}}
                 </p>
             </div>
 
-            <div class="grid grid-cols-4 max-xl:grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-4 place-items-center z-50 relative"
-                id="swpImg">
+            <div class="grid grid-cols-4 max-xl:grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-4 place-items-center z-50 relative" id="swpImg">
+                @foreach ($postsupport->images as $image)
                 <div class="relative w-full h-[300px] max-lg:h-[250px] mx-auto shadow-md cursor-pointer"
-                    data-image="/images/banner/image122.png" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
-                    <img src="/images/banner/image122.png" alt="" class="w-full h-full">
+                    data-image="{{url($image->image_link)}}" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
+                    <img src="{{url($image->image_link)}}" alt="" class="w-full h-full">
                     <div
                         class="absolute inset-0 bg-gradient-to-b from-stone-700 opacity-0 hover:opacity-50 flex justify-center items-center transition-opacity duration-300">
                         <img src="/images/eye.png" alt="" class="w-auto h-auto max-w-12 max-h-12">
                     </div>
                 </div>
-                <div class="relative w-full h-[300px] max-lg:h-[250px] mx-auto shadow-md cursor-pointer"
+                @endforeach
+                {{-- <div class="relative w-full h-[300px] max-lg:h-[250px] mx-auto shadow-md cursor-pointer"
                     data-image="/images/banner/image121.png" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
                     <img src="/images/banner/image121.png" alt="" class="w-full h-full">
                     <div
@@ -82,7 +83,7 @@
                         class="absolute inset-0 bg-gradient-to-b from-stone-700 opacity-0 hover:opacity-50 flex justify-center items-center transition-opacity duration-300">
                         <img src="/images/eye.png" alt="" class="w-auto h-auto max-w-12 max-h-12">
                     </div>
-                </div>
+                </div> --}}
 
 
 
