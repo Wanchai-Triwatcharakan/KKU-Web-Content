@@ -32,7 +32,9 @@ import {
   faBars,
   faCube,
   faAddressBook,
-  faHouseUser
+  faHouseUser,
+  faTable,
+  faPeopleRoof,
 } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "@mui/material";
 import NavLink from "./navlink";
@@ -325,7 +327,7 @@ const SidebarComponent = (props) => {
                     liClass="menu-link"
                   >
                     <span className="collap-title">
-                      <FontAwesomeIcon icon={faEnvelope} />
+                      <FontAwesomeIcon icon={faTable} />
                     </span>
                     <span className="menu-title">{t("ตารางการสัมมนา")}</span>
                   </NavLink>
@@ -339,7 +341,7 @@ const SidebarComponent = (props) => {
                     liClass="menu-link"
                   >
                     <span className="collap-title">
-                      <FontAwesomeIcon icon={faEnvelope} />
+                    <FontAwesomeIcon icon={faPeopleRoof} />
                     </span>
                     <span className="menu-title">{t("จัดการห้องสัมมนา")}</span>
                   </NavLink>

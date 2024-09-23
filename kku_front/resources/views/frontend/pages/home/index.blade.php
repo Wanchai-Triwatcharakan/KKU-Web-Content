@@ -132,7 +132,7 @@
             <div class="swiper mySwiper items-center w-4/5  max-ex:w-full mx-auto h-auto mt-4">
                 <div class="swiper-wrapper w-full mx-auto flex">
 
-                    @for ($i = 0; $i < 2; $i++)
+                    @for ($i = 0; $i < 4; $i++)
                         <div class="swiper-slide" data-aos="fade-up" data-aos-duration="3000">
                             <div
                                 class=" flex max-xl:flex-col gap-6 justify-between max-md:w-full  mx-auto items-center p-4 ">

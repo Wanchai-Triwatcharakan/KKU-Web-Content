@@ -18,7 +18,7 @@ import { faAdd, faMinus, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FormControlLabel, FormGroup, Switch, TextField } from "@mui/material";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
-import { LocalizationProvider } from "@mui/x-date-pickers";
+import { LocalizationProvider, MobileTimePicker } from "@mui/x-date-pickers";
 import moment from "moment";
 
 const addDataDefault = {
@@ -72,6 +72,9 @@ const ModalAddPost = (props) => {
   const [displayDate, setDisplayDate] = useState(null);
   const [hiddenDate, setHiddenDate] = useState(null); 
   const [isFetching, setIsFetching] = useState(false);
+  const [scheduleList, setScheduleList] = useState([
+    { startTime: null, endTime: null, details: "" },
+  ]);
 
   useEffect(() => {
     if(isOpen) {
@@ -93,6 +96,18 @@ const ModalAddPost = (props) => {
   }, [isOpen])
 
   // console.log("checkboxList",checkboxList);
+  const handleAddSchedule = () => {
+    setScheduleList([
+      ...scheduleList,
+      { startTime: null, endTime: null, details: "" },
+    ]);
+  };
+
+  const handleChangeSchedule = (index, field, value) => {
+    const newList = [...scheduleList];
+    newList[index][field] = value;
+    setScheduleList(newList);
+  };
 
   const setPreviewHandler = (data) => {
     if(data.file) {
@@ -480,6 +495,59 @@ const ModalAddPost = (props) => {
                     />
                   </div>
                 </div>
+
+                <div className="seminar-schedule">
+                  <h3 className="post-title">{t("ตารางสัมมนา")}</h3>
+                  <div className="add-seminar" onClick={handleAddSchedule}>
+                    <FontAwesomeIcon icon={faAdd} />
+                    <p>เพิ่มตาราง</p>
+                  </div>{" "}
+                </div>
+
+                {scheduleList.map((schedule, index) => (
+                  <div className="input-time" key={index}>
+                    <div className="input-half pr">
+                      <MobileTimePicker
+                        className="date-input"
+                        size="small"
+                        label={t("Start Time")}
+                        value={schedule.startTime}
+                        onChange={(newValue) =>
+                          handleChangeSchedule(index, "startTime", newValue)
+                        }
+                        renderInput={(params) => <TextField {...params} />}
+                      />
+                    </div>
+                    <div className="input-half pl">
+                      <MobileTimePicker
+                        className="date-input"
+                        sx={{ width: 250 }}
+                        label={t("End Time")}
+                        value={schedule.endTime}
+                        onChange={(newValue) =>
+                          handleChangeSchedule(index, "endTime", newValue)
+                        }
+                        renderInput={(params) => <TextField {...params} />}
+                      />
+                    </div>
+                    <div className="input-half pll">
+                      <TextField
+                        className="date-input"
+                        label={t("รายระเอียด")}
+                        placeholder={t("Enter details")}
+                        multiline
+                        minRows={1}
+                        value={schedule.details}
+                        onChange={(e) =>
+                          handleChangeSchedule(index, "details", e.target.value)
+                        }
+                        variant="outlined"
+                        fullWidth
+                        style={{ width: "100%" }}
+                      />
+                    </div>
+                  </div>
+                ))}
 
                 <h3 className="post-detail-title">{t("การแสดงผล")}</h3>
                 <div className="setting-controls">

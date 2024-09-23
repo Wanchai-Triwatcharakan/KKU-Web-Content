@@ -33,7 +33,7 @@
                         <img src="/images/icon/jam_line.png" alt=""
                             class="w-full h-full group-hover:filter group-hover:invert group-hover:saturate-12 group-hover:hue-rotate-237 group-hover:brightness-0 group-hover:contrast-30">
                     </a>
-                    <a href="" class="bg-white rounded-full p-2 w-12 h-12 border hover:bg-[#84B750] shadow-md group">
+                    <a href="mailto:example@email.com" class="bg-white rounded-full p-2 w-12 h-12 border hover:bg-[#84B750] shadow-md group">
                         <img src="/images/icon/mail.png" alt=""
                             class="w-full h-full group-hover:filter group-hover:invert group-hover:saturate-12 group-hover:hue-rotate-237 group-hover:brightness-0 group-hover:contrast-30">
                     </a>
@@ -41,12 +41,12 @@
             </div>
             <div class="bg-[#F5F7FA] p-6 border rounded-lg flex flex-col gap-6 w-full">
                 <div class="flex justify-between gap-4">
-                    <input type="text" class="p-3 rounded-lg w-full outline-none border text-[#23404A]"
+                    <input type="text" id="name" name="name" class="p-3 rounded-lg w-full outline-none border text-[#23404A]"
                         placeholder="Your Name">
-                    <input type="text" class="p-3 rounded-lg w-full outline-none border text-[#23404A]"
+                    <input type="tel" id="tel" name="tel" class="p-3 rounded-lg w-full outline-none border text-[#23404A]"
                         placeholder="Phone">
                 </div>
-                <input type="text" class="p-3 rounded-lg outline-none border text-[#23404A]" placeholder="E-mail">
+                <input type="email" id="email" name="email" class="p-3 rounded-lg outline-none border text-[#23404A]" placeholder="E-mail">
                 <textarea name="" id="" cols="10" rows="5"
                     class="p-3 rounded-lg outline-none border text-[#23404A]" placeholder="Write Your Message"></textarea>
 
@@ -58,26 +58,31 @@
             </div>
         </div>
 
-        <div class="bg-[#A7CA78] shadow-md p-12 max-sm:p-6 rounded-t-3xl  flex justify-between  items-center  gap-4 text-white text-xl max-2xl:text-lg max-lg:flex-col max-lg:items-start">
-            <a href="tel:043-320-320" class="flex  gap-4 items-center group">
-                <div class="bg-white rounded-full p-2 w-20 max-2xl:w-16 h-auto shadow-md border-4 group-hover:border-[#FF864E]">
+        <div
+            class="bg-[#A7CA78] shadow-md p-12 max-sm:p-6 rounded-t-3xl  flex justify-between  items-center  gap-4 text-white text-xl max-2xl:text-lg max-lg:flex-col max-lg:items-start">
+            <a href="tel:043-320-320" target="_blank" class="flex  gap-4 items-center group">
+                <div
+                    class="bg-white rounded-full p-2 w-20 max-2xl:w-16 h-auto shadow-md border-4 group-hover:border-[#FF864E]">
                     <img src="/images/icon/tel.png" alt="" class="w-full h-full">
                 </div>
 
                 <p>06-1591-1124</p>
             </a>
-            <a href="" class="flex gap-2 items-center group">
-                <div class="bg-white rounded-full p-2 w-20 max-2xl:w-16 h-auto shadow-md border-4 group-hover:border-[#FF864E]">
+            <a href="" target="_blank" class="flex gap-2 items-center group">
+                <div
+                    class="bg-white rounded-full p-2 w-20 max-2xl:w-16 h-auto shadow-md border-4 group-hover:border-[#FF864E]">
                     <img src="/images/icon/line1.png" alt="" class="w-full h-full">
                 </div>
                 <p>adminhhp</p>
             </a>
-            <div class="flex gap-4 items-center group cursor-pointer ">
-                <div class="bg-white rounded-full p-2 w-20 max-2xl:w-16 h-auto shadow-md border-4 group-hover:border-[#FF864E]">
+            <a href="https://maps.app.goo.gl/oDGBgfHj72SbTPHJ6" class="flex gap-4 items-center group cursor-pointer ">
+                <div
+                    class="bg-white rounded-full p-2 w-20 max-2xl:w-16 h-auto shadow-md border-4 group-hover:border-[#FF864E]">
                     <img src="/images/icon/90.png" alt="" class="w-full h-full">
                 </div>
-                <p class="w-full max-w-md max-xl:w-[250px] max-sm:w-[250px]">123 ถนนมิตรภาพ ตำบลในเมือง อำเภอเมือง จังหวัดขอนแก่น จ.ขอนแก่น 40000</p>
-            </div>
+                <p class="w-full max-w-md max-xl:w-[250px] max-sm:w-[250px]">123 ถนนมิตรภาพ ตำบลในเมือง อำเภอเมือง
+                    จังหวัดขอนแก่น จ.ขอนแก่น 40000</p>
+            </ฟ>
         </div>
 
     </section>
