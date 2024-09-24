@@ -60,29 +60,27 @@
 
                     <div
                         class="grid grid-cols-1 max-lg:grid-cols-2  max-md:grid-cols-1 max-md:h-[600px] max-md:overflow-y-auto">
-                        @for ($i = 1; $i <= 5; $i++)
+                        @php $i = 1; @endphp
+                        @foreach ($pinnedNews as $news)
                             <div class="flex gap-4  justify-between px-4">
-                                <p class="text-[#23404A] font-medium text-5xl">{{ $i }}</p>
+                                <p class="text-[#23404A] font-medium text-5xl">{{ $i++ }}</p>
                                 <div
                                     class="flex flex-col gap-2 relative cursor-pointer transition-all ease-in-out before:transition-[width] before:ease-in-out before:duration-700 before:absolute before:bg-[#bceb77] before:origin-center before:h-[2px] before:w-0 hover:before:w-[50%] before:bottom-0 before:left-[50%] after:transition-[width] after:ease-in-out after:duration-700 after:absolute after:bg-[#bceb77] after:origin-center after:h-[2px] after:w-0 hover:after:w-[50%] after:bottom-0 after:right-[50%] pb-2">
 
-                                    <a href="{{ route('post.detail') }}" target="_blank"
-                                        class="text-[#23404A] font-medium text-xl max-yy:text-lg max-md:text-md">Lorem ipsum
-                                        dolor sit amet consectetur.
-                                        Tellus purus ut laoreet at turpis.</a>
+                                    <a href="{{ url('post/detail/'.$news->id) }}" target="_blank"
+                                        class="text-[#23404A] font-medium text-xl max-yy:text-lg max-md:text-md">{{$news->title}}</a>
 
                                     <div class="flex gap-2 w-full">
                                         <div class="max-w-[20px] h-[20px]">
                                             <img src="/images/home/Group 178.png" alt=""
                                                 class="w-full h-full object-cover">
                                         </div>
-                                        <p class="text-[#B9BBC7] text-md max-md:text-sm text-start">
-                                            26/08/2567</p>
+                                        <p class="text-[#B9BBC7] text-md max-md:text-sm text-start">{{ \Carbon\Carbon::parse($news->date_begin_display)->format('d/m/Y') }}</p>
 
                                     </div>
                                 </div>
                             </div>
-                        @endfor
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -121,7 +119,7 @@
                             </div>
 
                             <div class="flex justify-end mt-4">
-                                <a href="{{ route('post.detail') }}"  target="_blank"
+                                <a href="{{ url('post/detail/'.$news->id) }}"  target="_blank"
                                     class="text-center font-medium text-[#FF864E] p-2 rounded-full text-[1rem] w-36 cursor-pointer hover:scale-105 transition duration-500">
                                     ดูเพิ่มเติม >></a>
                             </div>

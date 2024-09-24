@@ -17,8 +17,11 @@ class RegisterController extends Controller
         return view('frontend.pages.register.register', compact('regisPost'));
     }
     
-    public function dataDetail() {
-        // return view('frontend.pages.seminar.seminar');
-        return view('frontend.pages.register.detail');
+    public function dataDetail($id) {
+        $post = Post::where('id', $id)
+            ->where('category', ',3,')
+            ->where('status_display', true)
+            ->first();
+        return view('frontend.pages.register.detail', compact('post'));
     }
 }

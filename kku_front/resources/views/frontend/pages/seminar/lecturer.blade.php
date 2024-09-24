@@ -28,8 +28,8 @@
 
         <div
             class=" grid grid-cols-4 gap-4 max-yy:grid-cols-3 max-dm:grid-cols-2 max-ex:grid-cols-1 w-[70%] max-2xl:w-[80%] mx-auto my-12 items-center place-items-center">
-
-            @for ($i = 0; $i < 8; $i++)
+      
+            @foreach($allLecturer as $lect)
                 <div data-aos="fade-up" data-aos-duration="1000" class="swiper-slide" data-aos="flip-left">
                     <div class="shadow-md shadow-[#C6E2F6] max-w-[350px] h-[100%] rounded-[15px]"
                         style="border: 1px solid #C6E2F6;">
@@ -37,31 +37,26 @@
                         <div class="bg-white rounded-[15px] py-4 px-3 z-0 flex flex-col justify-center gap-y-4  ">
                             <div
                                 class="w-[215px] h-[215px] max-2xl:w-[180px] max-2xl:h-[180px]  mx-auto bg-gradient-to-r from-[#8DD7FA] to-[#B8D88F] rounded-full p-1 ">
-                                <img src="/images/home/111.png" alt=""
+                                <img src="{{url($lect->thumbnail_link)}}" alt=""
                                     class="w-full h-full object-cover rounded-full">
                             </div>
 
                             <div class="flex flex-col justify-center gap-y-4">
-                                <p class="text-[#23404A] font-bold text-center text-xl max-md:text-lg">Dr. khai
-                                    khem </p>
-                                <p class="text-[#23404A] font-medium text-center text-lg max-md:text-md ">
-                                    เคมีวิทยา</p>
+                                <p class="text-[#23404A] font-bold text-center text-xl max-md:text-lg">{{$lect->title}}</p>
+                                <p class="text-[#23404A] font-medium text-center text-lg max-md:text-md ">{{$lect->topic}}</p>
                                 <p
                                     class="text-[#23404A] font-medium text-lg max-md:text-md text-start h-[150px] overflow-auto">
-                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque, officia
-                                    ipsum dolor sit amet consectetur, adipisicing elit. Atque, officia
-                                    adipisicing elit. Atque, officia
+                                    {{$lect->description}}
                                 </p>
                             </div>
 
                             <div class="flex justify-center mt-4">
-                                <p class="text-center bg-[#FF864E] text-white p-2 rounded-full text-[1rem] w-36 ">
-                                    13 พ.ย. 2567</p>
+                                <p class="text-center bg-[#FF864E] text-white p-2 rounded-full text-[1rem] w-36 ">{{ \Carbon\Carbon::parse($lect->date_begin_display)->locale('th')->translatedFormat('d M Y') }}</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            @endfor
+            @endforeach
 
         </div>
 

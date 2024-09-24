@@ -212,7 +212,7 @@
                             </div>
 
                             <div class="flex justify-end mt-4">
-                                <a href="{{ route('schedule.detail') }}" target="_blank"
+                                <a href="{{ url('post/detail/'.$news->id) }}" target="_blank"
                                     class="text-center font-medium text-[#FF864E] p-2 rounded-full text-[1rem] w-36 cursor-pointer hover:scale-105 transition duration-500">
                                     ดูเพิ่มเติม >></a>
                             </div>

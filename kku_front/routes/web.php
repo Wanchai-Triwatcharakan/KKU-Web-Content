@@ -31,7 +31,7 @@ Route::prefix('seminar/')->group(function () {
 
 Route::prefix('register/')->group(function () {
     Route::get('/', [RegisterController::class, 'indexPageRegister'])->name('register.index');
-    Route::get('/detail', [RegisterController::class, 'dataDetail'])->name('register.detail');
+    Route::get('/detail/{id}', [RegisterController::class, 'dataDetail'])->name('register.detail');
 });
 
 Route::prefix('schedule/')->group(function () {
@@ -41,7 +41,7 @@ Route::prefix('schedule/')->group(function () {
 
 Route::prefix('post/')->group(function () {
     Route::get('/', [PostController::class, 'indexPagePost'])->name('post.index');
-    Route::get('/detail', [PostController::class, 'dataDetail'])->name('post.detail');
+    Route::get('/detail/{id}', [PostController::class, 'dataDetail'])->name('post.detail');
 });
 
 Route::prefix('activity/')->group(function () {
