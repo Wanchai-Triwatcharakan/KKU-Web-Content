@@ -84,29 +84,34 @@
             <div class="relative z-30 items-center mt-6">
                 <div class="swiper items-center w-4/5 mx-auto">
                     <div class="swiper-wrapper w-full mx-auto flex">
-                        @foreach($lecturer as $lect)
-                            <a href="{{ route('seminar.lecturer') }}" target="_blank" data-aos="fade-up" data-aos-duration="1000" class="swiper-slide" data-aos="flip-left">
+                        @foreach ($lecturer as $lect)
+                            <a href="{{ route('seminar.lecturer') }}" target="_blank" data-aos="fade-up"
+                                data-aos-duration="1000" class="swiper-slide" data-aos="flip-left">
                                 <div class="drop-shadow-md max-w-[350px] h-[100%] py-4">
                                     <div
                                         class="bg-white rounded-[15px] py-4 px-3 z-0 flex flex-col justify-center gap-y-4 ">
                                         <div
                                             class="w-[215px] h-[215px] mx-auto bg-gradient-to-r from-[#8DD7FA] to-[#B8D88F] rounded-full p-1">
-                                            <img src="{{url($lect->thumbnail_link)}}" alt=""
+                                            <img src="{{ url($lect->thumbnail_link) }}" alt=""
                                                 class="w-full h-full object-cover rounded-full">
                                         </div>
 
                                         <div class="flex flex-col justify-center gap-y-4">
-                                            <p class="text-[#23404A] font-bold text-center text-xl max-md:text-lg">{{$lect->title}}</p>
-                                            <p class="text-[#23404A] font-medium text-center text-lg max-md:text-md ">{{$lect->topic}}</p>
+                                            <p class="text-[#23404A] font-bold text-center text-xl max-md:text-lg">
+                                                {{ $lect->title }}</p>
+                                            <p class="text-[#23404A] font-medium text-center text-lg max-md:text-md ">
+                                                {{ $lect->topic }}</p>
                                             <p
                                                 class="text-[#23404A] font-medium text-lg max-md:text-md text-start h-[150px] overflow-auto">
-                                                {{$lect->description}}
+                                                {{ $lect->description }}
                                             </p>
                                         </div>
 
                                         <div class="flex justify-center mt-4">
                                             <p
-                                                class="text-center bg-[#FF864E] text-white p-2 rounded-full text-[1rem] w-36 ">{{ \Carbon\Carbon::parse($lect->date_begin_display)->locale('th')->translatedFormat('d M Y') }}</p>
+                                                class="text-center bg-[#FF864E] text-white p-2 rounded-full text-[1rem] w-36 ">
+                                                {{ \Carbon\Carbon::parse($lect->date_begin_display)->locale('th')->translatedFormat('d M Y') }}
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -141,7 +146,7 @@
                                         <p class="text-[#84B750] font-bold text-2xl max-md:text-lg">ผู้เข้าร่วมอบรม</p>
                                     </div>
                                     <div class="flex flex-col gap-y-6 text-[1rem] indent-8 text-start overflow-y-auto">
-                                        <p>{{$post->title}}</p>
+                                        <p>{{ $post->title }}</p>
                                         <p>การประชุมในครั้งนี้มุ่งเน้นที่การพัฒนานวัตกรรมเพื่อสุขภาพ และความเป็นอยู่
                                             ที่ดี โดยครอบคลุมหัวข้อที่สำคัญ ได้แก่ สุขภาพ สมรรถภาพทาง กายโภชนา
                                             การ รูปลักษณ์ การนอนหลับ และการมีสติ โดยจะเน้นการ แสดงนวัตกรรม และ
@@ -159,7 +164,7 @@
                                 <div class="rounded-2xl drop-shadow-md w-full h-[450px] max-md:h-[350px] max-sm:h-[350px] max-md:rounded-lg"
                                     data-aos="fade-left" data-aos-anchor="#example-anchor" data-aos-offset="500"
                                     data-aos-duration="500">
-                                    <img src="{{url($post->thumbnail_link)}}" alt=""
+                                    <img src="{{ url($post->thumbnail_link) }}" alt=""
                                         class="w-full h-full relative z-20 rounded-2xl shadow-md object-cover">
                                 </div>
                             </div>
@@ -180,19 +185,26 @@
                 ข่าวสาร
             </p>
 
-            <div
-                class="w-4/5 grid grid-cols-4 gap-4 max-yy:grid-cols-3 max-dm:grid-cols-2 max-ex:grid-cols-1 mx-auto py-10 max-ex:py-4 content-center place-items-center">
+            @php
+                $justify = 'flex justify-center ';
+                if (count($allnews) > 3) {
+                    $justify =
+                        'grid grid-cols-4 gap-4 max-yy:grid-cols-3 max-dm:grid-cols-2 max-ex:grid-cols-1 place-items-center';
+                }
+            @endphp
+            <div class="w-4/5  mx-auto py-10 max-ex:py-4 content-center {{ $justify }} ">
                 @foreach ($allnews as $news)
                     <div class="drop-shadow-md max-w-[390px] max-es:w-[350px] flex justify-center h-[100%]">
                         <div class="bg-white rounded-[15px] z-0 flex flex-col justify-center gap-y-4 " data-aos="fade-up"
                             data-aos-duration="1500">
                             <div class="w-full h-[300px] mx-auto rounded-t-xl ">
-                                <img src="{{url($news->thumbnail_link)}}" alt=""
+                                <img src="{{ url($news->thumbnail_link) }}" alt=""
                                     class="w-full h-full object-cover rounded-t-xl">
                             </div>
 
                             <div class="flex flex-col justify-center gap-y-4 px-3">
-                                <p class="text-[#23404A] font-bold text-lg max-md:text-md text-start">{{$news->title}}</p>
+                                <p class="text-[#23404A] font-bold text-lg max-md:text-md text-start">{{ $news->title }}
+                                </p>
                                 <div class="flex items-center gap-2">
                                     <div class="max-w-[20px] h-[20px]">
                                         <img src="/images/home/Group 176.png" alt=""
@@ -204,11 +216,13 @@
                                         <img src="/images/home/Group 178.png" alt=""
                                             class="w-full h-full object-cover">
                                     </div>
-                                    <p class="text-[#B9BBC7] text-md max-md:text-sm text-start">{{ \Carbon\Carbon::parse($news->date_begin_display)->format('d/m/Y') }}</p>
+                                    <p class="text-[#B9BBC7] text-md max-md:text-sm text-start">
+                                        {{ \Carbon\Carbon::parse($news->date_begin_display)->format('d/m/Y') }}</p>
 
                                 </div>
 
-                                <p class="text-[#686868] text-lg max-md:text-md text-start h-[120px] overflow-auto">{{$news->description}}</p>
+                                <p class="text-[#686868] text-lg max-md:text-md text-start h-[120px] overflow-auto">
+                                    {{ $news->description }}</p>
                             </div>
 
                             <div class="flex justify-end mt-4">
@@ -223,7 +237,7 @@
 
             </div>
             <div class="relative flex justify-center mt-4 ">
-                <a href="{{ route('schedule.index') }}" target="_blank"
+                <a href="{{ route('post.index') }}" target="_blank"
                     class="text-center bg-[#FF864E] text-white p-2 rounded-md text-[1rem] w-36 cursor-pointer hover:bg-[#f07a44]">
                     ดูทั้งหมด</a>
             </div>
@@ -236,21 +250,29 @@
                 data-aos="zoom-in" data-aos-duration="3000">
                 ภาพกิจกรรม
             </p>
-
-            <div
-                class="relative  z-50 w-4/5 max-ex:w-full grid grid-cols-3 gap-4 gap-y-6 max-yy:grid-cols-3 max-dm:grid-cols-2 max-ex:grid-cols-1 mx-auto py-10 max-ex:py-4 content-center place-items-center">
-                @foreach($photoactivity as $photo)
-                {{-- @dd($photo) --}}
-                <a href="{{ url('activity/detail/'.$photo->id) }}" target="_blank" class="shadow-md  shadow-[#C6E2F6] max-w-[390px] max-es:w-[350px] flex justify-center h-[100%] rounded-xl hover:scale-95">
-                    <div class="bg-white rounded-[15px] z-0 flex flex-col justify-center gap-y-4 " >
-                        <div class="w-full h-[300px] mx-auto rounded-t-xl ">
-                            <img src="{{url($photo->thumbnail_link)}}" alt="" class="w-full h-full object-cover rounded-t-xl">
+            @php
+                $justify = 'flex justify-center ';
+                if (count($photoactivity) > 2) {
+                    $justify =
+                        'grid grid-cols-3 gap-4 gap-y-6 max-yy:grid-cols-3 max-dm:grid-cols-2 max-ex:grid-cols-1 place-items-center';
+                }
+            @endphp
+            <div class="relative  z-50 w-4/5 max-ex:w-full  mx-auto py-10 max-ex:py-4 content-center {{ $justify }}">
+                @foreach ($photoactivity as $photo)
+                    {{-- @dd($photo) --}}
+                    <a href="{{ url('activity/detail/' . $photo->id) }}" target="_blank"
+                        class="shadow-md  shadow-[#C6E2F6] max-w-[390px] max-es:w-[350px] flex justify-center h-[100%] rounded-xl hover:scale-95">
+                        <div class="bg-white rounded-[15px] z-0 flex flex-col justify-center gap-y-4 ">
+                            <div class="w-full h-[300px] mx-auto rounded-t-xl ">
+                                <img src="{{ url($photo->thumbnail_link) }}" alt=""
+                                    class="w-full h-full object-cover rounded-t-xl">
+                            </div>
+                            <div class="flex flex-col justify-center gap-y-4 px-3 ">
+                                <p class="text-[#686868] text-lg max-md:text-md text-center h-[120px] overflow-auto">
+                                    {{ $photo->title }}</p>
+                            </div>
                         </div>
-                        <div class="flex flex-col justify-center gap-y-4 px-3 " >
-                            <p class="text-[#686868] text-lg max-md:text-md text-center h-[120px] overflow-auto">{{$photo->title}}</p>
-                        </div>
-                    </div>
-                </a>
+                    </a>
                 @endforeach
             </div>
             <div class="relative flex justify-center mt-4 z-50">
@@ -275,40 +297,41 @@
             </p>
             <div class="mt-4 shadow-md w-full h-[450px] max-md:h-[300px] max-sm:h-[200px]">
                 <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3826.908230602374!2d102.82955227514358!3d16.429486484303464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31228a230449c587%3A0xc4b5ba4aaf738f68!2z4LmC4Lij4LiH4LmB4Lij4Lih4LmC4LiG4Lip4LiwIOC4guC4reC4meC5geC4geC5iOC4mSBLT1NBIEhPVEVMIEtIT05LQUVO!5e0!3m2!1sth!2sth!4v1726822460127!5m2!1sth!2sth"
-                class="w-full h-full outline-none" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3826.908230602374!2d102.82955227514358!3d16.429486484303464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31228a230449c587%3A0xc4b5ba4aaf738f68!2z4LmC4Lij4LiH4LmB4Lij4Lih4LmC4LiG4Lip4LiwIOC4guC4reC4meC5geC4geC5iOC4mSBLT1NBIEhPVEVMIEtIT05LQUVO!5e0!3m2!1sth!2sth!4v1726822460127!5m2!1sth!2sth"
+                    class="w-full h-full outline-none" width="600" height="450" style="border:0;"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </section>
 
         {{-- @dd($postsupport) --}}
-        @if($postsupport)
-        <section class=" py-10 mt-15 bg-white items-center">
-            <p class="text-[#23404A] font-bold text-center text-4xl max-md:text-2xl max-md:px-2" data-aos="zoom-in"
-                data-aos-duration="3000">
-                {{$postsupport->title}}
-            </p>
-            <div class="relative z-30 items-center mt-8">
-                <div class="swiper swiper1 items-center w-11/12 mx-auto">
-                    <div class="swiper-wrapper w-full mx-auto flex">
-                        {{-- @dd($postsupport->images) --}}
-                        @foreach($postsupport->images as $image)
-                            <div class="swiper-slide flex flex-col justify-center">
-                                <div class="flex justify-center">
-                                    <div class="w-[200px] h-[120px] flex justify-center" data-aos="zoom-in"
-                                        data-aos-duration="3000">
-                                        <img src="{{url($image->image_link)}}" alt="" class="w-full h-full">
+        @if ($postsupport)
+            <section class=" py-10 mt-15 bg-white items-center">
+                <p class="text-[#23404A] font-bold text-center text-4xl max-md:text-2xl max-md:px-2" data-aos="zoom-in"
+                    data-aos-duration="3000">
+                    {{ $postsupport->title }}
+                </p>
+                <div class="relative z-30 items-center mt-8">
+                    <div class="swiper swiper1 items-center w-11/12 mx-auto">
+                        <div class="swiper-wrapper w-full mx-auto flex">
+                            {{-- @dd($postsupport->images) --}}
+                            @foreach ($postsupport->images as $image)
+                                <div class="swiper-slide flex flex-col justify-center">
+                                    <div class="flex justify-center">
+                                        <div class="w-[200px] h-[120px] flex justify-center" data-aos="zoom-in"
+                                            data-aos-duration="3000">
+                                            <img src="{{ url($image->image_link) }}" alt=""
+                                                class="w-full h-full">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        @endforeach
-                    </div>
+                            @endforeach
+                        </div>
 
+                    </div>
+                    <div class="swiper-button-next swiper-button-next1"></div>
+                    <div class="swiper-button-prev swiper-button-prev1"></div>
                 </div>
-                <div class="swiper-button-next swiper-button-next1"></div>
-                <div class="swiper-button-prev swiper-button-prev1"></div>
-            </div>
-        </section>
+            </section>
         @endif
     </div>
 @endsection

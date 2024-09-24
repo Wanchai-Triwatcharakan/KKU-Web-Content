@@ -32,12 +32,10 @@ var swiper = new Swiper(".swiper", {
         1539: {
             slidesPerView: 3,
             spaceBetween: 15,
-            centerSlide: true,
         },
         1600: {
             slidesPerView: 4,
             spaceBetween: 15,
-            centerSlide: true,
         },
     },
 });
