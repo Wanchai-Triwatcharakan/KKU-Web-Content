@@ -108,6 +108,12 @@ const ModalAddPost = (props) => {
     newList[index][field] = value;
     setScheduleList(newList);
   };
+  const handleRemoveSecondRow = () => {
+    // if (scheduleList.length > 1) {
+      const newList = scheduleList.filter((_, i) => i !== 1);
+      setScheduleList(newList);
+    // }
+  };
 
   const setPreviewHandler = (data) => {
     if(data.file) {
@@ -545,6 +551,16 @@ const ModalAddPost = (props) => {
                         fullWidth
                         style={{ width: "100%" }}
                       />
+                      {/* {index !== 0 && ( */}
+                      <IconButton
+                        className="param-generator"
+                        color="error"
+                        sx={{ p: "10px" }}
+                        onClick={handleRemoveSecondRow}
+                      >
+                        <FontAwesomeIcon icon={faXmark} />
+                      </IconButton>
+                       {/* )} */}
                     </div>
                   </div>
                 ))}

@@ -99,7 +99,7 @@
                     .input-time {
                         @apply w-full grid mt-4 grid-cols-3 gap-3 md:gap-y-4;
                         .input-half {
-                            @apply w-full;
+                            @apply w-full flex;
                             .date-input  {
                                 @apply mx-0 w-full border;
                                 label {
