@@ -35,6 +35,7 @@ import {
   faHouseUser,
   faTable,
   faPeopleRoof,
+  faImage,
 } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "@mui/material";
 import NavLink from "./navlink";
@@ -299,7 +300,7 @@ const SidebarComponent = (props) => {
                     liClass="menu-link"
                   >
                     <span className="collap-title">
-                      <FontAwesomeIcon icon={faPersonHarassing} />
+                    <FontAwesomeIcon icon={faAddressBook} />
                     </span>
                     <span className="menu-title">{t("วิทยากร")}</span>
                   </NavLink>
@@ -313,7 +314,7 @@ const SidebarComponent = (props) => {
                     liClass="menu-link"
                   >
                     <span className="collap-title">
-                      <FontAwesomeIcon icon={faPersonHarassing} />
+                    <FontAwesomeIcon icon={faImage} />
                     </span>
                     <span className="menu-title">{t("ภาพกิจกรรม")}</span>
                   </NavLink>
