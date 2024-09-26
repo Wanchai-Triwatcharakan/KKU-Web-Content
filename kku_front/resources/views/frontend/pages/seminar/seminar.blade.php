@@ -5,8 +5,7 @@
 @endsection
 @section('content')
 
-    <section
-        class="mt-[4.5rem] max-xl:mt-[3rem] w-full h-[500px] max-xl:h-[350px] max-sm:h-[250px] relative z-50">
+    <section class="mt-[4.5rem] max-xl:mt-[3rem] w-full h-[500px] max-xl:h-[350px] max-sm:h-[250px] relative z-50">
         <div class="absolute inset-0 z-50 flex flex-col justify-center items-center gap-y-4 max-sm:gap-y-2 px-4">
             <p class="text-white text-6xl max-xl:text-3xl max-md:text-2xl  font-bold text-center" data-aos="zoom-in"
                 data-aos-duration="3000">
@@ -69,7 +68,8 @@
                 </div>
             </div>
 
-            <div class="mt-12  max-sm:px-4 flex flex-col gap-y-2 w-full" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+            <div class="mt-12  max-sm:px-4 flex flex-col gap-y-2 w-full" data-aos="fade-up"
+                data-aos-anchor-placement="top-bottom">
                 <p class="text-[#23404A] font-semibold text-2xl max-md:text-lg">หลักการและเหตุผล</p>
 
                 <div class="flex flex-col gap-y-6 text-[1rem] indent-8">
@@ -99,6 +99,74 @@
             class="absolute  -bottom-40 right-[40rem] max-lg:right-[20rem] max-sm:right-[8rem] w-80">
     </section>
 
+    <section class=" bg-white flex flex-col gap-4 Z-50  pb-8 relative">
+        <div class="absolute w-full h-full">
+            <img src="/images/bg1.png" alt="Your Image" class="w-full h-full object-cover">
+        </div>
+        <p class="text-white font-bold text-center text-3xl  z-50 max-md:px-2 pt-10" data-aos="zoom-in"
+            data-aos-duration="3000">
+            แนวทางการจัดงาน
+        </p>
+        <p class="text-white font-medium text-center text-lg  max-sm:text-[1rem] z-40 w-4/5 mx-auto" data-aos="zoom-in"
+            data-aos-duration="3000">
+            การประชุมในครั้งนี้มุ่งเน้นที่การพัฒนานวัตกรรมเพื่อสุขภาพและความเป็นอยู่ที่ดี โดยครอบคลุมหัวข้อที่สำคัญ
+            ได้แก่ สุขภาพ สมรรถภาพทางกาย โภชนาการ รูปลักษณ์ การนอนหลับ และการมีสติ
+            โดยจะเน้นการแสดงนวัตกรรมและการพัฒนาที่เกี่ยวข้องในด้านเหล่านี้อย่างครบวงจร
+
+        </p>
+
+        <div class="w-4/5  mx-auto py-10 max-ex:py-4 content-center grid grid-cols-6 max-lg:grid-cols-3 max-md:grid-cols-2 gap-y-2 z-50"
+            data-aos="zoom-in" data-aos-duration="3000">
+            @for ($i = 0; $i < 6; $i++)
+                <div class="flex justify-center items-center flex-col gap-2">
+                    <div
+                        class="w-[160px] h-[160px] max-xl:w-[120px] max-xl:h-[120px] rounded-full p-1 bg-white items-center flex justify-center">
+                        <img src="/images/plush.png" alt="w-full h-full">
+                    </div>
+                    <p class="text-white font-medium text-center text-lg  max-sm:text-[1rem] z-40 w-4/5 mx-auto">
+                        สุขภาพ
+                    </p>
+                </div>
+            @endfor
+        </div>
+
+
+    </section>
+
+    {{-- @if ($postsupport) --}}
+    <section class=" py-10 mt-15 bg-white items-center relative z-50">
+        <p class="text-[#23404A] font-bold text-center text-4xl max-md:text-2xl max-md:px-2" data-aos="zoom-in"
+            data-aos-duration="3000">
+            {{-- {{ $postsupport->title }} --}}
+            ผู้สนับสนุน
+        </p>
+        <div class="relative z-30 items-center mt-8">
+            <div class="swiper swiper1 items-center w-11/12 mx-auto">
+
+                <div class="swiper-wrapper w-full mx-auto flex">
+                        {{-- @dd($postsupport->images) --}}
+                        {{-- @foreach ($postsupport->images as $image) --}}
+                        <div class="swiper-slide flex flex-col justify-center">
+                            <div class="flex justify-center">
+                                <div class="w-[200px] h-[120px] flex justify-center" data-aos="zoom-in"
+                                    data-aos-duration="3000">
+                                    {{-- <img src="{{ url($image->image_link) }}" alt=""
+                                        class="w-full h-full"> --}}
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- @endforeach --}}
+                </div>
+
+            </div>
+            <div class="swiper-button-next swiper-button-next1"></div>
+            <div class="swiper-button-prev swiper-button-prev1"></div>
+        </div>
+    </section>
+    {{-- @endif --}}
+
 @endsection
 @section('script')
+@vite('resources/js/seminar/swiper.js')
 @endsection

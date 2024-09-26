@@ -83,8 +83,8 @@
             id="previewImage" data-aos="zoom-in" data-aos-duration="3000">
             <img src="/images/Rectangle 227.png" alt="" class="w-full h-full hadow-md ">
             <div
-                class="absolute inset-0 bg-gradient-to-b from-stone-700 opacity-0 hover:opacity-75 flex justify-center items-center transition-opacity duration-300">
-                <img src="/images/eye.png" alt="" class="w-auto h-auto max-w-12 max-h-12">
+                class="absolute inset-0 bg-gradient-to-b from-stone-500 to-black opacity-0 hover:opacity-75 flex justify-center items-center transition-opacity duration-300">
+                <img src="/images/eye.png" alt="" class="w-auto h-auto max-w-12 max-h-12 opacity-100">
             </div>
         </div>
     </section>

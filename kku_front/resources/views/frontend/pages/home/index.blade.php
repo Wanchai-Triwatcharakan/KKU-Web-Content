@@ -1,7 +1,6 @@
 @extends('frontend.layouts.layout-main')
 @section('title', 'Home')
 @section('style')
-    {{-- @vite('resources/css/app.css') --}}
     @vite('resources/css/home.css')
 @endsection
 
@@ -261,7 +260,8 @@
                 @foreach ($photoactivity as $photo)
                     {{-- @dd($photo) --}}
                     <a href="{{ url('activity/detail/' . $photo->id) }}" target="_blank"
-                        class="shadow-md  shadow-[#C6E2F6] max-w-[390px] max-es:w-[350px] flex justify-center h-[100%] rounded-xl hover:scale-95">
+                        class="shadow-md  shadow-[#C6E2F6] max-w-[390px] max-es:w-[350px] flex justify-center h-[100%] rounded-xl hover:scale-95"
+                        data-aos="fade-up" data-aos-duration="1500">
                         <div class="bg-white rounded-[15px] z-0 flex flex-col justify-center gap-y-4 ">
                             <div class="w-full h-[300px] mx-auto rounded-t-xl ">
                                 <img src="{{ url($photo->thumbnail_link) }}" alt=""
@@ -335,6 +335,7 @@
         @endif
     </div>
 @endsection
+
 @section('script')
     @vite('resources/js/home/swiper.js')
 @endsection

@@ -21,6 +21,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        height: 100%;
 
     }
 
@@ -49,24 +50,11 @@
 
 <swiper-container class="mySwiper mt-[4.5rem] max-xl:mt-[3rem] cursor-pointer relative z-50" pagination="true"
     pagination-dynamic-bullets="true" loop="true" autoplay-delay="6000">
-    {{-- @if ($slide_image)
-    @foreach ($slide_image as $image)
-        @if ($image->is_footer == 0)
-            <swiper-slide>
-                <img src="/{{ $image->ad_image }}" alt="" class="w-full h-auto">
-            </swiper-slide>
-        @endif
-    @endforeach
-@endif --}}
-
-    {{-- @dd($path) --}}
 
     @foreach($adslide as $as)
-        <swiper-slide><img src="{{url($as->ad_image)}}" alt="" class="w-full h-auto"></swiper-slide>
+        <swiper-slide class=""><img src="{{url($as->ad_image)}}" alt="" class="w-full h-auto"></swiper-slide>
     @endforeach
-    {{-- <swiper-slide><img src="/images/home/Rectangle 48.png" alt="" class="w-full h-auto"></swiper-slide>
-    <swiper-slide><img src="/images/home/Rectangle 48.png" alt="" class="w-full h-auto"></swiper-slide> --}}
-
+   
 </swiper-container>
 
 
