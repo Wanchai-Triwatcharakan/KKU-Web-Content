@@ -19,7 +19,7 @@
 
         <div class="w-[60%] mx-auto flex flex-col justify-center gap-12  items-center">
             @foreach ($regisPost as $post)
-                <a href="{{ route('register.detail') }}" target="_blank"
+                <a href="{{ url('register/detail/'.$post->id) }}" target="_blank"
                     class=" z-50 flex justify-between bg-[#F7FAF3]  border border-[#F7FAF3] rounded-2xl shadow-md max-sm:flex-col " data-aos="fade-up"
                     data-aos-anchor-placement="center-bottom" data-aos-duration="3000">
                     <div class="flex flex-col gap-4 p-6 items-start justify-center w-[70%] max-sm:order-2">
