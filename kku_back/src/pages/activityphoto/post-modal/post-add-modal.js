@@ -31,6 +31,7 @@ const addDataDefault = {
   keyword: "",
   description: "",
   topic: "",
+  iframe: "",
   slug: "",
   redirect: "",
   priority: 1,
@@ -201,6 +202,7 @@ const ModalAddPost = (props) => {
     formData.append('description', (addData.description?addData.description:""))
     formData.append('slug', addData.slug)
     formData.append('topic', addData.topic)
+    formData.append('iframe', addData.iframe)
     formData.append('content', ckValue)
     formData.append('redirect', addData.redirect)
     formData.append('display_date', displayDate?moment(displayDate).format():null)
@@ -434,6 +436,21 @@ const ModalAddPost = (props) => {
                   label="Topic"
                   size="small"
                 /> */}
+                <TextField
+                  onChange={(e) =>
+                    setAddData((prevState) => {
+                      return { ...prevState, iframe: e.target.value }
+                    })
+                  }
+                  placeholder="Google Link"
+                  value={addData.iframe}
+                  className="text-field-custom"
+                  fullWidth={true}
+                  error={addDataValid.iframe}
+                  id="inp-topic"
+                  label="Google Link"
+                  size="small"
+                />
                 {/* <div style={{marginTop: "1rem"}} className="ck-content">
                   <label className="ck-add-post">Content</label>
                   <CKeditorComponent

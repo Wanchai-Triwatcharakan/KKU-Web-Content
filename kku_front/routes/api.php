@@ -109,6 +109,8 @@ Route::prefix('backoffice/v1')->group(function () {
         Route::post('content/create', [PostController::class, 'createContent']);
         Route::post('content/update/{id}', [PostController::class, 'updateContent']);
         Route::delete('content/{language}/{token}', [PostController::class, 'deleteContent']);
+        // กำหนดเวลา
+        Route::post('schedule/create', [PostController::class, 'createSchedule']);
 
         /* Contact Page */
         Route::get('message/data', [MessageController::class, 'index']);

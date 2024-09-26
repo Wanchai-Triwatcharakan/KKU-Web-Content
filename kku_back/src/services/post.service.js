@@ -35,4 +35,17 @@ export const svDeletePostByToken = (token,language) => {
   )
 }
 
+
+export const svCreateSchedule = (formData) => {
+  return axios.post(`schedule/create`, formData).then( 
+    (res) =>  { return { status: true, description: res.data.description }},
+    (error) => { return { status: false, description: (!error.response.data)?"Something went wrong.": error.response.data.description } }
+  )
+}
  
+export const svGetTimeSchedule = (id) => {
+  return axios.get(`scheduletime/${id}`).then( 
+    (res) => { return { status: true, data: res.data.data }} , 
+    (error) => { return { status: false, description: (!error.response.data)?"Something went wrong.": error.response.data.description } }
+  )
+}

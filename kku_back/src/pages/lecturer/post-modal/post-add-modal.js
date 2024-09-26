@@ -406,6 +406,8 @@ const ModalAddPost = (props) => {
                   id="cate-description"
                   label="รายละเอียด"
                   size="small"
+                  multiline 
+                  rows={2}
                 />
                 {/* <TextField
                   onChange={(e) =>

@@ -169,6 +169,7 @@ const PostTab = (props) => {
                     onAddClick={() => addHandler(item)}
                     onEditClick={() => editHandler(item)}
                     onDeleteClick={() => deleteHandler(item)}
+                    allowDelete={item.allow_delete === 1 ? false  : true}
                     mainContent={item.is_maincontent}
                     className="post-card-content" 
                     data={{

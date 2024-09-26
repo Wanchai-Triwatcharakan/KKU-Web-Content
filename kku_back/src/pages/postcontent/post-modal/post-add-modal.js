@@ -31,6 +31,7 @@ const addDataDefault = {
   keyword: "",
   description: "",
   topic: "",
+  iframe: "",
   slug: "",
   redirect: "",
   priority: 1,
@@ -201,6 +202,7 @@ const ModalAddPost = (props) => {
     formData.append('description', (addData.description?addData.description:""))
     formData.append('slug', addData.slug)
     formData.append('topic', addData.topic)
+    formData.append('iframe', addData.iframe)
     formData.append('content', ckValue)
     formData.append('redirect', addData.redirect)
     formData.append('display_date', displayDate?moment(displayDate).format():null)
@@ -403,6 +405,8 @@ const ModalAddPost = (props) => {
                   id="cate-description"
                   label="Description"
                   size="small"
+                  multiline 
+                  rows={4} 
                 />
                 {/* <TextField
                   onChange={(e) =>
@@ -457,6 +461,21 @@ const ModalAddPost = (props) => {
                   label="Redirect"
                   size="small"
                 /> */}
+                <TextField
+                  onChange={(e) =>
+                    setAddData((prevState) => {
+                      return { ...prevState, iframe: e.target.value }
+                    })
+                  }
+                  placeholder="link or iframe"
+                  value={addData.iframe}
+                  className="text-field-custom"
+                  fullWidth={true}
+                  error={addDataValid.iframe}
+                  id="inp-topic"
+                  label="link or iframe"
+                  size="small"
+                />
 
                 <div className="input-date">
                   <div className="input-half pr">

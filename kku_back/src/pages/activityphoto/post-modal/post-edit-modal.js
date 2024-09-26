@@ -32,6 +32,7 @@ const editDataDefault = {
   keyword: "",
   description: "",
   topic: "",
+  iframe: "",
   slug: "",
   redirect: "", 
   priority: 1,
@@ -287,6 +288,7 @@ const ModalEditPost = (props) => {
     formData.append('description', (editData.description?editData.description:""))
     formData.append('slug', editData.slug)
     formData.append('topic', editData.topic)
+    formData.append('iframe', editData.iframe)
     formData.append('content', ckValue?ckValue:"")
     formData.append('redirect', editData.redirect)
     formData.append('display_date', displayDate?moment(displayDate).format():null)
@@ -488,7 +490,7 @@ const ModalEditPost = (props) => {
                   fullWidth={true}
                   error={editDataValid.description}
                   id="cate-description"
-                  label="Description"
+                  label="Location"
                   size="small"
                 />
                 {/* <TextField
@@ -513,6 +515,17 @@ const ModalEditPost = (props) => {
                   label="Topic"
                   size="small"
                 /> */}
+                <TextField
+                  onChange={(e) => setEditData({...editData, iframe: e.target.value})}
+                  placeholder="Google Link"
+                  value={editData.iframe}
+                  className="text-field-custom"
+                  fullWidth={true}
+                  error={editDataValid.iframe}
+                  id="inp-topic"
+                  label="Google Link"
+                  size="small"
+                />
                 {/* <div style={{marginTop: "1rem"}} className="ck-content">
                   <label className="ck-edit-post">Content</label>
                   {ckValue !== null && (

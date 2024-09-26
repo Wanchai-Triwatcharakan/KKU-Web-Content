@@ -32,6 +32,7 @@ const editDataDefault = {
   keyword: "",
   description: "",
   topic: "",
+  iframe: "",
   slug: "",
   redirect: "", 
   priority: 1,
@@ -51,6 +52,7 @@ const editDataValidDefault = {
   keyword: false,
   description: false,
   slug: false,
+  iframe: false,
   redirect: false,
   isMainContent: false,
   thumbnail_name: false,
@@ -287,6 +289,7 @@ const ModalEditPost = (props) => {
     formData.append('description', (editData.description?editData.description:""))
     formData.append('slug', editData.slug)
     formData.append('topic', editData.topic)
+    formData.append('iframe', editData.iframe)
     formData.append('content', ckValue?ckValue:"")
     formData.append('redirect', editData.redirect)
     formData.append('display_date', displayDate?moment(displayDate).format():null)
@@ -471,7 +474,7 @@ const ModalEditPost = (props) => {
                   label="Title"
                   size="small"
                 />
-                {/* <TextField
+                <TextField
                   onChange={(e) => setEditData({...editData, keyword: e.target.value})}
                   value={editData.keyword}
                   className="text-field-custom"
@@ -480,7 +483,7 @@ const ModalEditPost = (props) => {
                   id="cate-keyword"
                   label="Keyword"
                   size="small"
-                /> */}
+                />
                 <TextField
                   onChange={(e) => setEditData({...editData, description: e.target.value})}
                   value={editData.description}
@@ -490,6 +493,8 @@ const ModalEditPost = (props) => {
                   id="cate-description"
                   label="Description"
                   size="small"
+                  multiline 
+                  rows={4}
                 />
                 {/* <TextField
                   onChange={(e) => setEditData({...editData, slug: e.target.value})}
@@ -524,6 +529,17 @@ const ModalEditPost = (props) => {
                   )}
               
                 </div>
+                <TextField
+                  onChange={(e) => setEditData({...editData, iframe: e.target.value})}
+                  placeholder="link or iframe"
+                  value={editData.iframe}
+                  className="text-field-custom"
+                  fullWidth={true}
+                  error={editDataValid.iframe}
+                  id="inp-topic"
+                  label="link or iframe"
+                  size="small"
+                />
                 {/* <TextField
                   onChange={(e) => setEditData({...editData, redirect: e.target.value})}
                   placeholder="Link Url"

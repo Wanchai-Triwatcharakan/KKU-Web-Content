@@ -86,7 +86,7 @@ const PostTab = (props) => {
       });
     }
   }, [postTab, postData, page, rowsPerPage, pageControl, category]);
-  console.log(filteredData);
+  // console.log(filteredData);
   const setPostFilterData = async () => {
     const filtered = await postData.filter((f) => {
       /* กรอง Tab */
@@ -202,6 +202,7 @@ const PostTab = (props) => {
                     onAddClick={() => addHandler(item)}
                     onEditClick={() => editHandler(item)}
                     onDeleteClick={() => deleteHandler(item)}
+                    allowDelete={item.allow_delete === 1 ? false  : true}
                     mainContent={item.is_maincontent}
                     className="post-card-content"
                     data={{

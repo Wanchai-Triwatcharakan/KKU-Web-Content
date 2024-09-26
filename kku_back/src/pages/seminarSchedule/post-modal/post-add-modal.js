@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
-import { svCreatePost } from "../../../services/post.service";
+import { svCreateSchedule } from "../../../services/post.service";
 import ButtonUI from "../../../components/ui/button/button";
 import PreviewImageUI from "../../../components/ui/preview-image/preview-image";
 import FieldsetUI from "../../../components/ui/fieldset/fieldset";
@@ -230,9 +230,10 @@ const ModalAddPost = (props) => {
     formData.append('pin', (addData.pin)?1:0)
     formData.append('priority', addData.priority)
     formData.append('language', language)
- 
+    formData.append('schedulelist', JSON.stringify(scheduleList))
+    
     /* Fetch Data */
-    svCreatePost(formData).then(res => {
+    svCreateSchedule(formData).then(res => {
       setIsFetching(false)
       if(res.status) {
         props.setClose(false)

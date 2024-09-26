@@ -490,6 +490,8 @@ const ModalEditPost = (props) => {
                   id="cate-description"
                   label="Description"
                   size="small"
+                  multiline
+                  rows={2}
                 />
                 {/* <TextField
                   onChange={(e) => setEditData({...editData, slug: e.target.value})}

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
 use Exception;
+use App\Models\ScheduleTime;
 
 class PostController extends BaseController
 {
@@ -63,6 +64,7 @@ class PostController extends BaseController
                 "description" => $params['description'],
                 "slug" => $params['slug'],
                 "topic" => $params['topic'],
+                "iframe" => isset($params['iframe']) ? $params['iframe'] : "",
                 "content" => $params['content'],
                 "redirect" => $params['redirect'],
                 "date_begin_display" => $params['display_date'],
@@ -187,6 +189,7 @@ class PostController extends BaseController
                 "description" => $params['description'],
                 "slug" => $params['slug'],
                 "topic" => $params['topic'],
+                "iframe" => isset($params['iframe']) ? $params['iframe'] : "",
                 "content" => $params['content'],
                 "redirect" => $params['redirect'],
                 "date_begin_display" => $params['display_date'],
@@ -243,6 +246,83 @@ class PostController extends BaseController
                 'message' => 'ok',
                 'description' => 'Delete successful'
             ], 200);
+        } catch (Exception $e) {
+            DB::rollback();
+            return response([
+                'message' => 'error',
+                'description' => 'Something went wrong',
+                'errorsMessage' => $e->getMessage()
+            ], 501);
+        }
+    }
+
+    // createSchedule
+    public function createSchedule(Request $req)
+    {
+        $this->getAuthUser();
+        $files = $req->allFiles();
+        $params = $req->all();
+        $validator = Validator::make($req->all(), [
+            'Thumbnail' => "mimes:jpg,png,jpeg,pdf|max:5000|nullable",
+        ]);
+        if ($validator->fails()) {
+            return $this->sendErrorValidators('Invalid params', $validator->errors());
+        }
+
+        /* Upload Thumbnail */
+        $newFolder = "upload/" . date('Y') . "/" . date('m') . "/" . date('d') . "/";
+        $thumbnail = (isset($files['Thumbnail'])) ? $this->uploadImage($newFolder, $files['Thumbnail'], "", "", $params['ThumbnailName']) : "";
+
+        $thumbnail_title = isset($files['Thumbnail']) && !empty($files['Thumbnail']) ? $params['ThumbnailTitle'] : "";
+        $thumbnail_alt = isset($files['Thumbnail']) && !empty($files['Thumbnail']) ? $params['ThumbnailAlt'] : "";
+
+        try {
+
+            DB::beginTransaction();
+            $postCreated = Post::create([
+                "thumbnail_link" => $thumbnail,
+                "thumbnail_title" => $thumbnail_title,
+                "thumbnail_alt" => $thumbnail_alt,
+                "category" => $params['category'],
+                "title" => $params['title'],
+                "keyword" => $params['keyword'],
+                "description" => $params['description'],
+                "slug" => $params['slug'],
+                "topic" => $params['topic'],
+                "iframe" => isset($params['iframe']) ? $params['iframe'] : "",
+                "content" => $params['content'],
+                "redirect" => $params['redirect'],
+                "date_begin_display" => $params['display_date'],
+                "date_end_display" => $params['hidden_date'],
+                "status_display" => $params['display'],
+                "pin" => $params['pin'],
+                "is_maincontent" => $params['isMainContent'],
+                "priority" => $params['priority'],
+                "language" => $params['language'],
+                "defaults" => 1,
+            ], Response::HTTP_CREATED);
+
+            $scheduleList = json_decode($params['schedulelist'], true);
+            $scheduleData = [];
+            foreach ($scheduleList as $index => $list) {
+                $scheduleData[] = [
+                    'post_id' => $postCreated->id,
+                    'time_start' => $list['startTime'],
+                    'time_end' => $list['endTime'],
+                    'description' => $list['details'],
+                    'priority' => $index+1,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ];
+            }
+            ScheduleTime::insert($scheduleData);
+
+            DB::commit();
+
+            return response([
+                'message' => 'success',
+                'description' => 'Created successful'
+            ], 201);
         } catch (Exception $e) {
             DB::rollback();
             return response([

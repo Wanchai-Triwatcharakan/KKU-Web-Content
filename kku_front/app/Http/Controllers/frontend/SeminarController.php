@@ -9,7 +9,8 @@ use App\Models\Post;
 class SeminarController extends Controller
 {
     public function indexPageSeminar() {
-        return view('frontend.pages.seminar.seminar');
+        $post = Post::find(6);
+        return view('frontend.pages.seminar.seminar', compact('post'));
     }
     public function indexPage() {
         $allLecturer = Post::where('category', ',10,')

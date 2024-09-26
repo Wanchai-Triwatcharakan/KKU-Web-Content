@@ -97,7 +97,8 @@
                     }
 
                     .input-time {
-                        @apply w-full grid mt-4 grid-cols-3 gap-3 md:gap-y-4;
+                        @apply w-full grid mt-4 gap-3 md:gap-y-4;
+                        grid-template-columns: 1fr 1fr 3fr;
                         .input-half {
                             @apply w-full flex;
                             .date-input  {

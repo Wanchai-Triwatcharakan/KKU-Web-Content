@@ -25,6 +25,7 @@ import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import { LocalizationProvider, MobileTimePicker } from "@mui/x-date-pickers";
 import moment from "moment";
+import { svGetTimeSchedule } from "../../../services/post.service";
 
 const editDataDefault = {
   id: null,
@@ -76,6 +77,7 @@ const ModalEditPost = (props) => {
   const isSuperAdmin = useSelector(
     (state) => state.auth.userPermission.superAdmin
   );
+  console.log(items.id);
   const language = useSelector((state) => state.app.language);
   const uploadPath = useSelector((state) => state.app.uploadPath);
   const [editData, setEditData] = useState(editDataDefault);
@@ -89,9 +91,28 @@ const ModalEditPost = (props) => {
   const [hiddenDate, setHiddenDate] = useState(null);
   const [isFetching, setIsFetching] = useState(false);
   const [curImg, setCurImg] = useState("");
+
+  const convertTimeStringToDate = (timeString) => {
+    const [hours, minutes, seconds] = timeString.split(':');
+    const date = new Date();
+    date.setHours(hours, minutes, seconds || 0);
+    return date;
+  };
   const [scheduleList, setScheduleList] = useState([
-    { startTime: null, endTime: null, details: "" },
+    { 
+      startTime: convertTimeStringToDate("20:40:00"), 
+      endTime: convertTimeStringToDate("22:42:00"), 
+      details: "dasadadas" 
+    },
   ]);
+
+
+  // const convertTimeStringToDate = (timeString) => {
+  //   const [hours, minutes, seconds] = timeString.split(':');
+  //   const date = new Date();
+  //   date.setHours(hours, minutes, seconds || 0);
+  //   return date;
+  // };
 
   useEffect(() => {
     if (items !== null) {
