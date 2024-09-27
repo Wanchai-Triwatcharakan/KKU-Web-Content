@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
-import { svUpdatePost } from "../../../services/post.service";
+import { svUpdateSchedule } from "../../../services/post.service";
 import ButtonUI from "../../../components/ui/button/button";
 import PreviewImageUI from "../../../components/ui/preview-image/preview-image";
 import FieldsetUI from "../../../components/ui/fieldset/fieldset";
@@ -77,7 +77,7 @@ const ModalEditPost = (props) => {
   const isSuperAdmin = useSelector(
     (state) => state.auth.userPermission.superAdmin
   );
-  console.log(items.id);
+  // console.log(items.id);
   const language = useSelector((state) => state.app.language);
   const uploadPath = useSelector((state) => state.app.uploadPath);
   const [editData, setEditData] = useState(editDataDefault);
@@ -100,13 +100,18 @@ const ModalEditPost = (props) => {
   };
   const [scheduleList, setScheduleList] = useState([
     { 
-      startTime: convertTimeStringToDate("20:40:00"), 
-      endTime: convertTimeStringToDate("22:42:00"), 
-      details: "dasadadas" 
+      time_start: "", 
+      time_end: "", 
+      description: "" 
     },
   ]);
 
-
+  useEffect(() => {
+    svGetTimeSchedule(items.id).then((res) => {
+      // console.log(res.data);
+      setScheduleList(res.data)
+    })
+  }, [])
   // const convertTimeStringToDate = (timeString) => {
   //   const [hours, minutes, seconds] = timeString.split(':');
   //   const date = new Date();
@@ -222,7 +227,7 @@ const ModalEditPost = (props) => {
   const handleAddSchedule = () => {
     setScheduleList([
       ...scheduleList,
-      { startTime: null, endTime: null, details: "" },
+      { time_start: null, time_end: null, description: "" },
     ]);
   };
 
@@ -314,8 +319,10 @@ const ModalEditPost = (props) => {
     ) {
       return false;
     }
-
+    
     setIsFetching(true);
+    console.log(scheduleList);
+    // return false;
     const formData = new FormData();
     if (previews.file) {
       formData.append("Thumbnail", previews.file);
@@ -376,8 +383,9 @@ const ModalEditPost = (props) => {
     formData.append("priority", editData.priority);
     formData.append("old_priority", items.priority);
     formData.append("language", language);
+    formData.append('schedulelist', JSON.stringify(scheduleList))
 
-    svUpdatePost(editData.id, formData).then((res) => {
+    svUpdateSchedule(editData.id, formData).then((res) => {
       setIsFetching(false);
       if (res.status) {
         props.setClose({
@@ -675,21 +683,22 @@ const ModalEditPost = (props) => {
                         className="date-input"
                         size="small"
                         label={t("Start Time")}
-                        value={schedule.startTime}
+                        value={schedule.time_start ? new Date(`1970-01-01T${schedule.time_start}`) : null}
                         onChange={(newValue) =>
-                          handleChangeSchedule(index, "startTime", newValue)
-                        }
+                          handleChangeSchedule(index, "time_start", newValue.toISOString().substr(11, 8)) // แปลงกลับเป็น HH:mm:ss
+                        }                
                         renderInput={(params) => <TextField {...params} />}
                       />
                     </div>
+                    {/* {console.log(schedule)} */}
                     <div className="input-half pl">
                       <MobileTimePicker
                         className="date-input"
                         sx={{ width: 250 }}
                         label={t("End Time")}
-                        value={schedule.endTime}
+                        value={schedule.time_end ? new Date(`1970-01-01T${schedule.time_end}`) : null}
                         onChange={(newValue) =>
-                          handleChangeSchedule(index, "endTime", newValue)
+                          handleChangeSchedule(index, "time_end", newValue.toISOString().substr(11, 8)) // แปลงกลับเป็น HH:mm:ss
                         }
                         renderInput={(params) => <TextField {...params} />}
                       />
@@ -701,9 +710,9 @@ const ModalEditPost = (props) => {
                         placeholder={t("Enter details")}
                         multiline
                         minRows={1}
-                        value={schedule.details}
+                        value={schedule.description}
                         onChange={(e) =>
-                          handleChangeSchedule(index, "details", e.target.value)
+                          handleChangeSchedule(index, "description", e.target.value)
                         }
                         variant="outlined"
                         fullWidth

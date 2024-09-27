@@ -42,6 +42,13 @@ export const svCreateSchedule = (formData) => {
     (error) => { return { status: false, description: (!error.response.data)?"Something went wrong.": error.response.data.description } }
   )
 }
+
+export const svUpdateSchedule = (id, formData) => {
+  return axios.post(`schedule/update/${id}`, formData).then( 
+    (res) =>  { return { status: true, description: res.data.description }},
+    (error) => { return { status: false, description: (!error.response.data)?"Something went wrong.": error.response.data.description } }
+  )
+}
  
 export const svGetTimeSchedule = (id) => {
   return axios.get(`scheduletime/${id}`).then( 

@@ -110,7 +110,9 @@ Route::prefix('backoffice/v1')->group(function () {
         Route::post('content/update/{id}', [PostController::class, 'updateContent']);
         Route::delete('content/{language}/{token}', [PostController::class, 'deleteContent']);
         // กำหนดเวลา
-        Route::post('schedule/create', [PostController::class, 'createSchedule']);
+        Route::post('schedule/create', [RoomSeminarController::class, 'createSchedule']);
+        Route::post('schedule/update/{id}', [RoomSeminarController::class, 'updateSchedule']);
+        Route::get('scheduletime/{id}', [RoomSeminarController::class, 'getScheduleTime']);
 
         /* Contact Page */
         Route::get('message/data', [MessageController::class, 'index']);

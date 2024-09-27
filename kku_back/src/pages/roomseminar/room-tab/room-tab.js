@@ -194,12 +194,13 @@ const RoomTab = (props) => {
                     onAddClick={() => addHandler(item)}
                     onEditClick={() => editHandler(item)}
                     onDeleteClick={() => deleteHandler(item)}
+                    allowDelete={item.allow_delete === 1 ? false  : true}
                     mainContent={item.is_maincontent}
                     className="post-card-content"
                     data={{
                       alt: item.thumbnail_alt,
                       image: item.thumbnail_link,
-                      language: item.language,
+                      language: "th",
                     }}
                     isRowDisplay={isRowDisplay}
                   >
