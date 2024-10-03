@@ -49,7 +49,7 @@
 
 
 <swiper-container class="mySwiper mt-[4.5rem] max-xl:mt-[3rem] cursor-pointer relative z-50" pagination="true"
-    pagination-dynamic-bullets="true" loop="true" autoplay-delay="6000">
+    pagination-dynamic-bullets="true" loop="true" autoplay-delay="6000"> 
 
     @foreach($adslide as $as)
         <swiper-slide class=""><img src="{{url($as->ad_image)}}" alt="" class="w-full h-auto"></swiper-slide>

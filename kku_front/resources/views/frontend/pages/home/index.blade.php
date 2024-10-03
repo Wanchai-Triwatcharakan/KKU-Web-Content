@@ -21,18 +21,25 @@
             <div class="relative z-40 flex max-xl:flex-col gap-6 justify-between w-[70%] max-md:w-full  mx-auto my-12 items-center"
                 data-aos="zoom-in" data-aos-duration="3000">
 
-                <div class="rounded-2xl">
-                    <div
-                        class="relative w-[600px] h-[400px] max-md:w-[500px] max-md:h-[350px] max-sm:w-[370px] max-sm:h-[350px] px-4 max-md:rouded-lg">
-                        <div
-                            class="bg-[#FFCAAE] drop-shadow-md w-full h-full rounded-2xl absolute -left-6 top-6 z-10 max-sm:hidden ">
-                        </div>
-                        <img src="/images/home/111.png" alt=""
-                            class="w-full h-full relative z-20 rounded-2xl drop-shadow-md object-cover">
+                <div class="swiper swiper-container w-full ">
+                    <div class="swiper-wrapper rounded-2xl sm:p-6 flex sm:justify-start  ">
+                        @for ($i = 0; $i < 4; $i++)
+                            <div class="swiper-slide sm:px-6">
+                                <div
+                                    class="relative w-[600px] h-[400px] max-yy:w-[450px] max-yy:h-[350px] max-xl:w-full max-xl:h-[400px] max-md:w-[400px] max-md:h-[350px] max-sm:w-full max-sm:h-[350px] px-4 max-md:rounded-lg">
+                                    <div
+                                        class="bg-[#FFCAAE] drop-shadow-md w-full h-full rounded-2xl absolute -left-6 top-6 z-10 max-sm:hidden">
+                                    </div>
+                                    <img src="/images/home/111.png" alt=""
+                                        class="w-full h-full relative z-20 rounded-2xl drop-shadow-md">
+                                </div>
+                            </div>
+                        @endfor
                     </div>
+                    <div class="swiper-pagination"></div>
                 </div>
 
-                <div class="flex flex-col gap-y-6 justify-between max-xl:mt-6 px-4">
+                <div class="flex flex-col w-full gap-y-6 justify-between max-xl:mt-6 px-4">
                     <div class="flex gap-6 items-center">
                         <div class="w-[50px] h-[50px]">
                             <img src="/images/home/meeting-call.png" alt="" class="w-full h-full">
@@ -225,7 +232,7 @@
                             </div>
 
                             <div class="flex justify-end mt-4">
-                                <a href="{{ url('post/detail/'.$news->id) }}" target="_blank"
+                                <a href="{{ url('post/detail/' . $news->id) }}" target="_blank"
                                     class="text-center font-medium text-[#FF864E] p-2 rounded-full text-[1rem] w-36 cursor-pointer hover:scale-105 transition duration-500">
                                     ดูเพิ่มเติม >></a>
                             </div>

@@ -108,3 +108,32 @@ var swiper = new Swiper(".swiper1", {
         },
     },
 });
+
+
+var swiper = new Swiper(".swiper-container", {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    loop: true,
+    autoplay: {
+        delay: 6000, 
+        disableOnInteraction: false, 
+    },
+    grabCursor: true, 
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true, 
+    },
+    breakpoints: {
+        340: {
+            slidesPerView: 1,
+            spaceBetween: 5,
+            centerSlide: true,
+        },
+        640: {
+            slidesPerView: 1,
+            spaceBetween: 5,
+            centerSlide: true,
+        }
+    },
+  
+});

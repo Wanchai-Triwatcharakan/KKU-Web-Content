@@ -34,16 +34,24 @@
             Life” </p>
         <div class="flex flex-col w-[70%] max-md:w-full mx-auto my-12 items-center">
 
-            <div class="flex max-xl:flex-col gap-6 justify-between items-center">
-                <div class="rounded-2xl">
-                    <div class="relative z-30 w-[600px] h-[400px] max-md:w-[500px] max-md:h-[350px] max-sm:w-[370px] max-sm:h-[350px] px-4 max-md:rouded-lg"
-                        data-aos="fade-right" data-aos-duration="3000">
-                        <div
-                            class="bg-[#FFCAAE] drop-shadow-md w-full h-full rounded-2xl absolute -left-6 top-6 z-10 max-sm:hidden ">
-                        </div>
-                        <img src="/images/home/111.png" alt=""
-                            class="w-full h-full relative z-20 rounded-2xl drop-shadow-md object-cover">
+            <div class="flex max-xl:flex-col gap-6 justify-between items-center w-full">
+
+                <div class="swiper swiper-container w-full ">
+                    <div class="swiper-wrapper rounded-2xl sm:p-6 flex sm:justify-start  ">
+                        @for ($i = 0; $i < 4; $i++)
+                            <div class="swiper-slide sm:px-6">
+                                <div
+                                    class="relative w-[600px] h-[400px] max-yy:w-[450px] max-yy:h-[350px] max-xl:w-full max-xl:h-[400px] max-md:w-[400px] max-md:h-[350px] max-sm:w-full max-sm:h-[350px] px-4 max-md:rounded-lg">
+                                    <div
+                                        class="bg-[#FFCAAE] drop-shadow-md w-full h-full rounded-2xl absolute -left-6 top-6 z-10 max-sm:hidden">
+                                    </div>
+                                    <img src="/images/home/111.png" alt=""
+                                        class="w-full h-full relative z-20 rounded-2xl drop-shadow-md">
+                                </div>
+                            </div>
+                        @endfor
                     </div>
+                    <div class="swiper-pagination"></div>
                 </div>
 
                 <div class="w-full flex flex-col gap-y-6 justify-between max-xl:mt-6 px-4 " data-aos="fade-left"
@@ -144,19 +152,19 @@
             <div class="swiper swiper1 items-center w-11/12 mx-auto">
 
                 <div class="swiper-wrapper w-full mx-auto flex">
-                        {{-- @dd($postsupport->images) --}}
-                        {{-- @foreach ($postsupport->images as $image) --}}
-                        <div class="swiper-slide flex flex-col justify-center">
-                            <div class="flex justify-center">
-                                <div class="w-[200px] h-[120px] flex justify-center" data-aos="zoom-in"
-                                    data-aos-duration="3000">
-                                    {{-- <img src="{{ url($image->image_link) }}" alt=""
+                    {{-- @dd($postsupport->images) --}}
+                    {{-- @foreach ($postsupport->images as $image) --}}
+                    <div class="swiper-slide flex flex-col justify-center">
+                        <div class="flex justify-center">
+                            <div class="w-[200px] h-[120px] flex justify-center" data-aos="zoom-in"
+                                data-aos-duration="3000">
+                                {{-- <img src="{{ url($image->image_link) }}" alt=""
                                         class="w-full h-full"> --}}
-                                </div>
                             </div>
                         </div>
+                    </div>
 
-                        {{-- @endforeach --}}
+                    {{-- @endforeach --}}
                 </div>
 
             </div>
@@ -168,5 +176,5 @@
 
 @endsection
 @section('script')
-@vite('resources/js/seminar/swiper.js')
+    @vite('resources/js/seminar/swiper.js')
 @endsection

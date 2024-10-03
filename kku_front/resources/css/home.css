@@ -64,14 +64,21 @@ body {
    
 }
 
-.swiper-pagination-bullet-active {
-    background: #FF864E !important; 
-    font-size: 25px;
-}
+
 
 .nEw {
     background-image: url("{{ asset('images/home/Group 240.png') }}");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

@@ -114,3 +114,8 @@ body {
   border-right: solid 4px #88bb3d;
   border-bottom: solid 4px #88bb3d;
 }
+
+.swiper-pagination-bullet-active {
+  background: #FF864E !important; 
+  font-size: 25px;
+}

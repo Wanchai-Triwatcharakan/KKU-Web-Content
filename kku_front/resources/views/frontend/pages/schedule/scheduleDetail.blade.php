@@ -43,8 +43,6 @@
             </div>
         </section>
 
-
-
         <section class="w-4/5 mx-auto pb-10 bg-white" data-aos="fade-up" data-aos-duration="3000">
             <p class="bg-[#FF864E] pl-[5rem] max-lg:pl-[1rem] py-4 text-white text-xl font-medium rounded-t-lg">ตารางสัมมนา
             </p>
@@ -61,7 +59,6 @@
                 <hr>
             @endfor
         </section>
-
 
         <section class="w-4/5 mx-auto bg-white" data-aos="fade-up" data-aos-duration="3000">
             <p class="text-xl font-medium text-[#23404A]">กรุณาเลือกห้องเพื่อเเสดงกำหนดการ</p>
@@ -99,17 +96,15 @@
                     </div>
                 @endfor
             </div>
-
-
         </section>
 
-        <div class="w-[50px] h-[50px] fixed right-4 bottom-[12rem] max-xl:bottom-[18rem] max-md:right-2 max-md:bottom-[16.5rem] cursor-pointer hidden" id="BackToTop">
+        <div class="w-[50px] h-[50px] fixed right-4 bottom-[12rem] max-xl:bottom-[18rem] max-md:right-2 max-md:bottom-[16.5rem] cursor-pointer hidden"
+            id="BackToTop">
             <img src="/images/backToTop.png" alt="">
         </div>
-
     </div>
-
 @endsection
+
 @section('script')
     @vite('resources/js/schedule/schedule.js')
 @endsection
