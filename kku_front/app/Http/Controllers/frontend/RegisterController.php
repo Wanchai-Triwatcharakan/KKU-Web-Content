@@ -14,7 +14,8 @@ class RegisterController extends Controller
             ->where('status_display', true)
             ->OrderBy('priority')
             ->get();
-        return view('frontend.pages.register.register', compact('regisPost'));
+        $location = Post::where('id', 12)->first();
+        return view('frontend.pages.register.register', compact('regisPost', 'location'));
     }
     
     public function dataDetail($id) {

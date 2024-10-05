@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('slug')->nullable();
             $table->string('title');
             $table->string('keyword')->nullable();
-            $table->string('description');
+            $table->text('description');
             $table->text('freetag')->nullable();
             $table->string('h1')->nullable();
             $table->string('h2')->nullable()->nullable();

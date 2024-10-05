@@ -39,15 +39,16 @@
                     </a>
                 </div>
             </div>
-            <div class="bg-[#F5F7FA] p-6 border rounded-lg flex flex-col gap-6 w-full">
+            <form action="{{ route('contact.newletter') }}" method="POST" class="bg-[#F5F7FA] p-6 border rounded-lg flex flex-col gap-6 w-full">
+                @csrf
                 <div class="flex justify-between gap-4">
                     <input type="text" id="name" name="name" class="p-3 rounded-lg w-full outline-none border text-[#23404A]"
-                        placeholder="Your Name">
+                        placeholder="Your Name" required>
                     <input type="tel" id="tel" name="tel" class="p-3 rounded-lg w-full outline-none border text-[#23404A]"
-                        placeholder="Phone">
+                        placeholder="Phone" maxlength="10" required>
                 </div>
-                <input type="email" id="email" name="email" class="p-3 rounded-lg outline-none border text-[#23404A]" placeholder="E-mail">
-                <textarea name="" id="" cols="10" rows="5"
+                <input type="email" id="email" name="email" class="p-3 rounded-lg outline-none border text-[#23404A]" placeholder="E-mail" required>
+                <textarea name="message" id="" cols="10" rows="5"
                     class="p-3 rounded-lg outline-none border text-[#23404A]" placeholder="Write Your Message"></textarea>
 
                 <div class="flex justify-start max-sm:justify-center">
@@ -55,7 +56,10 @@
                         Send Your Message
                     </button>
                 </div>
-            </div>
+                @if (session('message'))
+                    <p class="text-green-500">{{ session('message') }}</p>
+                @endif
+            </form>
         </div>
 
         <div
@@ -87,10 +91,7 @@
 
     </section>
     <div class="shadow-md w-full h-[450px] max-md:h-[300px] max-sm:h-[200px]">
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3826.908230602374!2d102.82955227514358!3d16.429486484303464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31228a230449c587%3A0xc4b5ba4aaf738f68!2z4LmC4Lij4LiH4LmB4Lij4Lih4LmC4LiG4Lip4LiwIOC4guC4reC4meC5geC4geC5iOC4mSBLT1NBIEhPVEVMIEtIT05LQUVO!5e0!3m2!1sth!2sth!4v1726822460127!5m2!1sth!2sth"
-            class="w-full h-full outline-none" width="600" height="450" style="border:0;" allowfullscreen=""
-            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+       {!! $location->iframe !!}
     </div>
 
 

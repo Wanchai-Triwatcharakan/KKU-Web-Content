@@ -44,14 +44,9 @@
 
     <section class="relative bg-[#F4FCFF] flex flex-col gap-4 Z-50 pb-4">
         <p class="text-[#23404A] font-bold text-center text-4xl max-md:text-2xl z-50 max-md:px-2 pt-16 max-sm:pt-8"
-            data-aos="zoom-in" data-aos-duration="3000">
-            ที่พัก เส้นทาง และผังจัดงาน
-        </p>
+            data-aos="zoom-in" data-aos-duration="3000">{{$location->title}}</p>
         <div class="mt-4 shadow-md w-full h-[450px] max-md:h-[300px] max-sm:h-[200px]">
-            <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3826.908230602374!2d102.82955227514358!3d16.429486484303464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31228a230449c587%3A0xc4b5ba4aaf738f68!2z4LmC4Lij4LiH4LmB4Lij4Lih4LmC4LiG4Lip4LiwIOC4guC4reC4meC5geC4geC5iOC4mSBLT1NBIEhPVEVMIEtIT05LQUVO!5e0!3m2!1sth!2sth!4v1726822460127!5m2!1sth!2sth"
-            class="w-full h-full outline-none" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
+            {!! $location->iframe !!}
         </div>
     </section>
 

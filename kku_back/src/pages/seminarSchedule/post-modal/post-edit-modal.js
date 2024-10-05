@@ -26,6 +26,7 @@ import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import { LocalizationProvider, MobileTimePicker } from "@mui/x-date-pickers";
 import moment from "moment";
 import { svGetTimeSchedule } from "../../../services/post.service";
+import Checkbox from '@mui/material/Checkbox';
 
 const editDataDefault = {
   id: null,
@@ -73,7 +74,7 @@ const url = window.location.origin + "/";
 
 const ModalEditPost = (props) => {
   const { t } = useTranslation("post-page");
-  const { isEdit, isOpen, menuList, category, items } = props;
+  const { isEdit, isOpen, menuList, category, items, dataRoom } = props;
   const isSuperAdmin = useSelector(
     (state) => state.auth.userPermission.superAdmin
   );
@@ -91,6 +92,7 @@ const ModalEditPost = (props) => {
   const [hiddenDate, setHiddenDate] = useState(null);
   const [isFetching, setIsFetching] = useState(false);
   const [curImg, setCurImg] = useState("");
+  const [checkedRooms, setCheckedRooms] = useState([]);
 
   const convertTimeStringToDate = (timeString) => {
     const [hours, minutes, seconds] = timeString.split(':');
@@ -107,17 +109,16 @@ const ModalEditPost = (props) => {
   ]);
 
   useEffect(() => {
-    svGetTimeSchedule(items.id).then((res) => {
-      // console.log(res.data);
-      setScheduleList(res.data)
+    svGetTimeSchedule('post', items.id).then((res) => {
+      if(res.data && res.data.length > 0) {
+        setScheduleList(res.data)
+      }
     })
   }, [])
-  // const convertTimeStringToDate = (timeString) => {
-  //   const [hours, minutes, seconds] = timeString.split(':');
-  //   const date = new Date();
-  //   date.setHours(hours, minutes, seconds || 0);
-  //   return date;
-  // };
+  useEffect(() => {
+    const tagsArray = JSON.parse(items.tags);
+    setCheckedRooms(tagsArray);
+  }, [items.tags]); 
 
   useEffect(() => {
     if (items !== null) {
@@ -294,6 +295,16 @@ const ModalEditPost = (props) => {
     setMoreImage(result);
   };
 
+  const handleCheckboxChange = (roomId) => {
+    setCheckedRooms((prevCheckedRooms) => {
+      if (prevCheckedRooms.includes(roomId)) {
+        return prevCheckedRooms.filter((id) => id !== roomId);
+      } else {
+        return [...prevCheckedRooms, roomId];
+      }
+    });
+  };
+
   const saveModalHandler = (e) => {
     const cateListId = checkboxList
       .filter((f) => f.checked)
@@ -384,6 +395,7 @@ const ModalEditPost = (props) => {
     formData.append("old_priority", items.priority);
     formData.append("language", language);
     formData.append('schedulelist', JSON.stringify(scheduleList))
+    formData.append('open_room', JSON.stringify(checkedRooms))
 
     svUpdateSchedule(editData.id, formData).then((res) => {
       setIsFetching(false);
@@ -684,9 +696,10 @@ const ModalEditPost = (props) => {
                         size="small"
                         label={t("Start Time")}
                         value={schedule.time_start ? new Date(`1970-01-01T${schedule.time_start}`) : null}
-                        onChange={(newValue) =>
-                          handleChangeSchedule(index, "time_start", newValue.toISOString().substr(11, 8)) // แปลงกลับเป็น HH:mm:ss
-                        }                
+                        onChange={(newValue) => {
+                          const dateValue = newValue instanceof Date ? newValue : new Date(newValue);
+                          handleChangeSchedule(index, "time_start", dateValue.toLocaleTimeString('en-GB', { hour12: false })) // แปลงเป็น HH:mm:ss
+                        }}              
                         renderInput={(params) => <TextField {...params} />}
                       />
                     </div>
@@ -697,9 +710,10 @@ const ModalEditPost = (props) => {
                         sx={{ width: 250 }}
                         label={t("End Time")}
                         value={schedule.time_end ? new Date(`1970-01-01T${schedule.time_end}`) : null}
-                        onChange={(newValue) =>
-                          handleChangeSchedule(index, "time_end", newValue.toISOString().substr(11, 8)) // แปลงกลับเป็น HH:mm:ss
-                        }
+                        onChange={(newValue) => {
+                          const dateValue = newValue instanceof Date ? newValue : new Date(newValue);
+                          handleChangeSchedule(index, "time_end", dateValue.toLocaleTimeString('en-GB', { hour12: false })) // แปลงเป็น HH:mm:ss
+                        }}
                         renderInput={(params) => <TextField {...params} />}
                       />
                     </div>
@@ -732,6 +746,24 @@ const ModalEditPost = (props) => {
                   </div>
                 ))}
 
+                <h3 className="post-detail-title">{t("ห้องสัมมนา")}</h3>
+                <div className="setting-controls" style={{ border: '1px solid #e5e7eb', borderRadius: '4px', padding: '0 0.5rem' }}>
+                  {dataRoom.map((room) => (
+                    <div key={room.id} style={{ padding: '0 1rem'}}>
+                      <FormControlLabel
+                        control={
+                          <Checkbox
+                            checked={checkedRooms.includes(room.id)} // ตรวจสอบว่า roomId อยู่ใน array checkedRooms หรือไม่
+                            onChange={() => handleCheckboxChange(room.id)} // เรียกฟังก์ชันเมื่อมีการเปลี่ยนแปลง
+                            color="primary"
+                          />
+                        }
+                        label={room.title}
+                      />
+                    </div>
+                  ))}
+                </div>
+
                 <h3 className="post-detail-title">{t("การแสดงผล")}</h3>
                 <div className="setting-controls">
                   <div className="switch-form">
@@ -753,7 +785,7 @@ const ModalEditPost = (props) => {
                       />
                     </FormGroup>
                   </div>
-                  <div className="switch-form">
+                  {/* <div className="switch-form">
                     <FormGroup>
                       <FormControlLabel
                         control={
@@ -771,7 +803,7 @@ const ModalEditPost = (props) => {
                         labelPlacement="start"
                       />
                     </FormGroup>
-                  </div>
+                  </div> */}
                   {/* {isSuperAdmin && (
                     <div className="switch-form">
                       <FormGroup>

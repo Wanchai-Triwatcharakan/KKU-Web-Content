@@ -50,8 +50,8 @@ export const svUpdateSchedule = (id, formData) => {
   )
 }
  
-export const svGetTimeSchedule = (id) => {
-  return axios.get(`scheduletime/${id}`).then( 
+export const svGetTimeSchedule = (type,id) => {
+  return axios.get(`scheduletime/${type}/${id}`).then( 
     (res) => { return { status: true, data: res.data.data }} , 
     (error) => { return { status: false, description: (!error.response.data)?"Something went wrong.": error.response.data.description } }
   )

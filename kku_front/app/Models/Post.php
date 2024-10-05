@@ -31,5 +31,9 @@ class Post extends Model
         return $this->hasMany(PostImage::class);
     }
 
+    public function scheduleTimes()
+    {
+        return $this->hasMany(ScheduleTime::class, 'post_id');
+    }
 }
 

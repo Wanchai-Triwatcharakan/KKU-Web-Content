@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { svCreatePost } from "../../../services/post.service";
+import { svCreateRoom } from "../../../services/roomseminar.service";
 import ButtonUI from "../../../components/ui/button/button";
 import PreviewImageUI from "../../../components/ui/preview-image/preview-image";
 import FieldsetUI from "../../../components/ui/fieldset/fieldset";
@@ -202,10 +203,12 @@ const ModalAddPost = (props) => {
       title: addData.title === "",
       slug: addData.slug === "",
       // category: (cateListId === ","),
-      description: addData.description === "",
+      // description: addData.description === "",
     });
 
-    if (addData.title === "" || addData.description === "" || isFetching) {
+    if (addData.title === "" || 
+      // addData.description === "" || 
+      isFetching) {
       //(cateListId === ",") ||
       return false;
     }
@@ -236,10 +239,7 @@ const ModalAddPost = (props) => {
     formData.append("isMainContent", addData.isMainContent ? 1 : 0);
     formData.append("title", addData.title);
     formData.append("keyword", addData.keyword);
-    formData.append(
-      "description",
-      addData.description ? addData.description : ""
-    );
+    formData.append("description",addData.description ? addData.description : "");
     formData.append("slug", addData.slug);
     formData.append("topic", addData.topic);
     formData.append("content", ckValue);
@@ -256,9 +256,10 @@ const ModalAddPost = (props) => {
     formData.append("pin", addData.pin ? 1 : 0);
     formData.append("priority", addData.priority);
     formData.append("language", language);
+    formData.append('schedulelist', JSON.stringify(scheduleList))
 
     /* Fetch Data */
-    svCreatePost(formData).then((res) => {
+    svCreateRoom(formData).then((res) => {
       setIsFetching(false);
       if (res.status) {
         props.setClose(false);
@@ -298,7 +299,7 @@ const ModalAddPost = (props) => {
               <legend className="modal-legend">{t("ModalAddPostTitle")}</legend>
 
               <div className="form-details" style={{ width: "100%" }}>
-                <FieldsetUI className="image-setting" label={t("ข้อมูลรูปภาพ")}>
+                {/* <FieldsetUI className="image-setting" label={t("ข้อมูลรูปภาพ")}>
                   <PreviewImageUI
                     className="add-image"
                     previews={previews}
@@ -341,7 +342,7 @@ const ModalAddPost = (props) => {
                       size="small"
                     />
                   </div>
-                </FieldsetUI>
+                </FieldsetUI> */}
                 <h3 className="post-detail-title">{t("รายละเอียด")}</h3>
                 <TextField
                   onChange={(e) =>
@@ -372,7 +373,7 @@ const ModalAddPost = (props) => {
                   size="small"
                 />
 
-                <div className="input-date">
+                {/* <div className="input-date">
                   <div className="input-half pr">
                     <DateTimePicker
                       className="date-input"
@@ -393,7 +394,7 @@ const ModalAddPost = (props) => {
                       renderInput={(params) => <TextField {...params} />}
                     />
                   </div>
-                </div>
+                </div> */}
 
                 <div className="seminar-schedule">
                   <h3 className="post-title">{t("ตารางสัมมนา")}</h3>
@@ -479,7 +480,7 @@ const ModalAddPost = (props) => {
                       />
                     </FormGroup>
                   </div>
-                  <div className="switch-form">
+                  {/* <div className="switch-form">
                     <FormGroup>
                       <FormControlLabel
                         control={
@@ -494,9 +495,9 @@ const ModalAddPost = (props) => {
                         labelPlacement="start"
                       />
                     </FormGroup>
-                  </div>
+                  </div> */}
 
-                  <div className="switch-form">
+                  {/* <div className="switch-form">
                     <FormGroup>
                       <FormControlLabel
                         control={
@@ -511,7 +512,7 @@ const ModalAddPost = (props) => {
                         labelPlacement="start"
                       />
                     </FormGroup>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </fieldset>

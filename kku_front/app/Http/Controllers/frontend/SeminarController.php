@@ -9,8 +9,23 @@ use App\Models\Post;
 class SeminarController extends Controller
 {
     public function indexPageSeminar() {
-        $post = Post::find(6);
-        return view('frontend.pages.seminar.seminar', compact('post'));
+        $post = Post::where('id', 6)
+            ->with(['images' => function($query) {
+                $query->orderBy('position', 'asc');
+            }])
+            ->first();
+        $postManage = Post::where('id', 9)
+            ->with(['images' => function($query) {
+                $query->orderBy('position', 'asc');
+            }])
+            ->first();
+        $postsupport = Post::where('id', 5)
+            ->where('status_display', true)
+            ->with(['images' => function($query) {
+                $query->orderBy('position', 'asc'); // สั่งเรียงตามฟิลด์ position ตามลำดับจากน้อยไปมาก
+            }])
+            ->first();
+        return view('frontend.pages.seminar.seminar', compact('post', 'postManage', 'postsupport'));
     }
     public function indexPage() {
         $allLecturer = Post::where('category', ',10,')

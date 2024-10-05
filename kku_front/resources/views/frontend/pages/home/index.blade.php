@@ -9,32 +9,27 @@
     <div class="bg-white ">
         <section class="flex flex-col gap-4 relative pt-10 bg-white ">
             <p class="text-[#23404A] font-bold text-center text-3xl max-md:text-xl max-sm:text-lg z-40 max-md:px-2"
-                data-aos="zoom-in" data-aos-duration="3000">First
-                Conference and Exhibition on Health and
-                Wellness Innovation
-            </p>
+                data-aos="zoom-in" data-aos-duration="3000">{{$postOrigin->title}}</p>
             <p class="text-[#23404A] font-medium text-center text-2xl max-2xl:text-xl max-lg:text-lg max-sm:text-[1rem] z-40"
-                data-aos="zoom-in" data-aos-duration="3000">“Empowering
-                Invention to Innovation for Quality of
-                Life” </p>
+                data-aos="zoom-in" data-aos-duration="3000">{{$postOrigin->keyword}}</p>
 
             <div class="relative z-40 flex max-xl:flex-col gap-6 justify-between w-[70%] max-md:w-full  mx-auto my-12 items-center"
                 data-aos="zoom-in" data-aos-duration="3000">
 
                 <div class="swiper swiper-container w-full ">
                     <div class="swiper-wrapper rounded-2xl sm:p-6 flex sm:justify-start  ">
-                        @for ($i = 0; $i < 4; $i++)
+                        @foreach ($postOrigin['images'] as $image)
                             <div class="swiper-slide sm:px-6">
                                 <div
                                     class="relative w-[600px] h-[400px] max-yy:w-[450px] max-yy:h-[350px] max-xl:w-full max-xl:h-[400px] max-md:w-[400px] max-md:h-[350px] max-sm:w-full max-sm:h-[350px] px-4 max-md:rounded-lg">
                                     <div
                                         class="bg-[#FFCAAE] drop-shadow-md w-full h-full rounded-2xl absolute -left-6 top-6 z-10 max-sm:hidden">
                                     </div>
-                                    <img src="/images/home/111.png" alt=""
+                                    <img src="{{url($image->image_link)}}" alt=""
                                         class="w-full h-full relative z-20 rounded-2xl drop-shadow-md">
                                 </div>
                             </div>
-                        @endfor
+                        @endforeach
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>
@@ -47,15 +42,7 @@
                         <p class="text-[#4BCAFF] font-bold text-3xl max-md:text-lg">ที่มาของการสัมมนา</p>
                     </div>
                     <div class="flex flex-col gap-y-6 text-[1rem] indent-8">
-                        <p>ประเทศไทยมีศักยภาพในการเป็นผู้นำด้านสุขภาพ ด้วยทรัพยากร มนุษย์ แหล่งท่องเที่ยวธรรมชาติ
-                            และองค์ความรู้ด้านการแพทย์แผนปัจจุบัน และ แผนไทย รวมถึงการผลิตสมุนไพร และผลิตภัณฑ์จากธรรมชาติ
-                            อีกทั้งการวิจัย และพัฒนาเพื่อเสริมสร้างสุขภาพยังเป็นที่ยอมรับในระดับนานาชาติ
-                        </p>
-                        <p>การประชุมในครั้งนี้มุ่งเน้นที่การพัฒนานวัตกรรมเพื่อสุขภาพ และความเป็นอยู่
-                            ที่ดี โดยครอบคลุมหัวข้อที่สำคัญ ได้แก่ สุขภาพ สมรรถภาพทาง กายโภชนา
-                            การ รูปลักษณ์ การนอนหลับ และการมีสติ โดยจะเน้นการ แสดงนวัตกรรม และ
-                            การพัฒนาที่เกี่ยวข้องในด้านเหล่านี้อย่างครบวงจร
-                        </p>
+                        <p>{!! nl2br(e($postOrigin->description)) !!}</p>
                     </div>
                     <div class="flex justify-end">
                         <a href="{{ route('seminar.origin') }}" target="_blank"
@@ -299,14 +286,9 @@
 
         <section class="relative bg-[#F4FCFF] flex flex-col gap-4 Z-50 pb-4">
             <p class="text-[#23404A] font-bold text-center text-4xl max-md:text-2xl z-50 max-md:px-2 pt-16 max-sm:pt-8"
-                data-aos="zoom-in" data-aos-duration="3000">
-                ที่พัก เส้นทาง และผังจัดงาน
-            </p>
+                data-aos="zoom-in" data-aos-duration="3000">{{$location->title}}</p>
             <div class="mt-4 shadow-md w-full h-[450px] max-md:h-[300px] max-sm:h-[200px]">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3826.908230602374!2d102.82955227514358!3d16.429486484303464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31228a230449c587%3A0xc4b5ba4aaf738f68!2z4LmC4Lij4LiH4LmB4Lij4Lih4LmC4LiG4Lip4LiwIOC4guC4reC4meC5geC4geC5iOC4mSBLT1NBIEhPVEVMIEtIT05LQUVO!5e0!3m2!1sth!2sth!4v1726822460127!5m2!1sth!2sth"
-                    class="w-full h-full outline-none" width="600" height="450" style="border:0;"
-                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                {!! $location->iframe !!}
             </div>
         </section>
 

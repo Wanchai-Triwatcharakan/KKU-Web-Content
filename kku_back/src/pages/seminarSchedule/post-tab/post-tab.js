@@ -61,6 +61,7 @@ const PostTab = (props) => {
     isRowDisplay,
     pageControl,
     category,
+    dataRoom,
   } = props;
   const { t } = useTranslation("post-page");
 
@@ -305,6 +306,7 @@ const PostTab = (props) => {
           setRefreshData={props.setRefreshData}
           totalData={totalData}
           isOpen={postModalAdd}
+          dataRoom={dataRoom}
           setClose={setPostModalAdd}
         />
       )}
@@ -318,6 +320,7 @@ const PostTab = (props) => {
           setCategory={props.setCategory}
           isEdit={postModalEdit.isEdit}
           isOpen={postModalEdit.isOpen}
+          dataRoom={dataRoom}
           setClose={setPostModalEdit}
         />
       )}

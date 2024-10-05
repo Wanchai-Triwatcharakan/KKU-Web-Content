@@ -109,10 +109,18 @@ Route::prefix('backoffice/v1')->group(function () {
         Route::post('content/create', [PostController::class, 'createContent']);
         Route::post('content/update/{id}', [PostController::class, 'updateContent']);
         Route::delete('content/{language}/{token}', [PostController::class, 'deleteContent']);
+
         // กำหนดเวลา
         Route::post('schedule/create', [RoomSeminarController::class, 'createSchedule']);
         Route::post('schedule/update/{id}', [RoomSeminarController::class, 'updateSchedule']);
-        Route::get('scheduletime/{id}', [RoomSeminarController::class, 'getScheduleTime']);
+        Route::get('scheduletime/{type}/{id}', [RoomSeminarController::class, 'getScheduleTime']);
+        // Route::get('')
+        // roomSeminar
+        Route::get('lecture/data', [LecturerController::class, 'getLecturer']);
+        Route::get('roomseminar/data', [RoomSeminarController::class, 'getSeminarRoom']);
+        Route::post('roomseminar/create', [RoomSeminarController::class, 'createRoom']);
+        Route::post('roomseminar/update/{id}', [RoomSeminarController::class, 'updateRoom']);
+        Route::delete('roomseminar/delete/{id}', [RoomSeminarController::class, 'deleteRoom']);
 
         /* Contact Page */
         Route::get('message/data', [MessageController::class, 'index']);
@@ -152,8 +160,5 @@ Route::prefix('backoffice/v1')->group(function () {
         Route::post('slide/create', [SlideController::class, 'createSlide']);
         Route::post('slide/update/{id}', [SlideController::class, 'updateSlideById']);
         Route::delete('slide/{language}/{token}', [SlideController::class, 'deleteWebInfoByInfoId']);
-
-        Route::get('lecture/data', [LecturerController::class, 'getLecturer']);
-        Route::get('roomseminar/data', [RoomSeminarController::class, 'getSeminarRoom']);
     });
 });

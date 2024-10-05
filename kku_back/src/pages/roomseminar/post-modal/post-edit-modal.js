@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
-import { svUpdatePost } from "../../../services/post.service";
+import { svUpdateRoom } from "../../../services/roomseminar.service";
+import { svGetTimeSchedule } from "../../../services/post.service";
 import ButtonUI from "../../../components/ui/button/button";
 import PreviewImageUI from "../../../components/ui/preview-image/preview-image";
 import FieldsetUI from "../../../components/ui/fieldset/fieldset";
@@ -77,9 +78,9 @@ const ModalEditPost = (props) => {
   const [isFetching, setIsFetching] = useState(false);
   const [curImg, setCurImg] = useState("")
   const [scheduleList, setScheduleList] = useState([
-    { startTime: null, endTime: null, details: "" },
+    { time_start: null, time_end: null, description: "" },
   ]);
-  
+  console.log(items)
   useEffect(() => {
     if (items !== null) {
       let newData = {}
@@ -169,15 +170,25 @@ const ModalEditPost = (props) => {
       setPreviews(data)
     } 
   }
+
+  useEffect(() => {
+    svGetTimeSchedule('room', items.id).then((res) => {
+      console.log(res.data)
+      if(res.data && res.data.length > 0) {
+        setScheduleList(res.data)
+      }
+    })
+  }, [])
   
   const handleAddSchedule = () => {
     setScheduleList([
       ...scheduleList,
-      { startTime: null, endTime: null, details: "" },
+      { time_start: null, time_end: null, description: "" },
     ]);
   };
 
   const handleChangeSchedule = (index, field, value) => {
+    // console.log(value)
     const newList = [...scheduleList];
     newList[index][field] = value;
     setScheduleList(newList);
@@ -254,18 +265,19 @@ const ModalEditPost = (props) => {
       ...editDataValid, 
       title: (editData.title === ""),
       // keyword: (editData.keyword === ""),
-      description: (editData.description === ""),
+      // description: (editData.description === ""),
       // slug: (editData.slug === ""),
       category: (cateListId === ",")
     })
     if((editData.title === "") || 
     // (editData.keyword === "") ||
-    (editData.description === "") ||
+    // (editData.description === "") ||
     // (editData.slug === "") ||
-    (cateListId === ",") ||
+    // (cateListId === ",") ||
     isFetching ){
       return false; 
     }
+    console.log("gogogo");
     
     setIsFetching(true)
     const formData = new FormData();
@@ -314,14 +326,15 @@ const ModalEditPost = (props) => {
     formData.append('redirect', editData.redirect)
     formData.append('display_date', displayDate?moment(displayDate).format():null)
     formData.append('hidden_date', hiddenDate?moment(hiddenDate).format():null) 
-    formData.append('status_display', (editData.status_display)?1:0)
+    formData.append('display', (editData.status_display)?1:0)
     formData.append('pin', (editData.pin)?1:0)
     formData.append('is_maincontent', (editData.is_maincontent)?1:0)
     formData.append('priority', editData.priority)
     formData.append('old_priority', items.priority)
     formData.append('language',  language)  
+    formData.append('schedulelist', JSON.stringify(scheduleList))
  
-    svUpdatePost(editData.id, formData).then(res => {
+    svUpdateRoom(formData, editData.id).then(res => {
       setIsFetching(false)
       if(res.status) {
         props.setClose({
@@ -375,7 +388,7 @@ const ModalEditPost = (props) => {
                  t={t} /> */}
 
               <div className="form-details" style={{width: "100%"}}>
-                <FieldsetUI className="image-setting" label={t("ข้อมูลรูปภาพ")}>
+                {/* <FieldsetUI className="image-setting" label={t("ข้อมูลรูปภาพ")}>
                   <PreviewImageUI
                     setCurImg={setCurImg}
                     className="edit-image" 
@@ -383,7 +396,7 @@ const ModalEditPost = (props) => {
                     setPreviews={setPreviewHandler} />
                     
                   <div className="image-detail">
-                    {/* {previews.file && (
+                    {previews.file && (
                       <TextField
                         onChange={(e) => setEditData(prev => ({...prev, thumbnail_name: e.target.value}) )}
                         value={editData.thumbnail_name}
@@ -394,7 +407,7 @@ const ModalEditPost = (props) => {
                         label="Image name"
                         size="small"
                       />
-                    )} */}
+                    )}
                  
                     <TextField
                       onChange={(e) => setEditData(prev => ({...prev, thumbnail_title: e.target.value}) )} 
@@ -418,7 +431,7 @@ const ModalEditPost = (props) => {
                     />
                   </div>
 
-                </FieldsetUI>
+                </FieldsetUI> */}
                 {/* <FieldsetUI className="more-image-setting" label={t("รูปภาพเพิ่มเติม")}>
              
                   {moreImage.map((m, index ) =>  (
@@ -559,7 +572,7 @@ const ModalEditPost = (props) => {
                   size="small"
                 /> */}
 
-                <div className="input-date">
+                {/* <div className="input-date">
                   <div className="input-half pr">
                     <DateTimePicker
                       className="date-input"
@@ -580,7 +593,7 @@ const ModalEditPost = (props) => {
                       renderInput={(params) => <TextField {...params} />}
                     />
                   </div>
-                </div>
+                </div> */}
 
                 <div className="seminar-schedule">
                   <h3 className="post-title">{t("ตารางสัมมนา")}</h3>
@@ -597,10 +610,11 @@ const ModalEditPost = (props) => {
                         className="date-input"
                         size="small"
                         label={t("Start Time")}
-                        value={schedule.startTime}
-                        onChange={(newValue) =>
-                          handleChangeSchedule(index, "startTime", newValue)
-                        }
+                        value={schedule.time_start ? new Date(`1970-01-01T${schedule.time_start}`) : null}
+                        onChange={(newValue) => {
+                          const dateValue = newValue instanceof Date ? newValue : new Date(newValue);
+                          handleChangeSchedule(index, "time_start", dateValue.toLocaleTimeString('en-GB', { hour12: false })) // แปลงเป็น HH:mm:ss
+                        }}
                         renderInput={(params) => <TextField {...params} />}
                       />
                     </div>
@@ -609,10 +623,11 @@ const ModalEditPost = (props) => {
                         className="date-input"
                         sx={{ width: 250 }}
                         label={t("End Time")}
-                        value={schedule.endTime}
-                        onChange={(newValue) =>
-                          handleChangeSchedule(index, "endTime", newValue)
-                        }
+                        value={schedule.time_end ? new Date(`1970-01-01T${schedule.time_end}`) : null}
+                        onChange={(newValue) => {
+                          const dateValue = newValue instanceof Date ? newValue : new Date(newValue);
+                          handleChangeSchedule(index, "time_end", dateValue.toLocaleTimeString('en-GB', { hour12: false })) // แปลงเป็น HH:mm:ss
+                        }}
                         renderInput={(params) => <TextField {...params} />}
                       />
                     </div>
@@ -623,9 +638,9 @@ const ModalEditPost = (props) => {
                         placeholder={t("Enter details")}
                         multiline
                         minRows={1}
-                        value={schedule.details}
+                        value={schedule.description}
                         onChange={(e) =>
-                          handleChangeSchedule(index, "details", e.target.value)
+                          handleChangeSchedule(index, "description", e.target.value)
                         }
                         variant="outlined"
                         fullWidth
@@ -650,11 +665,11 @@ const ModalEditPost = (props) => {
                       <FormControlLabel  control={<Switch onChange={(e) => setEditData({...editData, status_display: e.target.checked})} checked={editData.status_display} />} label={t("แสดงบนเว็บไซต์")} labelPlacement="start" />
                     </FormGroup>
                   </div>
-                  <div className="switch-form">
+                  {/* <div className="switch-form">
                     <FormGroup>
                       <FormControlLabel  control={<Switch onChange={(e) => setEditData({...editData, pin: e.target.checked})} />} checked={editData.pin} label={t("ปักหมุด")} labelPlacement="start" />
                     </FormGroup>
-                  </div>
+                  </div> */}
                   {/* {isSuperAdmin && (
                     <div className="switch-form">
                       <FormGroup>

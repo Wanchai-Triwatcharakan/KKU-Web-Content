@@ -15,7 +15,7 @@
                 <div class="flex flex-col gap-4">
                     <div class="flex justify-start gap-8 max-xl:gap-1 max-md:flex-col text-lg max-md:text-[1rem]">
                         <p class="text-[#23404A] font-medium text-left  w-[150px]  max-xl:w-[120px]">สถานที่จัดงาน :</p>
-                        <p class="text-[#23404A] font-light text-left ">โรงแรมโฆษะ จังหวัดขอนแก่น</p>
+                        <p class="text-[#23404A] font-light text-left ">{{$postsupport->description}}</p>
                     </div>
                     <div class="flex justify-start gap-8 max-xl:gap-1 max-md:flex-col text-lg max-md:text-[1rem]">
                         <p class="text-[#23404A] font-medium text-left w-[150px]  max-xl:w-[120px]">กำหนดเวลา :</p>
@@ -27,7 +27,9 @@
                     </div>
                     <div class="flex justify-start gap-8 max-xl:gap-1 max-md:flex-col text-lg max-md:text-[1rem]">
                         <p class="text-[#23404A] font-medium text-left w-[150px]  max-xl:w-[120px]">Google Drive :</p>
-                        <p class="text-[#23404A] font-light text-left">googledrive.com</p>
+                        <p class="text-[#23404A] font-light text-left">
+                            <a href="{{$postsupport->iframe}}">{{$postsupport->iframe}}</a>
+                        </p>
                     </div>
                 </div>
             </div>

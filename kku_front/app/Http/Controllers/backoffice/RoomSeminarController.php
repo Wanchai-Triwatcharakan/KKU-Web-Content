@@ -25,8 +25,184 @@ class RoomSeminarController extends BaseController
         ], 200);
     }
 
-    public function getScheduleTime($id) {
-        $scheduleTime = ScheduleTime::where('post_id', $id)->orderBy('time_start', 'asc')->get();
+    public function createRoom(Request $req) {
+        $this->getAuthUser();
+        $files = $req->allFiles();
+        $params = $req->all();
+        // $validator = Validator::make($req->all(), [
+        //     'Thumbnail' => "mimes:jpg,png,jpeg,pdf|max:5000|nullable",
+        //     'title' => "mimes:jpg,png,jpeg,pdf|max:5000|nullable",
+        // ]);
+        // if ($validator->fails()) {
+        //     return $this->sendErrorValidators('Invalid params', $validator->errors());
+        // }
+
+        /* Upload Thumbnail */
+        // $newFolder = "upload/" . date('Y') . "/" . date('m') . "/" . date('d') . "/";
+        // $thumbnail = (isset($files['Thumbnail'])) ? $this->uploadImage($newFolder, $files['Thumbnail'], "", "", $params['ThumbnailName']) : "";
+
+        // $thumbnail_title = isset($files['Thumbnail']) && !empty($files['Thumbnail']) ? $params['ThumbnailTitle'] : "";
+        // $thumbnail_alt = isset($files['Thumbnail']) && !empty($files['Thumbnail']) ? $params['ThumbnailAlt'] : "";
+
+        try {
+
+            DB::beginTransaction();
+            $room = SeminarRoom::create([
+                "title" => $params['title'],
+                "description" => $params['description'],
+                "status_display" => $params['display'],
+                "priority" => $params['priority'],
+            ], Response::HTTP_CREATED);
+
+            $scheduleList = json_decode($params['schedulelist'], true);
+            $scheduleData = [];
+            foreach ($scheduleList as $index => $list) {
+                if(!$list['startTime']) { continue;}
+                $scheduleData[] = [
+                    'room_id' => $room->id,
+                    'time_start' => $list['startTime'],
+                    'time_end' => $list['endTime'],
+                    'description' => $list['details'],
+                    'priority' => $index+1,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ];
+            }
+            ScheduleTime::insert($scheduleData);
+
+            DB::commit();
+
+            return response([
+                'message' => 'success',
+                'description' => 'Created successful'
+            ], 201);
+        } catch (Exception $e) {
+            DB::rollback();
+            return response([
+                'message' => 'error',
+                'description' => 'Something went wrong',
+                'errorsMessage' => $e->getMessage()
+            ], 501);
+        }
+    }
+
+    public function updateRoom(Request $req, $id) {
+        $this->getAuthUser();
+        $files = $req->allFiles();
+        $params = $req->all();
+
+        try {
+
+            $room = SeminarRoom::find($id);
+            DB::beginTransaction();
+            $room->update([
+                "title" => $params['title'],
+                "description" => $params['description'],
+                "status_display" => $params['display'],
+                "priority" => $params['priority'],
+            ]);
+
+            $scheduleList = json_decode($params['schedulelist'], true);
+            $scheduleData = [];
+            $existingSchedules = [];
+            $newSchedules = [];
+
+            foreach ($scheduleList as $schedule) {
+                // เช็คว่ามี id หรือไม่
+                if (isset($schedule['id'])) {
+                    // ถ้ามี id ให้ใส่ลงใน array สำหรับการอัปเดตข้อมูลเดิม
+                    $existingSchedules[] = $schedule;
+                } else {
+                    // ถ้าไม่มี id ให้ใส่ลงใน array สำหรับการเพิ่มใหม่
+                    $newSchedules[] = $schedule;
+                }
+            }
+
+            foreach ($existingSchedules as $schedule) {
+                ScheduleTime::where('id', $schedule['id'])->update([
+                    'time_start' => $schedule['time_start'],
+                    'time_end' => $schedule['time_end'],
+                    'description' => $schedule['description'],
+                    'updated_at' => now(),
+                ]);
+            }
+
+            // ดึง id ของ ScheduleTime ทั้งหมดที่เกี่ยวข้องกับ post_id นี้
+            $existingScheduleIds = ScheduleTime::where('room_id', $params['id'])->pluck('id')->toArray();
+
+            // ดึง id ของข้อมูลจาก $existingSchedules
+            $inputScheduleIds = array_column($existingSchedules, 'id');
+
+            // หาความแตกต่างของ id ที่ไม่มีใน $existingSchedules
+            $idsToDelete = array_diff($existingScheduleIds, $inputScheduleIds);
+
+            // ลบข้อมูลที่ไม่มี id ใน $existingSchedules
+            if (!empty($idsToDelete)) {
+                ScheduleTime::whereIn('id', $idsToDelete)->delete();
+            }
+
+            foreach ($newSchedules as $index => $list) {
+                if(!$list['time_start']) { continue;}
+                $scheduleData[] = [
+                    'room_id' => $params['id'],
+                    'time_start' => $list['time_start'],
+                    'time_end' => $list['time_end'],
+                    'description' => $list['description'],
+                    'priority' => $index+1,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ];
+            }
+            if (!empty($scheduleData)) {
+                ScheduleTime::insert($scheduleData);
+            }
+
+            DB::commit();
+
+            return response([
+                'message' => 'success',
+                'description' => 'Created successful'
+            ], 201);
+        } catch (Exception $e) {
+            DB::rollback();
+            return response([
+                'message' => 'error',
+                'description' => 'Something went wrong',
+                'errorsMessage' => $e->getMessage()
+            ], 501);
+        }
+    }
+
+    public function deleteRoom($id) {
+        try {
+            DB::beginTransaction();
+            $room = SeminarRoom::where('id', $id)->first();
+            $room->delete();
+
+            ScheduleTime::where('room_id', $room->id)->delete();
+
+            DB::commit();
+            return response([
+                'message' => 'success',
+                'description' => 'delete room success',
+            ], 201);
+            
+        } catch (Exception $e) {
+            DB::rollback();
+            return response([
+                'message' => 'error',
+                'description' => 'Something went wrong',
+                'errorsMessage' => $e->getMessage()
+            ], 501);
+        }
+    }
+
+    public function getScheduleTime($type, $id) {
+        if($type == 'post') {
+            $scheduleTime = ScheduleTime::where('post_id', $id)->orderBy('time_start', 'asc')->get();
+        } else if($type == 'room') {
+            $scheduleTime = ScheduleTime::where('room_id', $id)->orderBy('time_start', 'asc')->get();
+        }
         return response([
             'message' => 'ok',
             'data' => $scheduleTime,
@@ -76,23 +252,27 @@ class RoomSeminarController extends BaseController
                 "is_maincontent" => $params['isMainContent'],
                 "priority" => $params['priority'],
                 "language" => $params['language'],
+                "tags" => $params['open_room'],
                 "defaults" => 1,
             ], Response::HTTP_CREATED);
 
             $scheduleList = json_decode($params['schedulelist'], true);
             $scheduleData = [];
-            foreach ($scheduleList as $index => $list) {
-                $scheduleData[] = [
-                    'post_id' => $postCreated->id,
-                    'time_start' => $list['startTime'],
-                    'time_end' => $list['endTime'],
-                    'description' => $list['details'],
-                    'priority' => $index+1,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ];
-            }
-            ScheduleTime::insert($scheduleData);
+            // if(count($scheduleList) > 0) {
+                foreach ($scheduleList as $index => $list) {
+                    if(!$list['startTime']) { continue;}
+                    $scheduleData[] = [
+                        'post_id' => $postCreated->id,
+                        'time_start' => $list['startTime'],
+                        'time_end' => $list['endTime'],
+                        'description' => $list['details'],
+                        'priority' => $index+1,
+                        'created_at' => now(),
+                        'updated_at' => now(),
+                    ];
+                }
+                ScheduleTime::insert($scheduleData);
+            // }
 
             DB::commit();
 
@@ -196,6 +376,7 @@ class RoomSeminarController extends BaseController
                 "date_end_display" => $params['hidden_date'],
                 "status_display" => $params['status_display'],
                 "pin" => $params['pin'],
+                "tags" => $params['open_room'],
                 "is_maincontent" => $params['is_maincontent'],
                 "priority" => $params['priority'],
                 "updated_at" => date('Y-m-d H:i:s')
@@ -219,7 +400,31 @@ class RoomSeminarController extends BaseController
                 }
             }
 
+            foreach ($existingSchedules as $schedule) {
+                ScheduleTime::where('id', $schedule['id'])->update([
+                    'time_start' => $schedule['time_start'],
+                    'time_end' => $schedule['time_end'],
+                    'description' => $schedule['description'],
+                    'updated_at' => now(),
+                ]);
+            }
+
+            // ดึง id ของ ScheduleTime ทั้งหมดที่เกี่ยวข้องกับ post_id นี้
+            $existingScheduleIds = ScheduleTime::where('post_id', $params['id'])->pluck('id')->toArray();
+
+            // ดึง id ของข้อมูลจาก $existingSchedules
+            $inputScheduleIds = array_column($existingSchedules, 'id');
+
+            // หาความแตกต่างของ id ที่ไม่มีใน $existingSchedules
+            $idsToDelete = array_diff($existingScheduleIds, $inputScheduleIds);
+
+            // ลบข้อมูลที่ไม่มี id ใน $existingSchedules
+            if (!empty($idsToDelete)) {
+                ScheduleTime::whereIn('id', $idsToDelete)->delete();
+            }
+
             foreach ($newSchedules as $index => $list) {
+                if(!$list['time_start']) { continue;}
                 $scheduleData[] = [
                     'post_id' => $params['id'],
                     'time_start' => $list['time_start'],
@@ -230,8 +435,10 @@ class RoomSeminarController extends BaseController
                     'updated_at' => now(),
                 ];
             }
-            ScheduleTime::insert($scheduleData);
-
+            if (!empty($scheduleData)) {
+                ScheduleTime::insert($scheduleData);
+            }
+            
             DB::commit();
             return response([
                 'message' => 'success',

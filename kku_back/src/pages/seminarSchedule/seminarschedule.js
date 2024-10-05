@@ -24,6 +24,7 @@ import ContentFormatButton from "../../components/ui/toggle-format/toggle-format
 import PostTab from "./post-tab/post-tab";
 import { getMenuList, getPosts } from "../../services/post.service";
 import { appActions } from "../../store/app-slice";
+import { svGetRoomSeminar } from "../../services/roomseminar.service";
 
 const SeminarSchedule = () => {
   const dispatch = useDispatch();
@@ -42,6 +43,7 @@ const SeminarSchedule = () => {
   const [postModalAdd, setPostModalAdd] = useState(false);
   const [selectedPostName, setSelectedPostName] = useState(undefined);
   const [selectedCateId, setSelectedCateId] = useState(0);
+  const [dataRoom, setDataRoom] = useState([]);
   const isSuerperAdmin = useSelector(
     (state) => state.auth.userPermission.superAdmin
   );
@@ -80,6 +82,13 @@ const SeminarSchedule = () => {
       dispatch(appActions.isSpawnActive(false));
     });
   }, [refreshData, language]);
+
+  useEffect(() => {
+    svGetRoomSeminar().then((res) => {
+      console.log(res.data.data)
+      setDataRoom(res.data.data)
+    })
+  }, [])
 
   const OnChangePageControlHandler = (e) => {
     setPageControl(e.target.value);
@@ -196,6 +205,7 @@ const SeminarSchedule = () => {
           postTab={postTab}
           setPostTab={setPostTab}
           postData={filteredData}
+          dataRoom={dataRoom}
           isRowDisplay={isRowDisplay}
         />
       </div>

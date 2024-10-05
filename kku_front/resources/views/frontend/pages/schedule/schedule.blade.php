@@ -33,7 +33,7 @@
                         <div class="flex max-xl:flex-col gap-6 justify-between p-4 rounded-xl ">
                             <div
                                 class="w-[450px] h-[300px] max-xl:w-[330px] max-xl:h-[250px] max-lg:w-[250px] max-lg:h-[250px] mx-auto rounded-md flwx justify-center items-center">
-                                <img src="{{url($sched->thumbnail_link)}}" alt="" class="w-full h-full rounded-xl">
+                                <img src="{{ url(is_string($sched->thumbnail_link) ? $sched->thumbnail_link : '') }}" alt="" class="w-full h-full rounded-xl">
                             </div>
 
                             <div class="w-full flex flex-col justify-between py-4 gap-y-6 px-4">
@@ -43,7 +43,7 @@
                                     <p class="text-[#75868B] text-xl max-md:text-lg">{{$sched->description}}</p>
                                 </div>
                                 <div class="flex justify-end max-xl:justify-center">
-                                    <a href="{{ route('schedule.detail') }}" target="_blank"
+                                    <a href="{{ url('schedule/detail/'.$sched->id) }}" target="_blank"
                                         class="text-center bg-[#FF864E] text-white p-2 rounded-md text-[1rem] w-36 cursor-pointer hover:bg-[#f07a44] shadow-md">
                                         อ่านเพิ่มเติม
                                     </a>
@@ -57,7 +57,7 @@
                     <div class="flex max-xl:flex-col gap-6 justify-between p-4 rounded-xl ">
                         <div
                             class="w-[450px] h-[300px] max-xl:w-[330px] max-xl:h-[250px] max-lg:w-[250px] max-lg:h-[250px] mx-auto rounded-md flwx justify-center items-center xl:order-2">
-                            <img src="{{url($sched->thumbnail_link)}}" alt="" class="w-full h-full rounded-xl">
+                            <img src="{{ url(is_string($sched->thumbnail_link) ? $sched->thumbnail_link : '') }}" alt="" class="w-full h-full rounded-xl">
                         </div>
                         <div class="w-full flex flex-col justify-between py-4 gap-y-6 px-4">
                             <div class="flex flex-col gap-y-6">
@@ -66,7 +66,7 @@
                                 <p class="text-[#75868B] text-xl max-md:text-lg">{{$sched->description}}</p>
                             </div>
                             <div class="flex justify-end max-xl:justify-center">
-                                <a href="{{ route('schedule.detail') }}"
+                                <a href="{{ url('schedule/detail/'.$sched->id) }}" target="_blank"
                                     class="text-center bg-[#FF864E] text-white p-2 rounded-md text-[1rem] w-36 cursor-pointer hover:bg-[#f07a44] shadow-md">
                                     อ่านเพิ่มเติม
                                 </a>

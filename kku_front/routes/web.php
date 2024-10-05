@@ -36,7 +36,7 @@ Route::prefix('register/')->group(function () {
 
 Route::prefix('schedule/')->group(function () {
     Route::get('/', [ScheduleController::class, 'indexPageSchedule'])->name('schedule.index');
-    Route::get('/detail', [ScheduleController::class, 'dataDetail'])->name('schedule.detail');
+    Route::get('/detail/{id}', [ScheduleController::class, 'dataDetail'])->name('schedule.detail');
 });
 
 Route::prefix('post/')->group(function () {
@@ -55,4 +55,5 @@ Route::prefix('accommodation/')->group(function () {
 
 Route::prefix('contact/')->group(function () {
     Route::get('/', [ContactController::class, 'indexPageContact'])->name('contact.index');
+    Route::post('/newletter', [ContactController::class, 'createNewLetter'])->name('contact.newletter');
 });

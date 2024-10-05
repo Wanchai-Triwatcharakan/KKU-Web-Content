@@ -102,38 +102,10 @@
                                     </p>
                                     <div class="flex items-center gap-2">
 
-<<<<<<< HEAD
-                                        <div class="max-w-[20px] h-[20px]">
-                                            <img src="/images/home/Group 178.png" alt=""
-                                                class="w-full h-full object-cover">
-                                        </div>
-                                        <p class="text-[#B9BBC7] text-md max-md:text-sm text-start">
-                                            {{ \Carbon\Carbon::parse($news->date_begin_display)->format('d/m/Y') }}</p>
-
-                                        <div class="max-w-[20px] h-[20px]">
-                                            <img src="/images/home/person.png" alt=""
-                                                class="w-full h-full object-cover">
-                                        </div>
-                                        <p class="text-[#B9BBC7] text-md max-md:text-sm text-start">
-                                            Admin</p>
-
-                                    </div>
-
-                                    <p class="text-[#686868] text-lg max-md:text-md text-start h-[80px] overflow-auto">
-                                        {{ $news->description }}</p>
-                                </div>
-
-                                <div class="flex justify-end mt-4">
-                                    <a href="{{ route('post.detail') }}" target="_blank"
-                                        class="text-center font-medium text-[#FF864E] p-2 rounded-full text-[1rem] w-36 cursor-pointer hover:scale-105 transition duration-500">
-                                        ดูเพิ่มเติม >></a>
-                                </div>
-=======
                             <div class="flex justify-end mt-4">
                                 <a href="{{ url('post/detail/'.$news->id) }}"  target="_blank"
                                     class="text-center font-medium text-[#FF864E] p-2 rounded-full text-[1rem] w-36 cursor-pointer hover:scale-105 transition duration-500">
                                     ดูเพิ่มเติม >></a>
->>>>>>> bcd2337852691275f784c8cb56dea8b645f4ba81
                             </div>
                         </div>
                     @endforeach

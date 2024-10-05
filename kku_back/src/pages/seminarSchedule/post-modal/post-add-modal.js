@@ -20,6 +20,7 @@ import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import { LocalizationProvider, MobileTimePicker } from "@mui/x-date-pickers";
 import moment from "moment";
+import Checkbox from '@mui/material/Checkbox';
 
 const addDataDefault = {
   id: null,
@@ -60,7 +61,7 @@ const url =  window.location.origin + "/";
 /* Export Component */
 const ModalAddPost = (props) => {
   const { t } = useTranslation('post-page')
-  const { isOpen, menuList, category, totalData } = props
+  const { isOpen, menuList, category, totalData, dataRoom } = props
   const language = useSelector(state => state.app.language)
   const isSuperAdmin = useSelector(state => state.auth.userPermission.superAdmin)
   const [ addData , setAddData ] = useState(addDataDefault)
@@ -75,6 +76,7 @@ const ModalAddPost = (props) => {
   const [scheduleList, setScheduleList] = useState([
     { startTime: null, endTime: null, details: "" },
   ]);
+  const [checkedRooms, setCheckedRooms] = useState([]);
 
   useEffect(() => {
     if(isOpen) {
@@ -176,8 +178,20 @@ const ModalAddPost = (props) => {
     })
     setMoreImage(result)
   }
+
+  const handleCheckboxChange = (roomId) => {
+    setCheckedRooms((prevCheckedRooms) => {
+      if (prevCheckedRooms.includes(roomId)) {
+        return prevCheckedRooms.filter((id) => id !== roomId);
+      } else {
+        return [...prevCheckedRooms, roomId];
+      }
+    });
+  };
  
   const saveModalHandler = () => {
+    // console.log(JSON.stringify(scheduleList))
+    // return false;
     const cateListId = checkboxList.filter(f => (f.checked)).reduce((o,n) => o + n.id + ",",",")
     // console.log("cateListId",cateListId);
     /* Validator */
@@ -231,6 +245,7 @@ const ModalAddPost = (props) => {
     formData.append('priority', addData.priority)
     formData.append('language', language)
     formData.append('schedulelist', JSON.stringify(scheduleList))
+    formData.append('open_room', JSON.stringify(checkedRooms))
     
     /* Fetch Data */
     svCreateSchedule(formData).then(res => {
@@ -565,6 +580,24 @@ const ModalAddPost = (props) => {
                     </div>
                   </div>
                 ))}
+
+                <h3 className="post-detail-title">{t("ห้องสัมมนา")}</h3>
+                <div className="setting-controls" style={{ border: '1px solid #e5e7eb', borderRadius: '4px', padding: '0 0.5rem' }}>
+                  {dataRoom.map((room) => (
+                    <div key={room.id} style={{ padding: '0 1rem'}}>
+                      <FormControlLabel
+                        control={
+                          <Checkbox
+                            checked={checkedRooms.includes(room.id)} // ตรวจสอบว่า roomId อยู่ใน array checkedRooms หรือไม่
+                            onChange={() => handleCheckboxChange(room.id)} // เรียกฟังก์ชันเมื่อมีการเปลี่ยนแปลง
+                            color="primary"
+                          />
+                        }
+                        label={room.title}
+                      />
+                    </div>
+                  ))}
+                </div>
 
                 <h3 className="post-detail-title">{t("การแสดงผล")}</h3>
                 <div className="setting-controls">

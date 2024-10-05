@@ -26,6 +26,7 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import SwalUI from "../../../components/ui/swal-ui/swal-ui";
 import { svDeletePostByToken } from "../../../services/post.service";
+import { svDeleteRoom } from "../../../services/roomseminar.service";
 import { appActions } from "../../../store/app-slice";
 import { useTranslation } from "react-i18next";
 import ModalEditPost from "../../roomseminar/post-modal/post-edit-modal";
@@ -167,7 +168,8 @@ const RoomTab = (props) => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          svDeletePostByToken(item.id, item.language).then((res) => {
+          svDeleteRoom(item.id).then((res) => {
+            console.log(res);
             SwalUI({ status: res.status, description: res.description });
             if (res.status) {
               props.setRefreshData((prev) => prev + 1);
