@@ -43,6 +43,18 @@ return new class extends Migration
                 'priority' => 3,
                 "status_display" => true
             ],
+            [
+                "title" => "ห้อง 4",
+                "description" => "",
+                'priority' => 4,
+                "status_display" => true
+            ],
+            [
+                "title" => "ห้อง 5",
+                "description" => "",
+                'priority' => 5,
+                "status_display" => true
+            ],
         ]);
     }
 

@@ -356,6 +356,29 @@ return new class extends Migration
                 'date_begin_display' => '',
                 'date_end_display' => ''
             ],
+            [
+                'id' => 12,
+                'language' => 'th',
+                'title' => 'ที่พัก เส้นทาง และผังจัดงาน',
+                'keyword' => 'ผังจัดงาน',
+                'description' => 'ที่พัก เส้นทาง และผังจัดงาน',
+                'topic' => '',
+                'content' => '',
+                'category' => ',7,',
+                'status_display' => true,
+                'defaults' => true,
+                'pin' => true,
+                'is_maincontent' => true,
+                'allow_delete' => true,
+                'thumbnail_title' => '',
+                'thumbnail_link' => 'upload/2024/10/04/Rectangle 227.png',
+                'priority' => 12,
+                'iframe' => '<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15307.632921172899!2d102.8321272!3d16.4294865!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31228a230449c587%3A0xc4b5ba4aaf738f68!2z4LmC4Lij4LiH4LmB4Lij4Lih4LmC4LiG4Lip4LiwIOC4guC4reC4meC5geC4geC5iOC4mSBLT1NBIEhPVEVMIEtIT05LQUVO!5e0!3m2!1sth!2sth!4v1728023441950!5m2!1sth!2sth" width="1920" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
+                'redirect' => null,
+                'freetag' => '',
+                'date_begin_display' => '',
+                'date_end_display' => ''
+            ],
         ]);
     }
 
