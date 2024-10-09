@@ -19,7 +19,7 @@
 
 
 
-    <section class="flex flex-col gap-4 pt-10 bg-white ">
+    <section class="flex flex-col gap-4 pt-32 max-sm:pt-20 bg-white ">
         <p class="text-[#23404A] font-bold text-center text-3xl max-md:text-xl max-sm:text-lg z-40 max-md:px-2"
             data-aos="zoom-in" data-aos-duration="3000">วิทยากร
         </p>

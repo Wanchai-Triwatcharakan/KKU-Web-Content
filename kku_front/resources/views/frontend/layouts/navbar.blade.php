@@ -1,7 +1,7 @@
 <nav class="bg-white border-b shadow-sm border-gray-200 w-full fixed top-0 z-[99] px-4 max-md:px-2">
     <div class="max-w-screen-2xl flex items-center justify-between mx-auto ">
         <a href="{{ url('/') }}" class="flex items-center">
-            <img src="{{ url($webInfo->detail->image_1->link) }}" class="h-12" alt="kku Logo" />
+            <img src="{{ url($webInfo->detail->image_1->link) }}" class="h-[3.7rem]" alt="kku Logo" />
         </a>
         {{-- @dd($webInfo->detail->favicon) --}}
         <button data-collapse-toggle="navbar-dropdown" type="button"
@@ -24,7 +24,7 @@
                     @if (!$main->cate_parent_id)
                         <li class="relative">
                             <a href="{{ url($main->cate_url) }}" id="main-{{ $main->id }}"
-                                class="block py-6 px-3 text-[1rem] font-semibold text-center text-[#23404A] min-w-[135px] hover:text-white hover:bg-[#FF864E] meunMain
+                                class="block flex justify-center items-center py-6 px-3 text-[1.15rem] max-yi:text-[14px] font-[500] text-center text-[#23404A] h-full max-yi:min-w-[110px] min-w-[135px] hover:text-white hover:bg-[#FF864E] meunMain
                                 {{ request()->is($main->cate_url) ? 'bg-[#B8D88F] text-white' : '' }}
                                 {{ $main_cate->where('cate_parent_id', $main->id)->isNotEmpty() ? 'flex justify-between items-center gap-0 md:gap-4' : '' }} group">
                                 {{ $main->cate_title }}
@@ -35,7 +35,7 @@
                                 @if ($hasSubMenu)
                                     <div class="w-6 h-6 svg">
                                         <svg fill="currentColor"
-                                            class="flex-shrink-0 w-full h-full text-[#23404A] transition duration-75 transform group-hover:text-white"
+                                            class="flex-shrink-0 w-full h-full text-[#23404A] transition duration-75 transform group-hover:text-white "
                                             viewBox="0 0 14 14" role="img" focusable="false" aria-hidden="true"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -97,7 +97,7 @@
                 @if (!$main->cate_parent_id)
                     <li class="relative">
                         <a href="{{ url($main->cate_url) }}"
-                            class="block py-4 px-3 text-[1.2rem] font-medium text-strat text-[#23404A] min-w-[135px] hover:text-white hover:bg-[#FF864E] flex justify-between
+                            class="block py-4 px-3 text-[1.15rem] font-[500] text-strat text-[#23404A] min-w-[135px] hover:text-white hover:bg-[#FF864E] flex justify-between
                         {{ request()->is($main->cate_url) ? 'bg-[#B8D88F] text-white' : '' }} group">
                             {{ $main->cate_title }}
                             @php
@@ -130,9 +130,9 @@
                                     @if ($sub_cate->cate_parent_id == $main->id)
                                         <li class="">
                                             <a href="{{ url($sub_cate->cate_url) }}"
-                                                class="block py-3 px-3 text-md font-normal text-[#23404A] min-w-[135px] hover:text-white hover:bg-[#FF864E] z-50 flex items-center justify-start
+                                                class="block py-3 px-3 text-[1rem] font-[500] text-[#23404A] min-w-[135px] hover:text-white hover:bg-[#FF864E] z-50 flex items-center justify-start
                                             {{ request()->is($sub_cate->cate_url) ? 'bg-[#B8D88F] text-white' : '' }} group">
-                                                <div class="w-8 h-8 mr-4 hover:text-white">
+                                                <div class="w-8 h-8 mr-4 hover:text-white  {{ request()->is($sub_cate->cate_url) ? 'text-white' : '' }}">
                                                     <svg viewBox="0 0 15 15"
                                                         class="flex-shrink-0 w-full h-full text-[#23404A] transition duration-75 group-hover:text-white"
                                                         xmlns="http://www.w3.org/2000/svg">

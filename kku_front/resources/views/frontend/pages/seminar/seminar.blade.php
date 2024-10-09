@@ -1,7 +1,7 @@
 @extends('frontend.layouts.layout-main')
 @section('title', 'Seminar')
 @section('style')
-    {{-- <link rel="stylesheet" href="/css/aboutus.min.css"> --}}
+    @vite('resources/css/home.css')
 @endsection
 @section('content')
 
@@ -22,15 +22,18 @@
     </section>
 
 
-    <section class="flex flex-col gap-4 relative  pt-10 bg-white ">
-        <p class="text-[#23404A] font-bold text-center text-2xl max-md:text-xl max-sm:text-lg z-40 max-md:px-2"
-            data-aos="zoom-in" data-aos-duration="3000">{{$post->title}}</p>
-        <p class="text-[#23404A] font-medium text-center text-2xl max-2xl:text-xl max-lg:text-lg max-sm:text-[1rem] z-40 max-md:px-2"
-            data-aos="zoom-in" data-aos-duration="3000">{{$post->keyword}}</p>
-        <div class="flex flex-col w-[70%] max-md:w-full mx-auto my-12 items-center">
+    <section class="flex flex-col gap-4 relative pt-32 max-sm:pt-20 bg-white ">
+        <div class="relative z-40 w-[550px] max-sm:w-[350px] mx-auto">
+            <p class="text-[#23404A] font-bold text-center text-3xl max-md:text-xl max-sm:text-lg z-40 max-md:px-2"
+                data-aos="zoom-in" data-aos-duration="3000">{{ $post->title }}</p>
+        </div>
+        <div class="relative z-40 w-[600px] max-sm:w-full mx-auto">
+            <p class="text-[#23404A] font-[500] text-center text-2xl max-2xl:text-xl max-lg:text-lg max-sm:text-[1rem] z-40"
+                data-aos="zoom-in" data-aos-duration="3000">{{ $post->keyword }}</p>
+        </div>
 
+        <div class="flex flex-col w-4/5 max-md:w-full mx-auto my-12 items-center">
             <div class="flex max-xl:flex-col gap-6 justify-between items-center w-full">
-
                 <div class="swiper swiper-container w-full ">
                     <div class="swiper-wrapper rounded-2xl sm:p-6 flex sm:justify-start  ">
                         @foreach ($post['images'] as $image)
@@ -40,7 +43,7 @@
                                     <div
                                         class="bg-[#FFCAAE] drop-shadow-md w-full h-full rounded-2xl absolute -left-6 top-6 z-10 max-sm:hidden">
                                     </div>
-                                    <img src="{{url($image->image_link)}}" alt=""
+                                    <img src="{{ url($image->image_link) }}" alt=""
                                         class="w-full h-full relative z-20 rounded-2xl drop-shadow-md">
                                 </div>
                             </div>
@@ -85,9 +88,9 @@
             <img src="/images/bg1.png" alt="Your Image" class="w-full h-full object-cover">
         </div>
         <p class="text-white font-bold text-center text-3xl  z-50 max-md:px-2 pt-10" data-aos="zoom-in"
-            data-aos-duration="3000">{{$postManage->title}}</p>
+            data-aos-duration="3000">{{ $postManage->title }}</p>
         <p class="text-white font-medium text-center text-lg  max-sm:text-[1rem] z-40 w-4/5 mx-auto" data-aos="zoom-in"
-            data-aos-duration="3000">{{$postManage->description}}</p>
+            data-aos-duration="3000">{{ $postManage->description }}</p>
 
         <div class="w-4/5  mx-auto py-10 max-ex:py-4 content-center grid grid-cols-6 max-lg:grid-cols-3 max-md:grid-cols-2 gap-y-2 z-50"
             data-aos="zoom-in" data-aos-duration="3000">
@@ -95,9 +98,10 @@
                 <div class="flex justify-center items-center flex-col gap-2">
                     <div
                         class="w-[160px] h-[160px] max-xl:w-[120px] max-xl:h-[120px] rounded-full p-1 bg-white items-center flex justify-center">
-                        <img src="{{url($image->image_link)}}" alt="w-full h-full">
+                        <img src="{{ url($image->image_link) }}" alt="w-full h-full">
                     </div>
-                    <p class="text-white font-medium text-center text-lg  max-sm:text-[1rem] z-40 w-4/5 mx-auto">{{$image->title}}</p>
+                    <p class="text-white font-medium text-center text-lg  max-sm:text-[1rem] z-40 w-4/5 mx-auto">
+                        {{ $image->title }}</p>
                 </div>
             @endforeach
         </div>
@@ -108,18 +112,16 @@
     {{-- @if ($postsupport) --}}
     <section class=" py-10 mt-15 bg-white items-center relative z-50">
         <p class="text-[#23404A] font-bold text-center text-4xl max-md:text-2xl max-md:px-2" data-aos="zoom-in"
-            data-aos-duration="3000">{{$postsupport->title}}</p>
+            data-aos-duration="3000">{{ $postsupport->title }}</p>
         <div class="relative z-30 items-center mt-8">
             <div class="swiper swiper1 items-center w-11/12 mx-auto">
 
                 <div class="swiper-wrapper w-full mx-auto flex">
                     @foreach ($postsupport->images as $image)
-                        <div class="swiper-slide flex flex-col justify-center">
-                            <div class="flex justify-center">
-                                <div class="w-[200px] h-[120px] flex justify-center" data-aos="zoom-in"
-                                    data-aos-duration="3000">
-                                    <img src="{{ url($image->image_link) }}" alt=""
-                                        class="w-full h-full">
+                        <div class="swiper-slide">
+                            <div class="flex justify-center items-center h-[120px]">
+                                <div class="flex justify-center items-center" data-aos="zoom-in" data-aos-duration="3000">
+                                    <img src="{{ url($image->image_link) }}" alt="" class="w-full h-full">
                                 </div>
                             </div>
                         </div>

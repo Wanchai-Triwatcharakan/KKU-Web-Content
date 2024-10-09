@@ -22,7 +22,7 @@
                 'grid grid-cols-3 gap-4 gap-y-6 max-yy:grid-cols-3 max-dm:grid-cols-2 max-ex:grid-cols-1 place-items-center';
         }
     @endphp
-    <section class="flex flex-col gap-4 relative  pt-10 bg-white ">
+    <section class="flex flex-col gap-4 relative pt-20 max-sm:pt-20 bg-white ">
         <div class="relative  z-50 w-4/5 max-ex:w-full  mx-auto py-10 max-ex:py-4 content-center {{$justify}}"
             data-aos="zoom-in" data-aos-duration="2000">
             @foreach ($photoactivity as $photo)
@@ -37,6 +37,8 @@
                             <p class="text-[#686868] text-lg max-md:text-md text-center h-[120px] overflow-auto">
                                 {{ $photo->title }}</p>
                         </div>
+
+                        
                     </div>
                 </a>
             @endforeach

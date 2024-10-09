@@ -17,33 +17,43 @@
     </section>
 
 
-    <section class="flex flex-col gap-4 relative  pt-10 bg-white ">
-        <p class="text-[#23404A] font-bold text-center text-3xl max-md:text-xl z-40 max-md:px-2" data-aos="zoom-in"
-            data-aos-duration="3000">ตารางกำหนดการสัมมนา
-        </p>
-        <p class="text-[#23404A] text-center text-xl max-lg:text-lg max-sm:text-[1rem] z-40 max-md:px-2" data-aos="zoom-in"
-            data-aos-duration="3000">Lorem ipsum dolor sit amet consectetur. Blandit sed tincidunt sit
-            purus lacus consectetur nulla montes.</p>
+    <section class="flex flex-col gap-4 relative pt-32 max-sm:pt-20 bg-white ">
 
-        <div class="my-12 z-50 flex flex-col gap-6 max-xl:gap-y-6 max-xl:grid max-2xl:grid-cols-2 max-md:grid-cols-1  max-xl:gap-2">
+
+
+        <div class="relative z-40 w-[550px] max-sm:w-[350px] mx-auto">
+            <p class="text-[#23404A] font-bold text-center text-3xl max-md:text-xl z-40 max-md:px-2" data-aos="zoom-in"
+                data-aos-duration="3000">ตารางกำหนดการสัมมนา
+            </p>
+        </div>
+        <div class="relative z-40 w-[600px] max-sm:w-full mx-auto">
+            <p class="text-[#23404A] text-center text-xl max-lg:text-lg max-sm:text-[1rem] z-40 max-md:px-2"
+                data-aos="zoom-in" data-aos-duration="3000">Lorem ipsum dolor sit amet consectetur. Blandit sed tincidunt
+                sit
+                purus lacus consectetur nulla montes.</p>
+        </div>
+
+        <div
+            class="my-12 z-50 flex flex-col gap-6 max-xl:gap-y-6 max-xl:grid max-2xl:grid-cols-2 max-md:grid-cols-1  max-xl:gap-2">
             @foreach ($schedule as $index => $sched)
-                @if($index % 2 == 0)
-                    <div class="max-sm:mx-4 flex flex-col max-w-[90%] max-xl:w-[80%] max-md:w-full mx-auto border border-[#F7FAF3] bg-[#F7FAF3]  items-center z-50 rounded-xl shadow-md"
+                @if ($index % 2 == 0)
+                    <div class="max-sm:mx-4 flex flex-col w-4/5 max-xl:w-[80%] max-md:w-full mx-auto border border-[#F7FAF3] bg-[#F7FAF3]  items-center z-50 rounded-xl shadow-md"
                         data-aos="fade-left" data-aos-duration="3000">
                         <div class="flex max-xl:flex-col gap-6 justify-between p-4 rounded-xl ">
                             <div
                                 class="w-[450px] h-[300px] max-xl:w-[330px] max-xl:h-[250px] max-lg:w-[250px] max-lg:h-[250px] mx-auto rounded-md flwx justify-center items-center">
-                                <img src="{{ url(is_string($sched->thumbnail_link) ? $sched->thumbnail_link : '') }}" alt="" class="w-full h-full rounded-xl">
+                                <img src="{{ url(is_string($sched->thumbnail_link) ? $sched->thumbnail_link : '') }}"
+                                    alt="" class="w-full h-full rounded-xl">
                             </div>
 
                             <div class="w-full flex flex-col justify-between py-4 gap-y-6 px-4">
                                 <div class="flex flex-col gap-y-6">
-                                    <p class="text-[#2F99C7] font-bold text-3xl max-xl:text-xl">{{$sched->title}}</p>
+                                    <p class="text-[#2F99C7] font-bold text-3xl max-xl:text-xl">{{ $sched->title }}</p>
                                     <div class="border-2 border-[#2F99C7] rounded-full "></div>
-                                    <p class="text-[#75868B] text-xl max-md:text-lg">{{$sched->description}}</p>
+                                    <p class="text-[#75868B] text-xl max-md:text-lg">{{ $sched->description }}</p>
                                 </div>
                                 <div class="flex justify-end max-xl:justify-center">
-                                    <a href="{{ url('schedule/detail/'.$sched->id) }}" target="_blank"
+                                    <a href="{{ url('schedule/detail/' . $sched->id) }}" target="_blank"
                                         class="text-center bg-[#FF864E] text-white p-2 rounded-md text-[1rem] w-36 cursor-pointer hover:bg-[#f07a44] shadow-md">
                                         อ่านเพิ่มเติม
                                     </a>
@@ -51,32 +61,32 @@
                             </div>
                         </div>
                     </div>
-                @else 
-                <div class="max-sm:mx-4 flex flex-col max-w-[90%] max-xl:w-[80%] max-md:w-full mx-auto border border-[#F7FAF3] bg-[#F7FAF3]  items-center z-50 rounded-xl shadow-md"
-                    data-aos="fade-right" data-aos-duration="3000">
-                    <div class="flex max-xl:flex-col gap-6 justify-between p-4 rounded-xl ">
-                        <div
-                            class="w-[450px] h-[300px] max-xl:w-[330px] max-xl:h-[250px] max-lg:w-[250px] max-lg:h-[250px] mx-auto rounded-md flwx justify-center items-center xl:order-2">
-                            <img src="{{ url(is_string($sched->thumbnail_link) ? $sched->thumbnail_link : '') }}" alt="" class="w-full h-full rounded-xl">
-                        </div>
-                        <div class="w-full flex flex-col justify-between py-4 gap-y-6 px-4">
-                            <div class="flex flex-col gap-y-6">
-                                <p class="text-[#2F99C7] font-bold text-3xl max-xl:text-xl">{{$sched->title}}</p>
-                                <div class="border-2 border-[#2F99C7] rounded-full "></div>
-                                <p class="text-[#75868B] text-xl max-md:text-lg">{{$sched->description}}</p>
+                @else
+                    <div class="max-sm:mx-4 flex flex-col max-w-[90%] max-xl:w-[80%] max-md:w-full mx-auto border border-[#F7FAF3] bg-[#F7FAF3]  items-center z-50 rounded-xl shadow-md"
+                        data-aos="fade-right" data-aos-duration="3000">
+                        <div class="flex max-xl:flex-col gap-6 justify-between p-4 rounded-xl ">
+                            <div
+                                class="w-[450px] h-[300px] max-xl:w-[330px] max-xl:h-[250px] max-lg:w-[250px] max-lg:h-[250px] mx-auto rounded-md flwx justify-center items-center xl:order-2">
+                                <img src="{{ url(is_string($sched->thumbnail_link) ? $sched->thumbnail_link : '') }}"
+                                    alt="" class="w-full h-full rounded-xl">
                             </div>
-                            <div class="flex justify-end max-xl:justify-center">
-                                <a href="{{ url('schedule/detail/'.$sched->id) }}" target="_blank"
-                                    class="text-center bg-[#FF864E] text-white p-2 rounded-md text-[1rem] w-36 cursor-pointer hover:bg-[#f07a44] shadow-md">
-                                    อ่านเพิ่มเติม
-                                </a>
+                            <div class="w-full flex flex-col justify-between py-4 gap-y-6 px-4">
+                                <div class="flex flex-col gap-y-6">
+                                    <p class="text-[#2F99C7] font-bold text-3xl max-xl:text-xl">{{ $sched->title }}</p>
+                                    <div class="border-2 border-[#2F99C7] rounded-full "></div>
+                                    <p class="text-[#75868B] text-xl max-md:text-lg">{{ $sched->description }}</p>
+                                </div>
+                                <div class="flex justify-end max-xl:justify-center">
+                                    <a href="{{ url('schedule/detail/' . $sched->id) }}" target="_blank"
+                                        class="text-center bg-[#FF864E] text-white p-2 rounded-md text-[1rem] w-36 cursor-pointer hover:bg-[#f07a44] shadow-md">
+                                        อ่านเพิ่มเติม
+                                    </a>
+                                </div>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
-                </div>
                 @endif
-
             @endforeach
         </div>
 

@@ -6,18 +6,23 @@
 
 @section('content')
     @include('frontend.layouts.swiper')
-    <div class="bg-white ">
-        <section class="flex flex-col gap-4 relative pt-10 bg-white ">
-            <p class="text-[#23404A] font-bold text-center text-3xl max-md:text-xl max-sm:text-lg z-40 max-md:px-2"
-                data-aos="zoom-in" data-aos-duration="3000">{{$postOrigin->title}}</p>
-            <p class="text-[#23404A] font-medium text-center text-2xl max-2xl:text-xl max-lg:text-lg max-sm:text-[1rem] z-40"
-                data-aos="zoom-in" data-aos-duration="3000">{{$postOrigin->keyword}}</p>
+    <div class="bg-white pt-32 max-sm:pt-20">
+        <section class="flex flex-col gap-4 relative  bg-white ">
+            <div class="relative z-40 w-[550px] max-sm:w-[350px] mx-auto">
+                <p class="text-[#23404A] font-bold text-center text-3xl max-md:text-xl max-sm:text-lg z-40 max-md:px-2"
+                    data-aos="zoom-in" data-aos-duration="3000">{{ $postOrigin->title }}</p>
+            </div>
+            <div class="relative z-40 w-[600px] max-sm:w-full mx-auto">
+                <p class="text-[#23404A] font-[500] text-center text-2xl max-2xl:text-xl max-lg:text-lg max-sm:text-[1rem] z-40"
+                    data-aos="zoom-in" data-aos-duration="3000">{{ $postOrigin->keyword }}</p>
+            </div>
 
-            <div class="relative z-40 flex max-xl:flex-col gap-6 justify-between w-[70%] max-md:w-full  mx-auto my-12 items-center"
+
+            <div class="relative z-40 flex max-xl:flex-col gap-6 justify-between w-4/5 max-md:w-full  mx-auto my-12 items-center"
                 data-aos="zoom-in" data-aos-duration="3000">
 
                 <div class="swiper swiper-container w-full ">
-                    <div class="swiper-wrapper rounded-2xl sm:p-6 flex sm:justify-start  ">
+                    <div class="swiper-wrapper rounded-2xl sm:p-6 flex sm:justify-start ">
                         @foreach ($postOrigin['images'] as $image)
                             <div class="swiper-slide sm:px-6">
                                 <div
@@ -25,7 +30,7 @@
                                     <div
                                         class="bg-[#FFCAAE] drop-shadow-md w-full h-full rounded-2xl absolute -left-6 top-6 z-10 max-sm:hidden">
                                     </div>
-                                    <img src="{{url($image->image_link)}}" alt=""
+                                    <img src="{{ url($image->image_link) }}" alt=""
                                         class="w-full h-full relative z-20 rounded-2xl drop-shadow-md">
                                 </div>
                             </div>
@@ -46,7 +51,7 @@
                     </div>
                     <div class="flex justify-end">
                         <a href="{{ route('seminar.origin') }}" target="_blank"
-                            class="text-center bg-[#FF864E] text-white p-2 rounded-md text-[1rem] w-36 cursor-pointer hover:bg-[#f07a44] shadow-md">
+                            class="text-center bg-[#FF864E] text-white p-2 rounded-md text-[1rem] w-36 cursor-pointer hover:bg-[#B8D88F] shadow-md">
                             อ่านเพิ่มเติม
                         </a>
                     </div>
@@ -92,10 +97,10 @@
                                         <div class="flex flex-col justify-center gap-y-4">
                                             <p class="text-[#23404A] font-bold text-center text-xl max-md:text-lg">
                                                 {{ $lect->title }}</p>
-                                            <p class="text-[#23404A] font-medium text-center text-lg max-md:text-md ">
+                                            <p class="text-[#686868] font-[300] text-center text-[1rem] max-md:text-md ">
                                                 {{ $lect->topic }}</p>
                                             <p
-                                                class="text-[#23404A] font-medium text-lg max-md:text-md text-start h-[150px] overflow-auto">
+                                                class="text-[#686868] font-[300] text-[1rem] max-md:text-md text-start h-[150px] overflow-auto">
                                                 {{ $lect->description }}
                                             </p>
                                         </div>
@@ -148,7 +153,7 @@
                                     </div>
                                     <div class="flex justify-strat">
                                         <a href="{{ route('register.index') }}" target="_blank"
-                                            class="text-center bg-[#FF864E] text-white p-2 rounded-md text-[1rem] w-36 cursor-pointer hover:bg-[#f07a44] shadow-md">
+                                            class="text-center bg-[#FF864E] text-white p-2 rounded-md text-[1rem] w-36 cursor-pointer hover:bg-[#B8D88F] shadow-md">
                                             รายละเอียด
                                         </a>
                                     </div>
@@ -284,9 +289,10 @@
 
         </section>
 
+        {{-- @dd($location) --}}
         <section class="relative bg-[#F4FCFF] flex flex-col gap-4 Z-50 pb-4">
             <p class="text-[#23404A] font-bold text-center text-4xl max-md:text-2xl z-50 max-md:px-2 pt-16 max-sm:pt-8"
-                data-aos="zoom-in" data-aos-duration="3000">{{$location->title}}</p>
+                data-aos="zoom-in" data-aos-duration="3000">{{ $location->title }}</p>
             <div class="mt-4 shadow-md w-full h-[450px] max-md:h-[300px] max-sm:h-[200px]">
                 {!! $location->iframe !!}
             </div>
@@ -294,7 +300,7 @@
 
         {{-- @dd($postsupport) --}}
         @if ($postsupport)
-            <section class=" py-10 mt-15 bg-white items-center">
+            <section class="py-10 mt-15 bg-white items-center">
                 <p class="text-[#23404A] font-bold text-center text-4xl max-md:text-2xl max-md:px-2" data-aos="zoom-in"
                     data-aos-duration="3000">
                     {{ $postsupport->title }}
@@ -304,9 +310,9 @@
                         <div class="swiper-wrapper w-full mx-auto flex">
                             {{-- @dd($postsupport->images) --}}
                             @foreach ($postsupport->images as $image)
-                                <div class="swiper-slide flex flex-col justify-center">
-                                    <div class="flex justify-center">
-                                        <div class="w-[200px] h-[120px] flex justify-center" data-aos="zoom-in"
+                                <div class="swiper-slide">
+                                    <div class="flex justify-center items-center h-[120px]">
+                                        <div class="flex justify-center items-center" data-aos="zoom-in"
                                             data-aos-duration="3000">
                                             <img src="{{ url($image->image_link) }}" alt=""
                                                 class="w-full h-full">

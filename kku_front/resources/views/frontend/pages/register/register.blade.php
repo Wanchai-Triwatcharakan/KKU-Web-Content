@@ -15,9 +15,11 @@
 
         <img src="/images/banner/image1.png" alt="" class="w-full h-full absolute object-cover">
     </section>
-    <section class="flex flex-col justify-center gap-4 py-10 bg-white relative">
+    
+    <section class="flex flex-col justify-center gap-4 py-10  bg-white relative">
 
-        <div class="w-[60%] mx-auto flex flex-col justify-center gap-12  items-center">
+        <div class="w-[60%] mx-auto flex flex-col justify-center gap-12 mt-20 max-sm:mt-12 items-center">
+            <img src="/images/home/Group 439.png" alt="" class="w-full h-full top-0 absolute z-10 object-cover">
             @foreach ($regisPost as $post)
                 <a href="{{ url('register/detail/'.$post->id) }}" target="_blank"
                     class=" z-50 flex justify-between bg-[#F7FAF3]  border border-[#F7FAF3] rounded-2xl shadow-md max-sm:flex-col " data-aos="fade-up"
@@ -34,7 +36,7 @@
             @endforeach
         </div>
 
-        <img src="/images/home/Group 439.png" alt="" class="w-full h-full top-0 absolute object-cover">
+       
 
 
     </section>

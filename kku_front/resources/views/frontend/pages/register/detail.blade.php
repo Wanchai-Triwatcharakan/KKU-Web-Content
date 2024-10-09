@@ -23,7 +23,7 @@
 
 
 
-    <section class="flex flex-col justify-center gap-4 py-10 bg-white mt-[12rem] mb-12 max-xl:mt-[8rem] max-sm:mt-[5rem]">
+    <section class="flex flex-col justify-center gap-4 py-10  bg-white mt-[14rem] mb-12 max-xl:mt-[8rem] max-sm:mt-[5rem]">
         <div class="w-[70%] mx-auto flex flex-col justify-center gap-12  items-center">
             <div class="flex max-xl:flex-col gap-y-8 justify-between items-center">
                 <div class="w-full flex flex-col gap-y-6 justify-between max-xl:mt-6 px-4 max-xl:order-2" data-aos="fade-right"

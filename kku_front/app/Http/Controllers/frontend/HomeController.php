@@ -24,6 +24,7 @@ class HomeController extends Controller
         $photoactivity = $allPost->where('category', ',6,');
         $lecturer = $allPost->where('category', ',10,');
         $location = $allPost->where('id', 12)->first();
+        // dd($allPost);
         $postsupport = Post::where('id', 5)
             ->where('status_display', true)
             ->with(['images' => function($query) {

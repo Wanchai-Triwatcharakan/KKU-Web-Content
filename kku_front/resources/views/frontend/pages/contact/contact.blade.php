@@ -15,7 +15,7 @@
         <img src="/images/banner/image122.png" alt="" class="w-full h-full absolute object-cover ">
     </section>
 
-    <section class="w-4/5 max-sm:w-[90%] mx-auto ">
+    <section class="w-4/5 max-sm:w-[90%] mx-auto pt-20 max-sm:pt-12">
         <div class="flex justify-between max-sm:flex-col py-10 gap-8">
             <div class="flex flex-col gap-6 justify-between w-full">
                 <div class="flex flex-col gap-6 max-sm:items-center ">

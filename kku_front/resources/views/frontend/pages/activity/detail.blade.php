@@ -5,17 +5,17 @@
 @endsection
 @section('content')
 
-    <section class="relative w-4/5 max-sm:w-[90%]  mx-auto mt-[5rem] max-xl:mt-[4rem] py-10 ">
+    <section class="relative w-4/5 max-sm:w-[90%]  mx-auto mt-[5rem] max-xl:mt-[4rem] py-12 ">
         <div class="flex gap-6 max-xl:flex-col">
             <div class="bg-[#F7FAF3] flex flex-col justify-center items-left px-20 max-xl:p-6 shadow-md w-full max-xl:order-2"
                 data-aos="fade-right" data-aos-duration="3000">
-                <p class="text-[#23404A] font-semibold text-left text-3xl max-xl:text-xl max-sm:text-lg mb-4">
+                <p class="text-[#23404A] font-[500] text-left text-3xl max-xl:text-xl max-sm:text-lg mb-4">
                     {{ $postsupport->title }}</p>
 
                 <div class="flex flex-col gap-4">
                     <div class="flex justify-start gap-8 max-xl:gap-1 max-md:flex-col text-lg max-md:text-[1rem]">
                         <p class="text-[#23404A] font-medium text-left  w-[150px]  max-xl:w-[120px]">สถานที่จัดงาน :</p>
-                        <p class="text-[#23404A] font-light text-left ">{{$postsupport->description}}</p>
+                        <p class="text-[#23404A] font-light text-left ">{{ $postsupport->description }}</p>
                     </div>
                     <div class="flex justify-start gap-8 max-xl:gap-1 max-md:flex-col text-lg max-md:text-[1rem]">
                         <p class="text-[#23404A] font-medium text-left w-[150px]  max-xl:w-[120px]">กำหนดเวลา :</p>
@@ -28,7 +28,7 @@
                     <div class="flex justify-start gap-8 max-xl:gap-1 max-md:flex-col text-lg max-md:text-[1rem]">
                         <p class="text-[#23404A] font-medium text-left w-[150px]  max-xl:w-[120px]">Google Drive :</p>
                         <p class="text-[#23404A] font-light text-left">
-                            <a href="{{$postsupport->iframe}}">{{$postsupport->iframe}}</a>
+                            <a href="{{ $postsupport->iframe }}">{{ $postsupport->iframe }}</a>
                         </p>
                     </div>
                 </div>
@@ -42,14 +42,18 @@
         </div>
     </section>
 
-    <section class="relative z-50">
+    <section class="relative z-50 py-16 max-sm:py-12">
         <div class="w-4/5 max-sm:w-[90%] mx-auto flex flex-col gap-12 ">
             <div class="flex flex-col gap-6">
                 <p class="text-[#84B750] text-center text-xl max-lg:text-lg max-sm:text-[1rem] z-40 max-md:px-2"
                     data-aos="zoom-in" data-aos-duration="3000">วันที่ 13 พฤศจิกายน 2567</p>
-                <p class="text-[#23404A] font-semibold text-center text-2xl max-md:text-xl z-40 max-md:px-2"
-                    data-aos="zoom-in" data-aos-duration="3000">{{ $postsupport->title }}
-                </p>
+
+
+                <div class="relative z-40 w-[600px] max-sm:w-full mx-auto">
+                    <p class="text-[#23404A] font-[500] text-center text-2xl max-md:text-[1.15rem] z-40 max-md:px-2"
+                        data-aos="zoom-in" data-aos-duration="3000">{{ $postsupport->title }}
+                    </p>
+                </div>
             </div>
 
             <div class="grid grid-cols-4 max-xl:grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-4 place-items-center z-50 relative"
