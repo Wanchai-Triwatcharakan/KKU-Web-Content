@@ -16,7 +16,6 @@ class HomeController extends Controller
             ->where('ad_position_id', 2)
             ->OrderBy('ad_priority')->get();
         $allPost = Post::where('status_display', true)->OrderBy('priority')->get();
-        // dd();
         $regispost = $allPost->filter(function($post) {
             return strpos($post->category, ',3,') !== false;
         })->take(4);

@@ -51,14 +51,14 @@ const appConfigPROD = {
     language: "th",
     timeZone: "Asia/Bangkok",
     languageAvailable: ["th"],  
-    apiPath:"https://api.chaum2021.com/api/backoffice/v1/",
-    uploadPath:"https://api.chaum2021.com/",
-    webPath:"https://chaum2021.com/",
+    apiPath:"https://thaiwellhealth.com/api/backoffice/v1/",
+    uploadPath:"https://thaiwellhealth.com/",
+    webPath:"https://thaiwellhealth.com/",
     pages: {
         categories: true,
         subcategories: true,
-        products: true,
-        services: true,
+        products: false,
+        services: false,
         portfolios: true,
         designs: true,
         posts: true,
@@ -72,11 +72,13 @@ const appConfigPROD = {
         languages: false,
         admins: true,
         configs: true,
+        slides: true,
         groups: {
             category: true,
             product: true,
             article: true,
             system: true,
+            mail: true,
         }
     },
     features: {
@@ -93,8 +95,8 @@ const appConfigPROD = {
     }
 }
 
-export default appConfigDEV;
-// export default appConfigPROD;
+// export default appConfigDEV;
+export default appConfigPROD;
 
 
 
