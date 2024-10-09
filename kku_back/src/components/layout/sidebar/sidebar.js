@@ -27,12 +27,12 @@ import {
   faIcons,
   faPersonHarassing,
   faEnvelope,
-  faBook,
   faShoppingCart,
   faBars,
   faCube,
   faAddressBook,
   faHouseUser,
+  faBook,
   faTable,
   faPeopleRoof,
   faImage,
@@ -352,13 +352,13 @@ const SidebarComponent = (props) => {
                     onClick={closeSidebarhandler}
                     to="/postscontent"
                     className={`navlink `}
-                    title={t("อื่นๆ")}
+                    title={t("บทความ")}
                     liClass="menu-link"
                   >
                     <span className="collap-title">
-                      <FontAwesomeIcon icon={faPersonHarassing} />
+                      <FontAwesomeIcon icon={faBook} />
                     </span>
-                    <span className="menu-title">{t("อื่นๆ")}</span>
+                    <span className="menu-title">{t("บทความ")}</span>
                   </NavLink>
                 )}
                 {pagesAllow.messages && (

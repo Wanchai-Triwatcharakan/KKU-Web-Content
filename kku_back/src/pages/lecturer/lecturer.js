@@ -31,6 +31,7 @@ const LecturePage = () => {
   const pageAvailable = useSelector(
     (state) => state.app.frontOffice.pageAvailable
   );
+  const isAdmin = useSelector((state) => state.auth.userPermission.admin);
   const language = useSelector((state) => state.app.language);
   const [postTab, setPostTab] = useState("0");
   const [isRowDisplay, setIsRowDisplay] = useState(false);
@@ -140,7 +141,7 @@ const LecturePage = () => {
                   ))}
               </Select>
             </FormControl>  */}
-            {isSuerperAdmin && (
+            {isSuerperAdmin || isAdmin && (
               <ButtonUI
                 onClick={() => setPostModalAdd(true)}
                 className="btn-add-post"

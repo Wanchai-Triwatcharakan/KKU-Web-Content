@@ -28,6 +28,7 @@ const LoginPage = () => {
   const usernameRef = useRef()
   const passwordRef = useRef()
   const keepRef = useRef()
+  const language = useSelector((state) => state.app.language);
 
   useEffect(() => {
   }, [isLoggedIn]);
@@ -50,7 +51,7 @@ const LoginPage = () => {
         username: usernameRef.current.value.trim(), 
         password: passwordRef.current.value.trim(),
       }).then((response) => {
-        dispatch(authActions.login({token: response.data.data.accessToken, keepLogin: keepRef.current.checked}))
+        dispatch(authActions.login({token: response.data.data.accessToken, keepLogin: keepRef.current.checked, language: language}))
         ToastModal.fire({
           icon: 'success',
           title: 'Signed in successfully'

@@ -171,7 +171,7 @@ function MessagePage() {
                   <TableRow>
                     <StyledTableCell>ชื่อผู้ส่ง</StyledTableCell>
                     <StyledTableCell align="left">อีเมล</StyledTableCell>
-                    <StyledTableCell align="left">หัวข้อ</StyledTableCell>
+                    <StyledTableCell align="left">เบอร์โทร</StyledTableCell>
                     <StyledTableCell align="left">ข้อความ</StyledTableCell>
                     <StyledTableCell align="left">วันที่ส่ง</StyledTableCell>
                     {isSuerperAdmin && (

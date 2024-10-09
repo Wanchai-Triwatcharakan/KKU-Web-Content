@@ -36,6 +36,7 @@ export default function RoomSeminar() {
   const isSuerperAdmin = useSelector(
     (state) => state.auth.userPermission.superAdmin
   );
+  const isAdmin = useSelector((state) => state.auth.userPermission.admin);
 
   useEffect(() => {
     setPostData([]);
@@ -80,7 +81,7 @@ export default function RoomSeminar() {
               isRowDisplay={isRowDisplay}
               setIsRowDisplay={setIsRowDisplay}
             />
-            {isSuerperAdmin && (
+            {isSuerperAdmin || isAdmin && (
               <ButtonUI
                 onClick={() => setPostModalAdd(true)}
                 className="btn-add-post"

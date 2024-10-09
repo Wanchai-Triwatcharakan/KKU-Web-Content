@@ -107,6 +107,7 @@ const ModalEditPost = (props) => {
       description: "" 
     },
   ]);
+  console.log(items.tags)
 
   useEffect(() => {
     svGetTimeSchedule('post', items.id).then((res) => {
@@ -115,9 +116,10 @@ const ModalEditPost = (props) => {
       }
     })
   }, [])
+
   useEffect(() => {
     const tagsArray = JSON.parse(items.tags);
-    setCheckedRooms(tagsArray);
+      setCheckedRooms(tagsArray);
   }, [items.tags]); 
 
   useEffect(() => {
@@ -297,6 +299,9 @@ const ModalEditPost = (props) => {
 
   const handleCheckboxChange = (roomId) => {
     setCheckedRooms((prevCheckedRooms) => {
+      if (!Array.isArray(prevCheckedRooms)) {
+        prevCheckedRooms = [];
+      }
       if (prevCheckedRooms.includes(roomId)) {
         return prevCheckedRooms.filter((id) => id !== roomId);
       } else {
@@ -611,6 +616,8 @@ const ModalEditPost = (props) => {
                   id="cate-description"
                   label="Description"
                   size="small"
+                  multiline
+                  minRows={2}
                 />
                 {/* <TextField
                   onChange={(e) => setEditData({...editData, slug: e.target.value})}
@@ -662,7 +669,7 @@ const ModalEditPost = (props) => {
                     <DateTimePicker
                       className="date-input"
                       size="small"
-                      label={t("ModalDateDisplay")}
+                      label={t("Date Display")}
                       value={displayDate}
                       onChange={displayHandleChange}
                       renderInput={(params) => <TextField {...params} />}
@@ -672,7 +679,7 @@ const ModalEditPost = (props) => {
                     <DateTimePicker
                       className="date-input"
                       sx={{ width: 250 }}
-                      label={t("ModalDateHidden")}
+                      label={t("Date Hidden")}
                       value={hiddenDate}
                       onChange={hiddenHandleChange}
                       renderInput={(params) => <TextField {...params} />}
@@ -753,7 +760,7 @@ const ModalEditPost = (props) => {
                       <FormControlLabel
                         control={
                           <Checkbox
-                            checked={checkedRooms.includes(room.id)} // ตรวจสอบว่า roomId อยู่ใน array checkedRooms หรือไม่
+                            checked={Array.isArray(checkedRooms) && checkedRooms.includes(room.id)} // ตรวจสอบว่า roomId อยู่ใน array checkedRooms หรือไม่
                             onChange={() => handleCheckboxChange(room.id)} // เรียกฟังก์ชันเมื่อมีการเปลี่ยนแปลง
                             color="primary"
                           />
