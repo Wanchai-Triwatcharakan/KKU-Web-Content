@@ -1,11 +1,11 @@
-var swiper = new Swiper(".swiper", {
+var swiper = new Swiper(".swiper1", {
     slidesPerView: 1,
     spaceBetween: 20,
     loop: true,
     // direction: getDirection(),
     navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
+        nextEl: ".swiper-button-next1",
+        prevEl: ".swiper-button-prev1",
     },
     grabCursor: "true",
     breakpoints: {
@@ -62,14 +62,13 @@ var swiper = new Swiper(".mySwiper", {
     // },
 });
 
-var swiper = new Swiper(".swiper1", {
+var swiper1 = new Swiper(".swiper2", {
     slidesPerView:1,
     spaceBetween: 20,
     loop: true,
-    // direction: getDirection(),
     navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
+        nextEl: ".swiper-button-next2",
+        prevEl: ".swiper-button-prev2",
     },
     grabCursor: "true",
     breakpoints: {
@@ -86,6 +85,7 @@ var swiper = new Swiper(".swiper1", {
         768: {
             slidesPerView: 3,
             spaceBetween: 10,
+            centerSlide: true,
         },
         1024: {
             slidesPerView: 3,

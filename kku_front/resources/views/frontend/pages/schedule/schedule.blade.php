@@ -62,7 +62,7 @@
                         </div>
                     </div>
                 @else
-                    <div class="max-sm:mx-4 flex flex-col max-w-[90%] max-xl:w-[80%] max-md:w-full mx-auto border border-[#F7FAF3] bg-[#F7FAF3]  items-center z-50 rounded-xl shadow-md"
+                    <div class="max-sm:mx-4 flex flex-col w-4/5 max-xl:w-[80%] max-md:w-full mx-auto border border-[#F7FAF3] bg-[#F7FAF3]  items-center z-50 rounded-xl shadow-md"
                         data-aos="fade-right" data-aos-duration="3000">
                         <div class="flex max-xl:flex-col gap-6 justify-between p-4 rounded-xl ">
                             <div
@@ -91,7 +91,7 @@
         </div>
 
         <img src="/images/home/Group 50.png" alt="" class="absolute top-4 left-0 w-40">
-        <img src="/images/home/Group 22.png" alt="" class="absolute bottom-36 right-0 w-24">
+        <img src="/images/home/Group 22.png" alt="" class="absolute bottom-36  right-0 w-24">
         <img src="/images/home/Group 49.png" alt=""
             class="absolute  -bottom-40 right-[40rem] max-lg:right-[20rem] max-sm:right-[8rem] w-80">
     </section>

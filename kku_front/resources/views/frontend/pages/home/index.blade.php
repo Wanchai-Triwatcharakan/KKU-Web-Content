@@ -80,7 +80,7 @@
             </div>
 
             <div class="relative z-30 items-center mt-6">
-                <div class="swiper items-center w-4/5 mx-auto">
+                <div class="swiper swiper1 items-center w-4/5 mx-auto">
                     <div class="swiper-wrapper w-full mx-auto flex">
                         @foreach ($lecturer as $lect)
                             <a href="{{ route('seminar.lecturer') }}" target="_blank" data-aos="fade-up"
@@ -117,8 +117,8 @@
                         @endforeach
                     </div>
                 </div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next swiper-button-next1"></div>
+                <div class="swiper-button-prev swiper-button-prev2"></div>
             </div>
         </section>
 
@@ -283,7 +283,7 @@
             <img src="/images/home/Group 50.png" alt=""
                 class="absolute top-[6rem] left-0 w-[200px] max-2xl:w-[150px] max-lg:w-[100px] max-md:hidden">
             <img src="/images/home/Group 22.png" alt=""
-                class="absolute bottom-36 right-0 w-[200px]  max-2xl:w-[150px] max-lg:w-[100px] max-md:hidden">
+                class="absolute top-0 right-0 w-[150px] max-lg:w-[100px] max-md:hidden">
             <img src="/images/home/Group 49.png" alt=""
                 class="absolute  -bottom-[20rem] max-md:bottom-0 left-[20rem] max-lg:right-[20rem] max-sm:right-[8rem] w-[600px] max-2xl:w-[450px] max-lg:w-[300px] max-md:hidden">
 
@@ -300,15 +300,12 @@
 
         {{-- @dd($postsupport) --}}
         @if ($postsupport)
-            <section class="py-10 mt-15 bg-white items-center">
+            <section class="py-10 mt-15 bg-white items-center relative z-50">
                 <p class="text-[#23404A] font-bold text-center text-4xl max-md:text-2xl max-md:px-2" data-aos="zoom-in"
-                    data-aos-duration="3000">
-                    {{ $postsupport->title }}
-                </p>
+                    data-aos-duration="3000">{{ $postsupport->title }}</p>
                 <div class="relative z-30 items-center mt-8">
-                    <div class="swiper swiper1 items-center w-11/12 mx-auto">
+                    <div class="swiper swiper2 items-center w-11/12 mx-auto">
                         <div class="swiper-wrapper w-full mx-auto flex">
-                            {{-- @dd($postsupport->images) --}}
                             @foreach ($postsupport->images as $image)
                                 <div class="swiper-slide">
                                     <div class="flex justify-center items-center h-[120px]">
@@ -321,12 +318,12 @@
                                 </div>
                             @endforeach
                         </div>
-
                     </div>
-                    <div class="swiper-button-next swiper-button-next1"></div>
-                    <div class="swiper-button-prev swiper-button-prev1"></div>
+                    <div class="swiper-button-next swiper-button-next2"></div>
+                    <div class="swiper-button-prev swiper-button-prev2"></div>
                 </div>
             </section>
+
         @endif
     </div>
 @endsection

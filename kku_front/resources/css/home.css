@@ -45,14 +45,14 @@ body {
 }
 
 
-.swiper-button-next1 {
+.swiper-button-next1 ,.swiper-button-next2{
     /* right: 7%;
     position: absolute; */
    color: #686868 !important;
 }
 
- .swiper-button-prev1 {
-    /* left: 7%;
+ .swiper-button-prev1 ,.swiper-button-prev2 {
+    /* left: 7%; 
     position: absolute; */
     color: #686868 !important; 
     widows: 50px;
