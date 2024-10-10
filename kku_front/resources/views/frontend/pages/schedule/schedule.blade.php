@@ -4,7 +4,7 @@
     {{-- <link rel="stylesheet" href="/css/aboutus.min.css"> --}}
 @endsection
 @section('content')
-
+{{-- @dd($seo); --}}
     <section class="mt-[4.5rem] max-xl:mt-[3rem] w-full h-[500px] max-xl:h-[350px] max-sm:h-[250px] relative z-50">
         <div class="absolute inset-0 z-50 flex flex-col justify-center items-center gap-y-4 max-sm:gap-y-2 px-4">
             <p class="text-white text-6xl max-xl:text-3xl max-md:text-2xl  font-bold text-center" data-aos="zoom-in"

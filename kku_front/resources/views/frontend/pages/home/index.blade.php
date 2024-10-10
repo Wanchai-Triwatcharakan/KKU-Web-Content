@@ -237,7 +237,7 @@
             </div>
             <div class="relative flex justify-center mt-4 ">
                 <a href="{{ route('post.index') }}" target="_blank"
-                    class="text-center bg-[#FF864E] text-white hover:text-[#FF864E] hover:bg-white  p-2 rounded-md text-[1rem] w-36 cursor-pointer hover:bg-[#B8D88F]">
+                    class="text-center bg-[#FF864E] text-white hover:text-[#FF864E] hover:bg-white  p-2 rounded-md text-[1rem] w-36 cursor-pointer">
                     ดูทั้งหมด</a>
             </div>
 

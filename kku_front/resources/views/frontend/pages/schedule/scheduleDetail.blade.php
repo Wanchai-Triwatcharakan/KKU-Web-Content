@@ -124,9 +124,9 @@
             </section>
         @endif
 
-        <div class="w-[50px] h-[50px] fixed right-4 bottom-[12rem] max-xl:bottom-[18rem] max-md:right-2 max-md:bottom-[16.5rem] rounded-lg hover:boder-4 hover:border-[#FF864E] cursor-pointer hidden"
+        <div class="w-[50px] bg-white h-[50px] fixed flex justify-center items-center right-4 bottom-[12rem] max-xl:bottom-[18rem] max-md:right-2 group max-md:bottom-[16.5rem] rounded-full  hover:bg-[#FF864E] cursor-pointer hidden"
             id="BackToTop">
-            <img src="/images/backToTop.png" alt="" title="กลับขึ้นข้างบน">
+            <img src="/images/up-circle-svgrepo-com.png" alt="" class="w-full h-full group-hover:filter group-hover: group-hover:invert group-hover:saturate-12 group-hover:hue-rotate-237 group-hover:brightness-0 group-hover:contrast-30" title="กลับขึ้นข้างบน">
         </div>
     </div>
 @endsection

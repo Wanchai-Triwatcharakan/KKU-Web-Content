@@ -87,7 +87,8 @@
                 </div>
             </div>
 
-            <div class="w-full grid grid-cols-3 gap-6 max-yy:grid-cols-2 max-dm:grid-cols-2 max-ex:grid-cols-1 place-items-center h-full">
+            <div
+                class="w-full grid grid-cols-3 gap-6 max-yy:grid-cols-2 max-dm:grid-cols-2 max-ex:grid-cols-1 place-items-center h-full">
 
                 @foreach ($allnews as $news)
                     <div class="drop-shadow-md max-w-full max-es:w-[350px]  flex justify-center overflow-hidden "data-aos="fade-up"
@@ -104,9 +105,9 @@
                                 </p>
 
 
-                                <div class="flex justify-end mt-4">
+                                <div class="flex justify-end my-4 ">
                                     <a href="{{ url('post/detail/' . $news->id) }}" target="_blank"
-                                        class="text-center font-medium text-[#FF864E] p-2 rounded-full text-[1rem] w-36 cursor-pointer hover:scale-105 transition duration-500">
+                                        class="text-center font-medium text-[#FF864E]  rounded-full text-[1rem] relative cursor-pointer transition-all ease-in-out before:transition-[width] before:ease-in-out before:duration-700 before:absolute before:bg-[#bceb77] before:origin-center before:h-[2px] before:w-0 hover:before:w-[50%] before:-bottom-1 before:left-[50%] after:transition-[width] after:ease-in-out after:duration-700 after:absolute after:bg-[#bceb77] after:origin-center after:h-[2px] after:w-0 hover:after:w-[50%] after:-bottom-1 after:right-[50%] ">
                                         ดูเพิ่มเติม >></a>
                                 </div>
                             </div>
