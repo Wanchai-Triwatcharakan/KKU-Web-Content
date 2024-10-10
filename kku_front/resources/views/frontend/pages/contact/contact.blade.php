@@ -52,7 +52,7 @@
                     class="p-3 rounded-lg outline-none border text-[#23404A]" placeholder="Write Your Message"></textarea>
 
                 <div class="flex justify-start max-sm:justify-center">
-                    <button class="bg-[#FF864E] rounded-lg text-white text-lg px-4 py-2 hover:bg-[#84B750]" type="submit">
+                    <button class="bg-[#FF864E] rounded-lg text-white text-lg px-4 py-2 hover:bg-[#A7CA78]" type="submit">
                         Send Your Message
                     </button>
                 </div>
@@ -63,7 +63,7 @@
         </div>
 
         <div
-            class="bg-[#84B750] shadow-md p-12 max-sm:p-6 rounded-t-3xl  flex justify-between  items-center  gap-4 text-white text-xl max-2xl:text-lg max-lg:flex-col max-lg:items-start">
+            class="bg-[#A7CA78] shadow-md p-12 max-sm:p-6 rounded-t-3xl  flex justify-between  items-center  gap-4 text-white text-xl max-2xl:text-lg max-lg:flex-col max-lg:items-start">
             <a href="tel:043-320-320" target="_blank" class="flex  gap-4 items-center group">
                 <div
                     class="bg-white rounded-full p-2 w-20 max-2xl:w-16 h-auto shadow-md border-4 group-hover:border-[#FF864E]">

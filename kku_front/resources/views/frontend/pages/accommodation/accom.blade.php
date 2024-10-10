@@ -82,7 +82,7 @@
     <!-- Modal -->
     <div id="imageModal" class=" fixed inset-0 flex items-center justify-center hidden bg-black bg-opacity-75 z-[999]">
         <div
-            class="relative bg-white p-4 w-[800px] h-[800px] max-lg:h-[70%]  max-sm:h-[50%] max-lg:w-full max-lg:mx-4 mx-auto">
+            class="relative bg-white p-4 w-[800px] h-[750px] max-lg:h-[70%]  max-sm:h-[50%] max-lg:w-full max-lg:mx-4 mx-auto">
             <button class="absolute top-2 right-2 text-white text-[1.5rem] bg-red-500 px-2 rounded"
                 id="closeModal">&times;</button>
             <img src="{{$location->thumbnail_link}}" alt="Image Preview" class="w-full h-full" id="modalImage">
