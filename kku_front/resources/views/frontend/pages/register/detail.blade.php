@@ -32,7 +32,7 @@
                         <p class="text-[#23404A] font-semibold text-3xl max-md:text-lg">รายละเอียด</p>
                     </div>
                     {{-- Content CK Editor --}}
-                    <div>
+                    <div class="content-ck">
                         {!! $post->content !!}
                     </div>
                     <div class="flex justify-start gap-4">
@@ -51,7 +51,7 @@
                         <div
                             class="bg-[#B8D88F] drop-shadow-md w-[550px] h-full rounded-2xl absolute  top-8 -right-4 z-10 max-sm:hidden ">
                         </div>
-                        <img src="{{url($post->thumbnail_link)}}" alt=""
+                        <img src="{{url($post['images'][0]->image_link)}}" alt=""
                             class="w-full h-full relative z-20 rounded-2xl drop-shadow-md object-cover">
                     </div>
                 </div>

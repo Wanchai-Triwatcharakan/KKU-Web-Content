@@ -150,11 +150,7 @@
                                     </div>
                                     <div class="flex flex-col gap-y-6 text-[1rem] indent-8 text-start overflow-y-auto">
                                         <p>{{ $post->title }}</p>
-                                        <p>การประชุมในครั้งนี้มุ่งเน้นที่การพัฒนานวัตกรรมเพื่อสุขภาพ และความเป็นอยู่
-                                            ที่ดี โดยครอบคลุมหัวข้อที่สำคัญ ได้แก่ สุขภาพ สมรรถภาพทาง กายโภชนา
-                                            การ รูปลักษณ์ การนอนหลับ และการมีสติ โดยจะเน้นการ แสดงนวัตกรรม และ
-                                            การพัฒนาที่เกี่ยวข้องในด้านเหล่านี้อย่างครบวงจร
-                                        </p>
+                                        <p>{{ $post->description }}</p>
                                     </div>
                                     <div class="flex justify-strat">
                                         <a href="{{ route('register.index') }}" target="_blank"

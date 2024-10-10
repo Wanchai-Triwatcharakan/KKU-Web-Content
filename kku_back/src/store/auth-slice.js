@@ -34,6 +34,7 @@ const authSlice = createSlice({
             state.adminId = null;
             localStorage.removeItem('authToken')
             localStorage.setItem('authToken', action.payload.token)
+            localStorage.setItem('i18nextLng', action.payload.language)
             state.authToken = action.payload.token
             state.keepLogin = action.payload.keepLogin
             state.isLoggedIn = true;
@@ -44,6 +45,7 @@ const authSlice = createSlice({
             state.authToken = null;
             state.authToken = null;
             state.isLoggedIn = false;
+            localStorage.removeItem('i18nextLng')
             localStorage.removeItem('authToken')
             localStorage.removeItem('rft')
         },

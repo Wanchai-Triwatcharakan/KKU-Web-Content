@@ -45,6 +45,7 @@ const ActivityPhoto = () => {
   const isSuerperAdmin = useSelector(
     (state) => state.auth.userPermission.superAdmin
   );
+  const isAdmin = useSelector((state) => state.auth.userPermission.admin);
 
   useEffect(() => {
     getMenuList(language).then((res) => {
@@ -138,7 +139,7 @@ const ActivityPhoto = () => {
                   ))}
               </Select>
             </FormControl>  */}
-            {isSuerperAdmin && (
+            {(isSuerperAdmin || isAdmin) && (
               <ButtonUI
                 onClick={() => setPostModalAdd(true)}
                 className="btn-add-post"

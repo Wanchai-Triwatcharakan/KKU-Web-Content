@@ -19,6 +19,8 @@ const CategoryPage = () => {
   const isSuerperAdmin = useSelector(
     (state) => state.auth.userPermission.superAdmin
   );
+  const isAdmin = useSelector((state) => state.auth.userPermission.admin);
+  console.log(isAdmin)
   const { t } = useTranslation(["category-page"]);
   const dispatch = useDispatch();
   const language = useSelector((state) => state.app.language);
@@ -66,7 +68,7 @@ const CategoryPage = () => {
               isRowDisplay={isRowDisplay}
               setIsRowDisplay={setIsRowDisplay}
             />
-            {isSuerperAdmin && (
+            {(isSuerperAdmin || isAdmin) && (
               <ButtonUI
                 onClick={() => setModalAddCate(true)}
                 className="btn-add-category"

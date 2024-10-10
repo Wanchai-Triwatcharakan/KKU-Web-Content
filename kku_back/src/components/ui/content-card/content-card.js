@@ -15,7 +15,8 @@ const ContentCardUI = (props) => {
     const {uploadPath , language} = useSelector(state => state.app) 
     const userPermission = useSelector(state => state.auth.userPermission) 
     const isSuerperAdmin = userPermission.superAdmin
-
+    const isAdmin = userPermission.admin
+    // console.log(isAdmin)
     const previewImageHandler = (e, image) => {
         if(image !== "" && !e.target.classList.contains('src-error')) {
             Swal.fire({
@@ -46,7 +47,7 @@ const ContentCardUI = (props) => {
                 </figure>
                 <div className='box-details'>{props.children}</div>
             </div>
-            { (isSuerperAdmin || allowAdmin) && (
+            { (isSuerperAdmin || isAdmin || allowAdmin) && (
                 <div className='box-right'>
                     {data.language === language? (
                         <div className='box-action'>

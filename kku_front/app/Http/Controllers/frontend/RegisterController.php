@@ -22,6 +22,7 @@ class RegisterController extends Controller
         $post = Post::where('id', $id)
             ->where('category', ',3,')
             ->where('status_display', true)
+            ->with('images')
             ->first();
         return view('frontend.pages.register.detail', compact('post'));
     }
