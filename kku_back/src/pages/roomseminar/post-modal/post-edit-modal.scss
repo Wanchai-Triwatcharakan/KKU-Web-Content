@@ -184,3 +184,22 @@
         }   
     }
 }   
+
+
+.ck-input {
+    @apply mx-auto w-[60%] rounded-lg shadow-md p-4 flex justify-center items-center flex-col bg-slate-100  ;
+    .modal-header{
+        @apply flex justify-between items-center w-full text-lg ;
+    }
+    .ck-content{
+        @apply w-full h-auto;
+    }
+    .modal-footer{
+        @apply flex gap-6 my-4;
+    }
+  }
+
+
+.modal-container {
+    @apply fixed inset-0 flex justify-center items-center min-h-screen bg-black bg-opacity-50;
+}
