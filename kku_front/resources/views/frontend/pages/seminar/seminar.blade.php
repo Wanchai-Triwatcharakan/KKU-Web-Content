@@ -44,7 +44,7 @@
                                         class="bg-[#FFCAAE] drop-shadow-md w-full h-full rounded-2xl absolute -left-6 top-6 z-10 max-sm:hidden">
                                     </div>
                                     <img src="{{ url($image->image_link) }}" alt=""
-                                        class="w-full h-full relative z-20 rounded-2xl drop-shadow-md">
+                                        class="w-full h-full relative z-20 rounded-2xl drop-shadow-md object-cover">
                                 </div>
                             </div>
                         @endforeach
@@ -114,7 +114,7 @@
         <p class="text-[#23404A] font-bold text-center text-4xl max-md:text-2xl max-md:px-2" data-aos="zoom-in"
             data-aos-duration="3000">{{ $postsupport->title }}</p>
         <div class="relative z-30 items-center mt-8">
-            <div class="swiper swiper1 items-center w-11/12 mx-auto">
+            <div class="swiper swiper2 items-center w-11/12 mx-auto">
 
                 <div class="swiper-wrapper w-full mx-auto flex">
                     @foreach ($postsupport->images as $image)
@@ -129,8 +129,8 @@
                 </div>
 
             </div>
-            <div class="swiper-button-next swiper-button-next1"></div>
-            <div class="swiper-button-prev swiper-button-prev1"></div>
+            <div class="swiper-button-next swiper-button-next2"></div>
+            <div class="swiper-button-prev swiper-button-prev2"></div>
         </div>
     </section>
     {{-- @endif --}}

@@ -52,7 +52,7 @@
                     class="p-3 rounded-lg outline-none border text-[#23404A]" placeholder="Write Your Message"></textarea>
 
                 <div class="flex justify-start max-sm:justify-center">
-                    <button class="bg-[#FF864E] rounded-lg text-white text-lg px-4 py-2" type="submit">
+                    <button class="bg-[#FF864E] rounded-lg text-white text-lg px-4 py-2 hover:bg-[#A7CA78]" type="submit">
                         Send Your Message
                     </button>
                 </div>

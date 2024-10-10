@@ -4,7 +4,7 @@
     {{-- <link rel="stylesheet" href="/css/aboutus.min.css"> --}}
 @endsection
 @section('content')
-
+{{-- @dd($seo); --}}
     <section class="mt-[4.5rem] max-xl:mt-[3rem] w-full h-[500px] max-xl:h-[350px] max-sm:h-[250px] relative z-50">
         <div class="absolute inset-0 z-50 flex flex-col justify-center items-center gap-y-4 max-sm:gap-y-2 px-4">
             <p class="text-white text-6xl max-xl:text-3xl max-md:text-2xl  font-bold text-center" data-aos="zoom-in"
@@ -36,9 +36,9 @@
                         data-aos="fade-left" data-aos-duration="3000">
                         <div class="flex max-xl:flex-col gap-6 justify-between p-4 rounded-xl ">
                             <div
-                                class="w-[450px] h-[300px] max-xl:w-[330px] max-xl:h-[250px] max-lg:w-[250px] max-lg:h-[250px] mx-auto rounded-md flwx justify-center items-center">
+                                class="w-[500px] h-[300px] max-xl:w-[330px] max-xl:h-[250px] max-lg:w-[250px] max-lg:h-[250px] mx-auto rounded-md flwx justify-center items-center">
                                 <img src="{{ url(is_string($sched->thumbnail_link) ? $sched->thumbnail_link : '') }}"
-                                    alt="" class="w-full h-full rounded-xl">
+                                    alt="" class="w-full h-full rounded-xl object-cover">
                             </div>
 
                             <div class="w-full flex flex-col justify-between py-4 gap-y-6 px-4">
@@ -49,7 +49,7 @@
                                 </div>
                                 <div class="flex justify-end max-xl:justify-center">
                                     <a href="{{ url('schedule/detail/' . $sched->id) }}" target="_blank"
-                                        class="text-center bg-[#FF864E] text-white p-2 rounded-md text-[1rem] w-36 cursor-pointer hover:bg-[#f07a44] shadow-md">
+                                        class="text-center bg-[#FF864E] text-white p-2 rounded-md text-[1rem] w-36 cursor-pointer hover:bg-[#B8D88F] shadow-md">
                                         อ่านเพิ่มเติม
                                     </a>
                                 </div>

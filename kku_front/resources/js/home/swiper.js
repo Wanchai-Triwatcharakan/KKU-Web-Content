@@ -4,8 +4,8 @@ var swiper = new Swiper(".swiper1", {
     loop: true,
     // direction: getDirection(),
     navigation: {
-        nextEl: ".swiper-button-next1",
-        prevEl: ".swiper-button-prev1",
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
     },
     grabCursor: "true",
     breakpoints: {

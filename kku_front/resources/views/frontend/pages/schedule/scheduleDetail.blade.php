@@ -62,7 +62,7 @@
                         class="pl-[5rem] max-lg:pl-[1rem] flex py-4 gap-4 justify-start max-sm:flex-col text-lg max-lg:text-[1rem]  text-[#23404A]">
                         <p class="font-medium w-[20%] max-lg:w-[50%]">{{ substr($time->time_start, 0, 5) }} -
                             {{ substr($time->time_end, 0, 5) }} น.</p>
-                        <p class="">{{ $time->description }}</p>
+                        <p class="w-full">{{ $time->description }}</p>
                     </div>
                     <hr>
                 @endforeach
@@ -114,7 +114,7 @@
                                     class="flex py-4 gap-4 justify-start text-lg max-lg:text-[1rem] text-[#23404A] max-sm:flex-col">
                                     <p class="font-medium w-[20%] max-lg:w-[50%]">{{ substr($time->time_start, 0, 5) }} -
                                         {{ substr($time->time_end, 0, 5) }} น.</p>
-                                    <p>{{ $time->description }}</p>
+                                    <p class="w-full">{{ $time->description }}</p>
                                 </div>
                                 <hr>
                             @endforeach
@@ -124,9 +124,9 @@
             </section>
         @endif
 
-        <div class="w-[50px] h-[50px] fixed right-4 bottom-[12rem] max-xl:bottom-[18rem] max-md:right-2 max-md:bottom-[16.5rem] cursor-pointer hidden"
+        <div class="w-[50px] bg-white h-[50px] fixed flex justify-center items-center right-4 bottom-[12rem] max-xl:bottom-[18rem] max-md:right-2 group max-md:bottom-[16.5rem] rounded-full  hover:bg-[#FF864E] cursor-pointer hidden"
             id="BackToTop">
-            <img src="/images/backToTop.png" alt="">
+            <img src="/images/up-circle-svgrepo-com.png" alt="" class="w-full h-full group-hover:filter group-hover: group-hover:invert group-hover:saturate-12 group-hover:hue-rotate-237 group-hover:brightness-0 group-hover:contrast-30" title="กลับขึ้นข้างบน">
         </div>
     </div>
 @endsection

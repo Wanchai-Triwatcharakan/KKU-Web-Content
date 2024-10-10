@@ -52,13 +52,10 @@
 
             <div data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="3000"
                 class=" max-uu:w-[550px]  max-uu:h-[450px] lg:absolute rounded-lg shadow-lg left-[20rem] top-[15rem] max-uu:left-[15rem] max-uu:top-24 max-yy:left-[5rem] max-yy:top-[6rem] max-xl:left-0 max-xl:w-[450px]  max-xl:h-[350px] max-sm:max-w-[350px]  max-sm:max-h-[350px]">
-                <img src="/images/Rectangle 199.png" alt="" class="w-full h-full rounded-lg ">
+                <img src="/images/Rectangle 199.png" alt="" class="w-full h-full rounded-lg object-cover">
             </div>
         </div>
     </section>
-
-
-
 
     <section class="relative bg-[#F4FCFF] flex flex-col gap-4 Z-50 pb-4">
         <p class="text-[#23404A] font-bold text-center text-4xl max-md:text-2xl z-50 max-md:px-2 pt-16 max-sm:pt-8"
@@ -74,7 +71,7 @@
             data-aos="zoom-in" data-aos-duration="3000">{{$location->keyword}}</p>
         <div class="mt-4 shadow-md w-[800px] h-[800px] max-lg:h-[70%]  max-sm:h-[50%] max-lg:w-full boeder relative cursor-pointer"
             id="previewImage" data-aos="zoom-in" data-aos-duration="3000">
-            <img src="{{$location->thumbnail_link}}" alt="" class="w-full h-full hadow-md ">
+            <img src="{{$location->thumbnail_link}}" alt="" class="w-full h-full hadow-md object-cover">
             <div
                 class="absolute inset-0 bg-gradient-to-b from-stone-500 to-black opacity-0 hover:opacity-75 flex justify-center items-center transition-opacity duration-300">
                 <img src="/images/eye.png" alt="" class="w-auto h-auto max-w-12 max-h-12 opacity-100">
@@ -96,7 +93,7 @@
     <!-- Modal -->
     <div id="imageModal" class=" fixed inset-0 flex items-center justify-center hidden bg-black bg-opacity-75 z-[999]">
         <div
-            class="relative bg-white p-4 w-[800px] h-[800px] max-lg:h-[70%]  max-sm:h-[50%] max-lg:w-full max-lg:mx-4 mx-auto">
+            class="relative bg-white p-4 w-[800px] h-[750px] max-lg:h-[70%]  max-sm:h-[50%] max-lg:w-full max-lg:mx-4 mx-auto">
             <button class="absolute top-2 right-2 text-white text-[1.5rem] bg-red-500 px-2 rounded"
                 id="closeModal">&times;</button>
             <img src="{{$location->thumbnail_link}}" alt="Image Preview" class="w-full h-full" id="modalImage">

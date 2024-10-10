@@ -14,6 +14,7 @@ class ScheduleController extends Controller
     public function indexPageSchedule() {
         $seo = Post::where('id', 19)->first();
         // dd($seo);
+
         $schedule = Post::where('category', ',4,')
             ->where('status_display', true)
             ->get();
