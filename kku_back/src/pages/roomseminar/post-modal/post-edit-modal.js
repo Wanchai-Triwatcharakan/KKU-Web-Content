@@ -15,7 +15,12 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import IconButton from "@mui/material/IconButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAdd, faEdit, faMinus, faXmark } from "@fortawesome/free-solid-svg-icons";
+import {
+  faAdd,
+  faEdit,
+  faMinus,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
 import { FormControlLabel, FormGroup, Switch, TextField } from "@mui/material";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
@@ -34,14 +39,14 @@ const editDataDefault = {
   description: "",
   topic: "",
   slug: "",
-  redirect: "", 
+  redirect: "",
   priority: 1,
   status_display: false,
   pin: false,
   // is_maincontent: false,
   language: "",
-  category: ""
-}
+  category: "",
+};
 
 const editDataValidDefault = {
   category: false,
@@ -55,131 +60,158 @@ const editDataValidDefault = {
   redirect: false,
   isMainContent: false,
   thumbnail_name: false,
-}
+};
 
-const thumbnailDefault = { thumbnail: true, src: "", file: null, name: null, remove: false }
-const url =  window.location.origin + "/";
+const thumbnailDefault = {
+  thumbnail: true,
+  src: "",
+  file: null,
+  name: null,
+  remove: false,
+};
+const url = window.location.origin + "/";
 
 const ModalEditPost = (props) => {
-  const { t } = useTranslation('post-page')
-  const { isEdit,isOpen, menuList, category, items } = props
-  const isSuperAdmin = useSelector(state => state.auth.userPermission.superAdmin)
-  const language = useSelector(state => state.app.language)
-  const uploadPath = useSelector(state => state.app.uploadPath)
-  const [ editData , setEditData ] = useState(editDataDefault)
-  const [ editDataValid , setEditDataValid ] = useState(editDataValidDefault)
+  const { t } = useTranslation("post-page");
+  const { isEdit, isOpen, menuList, category, items } = props;
+  const isSuperAdmin = useSelector(
+    (state) => state.auth.userPermission.superAdmin
+  );
+  const language = useSelector((state) => state.app.language);
+  const uploadPath = useSelector((state) => state.app.uploadPath);
+  const [editData, setEditData] = useState(editDataDefault);
+  const [editDataValid, setEditDataValid] = useState(editDataValidDefault);
   const [previews, setPreviews] = useState(thumbnailDefault);
   const [moreImage, setMoreImage] = useState([]);
   const [moreImageRemove, setMoreImageRemove] = useState([]);
   const [checkboxList, setCheckBoxList] = useState();
-  const [ckValue, setCkValue ] = useState(null)
-  const [displayDate, setDisplayDate] = useState(null); 
+  const [ckValue, setCkValue] = useState(null);
+  const [displayDate, setDisplayDate] = useState(null);
   const [hiddenDate, setHiddenDate] = useState(null);
   const [isFetching, setIsFetching] = useState(false);
-  const [curImg, setCurImg] = useState("")
+  const [curImg, setCurImg] = useState("");
   const [scheduleList, setScheduleList] = useState([
     { time_start: null, time_end: null, description: "" },
   ]);
-  console.log(items)
+
+  const [openModal, setOpenModal] = useState(false); // state สำหรับเปิด/ปิด modal
+  const handleOpenModal = () => setOpenModal(true);
+  const handleCloseModal = () => setOpenModal(false);
+  console.log(items);
   useEffect(() => {
     if (items !== null) {
-      let newData = {}
+      let newData = {};
       for (let key in items) {
-        if(key === "status_display" || key === "pin"){ //|| key === "is_maincontent" 
-          newData[`${key}`] = (items[key] === 1) ? true:false;
-        }else {
-          newData[`${key}`] = (items[key] !== null) ? items[key] : "";
+        if (key === "status_display" || key === "pin") {
+          //|| key === "is_maincontent"
+          newData[`${key}`] = items[key] === 1 ? true : false;
+        } else {
+          newData[`${key}`] = items[key] !== null ? items[key] : "";
         }
       }
       /* Set More Images */
-      if(newData.imgId) {
-        let imgId= newData.imgId.split(',')
-        let imgAlt= newData.imgAlt.split(',')
-        let imgLanguage= newData.imgLanguage.split(',')
-        let imgLink= newData.imgLink.split(',')
-        let imgTitle= newData.imgTitle.split(',')
-        const imageArr = []
-        for(let i = 0; i < imgId.length; i++){
+      if (newData.imgId) {
+        let imgId = newData.imgId.split(",");
+        let imgAlt = newData.imgAlt.split(",");
+        let imgLanguage = newData.imgLanguage.split(",");
+        let imgLink = newData.imgLink.split(",");
+        let imgTitle = newData.imgTitle.split(",");
+        const imageArr = [];
+        for (let i = 0; i < imgId.length; i++) {
           let srcImage = uploadPath + imgLink[i];
-          if(imgLanguage[i] === language || !isEdit){
-            imageArr.push(  { 
+          if (imgLanguage[i] === language || !isEdit) {
+            imageArr.push({
               index: i + 1,
-              id: imgId[i] , 
+              id: imgId[i],
               src: srcImage,
               srcDefault: srcImage,
-              language: imgLanguage[i] , 
+              language: imgLanguage[i],
               title: imgTitle[i],
-              alt: imgAlt[i] , 
-              file: null, 
-              name: null, 
+              alt: imgAlt[i],
+              file: null,
+              name: null,
               remove: true,
-            }) 
+            });
           }
         }
-        setMoreImage(imageArr)
+        setMoreImage(imageArr);
       } else {
-        setMoreImage([])
+        setMoreImage([]);
       }
- 
+
       /* Set thumbnail */
       let thumbnail = uploadPath + newData.thumbnail_link;
       setPreviews({
-        file: null, 
-        src: thumbnail, 
-        remove: true , 
-        srcDefault: thumbnail 
-      })
+        file: null,
+        src: thumbnail,
+        remove: true,
+        srcDefault: thumbnail,
+      });
 
       /* Set Category */
-      const cateList = category.map(c => ({...c, checked: (newData.category.match(new RegExp(`,${c.id},`, 'g' )) !== null)?true:false }))
+      const cateList = category.map((c) => ({
+        ...c,
+        checked:
+          newData.category.match(new RegExp(`,${c.id},`, "g")) !== null
+            ? true
+            : false,
+      }));
       props.setCategory(cateList);
 
       /* Set CkValue */
-      setCkValue(newData.content) 
-  
+      setCkValue(newData.content);
+
       /* Set Data */
       setEditData(newData);
-      
+
       /* Set Date display - Hidden */
-      setDisplayDate(newData.date_begin_display !== "" && newData.date_begin_display !== '0000-00-00 00:00:00'?newData.date_begin_display:null)
-      setHiddenDate(newData.date_end_display !== "" && newData.date_end_display !== '0000-00-00 00:00:00'?newData.date_end_display:null)
+      setDisplayDate(
+        newData.date_begin_display !== "" &&
+          newData.date_begin_display !== "0000-00-00 00:00:00"
+          ? newData.date_begin_display
+          : null
+      );
+      setHiddenDate(
+        newData.date_end_display !== "" &&
+          newData.date_end_display !== "0000-00-00 00:00:00"
+          ? newData.date_end_display
+          : null
+      );
     }
     const filePath = items.thumbnail_link?.split("/");
 
     if (filePath) {
       setCurImg(filePath[filePath.length - 1]);
     } else {
-      setCurImg('')
+      setCurImg("");
     }
-
-  }, [items])
- 
+  }, [items]);
 
   useEffect(() => {
-    setCheckBoxList(category)
-  }, [category])
+    setCheckBoxList(category);
+  }, [category]);
 
   const setPreviewHandler = (data) => {
-    if(data.file) {
-      setEditData({...editData, imageName: data.file.name})
+    if (data.file) {
+      setEditData({ ...editData, imageName: data.file.name });
     }
 
-    if(data.src === undefined){
-      setPreviews(thumbnailDefault)
+    if (data.src === undefined) {
+      setPreviews(thumbnailDefault);
     } else {
-      setPreviews(data)
-    } 
-  }
+      setPreviews(data);
+    }
+  };
 
   useEffect(() => {
-    svGetTimeSchedule('room', items.id).then((res) => {
-      console.log(res.data)
-      if(res.data && res.data.length > 0) {
-        setScheduleList(res.data)
+    svGetTimeSchedule("room", items.id).then((res) => {
+      console.log(res.data);
+      if (res.data && res.data.length > 0) {
+        setScheduleList(res.data);
       }
-    })
-  }, [])
-  
+    });
+  }, []);
+
   const handleAddSchedule = () => {
     setScheduleList([
       ...scheduleList,
@@ -196,98 +228,99 @@ const ModalEditPost = (props) => {
 
   const handleRemoveSecondRow = () => {
     // if (scheduleList.length > 1) {
-      const newList = scheduleList.filter((_, i) => i !== 1);
-      setScheduleList(newList);
+    const newList = scheduleList.filter((_, i) => i !== 1);
+    setScheduleList(newList);
     // }
   };
 
-  const addMoreImage = (data) => { 
+  const addMoreImage = (data) => {
     setMoreImage([
       ...moreImage,
-      { 
-        src: data.src, 
-        file: data.file, 
-        name: data.file.name, 
+      {
+        src: data.src,
+        file: data.file,
+        name: data.file.name,
         index: data.index,
         default: null,
         remove: true,
-        title: "", 
+        title: "",
         alt: "",
-      }
-    ])
-  } 
-  
+      },
+    ]);
+  };
+
   const setMoreImagePreviewHandler = (data) => {
-    if(data.file === undefined) {
-      const result = moreImage.filter((m, index) => (index !== data.index))
-      setMoreImage(result)
-    
+    if (data.file === undefined) {
+      const result = moreImage.filter((m, index) => index !== data.index);
+      setMoreImage(result);
     } else {
       const result = moreImage.map((m, index) => {
-        if(index === data.index) {
+        if (index === data.index) {
           m.src = data.src;
           m.file = data.file;
-          m.name = (data.file)?data.file.name:"";
+          m.name = data.file ? data.file.name : "";
         }
-        return m
-      })
-      setMoreImage(result)
+        return m;
+      });
+      setMoreImage(result);
     }
 
-    if(data.removeId !== null) {
-      setMoreImageRemove(prev => [...prev, data.removeId])
+    if (data.removeId !== null) {
+      setMoreImageRemove((prev) => [...prev, data.removeId]);
     }
- 
-  }
+  };
 
   const displayHandleChange = (newValue) => {
     setDisplayDate(newValue);
-  }
-  
+  };
+
   const hiddenHandleChange = (newValue) => {
     setHiddenDate(newValue);
-  }
-  
-  const changeMoreImageData = (i, obj) => { 
-    const result = moreImage.map((m, index) => {
-      return (index === i)?obj:m;
-    })
-    setMoreImage(result)
-  }
- 
-  const saveModalHandler = (e) => {
+  };
 
-    const cateListId = checkboxList.filter(f => (f.checked)).reduce((o,n) => {
-      return o + n.id + ","
-    },",")
+  const changeMoreImageData = (i, obj) => {
+    const result = moreImage.map((m, index) => {
+      return index === i ? obj : m;
+    });
+    setMoreImage(result);
+  };
+
+  const saveModalHandler = (e) => {
+    const cateListId = checkboxList
+      .filter((f) => f.checked)
+      .reduce((o, n) => {
+        return o + n.id + ",";
+      }, ",");
 
     setEditDataValid({
-      ...editDataValid, 
-      title: (editData.title === ""),
+      ...editDataValid,
+      title: editData.title === "",
       // keyword: (editData.keyword === ""),
       // description: (editData.description === ""),
       // slug: (editData.slug === ""),
-      category: (cateListId === ",")
-    })
-    if((editData.title === "") || 
-    // (editData.keyword === "") ||
-    // (editData.description === "") ||
-    // (editData.slug === "") ||
-    // (cateListId === ",") ||
-    isFetching ){
-      return false; 
+      category: cateListId === ",",
+    });
+    if (
+      editData.title === "" ||
+      // (editData.keyword === "") ||
+      // (editData.description === "") ||
+      // (editData.slug === "") ||
+      // (cateListId === ",") ||
+      isFetching
+    ) {
+      return false;
     }
     console.log("gogogo");
-    
-    setIsFetching(true)
+
+    setIsFetching(true);
     const formData = new FormData();
-    if(previews.file) { 
-      formData.append('Thumbnail', previews.file)
-      formData.append('ThumbnailName', editData.imageName)
-      formData.append('ThumbnailLink', editData.thumbnail_link)
-      formData.append('ThumbnailTitle', editData.thumbnail_title)
-      formData.append('ThumbnailAlt', editData.thumbnail_alt)
-      formData.append("moreImageRemove", moreImageRemove)
+    if (previews.file) {
+      formData.append("Thumbnail", previews.file);
+      formData.append("ThumbnailName", editData.imageName);
+      formData.append("ThumbnailLink", editData.thumbnail_link);
+      formData.append("ThumbnailTitle", editData.thumbnail_title);
+      formData.append("ThumbnailAlt", editData.thumbnail_alt);
+      formData.append("moreImageRemove", moreImageRemove);
     } else {
       formData.append("ThumbnailName", curImg);
       formData.append("ThumbnailLink", editData.thumbnail_link);
@@ -295,70 +328,81 @@ const ModalEditPost = (props) => {
       formData.append("ThumbnailAlt", editData.thumbnail_alt);
       formData.append("moreImageRemove", moreImageRemove);
     }
-    
-    let moreImageLength = moreImage.length
-    if(moreImageLength > 0 ) {
-      for(let i=0; i < moreImageLength; i++) {
- 
-        if(moreImage[i].file){
-          formData.append(`Images[]`, moreImage[i].file)
-          formData.append("ImagesName[]", moreImage[i].name)
-          formData.append("ImagesTitle[]", moreImage[i].title)
-          formData.append("ImagesAlt[]", moreImage[i].alt)
-          formData.append("ImagesPosition[]", i)
+
+    let moreImageLength = moreImage.length;
+    if (moreImageLength > 0) {
+      for (let i = 0; i < moreImageLength; i++) {
+        if (moreImage[i].file) {
+          formData.append(`Images[]`, moreImage[i].file);
+          formData.append("ImagesName[]", moreImage[i].name);
+          formData.append("ImagesTitle[]", moreImage[i].title);
+          formData.append("ImagesAlt[]", moreImage[i].alt);
+          formData.append("ImagesPosition[]", i);
         } else {
-          let linkName =  moreImage[i].srcDefault.split(uploadPath) 
-          formData.append(`EditImageTitle[]`, moreImage[i].title)
-          formData.append(`EditImageAlt[]`, moreImage[i].alt)
-          formData.append(`EditImageLink[]`, (linkName[1])?linkName[1]:"")
+          let linkName = moreImage[i].srcDefault.split(uploadPath);
+          formData.append(`EditImageTitle[]`, moreImage[i].title);
+          formData.append(`EditImageAlt[]`, moreImage[i].alt);
+          formData.append(`EditImageLink[]`, linkName[1] ? linkName[1] : "");
         }
       }
     }
 
-    formData.append('id', editData.id)
-    formData.append('category', cateListId)
-    formData.append('title', editData.title)
-    formData.append('keyword', editData.keyword)
-    formData.append('description', (editData.description?editData.description:""))
-    formData.append('slug', editData.slug)
-    formData.append('topic', editData.topic)
-    formData.append('content', ckValue?ckValue:"")
-    formData.append('redirect', editData.redirect)
-    formData.append('display_date', displayDate?moment(displayDate).format():null)
-    formData.append('hidden_date', hiddenDate?moment(hiddenDate).format():null) 
-    formData.append('display', (editData.status_display)?1:0)
-    formData.append('pin', (editData.pin)?1:0)
-    formData.append('is_maincontent', (editData.is_maincontent)?1:0)
-    formData.append('priority', editData.priority)
-    formData.append('old_priority', items.priority)
-    formData.append('language',  language)  
-    formData.append('schedulelist', JSON.stringify(scheduleList))
- 
-    svUpdateRoom(formData, editData.id).then(res => {
-      setIsFetching(false)
-      if(res.status) {
+    formData.append("id", editData.id);
+    formData.append("category", cateListId);
+    formData.append("title", editData.title);
+    formData.append("keyword", editData.keyword);
+    formData.append(
+      "description",
+      editData.description ? editData.description : ""
+    );
+    formData.append("slug", editData.slug);
+    formData.append("topic", editData.topic);
+    formData.append("content", ckValue ? ckValue : "");
+    formData.append("redirect", editData.redirect);
+    formData.append(
+      "display_date",
+      displayDate ? moment(displayDate).format() : null
+    );
+    formData.append(
+      "hidden_date",
+      hiddenDate ? moment(hiddenDate).format() : null
+    );
+    formData.append("display", editData.status_display ? 1 : 0);
+    formData.append("pin", editData.pin ? 1 : 0);
+    formData.append("is_maincontent", editData.is_maincontent ? 1 : 0);
+    formData.append("priority", editData.priority);
+    formData.append("old_priority", items.priority);
+    formData.append("language", language);
+    formData.append("schedulelist", JSON.stringify(scheduleList));
+
+    svUpdateRoom(formData, editData.id).then((res) => {
+      setIsFetching(false);
+      if (res.status) {
         props.setClose({
           isEdit: false,
-          isOpen: false
-        })
-        props.setRefreshData(prev => prev + 1)
+          isOpen: false,
+        });
+        props.setRefreshData((prev) => prev + 1);
       }
-      SwalUI({status: res.status, description: res.description})
-    })
-  } 
+      SwalUI({ status: res.status, description: res.description });
+    });
+  };
 
   return (
     <LocalizationProvider dateAdapter={AdapterMoment}>
       <Modal
         disableEnforceFocus
         open={isOpen}
-        onClose={() => props.setClose({
-          isEdit: false,
-          isOpen: false
-        })}
+        onClose={() =>
+          props.setClose({
+            isEdit: false,
+            isOpen: false,
+          })
+        }
         className={"modal-edit-post"}
         aria-labelledby="modal-edit-post"
-        aria-describedby="modal-edit-post" >
+        aria-describedby="modal-edit-post"
+      >
         <Box className="modal-custom">
           <div className="modal-header">
             <h2>
@@ -369,16 +413,21 @@ const ModalEditPost = (props) => {
               className="param-generator"
               color="error"
               sx={{ p: "10px" }}
-              onClick={() => props.setClose({
-                isEdit: false,
-                isOpen: false
-              })} >
+              onClick={() =>
+                props.setClose({
+                  isEdit: false,
+                  isOpen: false,
+                })
+              }
+            >
               <FontAwesomeIcon icon={faXmark} />
             </IconButton>
           </div>
           <div className="modal-body overflow-scroll-custom">
             <fieldset className="modal-fieldset">
-              <legend className="modal-legend">{t("ModalEditPostTitle")}</legend>
+              <legend className="modal-legend">
+                {t("ModalEditPostTitle")}
+              </legend>
               {/* <CheckBoxUI 
                 className="cate-menu-list" 
                  error={editDataValid.category}
@@ -387,7 +436,7 @@ const ModalEditPost = (props) => {
                  setData={setCheckBoxList} 
                  t={t} /> */}
 
-              <div className="form-details" style={{width: "100%"}}>
+              <div className="form-details" style={{ width: "100%" }}>
                 {/* <FieldsetUI className="image-setting" label={t("ข้อมูลรูปภาพ")}>
                   <PreviewImageUI
                     setCurImg={setCurImg}
@@ -498,7 +547,9 @@ const ModalEditPost = (props) => {
                 </FieldsetUI> */}
                 <h3 className="post-detail-title">{t("รายละเอียด")}</h3>
                 <TextField
-                  onChange={(e) => setEditData({...editData, title: e.target.value})}
+                  onChange={(e) =>
+                    setEditData({ ...editData, title: e.target.value })
+                  }
                   value={editData.title}
                   className="text-field-custom"
                   fullWidth={true}
@@ -518,7 +569,9 @@ const ModalEditPost = (props) => {
                   size="small"
                 /> */}
                 <TextField
-                  onChange={(e) => setEditData({...editData, description: e.target.value})}
+                  onChange={(e) =>
+                    setEditData({ ...editData, description: e.target.value })
+                  }
                   value={editData.description}
                   className="text-field-custom"
                   fullWidth={true}
@@ -610,10 +663,23 @@ const ModalEditPost = (props) => {
                         className="date-input"
                         size="small"
                         label={t("Start Time")}
-                        value={schedule.time_start ? new Date(`1970-01-01T${schedule.time_start}`) : null}
+                        value={
+                          schedule.time_start
+                            ? new Date(`1970-01-01T${schedule.time_start}`)
+                            : null
+                        }
                         onChange={(newValue) => {
-                          const dateValue = newValue instanceof Date ? newValue : new Date(newValue);
-                          handleChangeSchedule(index, "time_start", dateValue.toLocaleTimeString('en-GB', { hour12: false })) // แปลงเป็น HH:mm:ss
+                          const dateValue =
+                            newValue instanceof Date
+                              ? newValue
+                              : new Date(newValue);
+                          handleChangeSchedule(
+                            index,
+                            "time_start",
+                            dateValue.toLocaleTimeString("en-GB", {
+                              hour12: false,
+                            })
+                          ); // แปลงเป็น HH:mm:ss
                         }}
                         renderInput={(params) => <TextField {...params} />}
                       />
@@ -623,10 +689,23 @@ const ModalEditPost = (props) => {
                         className="date-input"
                         sx={{ width: 250 }}
                         label={t("End Time")}
-                        value={schedule.time_end ? new Date(`1970-01-01T${schedule.time_end}`) : null}
+                        value={
+                          schedule.time_end
+                            ? new Date(`1970-01-01T${schedule.time_end}`)
+                            : null
+                        }
                         onChange={(newValue) => {
-                          const dateValue = newValue instanceof Date ? newValue : new Date(newValue);
-                          handleChangeSchedule(index, "time_end", dateValue.toLocaleTimeString('en-GB', { hour12: false })) // แปลงเป็น HH:mm:ss
+                          const dateValue =
+                            newValue instanceof Date
+                              ? newValue
+                              : new Date(newValue);
+                          handleChangeSchedule(
+                            index,
+                            "time_end",
+                            dateValue.toLocaleTimeString("en-GB", {
+                              hour12: false,
+                            })
+                          ); // แปลงเป็น HH:mm:ss
                         }}
                         renderInput={(params) => <TextField {...params} />}
                       />
@@ -640,13 +719,81 @@ const ModalEditPost = (props) => {
                         minRows={1}
                         value={schedule.description}
                         onChange={(e) =>
-                          handleChangeSchedule(index, "description", e.target.value)
+                          handleChangeSchedule(
+                            index,
+                            "description",
+                            e.target.value
+                          )
                         }
                         variant="outlined"
                         fullWidth
                         style={{ width: "100%" }}
+                        onClick={handleOpenModal}
                       />
-                       <IconButton
+
+                      <Modal
+                        open={openModal} // เปิด Modal เมื่อ openModal เป็น true
+                        onClose={handleCloseModal} // ปิด Modal เมื่อคลิกข้างนอก
+                      >
+                        <div className="modal-container">
+                          {" "}
+                          {/* เพิ่ม container เพื่อจัดกลางจอ */}
+                          <div className="ck-input">
+                            <div className="modal-header">
+                              <h2 className="flex items-center">
+                                {" "}
+                                {/* ใช้ flex เพื่อจัดเรียง */}
+                                <FontAwesomeIcon
+                                  icon={faAdd}
+                                  className="mr-2"
+                                />{" "}
+                                {/* เว้นระยะห่าง */}
+                                <span>{t("แก้ไขรายละเอียด")}</span>
+                              </h2>
+                              <IconButton
+                                className="param-generator"
+                                color="error"
+                                sx={{ p: "10px" }}
+                                onClick={handleCloseModal}
+                              >
+                                <FontAwesomeIcon icon={faXmark} />
+                              </IconButton>
+                            </div>
+
+                            <div
+                              className="ck-content"
+                              style={{ marginTop: "1rem" }}
+                            >
+                              <CKeditorComponent
+                                ckNameId="ck-add-post"
+                                value={ckValue}
+                                onUpdate={setCkValue}
+                              />
+                            </div>
+
+                            <div className="modal-footer">
+                              <ButtonUI
+                                loader={true}
+                                isLoading={isFetching}
+                                className="btn-save"
+                                on="save"
+                                width="md"
+                              >
+                                {t("ยืนยัน")}
+                              </ButtonUI>
+                              <ButtonUI
+                                className="btn-cancel"
+                                on="cancel"
+                                width="md"
+                                onClick={handleCloseModal}
+                              >
+                                {t("ยกเลิก")}
+                              </ButtonUI>
+                            </div>
+                          </div>
+                        </div>
+                      </Modal>
+                      <IconButton
                         className="param-generator"
                         color="error"
                         sx={{ p: "10px" }}
@@ -662,7 +809,21 @@ const ModalEditPost = (props) => {
                 <div className="setting-controls">
                   <div className="switch-form">
                     <FormGroup>
-                      <FormControlLabel  control={<Switch onChange={(e) => setEditData({...editData, status_display: e.target.checked})} checked={editData.status_display} />} label={t("แสดงบนเว็บไซต์")} labelPlacement="start" />
+                      <FormControlLabel
+                        control={
+                          <Switch
+                            onChange={(e) =>
+                              setEditData({
+                                ...editData,
+                                status_display: e.target.checked,
+                              })
+                            }
+                            checked={editData.status_display}
+                          />
+                        }
+                        label={t("แสดงบนเว็บไซต์")}
+                        labelPlacement="start"
+                      />
                     </FormGroup>
                   </div>
                   {/* <div className="switch-form">
@@ -677,7 +838,7 @@ const ModalEditPost = (props) => {
                       </FormGroup>
                     </div>
                   )} */}
-              
+
                   {/* <div className="input-group">
                     <div className="inp"> 
                       <ButtonUI
@@ -704,26 +865,28 @@ const ModalEditPost = (props) => {
               className="btn-save"
               on="save"
               width="md"
-              onClick={saveModalHandler} >
+              onClick={saveModalHandler}
+            >
               {t("Save")}
             </ButtonUI>
             <ButtonUI
               className="btn-cancel"
               on="cancel"
-              width="md" 
-              onClick={()=>props.setClose({
-                isEdit: false,
-                isOpen: false
-              })}>
+              width="md"
+              onClick={() =>
+                props.setClose({
+                  isEdit: false,
+                  isOpen: false,
+                })
+              }
+            >
               {t("Cancel")}
             </ButtonUI>
           </div>
         </Box>
       </Modal>
     </LocalizationProvider>
-  )
-}
+  );
+};
 
 export default ModalEditPost;
-
- 

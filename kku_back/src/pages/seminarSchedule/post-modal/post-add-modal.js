@@ -77,6 +77,9 @@ const ModalAddPost = (props) => {
     { startTime: null, endTime: null, details: "" },
   ]);
   const [checkedRooms, setCheckedRooms] = useState([]);
+  const [openModal, setOpenModal] = useState(false); // state สำหรับเปิด/ปิด modal
+  const handleOpenModal = () => setOpenModal(true);
+  const handleCloseModal = () => setOpenModal(false);
 
   useEffect(() => {
     if(isOpen) {
@@ -555,7 +558,7 @@ const ModalAddPost = (props) => {
                       />
                     </div>
                     <div className="input-half pll">
-                      <TextField
+                    <TextField
                         className="date-input"
                         label={t("รายระเอียด")}
                         placeholder={t("Enter details")}
@@ -568,7 +571,74 @@ const ModalAddPost = (props) => {
                         variant="outlined"
                         fullWidth
                         style={{ width: "100%" }}
+                        onClick={handleOpenModal} // เมื่อคลิกที่ TextField จะเปิด Modal
                       />
+
+                      <Modal
+                        open={openModal} // เปิด Modal เมื่อ openModal เป็น true
+                        onClose={handleCloseModal} // ปิด Modal เมื่อคลิกข้างนอก
+                      >
+                        <div className="modal-container">
+                          {" "}
+                          {/* เพิ่ม container เพื่อจัดกลางจอ */}
+                          <div className="ck-input">
+                            <div className="modal-header">
+                              <h2 className="flex items-center">
+                                {" "}
+                                {/* ใช้ flex เพื่อจัดเรียง */}
+                                <FontAwesomeIcon
+                                  icon={faAdd}
+                                  className="mr-2"
+                                />{" "}
+                                {/* เว้นระยะห่าง */}
+                                <span>{t("เพิ่มรายละเอียด")}</span>
+                              </h2>
+                              <IconButton
+                                className="param-generator"
+                                color="error"
+                                sx={{ p: "10px" }}
+                                onClick={handleCloseModal}
+                              >
+                                <FontAwesomeIcon icon={faXmark} />
+                              </IconButton>
+                            </div>
+
+                            <div
+                              className="ck-content"
+                              style={{ marginTop: "1rem" }}
+                            >
+                              <CKeditorComponent
+                                ckNameId="ck-add-post"
+                                value={ckValue}
+                                onUpdate={setCkValue}
+                              />
+                            </div>
+
+                            <div className="modal-footer">
+                              <ButtonUI
+                                loader={true}
+                                isLoading={isFetching}
+                                className="btn-save"
+                                on="save"
+                                width="md"
+                              >
+                                {t("ยืนยัน")}
+                              </ButtonUI>
+                              <ButtonUI
+                                className="btn-cancel"
+                                on="cancel"
+                                width="md"
+                                onClick={handleCloseModal}
+                              >
+                                {t("ยกเลิก")}
+                              </ButtonUI>
+                            </div>
+                          </div>
+                        </div>
+                      </Modal>
+
+
+
                       {/* {index !== 0 && ( */}
                       <IconButton
                         className="param-generator"
