@@ -125,9 +125,8 @@
                 <div class="w-6 h-6 max-sm:w-10 max-sm:h-6">
                     <img src="/images/home/line.png" alt="" class="w-full h-full">
                 </div>
-                <p class="text-white text-lg max-xl:text-[1rem] max-sm:text-[1rem]">: 085-001-6805
-                    ที่อยู่ 123 ถนนมิตรภาพ ตำบลในเมือง อำเภอเมือง จังหวัดขอนแก่น จ.ขอนแก่น 40000</p>
+                <p class="text-white text-lg max-xl:text-[1rem] max-sm:text-[1rem]">: {{$webInfo->contact->phone->value}}
+                    {{$webInfo->location->address->value}} {{$webInfo->location->subdistrict->value}} {{$webInfo->location->district->value}} {{$webInfo->location->province->value}} {{$webInfo->location->zipcode->value}}</p>
             </div>
         </div>
-
     </footer>
