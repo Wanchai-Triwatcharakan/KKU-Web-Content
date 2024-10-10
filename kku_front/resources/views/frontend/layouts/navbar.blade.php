@@ -24,7 +24,7 @@
                     @if (!$main->cate_parent_id)
                         <li class="relative">
                             <a href="{{ url($main->cate_url) }}" id="main-{{ $main->id }}"
-                                class="block flex justify-center items-center py-6 px-3 text-[1.15rem] max-yi:text-[14px] font-[500] text-center text-[#23404A] h-full max-yi:min-w-[110px] min-w-[135px] hover:text-white hover:bg-[#FF864E] meunMain
+                                class="block flex justify-center items-center py-6 px-3 text-[1.15rem] max-yi:text-[14px] font-[500] text-center text-[#23404A] h-full max-yi:min-w-[100px] min-w-[135px] hover:text-white hover:bg-[#FF864E] meunMain
                                 {{ request()->is($main->cate_url) ? 'bg-[#B8D88F] text-white' : '' }}
                                 {{ $main_cate->where('cate_parent_id', $main->id)->isNotEmpty() ? 'flex justify-between items-center gap-0 md:gap-4' : '' }} group">
                                 {{ $main->cate_title }}

@@ -31,7 +31,7 @@
                                         class="bg-[#FFCAAE] drop-shadow-md w-full h-full rounded-2xl absolute -left-6 top-6 z-10 max-sm:hidden">
                                     </div>
                                     <img src="{{ url($image->image_link) }}" alt=""
-                                        class="w-full h-full relative z-20 rounded-2xl drop-shadow-md">
+                                        class="w-full h-full relative z-20 rounded-2xl drop-shadow-md object-cover">
                                 </div>
                             </div>
                         @endforeach
@@ -42,7 +42,7 @@
                 <div class="flex flex-col w-full gap-y-6 justify-between max-xl:mt-6 px-4">
                     <div class="flex gap-6 items-center">
                         <div class="w-[50px] h-[50px]">
-                            <img src="/images/home/meeting-call.png" alt="" class="w-full h-full">
+                            <img src="/images/home/meeting-call.png" alt="" class="w-full h-full ">
                         </div>
                         <p class="text-[#4BCAFF] font-bold text-3xl max-md:text-lg">ที่มาของการสัมมนา</p>
                     </div>
@@ -89,16 +89,19 @@
                                     <div
                                         class="bg-white rounded-[15px] py-4 px-3 z-0 flex flex-col justify-center gap-y-4 ">
                                         <div
-                                            class="w-[215px] h-[215px] mx-auto bg-gradient-to-r from-[#8DD7FA] to-[#B8D88F] rounded-full p-1">
+                                            class="w-[215px] h-[215px] mx-auto bg-gradient-to-r from-[#8DD7FA] to-[#B8D88F] rounded-full p-2">
                                             <img src="{{ url($lect->thumbnail_link) }}" alt=""
                                                 class="w-full h-full object-cover rounded-full">
                                         </div>
 
                                         <div class="flex flex-col justify-center gap-y-4">
-                                            <p class="text-[#23404A] font-bold text-center text-xl max-md:text-lg">
-                                                {{ $lect->title }}</p>
-                                            <p class="text-[#686868] font-[300] text-center text-[1rem] max-md:text-md ">
-                                                {{ $lect->topic }}</p>
+                                            <div class="flex flex-col h-[60px]">
+                                                <p class="text-[#23404A] font-bold text-center text-xl max-md:text-lg">
+                                                    {{ $lect->title }}</p>
+                                                <p
+                                                    class="text-[#686868] font-[300] text-center text-[1rem] max-md:text-md ">
+                                                    {{ $lect->topic }}</p>
+                                            </div>
                                             <p
                                                 class="text-[#686868] font-[300] text-[1rem] max-md:text-md text-start h-[150px] overflow-auto">
                                                 {{ $lect->description }}
@@ -115,10 +118,12 @@
                                 </div>
                             </a>
                         @endforeach
+
+                        
                     </div>
                 </div>
                 <div class="swiper-button-next swiper-button-next1"></div>
-                <div class="swiper-button-prev swiper-button-prev2"></div>
+                <div class="swiper-button-prev swiper-button-prev1"></div>
             </div>
         </section>
 
@@ -225,7 +230,7 @@
 
                             <div class="flex justify-end mt-4">
                                 <a href="{{ url('post/detail/' . $news->id) }}" target="_blank"
-                                    class="text-center font-medium text-[#FF864E] p-2 rounded-full text-[1rem] w-36 cursor-pointer hover:scale-105 transition duration-500">
+                                    class="text-center font-medium text-[#FF864E]  p-2 rounded-full text-[1rem] w-36 cursor-pointer hover:scale-105 transition duration-500">
                                     ดูเพิ่มเติม >></a>
                             </div>
                         </div>
@@ -236,7 +241,7 @@
             </div>
             <div class="relative flex justify-center mt-4 ">
                 <a href="{{ route('post.index') }}" target="_blank"
-                    class="text-center bg-[#FF864E] text-white p-2 rounded-md text-[1rem] w-36 cursor-pointer hover:bg-[#f07a44]">
+                    class="text-center bg-[#FF864E] text-white hover:text-[#FF864E] hover:bg-white  p-2 rounded-md text-[1rem] w-36 cursor-pointer hover:bg-[#B8D88F]">
                     ดูทั้งหมด</a>
             </div>
 
@@ -262,10 +267,13 @@
                         class="shadow-md  shadow-[#C6E2F6] max-w-[390px] max-es:w-[350px] flex justify-center h-[100%] rounded-xl hover:scale-95"
                         data-aos="fade-up" data-aos-duration="1500">
                         <div class="bg-white rounded-[15px] z-0 flex flex-col justify-center gap-y-4 ">
-                            <div class="w-full h-[300px] mx-auto rounded-t-xl ">
+                            <div class="w-full h-[300px] mx-auto rounded-t-xl relative">
                                 <img src="{{ url($photo->thumbnail_link) }}" alt=""
                                     class="w-full h-full object-cover rounded-t-xl">
+                                    <div class="absolute inset-0 rounded-t-xl bg-gradient-to-b from-[#ffffff] to-[#84B750] opacity-0 hover:opacity-50 flex justify-center items-center transition-opacity duration-300"></div>
                             </div>
+
+
                             <div class="flex flex-col justify-center gap-y-4 px-3 ">
                                 <p class="text-[#686868] text-lg max-md:text-md text-center h-[120px] overflow-auto">
                                     {{ $photo->title }}</p>
@@ -276,7 +284,7 @@
             </div>
             <div class="relative flex justify-center mt-4 z-50">
                 <a href="{{ route('activity.index') }}" target="_blank"
-                    class="text-center bg-[#FF864E] text-white p-2 rounded-md text-[1rem] w-36 cursor-pointer hover:bg-[#f07a44] shadow-md">
+                    class="text-center bg-[#FF864E] text-white p-2 rounded-md text-[1rem] w-36 cursor-pointer hover:bg-[#B8D88F] shadow-md">
                     ดูทั้งหมด</a>
             </div>
 

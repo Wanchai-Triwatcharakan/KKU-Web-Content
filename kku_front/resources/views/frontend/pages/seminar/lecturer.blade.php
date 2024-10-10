@@ -36,17 +36,22 @@
 
                         <div class="bg-white rounded-[15px] py-4 px-3 z-0 flex flex-col justify-center gap-y-4  ">
                             <div
-                                class="w-[215px] h-[215px] max-2xl:w-[180px] max-2xl:h-[180px]  mx-auto bg-gradient-to-r from-[#8DD7FA] to-[#B8D88F] rounded-full p-1 ">
+                                class="w-[215px] h-[215px] max-2xl:w-[180px] max-2xl:h-[180px]  mx-auto bg-gradient-to-r from-[#8DD7FA] to-[#B8D88F] rounded-full p-2 ">
                                 <img src="{{url($lect->thumbnail_link)}}" alt=""
                                     class="w-full h-full object-cover rounded-full">
                             </div>
 
                             <div class="flex flex-col justify-center gap-y-4">
-                                <p class="text-[#23404A] font-bold text-center text-xl max-md:text-lg">{{$lect->title}}</p>
-                                <p class="text-[#23404A] font-medium text-center text-lg max-md:text-md ">{{$lect->topic}}</p>
+                                <div class="flex flex-col h-[60px]">
+                                    <p class="text-[#23404A] font-bold text-center text-xl max-md:text-lg">
+                                        {{ $lect->title }}</p>
+                                    <p
+                                        class="text-[#686868] font-[300] text-center text-[1rem] max-md:text-md ">
+                                        {{ $lect->topic }}</p>
+                                </div>
                                 <p
-                                    class="text-[#23404A] font-medium text-lg max-md:text-md text-start h-[150px] overflow-auto">
-                                    {{$lect->description}}
+                                    class="text-[#686868] font-[300] text-[1rem] max-md:text-md text-start h-[150px] overflow-auto">
+                                    {{ $lect->description }}
                                 </p>
                             </div>
 

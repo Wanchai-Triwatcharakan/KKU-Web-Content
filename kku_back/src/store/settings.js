@@ -95,8 +95,8 @@ const appConfigPROD = {
     }
 }
 
-// export default appConfigDEV;
-export default appConfigPROD;
+export default appConfigDEV;
+// export default appConfigPROD;
 
 
 

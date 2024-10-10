@@ -62,7 +62,7 @@
                         class="pl-[5rem] max-lg:pl-[1rem] flex py-4 gap-4 justify-start max-sm:flex-col text-lg max-lg:text-[1rem]  text-[#23404A]">
                         <p class="font-medium w-[20%] max-lg:w-[50%]">{{ substr($time->time_start, 0, 5) }} -
                             {{ substr($time->time_end, 0, 5) }} น.</p>
-                        <p class="">{{ $time->description }}</p>
+                        <p class="w-full">{{ $time->description }}</p>
                     </div>
                     <hr>
                 @endforeach
@@ -114,7 +114,7 @@
                                     class="flex py-4 gap-4 justify-start text-lg max-lg:text-[1rem] text-[#23404A] max-sm:flex-col">
                                     <p class="font-medium w-[20%] max-lg:w-[50%]">{{ substr($time->time_start, 0, 5) }} -
                                         {{ substr($time->time_end, 0, 5) }} น.</p>
-                                    <p>{{ $time->description }}</p>
+                                    <p class="w-full">{{ $time->description }}</p>
                                 </div>
                                 <hr>
                             @endforeach
@@ -124,9 +124,9 @@
             </section>
         @endif
 
-        <div class="w-[50px] h-[50px] fixed right-4 bottom-[12rem] max-xl:bottom-[18rem] max-md:right-2 max-md:bottom-[16.5rem] cursor-pointer hidden"
+        <div class="w-[50px] h-[50px] fixed right-4 bottom-[12rem] max-xl:bottom-[18rem] max-md:right-2 max-md:bottom-[16.5rem] rounded-lg hover:boder-4 hover:border-[#FF864E] cursor-pointer hidden"
             id="BackToTop">
-            <img src="/images/backToTop.png" alt="">
+            <img src="/images/backToTop.png" alt="" title="กลับขึ้นข้างบน">
         </div>
     </div>
 @endsection

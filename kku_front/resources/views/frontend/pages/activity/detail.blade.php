@@ -64,7 +64,7 @@
                         data-aos-duration="2000">
                         <img src="{{ url($image->image_link) }}" alt="" class="w-full h-full">
                         <div
-                            class="absolute inset-0 bg-gradient-to-b from-stone-500 to-black opacity-0 hover:opacity-75 flex justify-center items-center transition-opacity duration-300">
+                            class="absolute inset-0 bg-gradient-to-b from-[#ffffff] to-[#84B750] opacity-0 hover:opacity-65 flex justify-center items-center transition-opacity duration-300">
                             <img src="/images/eye.png" alt="" class="w-auto h-auto max-w-12 max-h-12 opacity-100">
                         </div>
                     </div>
