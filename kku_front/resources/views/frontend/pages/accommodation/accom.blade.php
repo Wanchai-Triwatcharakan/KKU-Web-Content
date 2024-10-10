@@ -80,6 +80,17 @@
                 <img src="/images/eye.png" alt="" class="w-auto h-auto max-w-12 max-h-12 opacity-100">
             </div>
         </div>
+
+        @foreach($location['images'] as $image)
+        <div class="mt-4 shadow-md w-[800px] h-[800px] max-lg:h-[70%]  max-sm:h-[50%] max-lg:w-full boeder relative cursor-pointer"
+            id="previewImage" data-aos="zoom-in" data-aos-duration="3000">
+            <img src="{{$image->image_link}}" alt="" class="w-full h-full hadow-md ">
+            <div
+                class="absolute inset-0 bg-gradient-to-b from-stone-500 to-black opacity-0 hover:opacity-75 flex justify-center items-center transition-opacity duration-300">
+                <img src="/images/eye.png" alt="" class="w-auto h-auto max-w-12 max-h-12 opacity-100">
+            </div>
+        </div>
+        @endforeach
     </section>
 
     <!-- Modal -->
@@ -91,6 +102,17 @@
             <img src="{{$location->thumbnail_link}}" alt="Image Preview" class="w-full h-full" id="modalImage">
         </div>
     </div>
+    
+    @foreach($location['images'] as $image)
+    <div id="imageModal" class=" fixed inset-0 flex items-center justify-center hidden bg-black bg-opacity-75 z-[999]">
+        <div
+            class="relative bg-white p-4 w-[800px] h-[800px] max-lg:h-[70%]  max-sm:h-[50%] max-lg:w-full max-lg:mx-4 mx-auto">
+            <button class="absolute top-2 right-2 text-white text-[1.5rem] bg-red-500 px-2 rounded"
+                id="closeModal">&times;</button>
+            <img src="{{$image->image_link}}" alt="Image Preview" class="w-full h-full" id="modalImage">
+        </div>
+    </div>
+    @endforeach
 
 @endsection
 @section('script')
