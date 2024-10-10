@@ -81,7 +81,7 @@ export default function RoomSeminar() {
               isRowDisplay={isRowDisplay}
               setIsRowDisplay={setIsRowDisplay}
             />
-            {isSuerperAdmin || isAdmin && (
+            {(isSuerperAdmin || isAdmin) && (
               <ButtonUI
                 onClick={() => setPostModalAdd(true)}
                 className="btn-add-post"

@@ -141,7 +141,7 @@ const PostContentPage = () => {
                   ))}
               </Select>
             </FormControl>  */}
-            {isSuerperAdmin || isAdmin && (
+            {(isSuerperAdmin || isAdmin) && (
               <ButtonUI
                 onClick={() => setPostModalAdd(true)}
                 className="btn-add-post"

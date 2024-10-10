@@ -68,7 +68,7 @@ const CategoryPage = () => {
               isRowDisplay={isRowDisplay}
               setIsRowDisplay={setIsRowDisplay}
             />
-            {isSuerperAdmin || isAdmin && (
+            {(isSuerperAdmin || isAdmin) && (
               <ButtonUI
                 onClick={() => setModalAddCate(true)}
                 className="btn-add-category"

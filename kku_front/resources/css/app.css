@@ -119,3 +119,10 @@ body {
   background: #FF864E !important; 
   font-size: 25px;
 }
+
+
+
+.content-ck ol, .content-ck ul{
+  list-style: revert;
+  margin-left: 1.5em;
+}
