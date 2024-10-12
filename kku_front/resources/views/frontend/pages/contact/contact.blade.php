@@ -67,8 +67,8 @@
         </div>
 
         <div
-            class="bg-[#A7CA78] shadow-md p-12 max-sm:p-6 rounded-t-3xl  flex justify-between  items-center  gap-4 text-white text-xl max-2xl:text-lg max-lg:flex-col max-lg:items-start">
-            <a href="tel:043-320-320" target="_blank" class="flex justify-between w-full gap-4 items-center group">
+            class="bg-[#A7CA78] w-full shadow-md p-12 max-sm:p-6 rounded-t-3xl  flex justify-between  items-center  gap-4 text-white text-xl max-2xl:text-lg max-lg:flex-col max-lg:items-start">
+            <a href="tel:043-320-320" target="_blank" class="flex justify-between w-full sm:gap-8 gap-4 items-center group">
                 <div class="w-[20%]">
                     <div
                         class="bg-white rounded-full p-2 w-20 max-2xl:w-16 h-auto shadow-md border-4 group-hover:border-[#FF864E]">
@@ -80,7 +80,7 @@
             </a>
             {{-- @dd($webInfo->contact); --}}
             <a href="{{ $webInfo->contact->link_line->link }}" target="_blank"
-                class="flex justify-between w-full gap-4 items-center group">
+                class="flex justify-between w-full sm:gap-8 gap-4 items-center group">
                 <div class="w-[20%]">
                     <div
                         class="bg-white rounded-full p-2 w-20 max-2xl:w-16 h-auto shadow-md border-4 group-hover:border-[#FF864E]">
@@ -90,7 +90,7 @@
                 <p class="w-full">{{ $webInfo->contact->link_line->value }}</p>
             </a>
             <a href="{{ $webInfo->location->google_map->link }}"
-                class="flex justify-between w-full gap-4 items-center group">
+                class="flex justify-between w-full sm:gap-8 gap-4 items-center group">
 
                 <div class="w-[20%]">
                     <div
