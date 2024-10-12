@@ -22,7 +22,7 @@
 
         <div class="max-lg:flex max-lg:flex-col gap-y-6 max-lg:relative max-lg:py-10">
             <div data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="3000"
-                class="bg-white border px-8 rounded-lg shadow-lg lg:absolute z-30 flex flex-col gap-y-6 justify-center w-[690px] h-[500px] max-uu:w-[550px]  max-uu:h-[450px] right-[25rem] max-uu:right-[15rem] max-yy:right-[5rem] max-uu:top-[20rem]  max-xl:right-0 max-xl:max-w-[450px]  max-xl:max-h-[350px] max-sm:max-w-[350px]  max-sm:max-h-[350px] ">
+                class="bg-white border px-8 rounded-lg shadow-lg lg:absolute z-30 flex flex-col gap-y-6 justify-center w-[690px] h-[500px] max-uu:w-[550px]  max-uu:h-[450px] right-[25rem]  max-uu:right-[15rem] max-yi:right-0 max-yy:right-[5rem] max-uu:top-[20rem]  max-xl:right-0 max-xl:max-w-[450px]  max-xl:max-h-[350px] max-sm:max-w-[350px]  max-sm:max-h-[350px] ">
                 <div class="">
                     <p class="text-[#84B750] text-3xl max-md:text-2xl font-semibold">โรงแรมโฆษะ ขอนแก่น</p>
                     <p class="text-[#23404A] text-lg max-md:text-[1rem] font-medium">Kosa Hotel Khonkaen</p>
@@ -51,7 +51,7 @@
             </div>
 
             <div data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="3000"
-                class=" max-uu:w-[550px]  max-uu:h-[450px] lg:absolute rounded-lg shadow-lg left-[20rem] top-[15rem] max-uu:left-[15rem] max-uu:top-24 max-yy:left-[5rem] max-yy:top-[6rem] max-xl:left-0 max-xl:w-[450px]  max-xl:h-[350px] max-sm:max-w-[350px]  max-sm:max-h-[350px]">
+                class=" max-uu:w-[550px]  max-uu:h-[450px] lg:absolute rounded-lg shadow-lg left-[20rem] top-[15rem] max-uu:left-[15rem] max-uu:top-24 max-yy:left-[5rem] max-yi:left-0  max-yy:top-[6rem] max-xl:left-0 max-xl:w-[450px]  max-xl:h-[350px] max-sm:max-w-[350px]  max-sm:max-h-[350px]">
                 <img src="/images/Rectangle 199.png" alt="" class="w-full h-full rounded-lg object-cover">
             </div>
         </div>

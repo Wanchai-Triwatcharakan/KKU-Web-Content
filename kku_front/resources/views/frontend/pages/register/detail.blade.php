@@ -24,7 +24,7 @@
 
 
     <section class="flex flex-col justify-center gap-4 py-10  bg-white mt-[14rem] mb-12 max-xl:mt-[8rem] max-sm:mt-[5rem]">
-        <div class="w-[70%] mx-auto flex flex-col justify-center gap-12  items-center">
+        <div class="w-4/5 mx-auto flex flex-col justify-center gap-12  items-center">
             <div class="flex max-xl:flex-col gap-y-8 justify-between items-center">
                 <div class="w-full flex flex-col gap-y-6 justify-between max-xl:mt-6 px-4 max-xl:order-2" data-aos="fade-right"
                     data-aos-duration="3000">
@@ -46,10 +46,10 @@
                 </div>
 
                 <div class="rounded-2xl max-2xl:order-1">
-                    <div class="relative z-30 w-[600px] h-[400px] max-md:w-[500px] max-md:h-[350px] max-sm:w-[370px] max-sm:h-[350px] px-4 max-md:rouded-lg"
+                    <div class="relative z-30 w-[600px] h-[400px] max-yi:w-[450px] max-yi:h-[400px] max-md:w-[500px] max-md:h-[350px] max-sm:w-[370px] max-sm:h-[350px] px-4 max-md:rouded-lg"
                         data-aos="fade-left" data-aos-duration="3000">
                         <div
-                            class="bg-[#B8D88F] drop-shadow-md w-[550px] h-full rounded-2xl absolute  top-8 -right-4 z-10 max-sm:hidden ">
+                            class="bg-[#B8D88F] drop-shadow-md w-[550px] max-yi:w-[400px] h-full rounded-2xl absolute  top-8 -right-4 z-10 max-sm:hidden ">
                         </div>
                         <img src="{{url($post['images'][0]->image_link)}}" alt=""
                             class="w-full h-full relative z-20 rounded-2xl drop-shadow-md object-cover">

@@ -29,10 +29,10 @@
         </div>
 
         <div
-            class="my-12 z-50 flex flex-col gap-6 max-xl:gap-y-6 max-xl:grid max-2xl:grid-cols-2 max-md:grid-cols-1  max-xl:gap-2">
+            class="my-12 z-50 flex flex-col gap-6 max-xl:gap-y-6 max-xl:grid max-2xl:grid-cols-2 max-md:grid-cols-1 max-lg:gap-4 w-4/5 mx-auto">
             @foreach ($schedule as $index => $sched)
                 @if ($index % 2 == 0)
-                    <div class="max-sm:mx-4 flex flex-col w-4/5 max-xl:w-[80%] max-md:w-full mx-auto border border-[#F7FAF3] bg-[#F7FAF3]  items-center z-50 rounded-xl shadow-md"
+                    <div class="flex flex-col w-full items-center justify-center border border-[#F7FAF3] bg-[#F7FAF3] z-50 rounded-xl shadow-md"
                         data-aos="fade-left" data-aos-duration="3000">
                         <div class="flex max-xl:flex-col gap-6 justify-between p-4 rounded-xl ">
                             <div
@@ -45,7 +45,7 @@
                                 <div class="flex flex-col gap-y-6">
                                     <p class="text-[#2F99C7] font-bold text-3xl max-xl:text-xl">{{ $sched->title }}</p>
                                     <div class="border-2 border-[#2F99C7] rounded-full "></div>
-                                    <p class="text-[#75868B] text-xl max-md:text-lg">{{ $sched->description }}</p>
+                                    <p class="text-[#75868B] text-[1rem]">{{ $sched->description }}</p>
                                 </div>
                                 <div class="flex justify-end max-xl:justify-center">
                                     <a href="{{ url('schedule/detail/' . $sched->id) }}" target="_blank"
@@ -69,7 +69,7 @@
                                 <div class="flex flex-col gap-y-6">
                                     <p class="text-[#2F99C7] font-bold text-3xl max-xl:text-xl">{{ $sched->title }}</p>
                                     <div class="border-2 border-[#2F99C7] rounded-full "></div>
-                                    <p class="text-[#75868B] text-xl max-md:text-lg">{{ $sched->description }}</p>
+                                    <p class="text-[#75868B] text-[1rem]">{{ $sched->description }}</p>
                                 </div>
                                 <div class="flex justify-end max-xl:justify-center">
                                     <a href="{{ url('schedule/detail/' . $sched->id) }}" target="_blank"

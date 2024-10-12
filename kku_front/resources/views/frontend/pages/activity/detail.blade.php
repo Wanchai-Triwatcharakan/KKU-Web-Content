@@ -37,7 +37,7 @@
 
             <div class="w-[50%] max-xl:max-w-full max-xl:max-h-[300px] h-[350px] max-xl:w-full x-auto shadow-md"
                 data-aos="fade-left" data-aos-duration="3000">
-                <img src="{{ url($postsupport->thumbnail_link) }}" alt="" class="w-full h-full">
+                <img src="{{ url($postsupport->thumbnail_link) }}" alt="" class="w-full h-full object-cover">
             </div>
         </div>
     </section>

@@ -32,12 +32,13 @@
         object-fit: cover;
     }
 
+    /*
     swiper-slide-mobile img {
         display: block;
         width: 100%;
         height: 100%;
         object-fit: cover;
-    }
+    } */
 
     @media (max-width: 720px) {
         swiper-slide img {
@@ -48,13 +49,14 @@
 </style>
 
 
-<swiper-container class="mySwiper mt-[4.5rem] max-xl:mt-[3rem] cursor-pointer relative z-50" pagination="true"
-    pagination-dynamic-bullets="true" loop="true" autoplay-delay="6000"> 
+<swiper-container class="mySwiper mt-[4.5rem] max-xl:mt-[3rem] cursor-pointer relative z-50 " pagination="true"
+    pagination-dynamic-bullets="true" loop="true" autoplay-delay="6000">
 
-    @foreach($adslide as $as)
-        <swiper-slide class=""><img src="{{url($as->ad_image)}}" alt="" class="w-full h-auto"></swiper-slide>
+    @foreach ($adslide as $as)
+        <swiper-slide class=""><img src="{{ url($as->ad_image) }}" alt=""
+                class="w-full h-auto"></swiper-slide>
     @endforeach
-   
+
 </swiper-container>
 
 
