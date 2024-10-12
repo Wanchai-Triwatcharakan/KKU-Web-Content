@@ -95,9 +95,13 @@ const ModalEditPost = (props) => {
   ]);
 
   const [openModal, setOpenModal] = useState(false); // state สำหรับเปิด/ปิด modal
-  const handleOpenModal = () => setOpenModal(true);
+  const [currentSchedule, setCurrentSchedule] = useState(null);
+  const handleOpenModal = (index) => {
+    setCurrentSchedule(index);  // เก็บ index ของ schedule ที่คลิก
+    setOpenModal(true);         // เปิด Modal
+  };
   const handleCloseModal = () => setOpenModal(false);
-  console.log(items);
+  // console.log(items);
   useEffect(() => {
     if (items !== null) {
       let newData = {};
@@ -283,6 +287,10 @@ const ModalEditPost = (props) => {
       return index === i ? obj : m;
     });
     setMoreImage(result);
+  };
+
+  const handleCKEditorChange = (index, value) => {
+    handleChangeSchedule(index, "description", value); // อัปเดตค่า description ของ schedule ใน scheduleList
   };
 
   const saveModalHandler = (e) => {
@@ -716,7 +724,7 @@ const ModalEditPost = (props) => {
                         label={t("รายระเอียด")}
                         placeholder={t("Enter details")}
                         multiline
-                        minRows={1}
+                        rows={2}
                         value={schedule.description}
                         onChange={(e) =>
                           handleChangeSchedule(
@@ -728,7 +736,10 @@ const ModalEditPost = (props) => {
                         variant="outlined"
                         fullWidth
                         style={{ width: "100%" }}
-                        onClick={handleOpenModal}
+                        onClick={() => handleOpenModal(index)}
+                        InputProps={{
+                          readOnly: true, // กำหนดให้ TextField เป็นแบบอ่านอย่างเดียว
+                        }} 
                       />
 
                       <Modal
@@ -760,35 +771,33 @@ const ModalEditPost = (props) => {
                               </IconButton>
                             </div>
 
-                            <div
-                              className="ck-content"
-                              style={{ marginTop: "1rem" }}
-                            >
-                              <CKeditorComponent
-                                ckNameId="ck-add-post"
-                                value={ckValue}
-                                onUpdate={setCkValue}
-                              />
-                            </div>
+                            <div className="ck-content" style={{ marginTop: "1rem" }}>
+                                {currentSchedule !== null && (
+                                  <CKeditorComponent
+                                    ckNameId="ck-add-post"
+                                    value={scheduleList[currentSchedule].description}  // แสดง description ตาม schedule ที่คลิก
+                                    onUpdate={(value) => handleCKEditorChange(currentSchedule, value)}  // เรียกฟังก์ชัน handleCKEditorChange เมื่อ CKEditor เปลี่ยนค่า
+                                  />
+                                )}
+                              </div>
 
                             <div className="modal-footer">
                               <ButtonUI
-                                loader={true}
-                                isLoading={isFetching}
+                                onClick={handleCloseModal}
                                 className="btn-save"
                                 on="save"
                                 width="md"
                               >
                                 {t("ยืนยัน")}
                               </ButtonUI>
-                              <ButtonUI
+                              {/* <ButtonUI
                                 className="btn-cancel"
                                 on="cancel"
                                 width="md"
                                 onClick={handleCloseModal}
                               >
                                 {t("ยกเลิก")}
-                              </ButtonUI>
+                              </ButtonUI> */}
                             </div>
                           </div>
                         </div>

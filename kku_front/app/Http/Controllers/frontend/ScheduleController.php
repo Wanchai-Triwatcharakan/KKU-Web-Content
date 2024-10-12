@@ -21,6 +21,7 @@ class ScheduleController extends Controller
         return view('frontend.pages.schedule.schedule', compact('schedule', 'seo'));
     }
     public function dataDetail($id) {
+        $seo = Post::where('id', 19)->first();
         $post = Post::where('id', $id)->with('scheduleTimes')->first();
         $tagsArray = json_decode($post->tags, true);
         if (is_array($tagsArray)) {
@@ -32,6 +33,6 @@ class ScheduleController extends Controller
             $rooms = [];
         }
         // $rooms = SeminarRoom::where('status_display', true)->with('scheduleTimes')->get();
-        return view('frontend.pages.schedule.scheduleDetail', compact('post', 'rooms'));
+        return view('frontend.pages.schedule.scheduleDetail', compact('post', 'rooms', 'seo'));
     }
 }

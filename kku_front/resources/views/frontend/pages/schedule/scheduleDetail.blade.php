@@ -9,9 +9,7 @@
     <section class="mt-[4.5rem] max-xl:mt-[3rem] w-full h-[500px] max-xl:h-[350px] max-sm:h-[250px] relative z-50">
         <div class="absolute inset-0 z-50 flex flex-col justify-center items-center gap-y-4 max-sm:gap-y-2 px-4">
             <p class="text-white text-6xl max-xl:text-3xl max-md:text-2xl  font-bold text-center" data-aos="zoom-in"
-                data-aos-duration="3000">
-                ตารางการสัมมนา
-            </p>
+                data-aos-duration="3000">{{$seo->title}}</p>
         </div>
 
         <img src="/images/banner/image121.png" alt="" class="w-full h-full absolute object-cover">
@@ -23,15 +21,11 @@
 
             <div class="relative z-40 w-[550px] max-sm:w-[350px] mx-auto">
                 <p class="text-[#23404A] font-bold text-center text-3xl max-md:text-xl z-40 max-md:px-2" data-aos="zoom-in"
-                    data-aos-duration="3000">ตารางกำหนดการสัมมนา
-                </p>
+                    data-aos-duration="3000">{{$seo->title}}</p>
             </div>
             <div class="relative z-40 w-[600px] max-sm:w-full mx-auto">
                 <p class="text-[#23404A] text-center text-xl max-lg:text-lg max-sm:text-[1rem] z-40 max-md:px-2"
-                    data-aos="zoom-in" data-aos-duration="3000">Lorem ipsum dolor sit amet consectetur. Blandit sed
-                    tincidunt
-                    sit
-                    purus lacus consectetur nulla montes.</p>
+                    data-aos="zoom-in" data-aos-duration="3000">{{$seo->description}}</p>
             </div>
 
 

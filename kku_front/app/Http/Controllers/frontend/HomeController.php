@@ -21,7 +21,7 @@ class HomeController extends Controller
         })->take(4);
         $allnews = $allPost->where('category', ',5,');
         $photoactivity = $allPost->where('category', ',6,');
-        $lecturer = $allPost->where('category', ',10,');
+        $lecturer = $allPost->where('category', ',10,')->where('pin', true);
         $location = $allPost->where('id', 12)->first();
         // dd($allPost);
         $postsupport = Post::where('id', 5)
