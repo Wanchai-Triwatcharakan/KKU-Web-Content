@@ -4,7 +4,7 @@
     {{-- <link rel="stylesheet" href="/css/aboutus.min.css"> --}}
 @endsection
 @section('content')
-
+    {{-- @dd($webInfo) --}}
     <section class="mt-[4.5rem] max-xl:mt-[3rem] w-full h-[500px] max-xl:h-[350px] max-sm:h-[250px] relative z-50">
         <div class="absolute inset-0 z-50 flex flex-col justify-center items-center gap-y-4 max-sm:gap-y-2 px-4">
             <p class="text-white text-6xl max-xl:text-3xl  font-bold text-center" data-aos="zoom-in" data-aos-duration="3000">
@@ -52,7 +52,7 @@
                     class="p-3 rounded-lg outline-none border text-[#23404A]" placeholder="Write Your Message"></textarea>
 
                 <div class="flex justify-start max-sm:justify-center">
-                    <button class="bg-[#FF864E] rounded-lg text-white text-lg px-4 py-2 hover:bg-[#A7CA78]" type="submit">
+                    <button class="bg-[#FF864E] rounded-lg text-white text-lg px-4 py-2" type="submit">
                         Send Your Message
                     </button>
                 </div>
@@ -70,31 +70,28 @@
                     <img src="/images/icon/tel.png" alt="" class="w-full h-full">
                 </div>
 
-                <p>06-1591-1124</p>
+                <p>{{$webInfo->contact->phone->value}}</p>
             </a>
-            <a href="" target="_blank" class="flex gap-2 items-center group">
+            <a href="{{$webInfo->contact->link_line->link}}" target="_blank" class="flex gap-2 items-center group">
                 <div
                     class="bg-white rounded-full p-2 w-20 max-2xl:w-16 h-auto shadow-md border-4 group-hover:border-[#FF864E]">
                     <img src="/images/icon/line1.png" alt="" class="w-full h-full">
                 </div>
-                <p>adminhhp</p>
+                <p>{{$webInfo->contact->link_line->value}}</p>
             </a>
-            <a href="https://maps.app.goo.gl/oDGBgfHj72SbTPHJ6" class="flex gap-4 items-center group cursor-pointer ">
+            <a href="{{$webInfo->location->google_map->link}}" class="flex gap-4 items-center group cursor-pointer ">
                 <div
                     class="bg-white rounded-full p-2 w-20 max-2xl:w-16 h-auto shadow-md border-4 group-hover:border-[#FF864E]">
                     <img src="/images/icon/90.png" alt="" class="w-full h-full">
                 </div>
-                <p class="w-full max-w-md max-xl:w-[250px] max-sm:w-[250px]">123 ถนนมิตรภาพ ตำบลในเมือง อำเภอเมือง
-                    จังหวัดขอนแก่น จ.ขอนแก่น 40000</p>
-            </ฟ>
+                <p class="w-full max-w-md max-xl:w-[250px] max-sm:w-[250px]">{{$webInfo->location->address->value}} {{$webInfo->location->subdistrict->value}} {{$webInfo->location->district->value}} {{$webInfo->location->province->value}} {{$webInfo->location->zipcode->value}}</p>
+            </a>
         </div>
 
     </section>
     <div class="shadow-md w-full h-[450px] max-md:h-[300px] max-sm:h-[200px]">
-       {!! $location->iframe !!}
+       {!! $webInfo->location->google_map->iframe !!}
     </div>
-
-
 @endsection
 @section('script')
     @vite('resources/js/accom/accom.js')

@@ -10,7 +10,9 @@ class AccommodationController extends Controller
 {
     //
     public function indexPageAccommodation() {
-        $location = Post::where('id', 12)->first();
+        $location = Post::where('id', 12)
+            ->with('images')
+            ->first();
         return view('frontend.pages.accommodation.accom', compact('location'));
     }
 }
