@@ -62,7 +62,7 @@
                     <div class="relative w-full h-[300px] max-lg:h-[250px] mx-auto shadow-md cursor-pointer"
                         data-image="{{ url($image->image_link) }}" data-aos="flip-left" data-aos-easing="ease-out-cubic"
                         data-aos-duration="2000">
-                        <img src="{{ url($image->image_link) }}" alt="" class="w-full h-full">
+                        <img src="{{ url($image->image_link) }}" alt="" class="w-full h-full object-cover">
                         <div
                             class="absolute inset-0 bg-gradient-to-b from-[#ffffff] to-[#84B750] opacity-0 hover:opacity-65 flex justify-center items-center transition-opacity duration-300">
                             <img src="/images/eye.png" alt="" class="w-auto h-auto max-w-12 max-h-12 opacity-100">

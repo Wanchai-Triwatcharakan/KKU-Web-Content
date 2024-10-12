@@ -71,7 +71,7 @@
             data-aos="zoom-in" data-aos-duration="3000">{{$location->keyword}}</p>
         <div class="mt-4 shadow-md w-[800px] h-[800px] max-lg:h-[70%]  max-sm:h-[50%] max-lg:w-full boeder relative cursor-pointer"
             id="previewImage" data-aos="zoom-in" data-aos-duration="3000">
-            <img src="{{$location->thumbnail_link}}" alt="" class="w-full h-full hadow-md object-cover">
+            {{-- <img src="{{$location->thumbnail_link}}" alt="" class="w-full h-full hadow-md object-cover"> --}}
             <div
                 class="absolute inset-0 bg-gradient-to-b from-stone-500 to-black opacity-0 hover:opacity-75 flex justify-center items-center transition-opacity duration-300">
                 <img src="/images/eye.png" alt="" class="w-auto h-auto max-w-12 max-h-12 opacity-100">
