@@ -32,15 +32,6 @@
         object-fit: cover;
     }
 
-    /*
-    swiper-slide-mobile img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    } */
-
-
     @media (max-width: 1281px) {
         swiper-slide {
             max-height: 460px;
@@ -69,9 +60,9 @@
     }
 </style>
 
-{{-- autoplay-delay="6000" --}}
+{{--  --}}
 <swiper-container class="mySwiper mt-[4.5rem] max-xl:mt-[3.5rem] cursor-pointer relative z-50 " pagination="true"
-    pagination-dynamic-bullets="true" loop="true" >
+    pagination-dynamic-bullets="true" loop="true" autoplay-delay="6000">
 
     @foreach ($adslide as $as)
         <swiper-slide class="">

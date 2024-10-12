@@ -113,3 +113,5 @@
     @vite('resources/js/accom/accom.js')
 
 @endsection
+
+Lorem ipsum dolor sit amet consectetur adipisicing elit
