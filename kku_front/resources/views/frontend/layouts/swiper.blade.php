@@ -21,7 +21,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100%;
+        height: 600px;
 
     }
 
@@ -40,21 +40,43 @@
         object-fit: cover;
     } */
 
+
+    @media (max-width: 1281px) {
+        swiper-slide {
+            max-height: 460px;
+          
+        }
+      
+    }
+
+    @media (max-width: 1023px) {
+        swiper-slide {
+            max-height: 300px;
+          
+        }
+      
+    }
+
     @media (max-width: 720px) {
+        swiper-slide {
+            height: 180px;
+        }
         swiper-slide img {
             width: 100%;
-            height: 150px;
+            height: 180px;
+            object-fit: cover;
         }
     }
 </style>
 
-
-<swiper-container class="mySwiper mt-[4.5rem] max-xl:mt-[3rem] cursor-pointer relative z-50 " pagination="true"
-    pagination-dynamic-bullets="true" loop="true" autoplay-delay="6000">
+{{-- autoplay-delay="6000" --}}
+<swiper-container class="mySwiper mt-[4.5rem] max-xl:mt-[3.5rem] cursor-pointer relative z-50 " pagination="true"
+    pagination-dynamic-bullets="true" loop="true" >
 
     @foreach ($adslide as $as)
-        <swiper-slide class=""><img src="{{ url($as->ad_image) }}" alt=""
-                class="w-full h-auto"></swiper-slide>
+        <swiper-slide class="">
+            <img src="{{ url($as->ad_image) }}" alt=""
+                class="w-full h-full"></swiper-slide>
     @endforeach
 
 </swiper-container>

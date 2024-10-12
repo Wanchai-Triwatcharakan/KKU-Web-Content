@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
              const imgSrc = img.getAttribute('data-image');
              const slide = document.createElement('div');
              slide.classList.add('swiper-slide');
-             slide.innerHTML = `<img src="${imgSrc}" alt="" class="w-full h-full">`;
+             slide.innerHTML = `<img src="${imgSrc}" alt="" class="w-full h-full object-cover">`;
              swiperWrapper.appendChild(slide);
           });
  
