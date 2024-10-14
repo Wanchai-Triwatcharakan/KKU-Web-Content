@@ -94,8 +94,13 @@ const ModalEditPost = (props) => {
   const [curImg, setCurImg] = useState("");
   const [checkedRooms, setCheckedRooms] = useState([]);
   const [openModal, setOpenModal] = useState(false); // state สำหรับเปิด/ปิด modal
-  const handleOpenModal = () => setOpenModal(true);
+  const [currentSchedule, setCurrentSchedule] = useState(null);
+  const handleOpenModal = (index) => {
+    setCurrentSchedule(index);  // เก็บ index ของ schedule ที่คลิก
+    setOpenModal(true);         // เปิด Modal
+  };
   const handleCloseModal = () => setOpenModal(false);
+
   
   const convertTimeStringToDate = (timeString) => {
     const [hours, minutes, seconds] = timeString.split(':');
@@ -110,7 +115,7 @@ const ModalEditPost = (props) => {
       description: "" 
     },
   ]);
-  console.log(items.tags)
+  // console.log(items.tags)
 
   useEffect(() => {
     svGetTimeSchedule('post', items.id).then((res) => {
@@ -313,6 +318,10 @@ const ModalEditPost = (props) => {
     });
   };
 
+  const handleCKEditorChange = (index, value) => {
+    handleChangeSchedule(index, "description", value); // อัปเดตค่า description ของ schedule ใน scheduleList
+  };
+
   const saveModalHandler = (e) => {
     const cateListId = checkboxList
       .filter((f) => f.checked)
@@ -340,7 +349,7 @@ const ModalEditPost = (props) => {
     }
     
     setIsFetching(true);
-    console.log(scheduleList);
+    // console.log(scheduleList);
     // return false;
     const formData = new FormData();
     if (previews.file) {
@@ -713,7 +722,6 @@ const ModalEditPost = (props) => {
                         renderInput={(params) => <TextField {...params} />}
                       />
                     </div>
-                    {/* {console.log(schedule)} */}
                     <div className="input-half pl">
                       <MobileTimePicker
                         className="date-input"
@@ -733,15 +741,19 @@ const ModalEditPost = (props) => {
                         label={t("รายระเอียด")}
                         placeholder={t("Enter details")}
                         multiline
-                        minRows={1}
+                        rows={2}
+                        maxRows={2}
                         value={schedule.description}
-                        onChange={(e) =>
-                          handleChangeSchedule(index, "description", e.target.value)
-                        }
+                        // onChange={(e) =>
+                        //   handleChangeSchedule(index, "description", e.target.value)
+                        // }
                         variant="outlined"
                         fullWidth
                         style={{ width: "100%" }}
-                        onClick={handleOpenModal}
+                        onClick={() => handleOpenModal(index)}
+                        InputProps={{
+                          readOnly: true, // กำหนดให้ TextField เป็นแบบอ่านอย่างเดียว
+                        }}                      
                         />
   
                         <Modal
@@ -750,17 +762,14 @@ const ModalEditPost = (props) => {
                         >
                           <div className="modal-container">
                             {" "}
-                            {/* เพิ่ม container เพื่อจัดกลางจอ */}
                             <div className="ck-input">
                               <div className="modal-header">
                                 <h2 className="flex items-center">
                                   {" "}
-                                  {/* ใช้ flex เพื่อจัดเรียง */}
                                   <FontAwesomeIcon
                                     icon={faAdd}
                                     className="mr-2"
                                   />{" "}
-                                  {/* เว้นระยะห่าง */}
                                   <span>{t("แก้ไขรายละเอียด")}</span>
                                 </h2>
                                 <IconButton
@@ -773,35 +782,35 @@ const ModalEditPost = (props) => {
                                 </IconButton>
                               </div>
   
-                              <div
-                                className="ck-content"
-                                style={{ marginTop: "1rem" }}
-                              >
-                                <CKeditorComponent
-                                  ckNameId="ck-add-post"
-                                  value={ckValue}
-                                  onUpdate={setCkValue}
-                                />
+                              <div className="ck-content" style={{ marginTop: "1rem" }}>
+                                {currentSchedule !== null && (
+                                  <CKeditorComponent
+                                    ckNameId="ck-add-post"
+                                    value={scheduleList[currentSchedule].description}  // แสดง description ตาม schedule ที่คลิก
+                                    onUpdate={(value) => handleCKEditorChange(currentSchedule, value)}  // เรียกฟังก์ชัน handleCKEditorChange เมื่อ CKEditor เปลี่ยนค่า
+                                  />
+                                )}
                               </div>
   
                               <div className="modal-footer">
                                 <ButtonUI
-                                  loader={true}
-                                  isLoading={isFetching}
+                                  // loader={true}
+                                  // isLoading={isFetching}
+                                  onClick={handleCloseModal}
                                   className="btn-save"
                                   on="save"
                                   width="md"
                                 >
                                   {t("ยืนยัน")}
                                 </ButtonUI>
-                                <ButtonUI
+                                {/* <ButtonUI
                                   className="btn-cancel"
                                   on="cancel"
                                   width="md"
                                   onClick={handleCloseModal}
                                 >
                                   {t("ยกเลิก")}
-                                </ButtonUI>
+                                </ButtonUI> */}
                               </div>
                             </div>
                           </div>

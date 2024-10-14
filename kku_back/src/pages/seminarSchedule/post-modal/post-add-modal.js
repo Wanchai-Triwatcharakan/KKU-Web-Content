@@ -78,7 +78,11 @@ const ModalAddPost = (props) => {
   ]);
   const [checkedRooms, setCheckedRooms] = useState([]);
   const [openModal, setOpenModal] = useState(false); // state สำหรับเปิด/ปิด modal
-  const handleOpenModal = () => setOpenModal(true);
+  const [currentSchedule, setCurrentSchedule] = useState(null);
+  const handleOpenModal = (index) => {
+    setCurrentSchedule(index);  // เก็บ index ของ schedule ที่คลิก
+    setOpenModal(true);         // เปิด Modal
+  };
   const handleCloseModal = () => setOpenModal(false);
 
   useEffect(() => {
@@ -190,6 +194,10 @@ const ModalAddPost = (props) => {
         return [...prevCheckedRooms, roomId];
       }
     });
+  };
+
+  const handleCKEditorChange = (index, value) => {
+    handleChangeSchedule(index, "details", value); // อัปเดตค่า description ของ schedule ใน scheduleList
   };
  
   const saveModalHandler = () => {
@@ -538,10 +546,11 @@ const ModalAddPost = (props) => {
                         className="date-input"
                         size="small"
                         label={t("Start Time")}
-                        value={schedule.startTime}
-                        onChange={(newValue) =>
-                          handleChangeSchedule(index, "startTime", newValue)
-                        }
+                        value={schedule.startTime ? new Date(`1970-01-01T${schedule.startTime}`) : null}
+                        onChange={(newValue) => {
+                          const dateValue = newValue instanceof Date ? newValue : new Date(newValue);
+                          handleChangeSchedule(index, "startTime", dateValue.toLocaleTimeString('en-GB', { hour12: false })) // แปลงเป็น HH:mm:ss
+                        }}              
                         renderInput={(params) => <TextField {...params} />}
                       />
                     </div>
@@ -550,10 +559,11 @@ const ModalAddPost = (props) => {
                         className="date-input"
                         sx={{ width: 250 }}
                         label={t("End Time")}
-                        value={schedule.endTime}
-                        onChange={(newValue) =>
-                          handleChangeSchedule(index, "endTime", newValue)
-                        }
+                        value={schedule.endTime ? new Date(`1970-01-01T${schedule.endTime}`) : null}
+                        onChange={(newValue) => {
+                          const dateValue = newValue instanceof Date ? newValue : new Date(newValue);
+                          handleChangeSchedule(index, "endTime", dateValue.toLocaleTimeString('en-GB', { hour12: false })) // แปลงเป็น HH:mm:ss
+                        }}
                         renderInput={(params) => <TextField {...params} />}
                       />
                     </div>
@@ -563,15 +573,18 @@ const ModalAddPost = (props) => {
                         label={t("รายระเอียด")}
                         placeholder={t("Enter details")}
                         multiline
-                        minRows={1}
+                        rows={2}
                         value={schedule.details}
-                        onChange={(e) =>
-                          handleChangeSchedule(index, "details", e.target.value)
-                        }
+                        // onChange={(e) =>
+                        //   handleChangeSchedule(index, "details", e.target.value)
+                        // }
                         variant="outlined"
                         fullWidth
                         style={{ width: "100%" }}
-                        onClick={handleOpenModal} // เมื่อคลิกที่ TextField จะเปิด Modal
+                        onClick={() => handleOpenModal(index)} // เมื่อคลิกที่ TextField จะเปิด Modal
+                        InputProps={{
+                          readOnly: true, // กำหนดให้ TextField เป็นแบบอ่านอย่างเดียว
+                        }} 
                       />
 
                       <Modal
@@ -603,35 +616,33 @@ const ModalAddPost = (props) => {
                               </IconButton>
                             </div>
 
-                            <div
-                              className="ck-content"
-                              style={{ marginTop: "1rem" }}
-                            >
-                              <CKeditorComponent
-                                ckNameId="ck-add-post"
-                                value={ckValue}
-                                onUpdate={setCkValue}
-                              />
+                            <div className="ck-content" style={{ marginTop: "1rem" }}>
+                              {currentSchedule !== null && (
+                                <CKeditorComponent
+                                  ckNameId="ck-add-post"
+                                  value={scheduleList[currentSchedule].details}  // แสดง description ตาม schedule ที่คลิก
+                                  onUpdate={(value) => handleCKEditorChange(currentSchedule, value)}  // เรียกฟังก์ชัน handleCKEditorChange เมื่อ CKEditor เปลี่ยนค่า
+                                />
+                              )}
                             </div>
 
                             <div className="modal-footer">
                               <ButtonUI
-                                loader={true}
-                                isLoading={isFetching}
+                                onClick={handleCloseModal}
                                 className="btn-save"
                                 on="save"
                                 width="md"
                               >
                                 {t("ยืนยัน")}
                               </ButtonUI>
-                              <ButtonUI
+                              {/* <ButtonUI
                                 className="btn-cancel"
                                 on="cancel"
                                 width="md"
                                 onClick={handleCloseModal}
                               >
                                 {t("ยกเลิก")}
-                              </ButtonUI>
+                              </ButtonUI> */}
                             </div>
                           </div>
                         </div>
