@@ -127,7 +127,7 @@
             </div>
         </section>
 
-        <section class="relative bg-white py-20 flex flex-col gap-4 Z-50">
+        <section class="relative bg-white pt-20 flex flex-col gap-4 Z-50">
             <p class="text-[#23404A] font-bold text-center text-4xl max-md:text-2xl max-sm:text-xl z-50 max-md:px-2"
                 data-aos="zoom-in" data-aos-duration="3000">
                 ลงทะเบียน
@@ -144,7 +144,7 @@
                                     class="drop-shadow-md border boder-2 flex flex-col gap-y-6 justify-between max-xl:mt-6 px-4 bg-white  rounded-2xl py-4 w-full max-xl:order-2 h-[450px] max-md:h-[350px] max-sm:h-[350px]">
                                     <div class="flex gap-6 items-center">
                                         <div class="w-[50px] h-[50px]">
-                                            <img src="/images/home/formkit_people.png" alt="" class="w-full h-full">
+                                            <img src="/images/home/formkit_people.png" alt="" class="w-full h-full object-cover">
                                         </div>
                                         <p class="text-[#84B750] font-bold text-2xl max-md:text-lg">ผู้เข้าร่วมอบรม</p>
                                     </div>
@@ -177,7 +177,7 @@
 
         <section class="relative bg-white flex flex-col gap-4 Z-50 py-8">
             <div class="absolute w-full h-full">
-                <img src="images/home/Group 240.png" alt="Your Image" class="w-full h-full">
+                <img src="images/home/Group 240.png" alt="Your Image" class="w-full h-full object-cover">
             </div>
             <p class="text-white font-bold text-center text-4xl max-md:text-2xl z-50 max-md:px-2 pt-10" data-aos="zoom-in"
                 data-aos-duration="3000">
@@ -313,7 +313,7 @@
                         <div class="swiper-wrapper w-full mx-auto flex">
                             @foreach ($postsupport->images as $image)
                                 <div class="swiper-slide">
-                                    <div class="flex justify-center items-center h-[120px]">
+                                    <div class="flex justify-center items-center h-[120px] mx-auto msx-sm:px-8">
                                         <div class="flex justify-center items-center" data-aos="zoom-in"
                                             data-aos-duration="3000">
                                             <img src="{{ url($image->image_link) }}" alt=""

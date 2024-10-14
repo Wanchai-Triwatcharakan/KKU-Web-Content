@@ -1,9 +1,14 @@
-const previewImage = document.getElementById('previewImage');
+const previewImages = document.querySelectorAll('.previewImage');
 const imageModal = document.getElementById('imageModal');
 const closeModal = document.getElementById('closeModal');
 
-previewImage.addEventListener('click', () => {
-    imageModal.classList.remove('hidden');
+previewImages.forEach(previewImage => {
+    previewImage.addEventListener('click', () => {
+        imageModal.classList.remove('hidden');
+        // Set the image in the modal based on the clicked image
+        const imgSrc = previewImage.querySelector('img').src;
+        document.getElementById('modalImage').src = imgSrc;
+    });
 });
 
 closeModal.addEventListener('click', () => {

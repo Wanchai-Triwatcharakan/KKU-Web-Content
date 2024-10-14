@@ -11,7 +11,7 @@
     <section class="w-4/5 mt-[5rem] max-xl:mt-[4rem] mx-auto py-20 max-sm:pt-20 max-sm:pb-8 flex flex-col gap-4">
         <div class="w-[1080px] h-[500px] max-xl:w-full max-xl:max-h-[300px] mx-auto rounded-xl" data-aos="zoom-in"
             data-aos-duration="3000">
-            <img src="{{ url($news->thumbnail_link) }}" alt="" class="w-full h-full rounded-xl">
+            <img src="{{ url($news->thumbnail_link) }}" alt="" class="w-full h-full rounded-xl object-cover">
         </div>
 
         <div class="mt-16 flex flex-col gap-4">
@@ -45,7 +45,7 @@
 
             <div id="facebookShareButton"
                 class="flex gap-2 items-center relative cursor-pointer transition-all ease-in-out before:transition-[width] before:ease-in-out before:duration-700 before:absolute before:bg-[#bceb77] before:origin-center before:h-[2px] before:w-0 hover:before:w-[50%] before:bottom-0 before:left-[50%] after:transition-[width] after:ease-in-out after:duration-700 after:absolute after:bg-[#bceb77] after:origin-center after:h-[2px] after:w-0 hover:after:w-[50%] after:bottom-0 after:right-[50%] "
-                data-url="http://127.0.0.1:8000/post/detail">
+                data-url="{{ url('post/detail/' . $news->id) }}">
                 <div class="max-w-[18px] h-[18px]">
                     <img src="/images/home/fb.png" alt="" class="w-full h-full object-cover">
                 </div>
