@@ -59,57 +59,48 @@
 
     <section class="relative bg-[#F4FCFF] flex flex-col gap-4 Z-50 pb-4">
         <p class="text-[#23404A] font-bold text-center text-4xl max-md:text-2xl z-50 max-md:px-2 pt-16 max-sm:pt-8"
-            data-aos="zoom-in" data-aos-duration="3000">{{$location->description}}</p>
-        <div class="mt-4 shadow-md w-full h-[450px] max-md:h-[300px] max-sm:h-[200px]">
-            {!! $location->iframe !!}
-        </div>
+            data-aos="zoom-in" data-aos-duration="3000">{{ $location->title }}</p>
+            <div class="shadow-md w-full h-[450px] max-md:h-[300px] max-sm:h-[200px]">
+                {!! $location->iframe !!}
+            </div>
     </section>
 
     <section
-        class="w-4/5 max-sm:w-[90%] mx-auto relative bg-white flex flex-col justify-center items-center gap-4 Z-50 pb-12">
+        class="w-4/5 mx-auto relative bg-white flex flex-col justify-center items-center gap-4 Z-50 pb-12">
         <p class="text-[#23404A] font-bold text-center text-4xl max-md:text-2xl z-50 max-md:px-2 pt-16 max-sm:pt-8"
-            data-aos="zoom-in" data-aos-duration="3000">{{$location->keyword}}</p>
-        <div class="mt-4 shadow-md w-[800px] h-[800px] max-lg:h-[70%]  max-sm:h-[50%] max-lg:w-full boeder relative cursor-pointer"
+            data-aos="zoom-in" data-aos-duration="3000">{{ $location->keyword }}</p>
+        <div class="mt-4 shadow-md w-[800px] h-[800px] max-h-[80%] max-lg:h-full max-sm:h-[50%] max-lg:w-full boeder relative cursor-pointer previewImage"
             id="previewImage" data-aos="zoom-in" data-aos-duration="3000">
-            {{-- <img src="{{$location->thumbnail_link}}" alt="" class="w-full h-full hadow-md object-cover"> --}}
+            <img src="{{$location->thumbnail_link}}" alt="" class="w-full h-full hadow-md ">
             <div
-                class="absolute inset-0 bg-gradient-to-b from-stone-500 to-black opacity-0 hover:opacity-75 flex justify-center items-center transition-opacity duration-300">
+                class="absolute inset-0 bg-gradient-to-b from-[#ffffff] to-[#84B750] opacity-0 hover:opacity-65 flex justify-center items-center transition-opacity duration-300">
                 <img src="/images/eye.png" alt="" class="w-auto h-auto max-w-12 max-h-12 opacity-100">
             </div>
         </div>
+        
 
-        @foreach($location['images'] as $image)
-        <div class="mt-4 shadow-md w-[800px] h-[800px] max-lg:h-[70%]  max-sm:h-[50%] max-lg:w-full boeder relative cursor-pointer"
-            id="previewImage" data-aos="zoom-in" data-aos-duration="3000">
-            <img src="{{$image->image_link}}" alt="" class="w-full h-full hadow-md ">
-            <div
-                class="absolute inset-0 bg-gradient-to-b from-stone-500 to-black opacity-0 hover:opacity-75 flex justify-center items-center transition-opacity duration-300">
-                <img src="/images/eye.png" alt="" class="w-auto h-auto max-w-12 max-h-12 opacity-100">
+        @foreach ($location['images'] as $image)
+            <div class="mt-4 shadow-md w-[800px] h-[800px] max-h-[70%] max-yi:w-[700px] max-yi:h-[700px] max-lg:h-full max-sm:h-[50%] max-lg:w-full border relative cursor-pointer previewImage"
+                data-aos="zoom-in" data-aos-duration="3000">
+                <img src="{{ $image->image_link }}" alt="" class="w-full h-full shadow-md ">
+                <div
+                    class="absolute inset-0 bg-gradient-to-b from-[#ffffff] to-[#84B750] opacity-0 hover:opacity-65 flex justify-center items-center transition-opacity duration-300">
+                    <img src="/images/eye.png" alt="" class="w-auto h-auto max-w-12 max-h-12 opacity-100">
+                </div>
             </div>
-        </div>
         @endforeach
     </section>
 
-    <!-- Modal -->
-    <div id="imageModal" class=" fixed inset-0 flex items-center justify-center hidden bg-black bg-opacity-75 z-[999]">
-        <div
-            class="relative bg-white p-4 w-[800px] h-[750px] max-lg:h-[70%]  max-sm:h-[50%] max-lg:w-full max-lg:mx-4 mx-auto">
-            <button class="absolute top-2 right-2 text-white text-[1.5rem] bg-red-500 px-2 rounded"
-                id="closeModal">&times;</button>
-            <img src="{{$location->thumbnail_link}}" alt="Image Preview" class="w-full h-full" id="modalImage">
-        </div>
-    </div>
     
-    @foreach($location['images'] as $image)
-    <div id="imageModal" class=" fixed inset-0 flex items-center justify-center hidden bg-black bg-opacity-75 z-[999]">
-        <div
-            class="relative bg-white p-4 w-[800px] h-[800px] max-lg:h-[70%]  max-sm:h-[50%] max-lg:w-full max-lg:mx-4 mx-auto">
-            <button class="absolute top-2 right-2 text-white text-[1.5rem] bg-red-500 px-2 rounded"
-                id="closeModal">&times;</button>
-            <img src="{{$image->image_link}}" alt="Image Preview" class="w-full h-full" id="modalImage">
-        </div>
-    </div>
-    @endforeach
+    <!-- Modal -->
+     @foreach($location['images'] as $image)
+     <div id="imageModal" class="fixed inset-0 flex items-center justify-center hidden bg-black bg-opacity-75 z-[999]">
+         <div class="relative my-6 w-[850px] h-[850px]  max-h-full max-lg:h-[80%] max-sm:h-[50%] max-es:h-[45%] max-sm:w-full max-lg:w-full max-lg:mx-6 max-sm:mx-2 mx-auto ">
+             <button class="absolute top-5 right-2 text-white text-[2rem] bg-red-500 w-[30px] h-[30px] px-2 rounded-full flex justify-center items-center hover:scale-110" id="closeModal">&times;</button>
+             <img src="{{$image->image_link}}" alt="Image Preview" class="w-full h-full py-[1rem]" id="modalImage">
+         </div>
+     </div>
+ @endforeach
 
 @endsection
 @section('script')
