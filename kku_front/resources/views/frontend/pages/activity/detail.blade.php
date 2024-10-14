@@ -75,7 +75,7 @@
 
 
 
-            <div class="flex justify-center items-center gap-2 mb-12">
+            <div class="flex justify-center items-center gap-2 mb-12 z-10">
                 {{-- ปุ่มไปหน้าก่อนหน้า --}}
                 @if($images->onFirstPage())
                     <span class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-xl font-bold text-gray-400 cursor-not-allowed"> < </span>
