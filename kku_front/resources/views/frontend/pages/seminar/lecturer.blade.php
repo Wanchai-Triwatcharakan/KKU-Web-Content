@@ -79,12 +79,29 @@
         </div>style="border: 1px solid #84B750; "
     </div> --}}
     
-    <div class="flex justify-center items-center gap-2 mb-12 " >
-        <a href=""  class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-xl font-bold hover:bg-[#84B750] hover:text-white" > < </a>
-        <span class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-lg font-semibold cursor-pointer hover:bg-[#84B750] hover:text-white" >1</span>
-        <span class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-lg font-semibold cursor-pointer hover:bg-[#84B750] hover:text-white" >2</span>
-        <span class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-lg font-semibold cursor-pointer hover:bg-[#84B750] hover:text-white" >3</span>
-        <a href="" class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-xl font-bold hover:bg-[#84B750] hover:text-white">></a>
+    <div class="flex justify-center items-center gap-2 mb-12">
+        {{-- ปุ่มไปหน้าก่อนหน้า --}}
+        @if($allLecturer->onFirstPage())
+            <span class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-xl font-bold text-gray-400 cursor-not-allowed"> < </span>
+        @else
+            <a href="{{ $allLecturer->previousPageUrl() }}" class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-xl font-bold hover:bg-[#84B750] hover:text-white"> < </a>
+        @endif
+    
+        {{-- ปุ่มหมายเลขหน้า --}}
+        @foreach($allLecturer->getUrlRange(1, $allLecturer->lastPage()) as $page => $url)
+            @if($page == $allLecturer->currentPage())
+                <span class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-lg font-semibold bg-[#84B750] text-white cursor-pointer">{{ $page }}</span>
+            @else
+                <a href="{{ $url }}" class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-lg font-semibold hover:bg-[#84B750] hover:text-white">{{ $page }}</a>
+            @endif
+        @endforeach
+    
+        {{-- ปุ่มไปหน้าถัดไป --}}
+        @if($allLecturer->hasMorePages())
+            <a href="{{ $allLecturer->nextPageUrl() }}" class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-xl font-bold hover:bg-[#84B750] hover:text-white"> > </a>
+        @else
+            <span class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-xl font-bold text-gray-400 cursor-not-allowed"> > </span>
+        @endif
     </div>
 
 @endsection

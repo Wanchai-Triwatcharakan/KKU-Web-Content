@@ -9,19 +9,23 @@ class ActivityController extends Controller
 {
     //
     public function indexPageActivity() {
-        $photoactivity = Post::where('category', ',6,')->where('status_display', true)->OrderBy('priority')->paginate(10);
+        $photoactivity = Post::where('category', ',6,')
+            ->where('status_display', true)
+            ->OrderBy('priority')
+            ->paginate(10);
         // return view('frontend.pages.seminar.seminar');
         return view('frontend.pages.activity.activity', compact('photoactivity'));
     }
     public function dataDetail($id) {
         // return view('frontend.pages.seminar.seminar');
-        $postsupport = Post::where('id', $id)
+        $post = Post::where('id', $id)
             ->where('status_display', true)
-            ->with(['images' => function($query) {
-                $query->orderBy('position', 'asc'); // สั่งเรียงตามฟิลด์ position ตามลำดับจากน้อยไปมาก
-            }])
-            ->first();
+            ->firstOrFail(); // ดึง post ข้อมูลที่ต้องการ
 
-        return view('frontend.pages.activity.detail', compact('postsupport'));
+        $images = $post->images()
+            ->orderBy('position', 'asc') // เรียงตามลำดับจากน้อยไปมาก
+            ->paginate(2); // แบ่งหน้า 10 รูปต่อหน้า
+
+        return view('frontend.pages.activity.detail', compact('post', 'images'));
     }
 }

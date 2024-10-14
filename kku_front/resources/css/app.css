@@ -126,3 +126,11 @@ body {
   list-style: revert;
   margin-left: 1.5em;
 }
+
+.schedule-content {
+  width: 100%;
+}
+.schedule-content ol, .schedule-content ul {
+  list-style: revert;
+  margin-left: 1.5em;
+} 

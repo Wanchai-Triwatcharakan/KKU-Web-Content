@@ -119,23 +119,29 @@
         </div>
     </section>
 
-    <div class="flex justify-center items-center gap-2 mb-12 ">
-        <a href=""
-            class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-xl font-bold hover:bg-[#84B750] hover:text-white"
-            data-aos="zoom-in" data-aos-duration="2000">
-            < </a>
-                <span
-                    class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-lg font-semibold cursor-pointer hover:bg-[#84B750] hover:text-white"
-                    data-aos="zoom-in" data-aos-duration="2000">1</span>
-                <span
-                    class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-lg font-semibold cursor-pointer hover:bg-[#84B750] hover:text-white"
-                    data-aos="zoom-in" data-aos-duration="2000">2</span>
-                <span
-                    class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-lg font-semibold cursor-pointer hover:bg-[#84B750] hover:text-white"
-                    data-aos="zoom-in" data-aos-duration="2000">3</span>
-                <a href=""
-                    class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-xl font-bold hover:bg-[#84B750] hover:text-white"
-                    data-aos="zoom-in" data-aos-duration="3000">></a>
+    <div class="flex justify-center items-center gap-2 mb-12">
+        {{-- ปุ่มไปหน้าก่อนหน้า --}}
+        @if($allnews->onFirstPage())
+            <span class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-xl font-bold text-gray-400 cursor-not-allowed"> < </span>
+        @else
+            <a href="{{ $allnews->previousPageUrl() }}" class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-xl font-bold hover:bg-[#84B750] hover:text-white"> < </a>
+        @endif
+    
+        {{-- ปุ่มหมายเลขหน้า --}}
+        @foreach($allnews->getUrlRange(1, $allnews->lastPage()) as $page => $url)
+            @if($page == $allnews->currentPage())
+                <span class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-lg font-semibold bg-[#84B750] text-white cursor-pointer">{{ $page }}</span>
+            @else
+                <a href="{{ $url }}" class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-lg font-semibold hover:bg-[#84B750] hover:text-white">{{ $page }}</a>
+            @endif
+        @endforeach
+    
+        {{-- ปุ่มไปหน้าถัดไป --}}
+        @if($allnews->hasMorePages())
+            <a href="{{ $allnews->nextPageUrl() }}" class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-xl font-bold hover:bg-[#84B750] hover:text-white"> > </a>
+        @else
+            <span class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-xl font-bold text-gray-400 cursor-not-allowed"> > </span>
+        @endif
     </div>
 
 

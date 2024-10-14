@@ -28,7 +28,6 @@
                     data-aos="zoom-in" data-aos-duration="3000">{{$seo->description}}</p>
             </div>
 
-
             <div class="my-16 flex flex-col gap-6 ">
                 <p class="text-[#FF864E] font-bold text-center text-3xl max-md:text-xl z-40 max-md:px-2" data-aos="zoom-in"
                     data-aos-duration="2000">{{ $post->title }}</p>
@@ -56,7 +55,7 @@
                         class="pl-[5rem] max-lg:pl-[1rem] flex py-4 gap-4 justify-start max-sm:flex-col text-lg max-lg:text-[1rem]  text-[#23404A]">
                         <p class="font-medium w-[20%] max-lg:w-[50%]">{{ substr($time->time_start, 0, 5) }} -
                             {{ substr($time->time_end, 0, 5) }} น.</p>
-                        <p class="w-full">{{ $time->description }}</p>
+                        <div class="schedule-content">{!! $time->description !!}</div>
                     </div>
                     <hr>
                 @endforeach
@@ -108,7 +107,7 @@
                                     class="flex py-4 gap-4 justify-start text-lg max-lg:text-[1rem] text-[#23404A] max-sm:flex-col">
                                     <p class="font-medium w-[20%] max-lg:w-[50%]">{{ substr($time->time_start, 0, 5) }} -
                                         {{ substr($time->time_end, 0, 5) }} น.</p>
-                                    <p class="w-full">{{ $time->description }}</p>
+                                    <div class="schedule-content">{!! $time->description !!}</div>
                                 </div>
                                 <hr>
                             @endforeach

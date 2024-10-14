@@ -46,23 +46,29 @@
             @endforeach
         </div>
 
-        <div class="flex justify-center items-center gap-2 mb-12 z-50 ">
-            <a href=""
-                class="bg-white flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-xl font-bold hover:bg-[#84B750] hover:text-white"
-                data-aos="zoom-in" data-aos-duration="2000">
-                < </a>
-                    <span
-                        class="bg-white flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-lg font-semibold cursor-pointer hover:bg-[#84B750] hover:text-white"
-                        data-aos="zoom-in" data-aos-duration="2000">1</span>
-                    <span
-                        class="bg-white flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-lg font-semibold cursor-pointer hover:bg-[#84B750] hover:text-white"
-                        data-aos="zoom-in" data-aos-duration="2000">2</span>
-                    <span
-                        class="bg-white flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-lg font-semibold cursor-pointer hover:bg-[#84B750] hover:text-white"
-                        data-aos="zoom-in" data-aos-duration="2000">3</span>
-                    <a href=""
-                        class="bg-white flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-xl font-bold hover:bg-[#84B750] hover:text-white"
-                        data-aos="zoom-in" data-aos-duration="3000">></a>
+        <div class="flex justify-center items-center gap-2 mb-12">
+            {{-- ปุ่มไปหน้าก่อนหน้า --}}
+            @if($photoactivity->onFirstPage())
+                <span class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-xl font-bold text-gray-400 cursor-not-allowed"> < </span>
+            @else
+                <a href="{{ $photoactivity->previousPageUrl() }}" class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-xl font-bold hover:bg-[#84B750] hover:text-white"> < </a>
+            @endif
+        
+            {{-- ปุ่มหมายเลขหน้า --}}
+            @foreach($photoactivity->getUrlRange(1, $photoactivity->lastPage()) as $page => $url)
+                @if($page == $photoactivity->currentPage())
+                    <span class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-lg font-semibold bg-[#84B750] text-white cursor-pointer">{{ $page }}</span>
+                @else
+                    <a href="{{ $url }}" class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-lg font-semibold hover:bg-[#84B750] hover:text-white">{{ $page }}</a>
+                @endif
+            @endforeach
+        
+            {{-- ปุ่มไปหน้าถัดไป --}}
+            @if($photoactivity->hasMorePages())
+                <a href="{{ $photoactivity->nextPageUrl() }}" class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-xl font-bold hover:bg-[#84B750] hover:text-white"> > </a>
+            @else
+                <span class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-xl font-bold text-gray-400 cursor-not-allowed"> > </span>
+            @endif
         </div>
 
         <img src="/images/home/Group 50.png" alt="" class="absolute top-4 left-0 w-40">

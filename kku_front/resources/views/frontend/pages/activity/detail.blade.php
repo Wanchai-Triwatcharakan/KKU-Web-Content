@@ -10,25 +10,25 @@
             <div class="bg-[#F7FAF3] flex flex-col justify-center items-left px-20 max-xl:p-6 shadow-md w-full max-xl:order-2"
                 data-aos="fade-right" data-aos-duration="3000">
                 <p class="text-[#23404A] font-[500] text-left text-3xl max-xl:text-xl max-sm:text-lg mb-4">
-                    {{ $postsupport->title }}</p>
+                    {{ $post->title }}</p>
 
                 <div class="flex flex-col gap-4">
                     <div class="flex justify-start gap-8 max-xl:gap-1 max-md:flex-col text-lg max-md:text-[1rem]">
                         <p class="text-[#23404A] font-medium text-left  w-[150px]  max-xl:w-[120px]">สถานที่จัดงาน :</p>
-                        <p class="text-[#23404A] font-light text-left ">{{ $postsupport->description }}</p>
+                        <p class="text-[#23404A] font-light text-left ">{{ $post->description }}</p>
                     </div>
                     <div class="flex justify-start gap-8 max-xl:gap-1 max-md:flex-col text-lg max-md:text-[1rem]">
                         <p class="text-[#23404A] font-medium text-left w-[150px]  max-xl:w-[120px]">กำหนดเวลา :</p>
                         <p class="text-[#23404A] font-light text-left ">
-                            {{ \Carbon\Carbon::parse($postsupport->date_begin_display)->locale('th')->isoFormat('D MMMM YYYY') }}
+                            {{ \Carbon\Carbon::parse($post->date_begin_display)->locale('th')->isoFormat('D MMMM YYYY') }}
                             -
-                            {{ \Carbon\Carbon::parse($postsupport->date_end_display)->locale('th')->isoFormat('D MMMM YYYY') }}
+                            {{ \Carbon\Carbon::parse($post->date_end_display)->locale('th')->isoFormat('D MMMM YYYY') }}
                         </p>
                     </div>
                     <div class="flex justify-start gap-8 max-xl:gap-1 max-md:flex-col text-lg max-md:text-[1rem]">
                         <p class="text-[#23404A] font-medium text-left w-[150px]  max-xl:w-[120px]">Google Drive :</p>
                         <p class="text-[#23404A] font-light text-left">
-                            <a href="{{ $postsupport->iframe }}">{{ $postsupport->iframe }}</a>
+                            <a href="{{ $post->iframe }}">{{ $post->iframe }}</a>
                         </p>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
 
             <div class="w-[50%] max-xl:max-w-full max-xl:max-h-[300px] h-[350px] max-xl:w-full x-auto shadow-md"
                 data-aos="fade-left" data-aos-duration="3000">
-                <img src="{{ url($postsupport->thumbnail_link) }}" alt="" class="w-full h-full object-cover">
+                <img src="{{ url($post->thumbnail_link) }}" alt="" class="w-full h-full object-cover">
             </div>
         </div>
     </section>
@@ -51,14 +51,14 @@
 
                 <div class="relative z-40 w-[600px] max-sm:w-full mx-auto">
                     <p class="text-[#23404A] font-[500] text-center text-2xl max-md:text-[1.15rem] z-40 max-md:px-2"
-                        data-aos="zoom-in" data-aos-duration="3000">{{ $postsupport->title }}
+                        data-aos="zoom-in" data-aos-duration="3000">{{ $post->title }}
                     </p>
                 </div>
             </div>
 
             <div class="grid grid-cols-4 max-xl:grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-4 place-items-center z-50 relative"
                 id="swpImg">
-                @foreach ($postsupport->images as $image)
+                @foreach ($images as $image)
                     <div class="relative w-full h-[300px] max-lg:h-[250px] mx-auto shadow-md cursor-pointer"
                         data-image="{{ url($image->image_link) }}" data-aos="flip-left" data-aos-easing="ease-out-cubic"
                         data-aos-duration="2000">
@@ -75,23 +75,29 @@
 
 
 
-            <div class="flex justify-center mb-12 items-center gap-2 z-50 relative">
-                <a href=""
-                    class="bg-white flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-xl font-bold hover:bg-[#84B750] hover:text-white"
-                    data-aos="zoom-in" data-aos-duration="2000">
-                    < </a>
-                        <span
-                            class="bg-white flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-lg font-semibold cursor-pointer hover:bg-[#84B750] hover:text-white"
-                            data-aos="zoom-in" data-aos-duration="2000">1</span>
-                        <span
-                            class="bg-white flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-lg font-semibold cursor-pointer hover:bg-[#84B750] hover:text-white"
-                            data-aos="zoom-in" data-aos-duration="2000">2</span>
-                        <span
-                            class="bg-white flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-lg font-semibold cursor-pointer hover:bg-[#84B750] hover:text-white"
-                            data-aos="zoom-in" data-aos-duration="2000">3</span>
-                        <a href=""
-                            class="bg-white flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-xl font-bold hover:bg-[#84B750] hover:text-white"
-                            data-aos="zoom-in" data-aos-duration="3000">></a>
+            <div class="flex justify-center items-center gap-2 mb-12">
+                {{-- ปุ่มไปหน้าก่อนหน้า --}}
+                @if($images->onFirstPage())
+                    <span class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-xl font-bold text-gray-400 cursor-not-allowed"> < </span>
+                @else
+                    <a href="{{ $images->previousPageUrl() }}" class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-xl font-bold hover:bg-[#84B750] hover:text-white"> < </a>
+                @endif
+            
+                {{-- ปุ่มหมายเลขหน้า --}}
+                @foreach($images->getUrlRange(1, $images->lastPage()) as $page => $url)
+                    @if($page == $images->currentPage())
+                        <span class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-lg font-semibold bg-[#84B750] text-white cursor-pointer">{{ $page }}</span>
+                    @else
+                        <a href="{{ $url }}" class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-lg font-semibold hover:bg-[#84B750] hover:text-white">{{ $page }}</a>
+                    @endif
+                @endforeach
+            
+                {{-- ปุ่มไปหน้าถัดไป --}}
+                @if($images->hasMorePages())
+                    <a href="{{ $images->nextPageUrl() }}" class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-xl font-bold hover:bg-[#84B750] hover:text-white"> > </a>
+                @else
+                    <span class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-xl font-bold text-gray-400 cursor-not-allowed"> > </span>
+                @endif
             </div>
         </div>
 

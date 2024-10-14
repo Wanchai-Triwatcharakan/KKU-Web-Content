@@ -31,7 +31,7 @@ class SeminarController extends Controller
         $allLecturer = Post::where('category', ',10,')
             ->where('status_display', true)
             ->OrderBy('priority')
-            ->paginate(10);
+            ->paginate(12);
         // return view('frontend.pages.seminar.seminar');
         return view('frontend.pages.seminar.lecturer', compact('allLecturer'));
     }
