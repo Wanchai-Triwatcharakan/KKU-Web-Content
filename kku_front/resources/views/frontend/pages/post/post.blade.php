@@ -16,8 +16,8 @@
         <img src="/images/banner/image122.png" alt="" class="w-full h-full absolute object-cover">
     </section>
 
-    <section class="w-4/5 max-xl:w-full mx-auto pt-32 pb-20 max-sm:pt-20 max-sm:pb-8 bg-white max-sm:px-4">
-        <div class="flex gap-6 max-lg:flex-col">
+    <section class="w-4/5 max-xl:w-full mx-auto pt-32 pb-20 max-sm:pt-20 max-sm:pb-8 bg-white">
+        <div class="flex gap-6 max-lg:flex-col max-2xl:px-4">
             <div class="w-[40%] max-lg:w-full flex flex-col gap-4" data-aos="fade-up"ata-aos-duration="3000">
                 <form class="flex items-center w-full mx-auto">
                     <label for="simple-search" class="sr-only">Search</label>
@@ -91,25 +91,45 @@
                 class="w-full grid grid-cols-3 gap-6 max-yy:grid-cols-2 max-dm:grid-cols-2 max-ex:grid-cols-1 place-items-center h-full">
 
                 @foreach ($allnews as $news)
-                    <div class="drop-shadow-md max-w-full max-es:w-[350px]  flex justify-center overflow-hidden "data-aos="fade-up"
-                        data-aos-duration="1500">
-                        <div class="bg-white rounded-[15px] z-0 flex flex-col justify-center gap-y-4 ">
+                    <div class="drop-shadow-md flex justify-center h-[100%]">
+                        <div class="bg-white  w-[350px] max-yy:w-[350px] max-xl:w-[300px] max-lg:w-[350px] max-sm:w-[350px] rounded-[15px] z-0 flex flex-col justify-center gap-y-4 "
+                            data-aos="fade-up" data-aos-duration="1500">
                             <div class="w-full h-[300px] mx-auto rounded-t-xl ">
                                 <img src="{{ url($news->thumbnail_link) }}" alt=""
                                     class="w-full h-full object-cover rounded-t-xl">
                             </div>
 
                             <div class="flex flex-col justify-center gap-y-4 px-3">
-                                <p class="text-[#23404A] font-bold text-lg max-md:text-md text-start">
-                                    {{ $news->title }}
+                                <p class="text-[#23404A] font-bold text-lg max-md:text-md text-start">{{ $news->title }}
                                 </p>
+                                <div class="flex items-center gap-2">
+                                    <div class="max-w-[20px] h-[20px]">
+                                        <img src="/images/home/Group 178.png" alt=""
+                                            class="w-full h-full object-cover">
+                                    </div>
+                                    <p class="text-[#B9BBC7] text-md max-md:text-sm text-start">
+                                        {{ \Carbon\Carbon::parse($news->date_begin_display)->format('d/m/Y') }}</p>
+                                    <div class="max-w-[20px] h-[20px]">
+                                        <img src="/images/home/person.png" alt=""
+                                            class="w-full h-full object-cover">
+                                    </div>
+                                    <p class="text-[#B9BBC7] text-md max-md:text-sm text-start">
+                                        Admin</p>
 
 
-                                <div class="flex justify-end my-4 ">
-                                    <a href="{{ url('post/detail/' . $news->id) }}" target="_blank"
-                                        class="text-center font-medium text-[#FF864E]  rounded-full text-[1rem] relative cursor-pointer transition-all ease-in-out before:transition-[width] before:ease-in-out before:duration-700 before:absolute before:bg-[#bceb77] before:origin-center before:h-[2px] before:w-0 hover:before:w-[50%] before:-bottom-1 before:left-[50%] after:transition-[width] after:ease-in-out after:duration-700 after:absolute after:bg-[#bceb77] after:origin-center after:h-[2px] after:w-0 hover:after:w-[50%] after:-bottom-1 after:right-[50%] ">
-                                        ดูเพิ่มเติม >></a>
                                 </div>
+
+                                <p class="text-[#686868] text-lg font-[300] max-md:text-md flex text-start h-[120px] px-1 overflow-hidden text-ellipsis "
+                                    style="word-break: break-word; white-space: normal;">
+                                    {{ $news->description }}
+                                </p>
+                            </div>
+
+
+                            <div class="flex justify-end my-4 px-4 ">
+                                <a href="{{ url('post/detail/' . $news->id) }}" target="_blank"
+                                    class="text-center font-medium text-[#FF864E]  rounded-full text-[1rem] relative cursor-pointer transition-all ease-in-out before:transition-[width] before:ease-in-out before:duration-700 before:absolute before:bg-[#bceb77] before:origin-center before:h-[2px] before:w-0 hover:before:w-[50%] before:-bottom-1 before:left-[50%] after:transition-[width] after:ease-in-out after:duration-700 after:absolute after:bg-[#bceb77] after:origin-center after:h-[2px] after:w-0 hover:after:w-[50%] after:-bottom-1 after:right-[50%] ">
+                                    ดูเพิ่มเติม >></a>
                             </div>
                         </div>
                     </div>
@@ -121,26 +141,36 @@
 
     <div class="flex justify-center items-center gap-2 mb-12">
         {{-- ปุ่มไปหน้าก่อนหน้า --}}
-        @if($allnews->onFirstPage())
-            <span class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-xl font-bold text-gray-400 cursor-not-allowed"> < </span>
-        @else
-            <a href="{{ $allnews->previousPageUrl() }}" class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-xl font-bold hover:bg-[#84B750] hover:text-white"> < </a>
+        @if ($allnews->onFirstPage())
+            <span
+                class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-xl font-bold text-gray-400 cursor-not-allowed">
+                < </span>
+                @else
+                    <a href="{{ $allnews->previousPageUrl() }}"
+                        class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-xl font-bold hover:bg-[#84B750] hover:text-white">
+                        < </a>
         @endif
-    
+
         {{-- ปุ่มหมายเลขหน้า --}}
-        @foreach($allnews->getUrlRange(1, $allnews->lastPage()) as $page => $url)
-            @if($page == $allnews->currentPage())
-                <span class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-lg font-semibold bg-[#84B750] text-white cursor-pointer">{{ $page }}</span>
+        @foreach ($allnews->getUrlRange(1, $allnews->lastPage()) as $page => $url)
+            @if ($page == $allnews->currentPage())
+                <span
+                    class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-lg font-semibold bg-[#84B750] text-white cursor-pointer">{{ $page }}</span>
             @else
-                <a href="{{ $url }}" class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-lg font-semibold hover:bg-[#84B750] hover:text-white">{{ $page }}</a>
+                <a href="{{ $url }}"
+                    class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-lg font-semibold hover:bg-[#84B750] hover:text-white">{{ $page }}</a>
             @endif
         @endforeach
-    
+
         {{-- ปุ่มไปหน้าถัดไป --}}
-        @if($allnews->hasMorePages())
-            <a href="{{ $allnews->nextPageUrl() }}" class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-xl font-bold hover:bg-[#84B750] hover:text-white"> > </a>
+        @if ($allnews->hasMorePages())
+            <a href="{{ $allnews->nextPageUrl() }}"
+                class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-xl font-bold hover:bg-[#84B750] hover:text-white">
+                > </a>
         @else
-            <span class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-xl font-bold text-gray-400 cursor-not-allowed"> > </span>
+            <span
+                class="flex justify-center items-center border border-[#84B750] w-10 h-10 rounded-md text-xl font-bold text-gray-400 cursor-not-allowed">
+                > </span>
         @endif
     </div>
 

@@ -184,17 +184,10 @@
                 ข่าวสาร
             </p>
 
-            @php
-                $justify = 'flex justify-center ';
-                if (count($allnews) > 3) {
-                    $justify =
-                        'grid grid-cols-4 gap-4 max-yy:grid-cols-3 max-dm:grid-cols-2 max-ex:grid-cols-1 place-items-center';
-                }
-            @endphp
-            <div class="w-4/5  mx-auto py-10 max-ex:py-4 content-center {{ $justify }} ">
+            <div class="w-4/5  mx-auto py-10 max-ex:py-4 content-center grid grid-cols-4 gap-4 max-yy:grid-cols-3 max-xl:grid-cols-2 max-ex:grid-cols-1 place-items-center ">
                 @foreach ($allnews as $news)
-                    <div class="drop-shadow-md max-w-[390px] max-es:w-[350px] flex justify-center h-[100%]">
-                        <div class="bg-white rounded-[15px] z-0 flex flex-col justify-center gap-y-4 " data-aos="fade-up"
+                    <div class="drop-shadow-md flex justify-center h-[100%]">
+                        <div class="bg-white  w-[350px] max-2xl:w-[320px] max-xl:w-[350px] max-lg:w-[300px] max-sm:w-[350px] rounded-[15px] z-0 flex flex-col justify-center gap-y-4 " data-aos="fade-up"
                             data-aos-duration="1500">
                             <div class="w-full h-[300px] mx-auto rounded-t-xl ">
                                 <img src="{{ url($news->thumbnail_link) }}" alt=""
@@ -220,8 +213,9 @@
 
                                 </div>
 
-                                <p class="text-[#686868] text-lg max-md:text-md text-start h-[120px] overflow-auto">
-                                    {{ $news->description }}</p>
+                                <p class="text-[#686868] font-[300] text-lg max-md:text-md flex text-start h-[120px] px-1 overflow-hidden text-ellipsis " style="word-break: break-word; white-space: normal;">
+                                    {{ $news->description }}
+                                </p>
                             </div>
 
                            
@@ -250,20 +244,14 @@
                 data-aos="zoom-in" data-aos-duration="3000">
                 ภาพกิจกรรม
             </p>
-            @php
-                $justify = 'flex justify-center ';
-                if (count($photoactivity) > 2) {
-                    $justify =
-                        'grid grid-cols-3 gap-4 gap-y-6 max-yy:grid-cols-3 max-dm:grid-cols-2 max-ex:grid-cols-1 place-items-center';
-                }
-            @endphp
-            <div class="relative  z-50 w-4/5 max-ex:w-full  mx-auto py-10 max-ex:py-4 content-center {{ $justify }}">
+         
+            <div class="relative  z-50 w-4/5 max-ex:w-full  mx-auto py-10 max-ex:py-4 content-center grid grid-cols-3 gap-4 gap-y-6 max-yy:grid-cols-3 max-xl:grid-cols-2 max-ex:grid-cols-1 place-items-center">
                 @foreach ($photoactivity as $photo)
                     {{-- @dd($photo) --}}
                     <a href="{{ url('activity/detail/' . $photo->id) }}" target="_blank"
-                        class="shadow-md  shadow-[#C6E2F6] max-w-[390px] max-es:w-[350px] flex justify-center h-[100%] rounded-xl hover:scale-95"
+                        class="shadow-md  shadow-[#C6E2F6] flex justify-center h-[100%] rounded-xl hover:scale-95"
                         data-aos="fade-up" data-aos-duration="1500">
-                        <div class="bg-white rounded-[15px] z-0 flex flex-col justify-center gap-y-4 ">
+                        <div class="bg-white w-[350px] max-2xl:w-[320px] max-xl:w-[350px] max-lg:w-[300px] max-sm:w-[350px] rounded-[15px] z-0 flex flex-col justify-center gap-y-4  ">
                             <div class="w-full h-[300px] mx-auto rounded-t-xl relative">
                                 <img src="{{ url($photo->thumbnail_link) }}" alt=""
                                     class="w-full h-full object-cover rounded-t-xl">

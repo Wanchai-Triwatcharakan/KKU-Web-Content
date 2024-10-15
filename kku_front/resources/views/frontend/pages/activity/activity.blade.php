@@ -15,34 +15,25 @@
         <img src="/images/banner/image121.png" alt="" class="w-full h-full absolute object-cover">
     </section>
 
-    @php
-        $justify = 'flex justify-center ';
-        if (count($photoactivity) > 2) {
-            $justify =
-                'grid grid-cols-3 gap-4 gap-y-6 max-yy:grid-cols-3 max-dm:grid-cols-2 max-ex:grid-cols-1 place-items-center';
-        }
-    @endphp
+
     <section class="flex flex-col gap-4 relative pt-20 max-sm:pt-20 bg-white ">
-        <div class="relative  z-50 w-4/5 max-ex:w-full  mx-auto py-10 max-ex:py-4 content-center {{$justify}}"
-            data-aos="zoom-in" data-aos-duration="2000">
+        <div class="relative  z-50 w-4/5 max-ex:w-full  mx-auto py-10 max-ex:py-4 content-center grid grid-cols-3 gap-4 gap-y-6 max-yy:grid-cols-3 max-xl:grid-cols-2 max-ex:grid-cols-1 place-items-center">
             @foreach ($photoactivity as $photo)
-            <a href="{{ url('activity/detail/' . $photo->id) }}" target="_blank"
-                class="shadow-md  shadow-[#C6E2F6] max-w-[390px] max-es:w-[350px] flex justify-center h-[100%] rounded-xl hover:scale-95"
-                data-aos="fade-up" data-aos-duration="1500">
-                <div class="bg-white rounded-[15px] z-0 flex flex-col justify-center gap-y-4 ">
-                    <div class="w-full h-[300px] mx-auto rounded-t-xl relative">
-                        <img src="{{ url($photo->thumbnail_link) }}" alt=""
-                            class="w-full h-full object-cover rounded-t-xl">
-                            <div class="absolute inset-0 rounded-t-xl bg-gradient-to-b from-[#ffffff] to-[#84B750] opacity-0 hover:opacity-50 flex justify-center items-center transition-opacity duration-300"></div>
+                <a href="{{ url('activity/detail/' . $photo->id) }}" target="_blank"
+                    class="shadow-md  shadow-[#C6E2F6] flex justify-center h-[100%] rounded-xl hover:scale-95"
+                    data-aos="fade-up" data-aos-duration="1500">
+                    <div class="bg-white w-[350px] max-2xl:w-[300px] max-xl:w-[350px] max-lg:w-[300px] max-sm:w-[350px] rounded-[15px] z-0 flex flex-col justify-center gap-y-4  ">
+                        <div class="w-full h-[300px] mx-auto rounded-t-xl relative">
+                            <img src="{{ url($photo->thumbnail_link) }}" alt=""
+                                class="w-full h-full object-cover rounded-t-xl">
+                                <div class="absolute inset-0 rounded-t-xl bg-gradient-to-b from-[#ffffff] to-[#84B750] opacity-0 hover:opacity-50 flex justify-center items-center transition-opacity duration-300"></div>
+                        </div>
+                        <div class="flex flex-col justify-center gap-y-4 px-3 ">
+                            <p class="text-[#686868] text-lg max-md:text-md text-center h-[120px] overflow-auto">
+                                {{ $photo->title }}</p>
+                        </div>
                     </div>
-
-
-                    <div class="flex flex-col justify-center gap-y-4 px-3 ">
-                        <p class="text-[#686868] text-lg max-md:text-md text-center h-[120px] overflow-auto">
-                            {{ $photo->title }}</p>
-                    </div>
-                </div>
-            </a>
+                </a>
             @endforeach
         </div>
 
