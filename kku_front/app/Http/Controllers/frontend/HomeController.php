@@ -19,8 +19,8 @@ class HomeController extends Controller
         $regispost = $allPost->filter(function($post) {
             return strpos($post->category, ',3,') !== false;
         })->take(4);
-        $allnews = $allPost->where('category', ',5,');
-        $photoactivity = $allPost->where('category', ',6,');
+        $allnews = $allPost->where('category', ',5,')->where('pin', true);
+        $photoactivity = $allPost->where('category', ',6,')->where('pin', true);
         $lecturer = $allPost->where('category', ',10,')->where('pin', true);
         $location = $allPost->where('id', 12)->first();
         // dd($allPost);
