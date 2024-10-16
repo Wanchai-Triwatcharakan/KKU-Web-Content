@@ -57,7 +57,7 @@
                         </div>
                     </div>
                 @else
-                    <div class="flex flex-col w-full items-center justify-center border border-[#F7FAF3] bg-[#F7FAF3] z-50 rounded-xl shadow-md"
+                    <div class="flex flex-col w-full items-center justify-center border border-[#F7FAF3] bg-[#F7FAF3] z-50 rounded-xl relative shadow-md Z-50"
                         data-aos="fade-right" data-aos-duration="3000">
                         <div class="flex max-xl:flex-col gap-6 justify-between p-4 rounded-xl w-full">
                             <div
