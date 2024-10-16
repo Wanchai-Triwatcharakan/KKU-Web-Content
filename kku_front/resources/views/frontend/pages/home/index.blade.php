@@ -119,7 +119,7 @@
                             </a>
                         @endforeach
 
-                        
+
                     </div>
                 </div>
                 <div class="swiper-button-next swiper-button-next1"></div>
@@ -142,15 +142,19 @@
                                 class=" flex max-xl:flex-col gap-6 justify-between max-md:w-full  mx-auto items-center p-4 ">
                                 <div
                                     class="drop-shadow-md border boder-2 flex flex-col gap-y-6 justify-between max-xl:mt-6 px-4 bg-white  rounded-2xl py-4 w-full max-xl:order-2 h-[450px] max-md:h-[350px] max-sm:h-[350px]">
-                                    <div class="flex gap-6 items-center">
-                                        <div class="w-[50px] h-[50px]">
-                                            <img src="/images/home/formkit_people.png" alt="" class="w-full h-full object-cover">
+                                    <div class="flex flex-col gap-6">
+                                        <div class="flex gap-6 items-center">
+                                            <div class="w-[50px] h-[50px]">
+                                                <img src="/images/home/formkit_people.png" alt=""
+                                                    class="w-full h-full object-cover">
+                                            </div>
+                                            <p class="text-[#84B750] font-bold text-2xl max-md:text-lg">ผู้เข้าร่วมอบรม</p>
                                         </div>
-                                        <p class="text-[#84B750] font-bold text-2xl max-md:text-lg">ผู้เข้าร่วมอบรม</p>
-                                    </div>
-                                    <div class="flex flex-col gap-y-6 text-[1rem] indent-8 text-start overflow-y-auto">
-                                        <p>{{ $post->title }}</p>
-                                        <p>{{ $post->description }}</p>
+                                        <div
+                                            class="flex flex-col justify-start gap-y-6 text-[1rem] indent-8 text-start max-h-[280px] max-sm:h-[180px] overflow-y-auto">
+                                            <p>{{ $post->title }}</p>
+                                            <p>{{ $post->description }}</p>
+                                        </div>
                                     </div>
                                     <div class="flex justify-strat">
                                         <a href="{{ route('register.index') }}" target="_blank"
@@ -184,11 +188,12 @@
                 ข่าวสาร
             </p>
 
-            <div class="w-4/5  mx-auto py-10 max-ex:py-4 content-center grid grid-cols-4 gap-4 max-yy:grid-cols-3 max-xl:grid-cols-2 max-ex:grid-cols-1 place-items-center ">
+            <div
+                class="w-4/5  mx-auto py-10 max-ex:py-4 content-center grid grid-cols-4 gap-4 max-yy:grid-cols-3 max-xl:grid-cols-2 max-ex:grid-cols-1 place-items-center ">
                 @foreach ($allnews as $news)
                     <div class="drop-shadow-md flex justify-center h-[100%]">
-                        <div class="bg-white  w-[350px] max-2xl:w-[320px] max-xl:w-[350px] max-lg:w-[300px] max-sm:w-[350px] rounded-[15px] z-0 flex flex-col justify-center gap-y-4 " data-aos="fade-up"
-                            data-aos-duration="1500">
+                        <div class="bg-white  w-[350px] max-2xl:w-[320px] max-xl:w-[350px] max-lg:w-[300px] max-sm:w-[350px] rounded-[15px] z-0 flex flex-col justify-center gap-y-4 "
+                            data-aos="fade-up" data-aos-duration="1500">
                             <div class="w-full h-[300px] mx-auto rounded-t-xl ">
                                 <img src="{{ url($news->thumbnail_link) }}" alt=""
                                     class="w-full h-full object-cover rounded-t-xl">
@@ -213,12 +218,13 @@
 
                                 </div>
 
-                                <p class="text-[#686868] font-[300] text-lg max-md:text-md flex text-start h-[120px] px-1 overflow-hidden text-ellipsis " style="word-break: break-word; white-space: normal;">
+                                <p class="text-[#686868] font-[300] text-lg max-md:text-md flex text-start h-[120px] px-1 overflow-hidden text-ellipsis "
+                                    style="word-break: break-word; white-space: normal;">
                                     {{ $news->description }}
                                 </p>
                             </div>
 
-                           
+
                             <div class="flex justify-end my-4 px-4 ">
                                 <a href="{{ url('post/detail/' . $news->id) }}" target="_blank"
                                     class="text-center font-medium text-[#FF864E]  rounded-full text-[1rem] relative cursor-pointer transition-all ease-in-out before:transition-[width] before:ease-in-out before:duration-700 before:absolute before:bg-[#bceb77] before:origin-center before:h-[2px] before:w-0 hover:before:w-[50%] before:-bottom-1 before:left-[50%] after:transition-[width] after:ease-in-out after:duration-700 after:absolute after:bg-[#bceb77] after:origin-center after:h-[2px] after:w-0 hover:after:w-[50%] after:-bottom-1 after:right-[50%] ">
@@ -244,18 +250,22 @@
                 data-aos="zoom-in" data-aos-duration="3000">
                 ภาพกิจกรรม
             </p>
-         
-            <div class="relative  z-50 w-4/5 max-ex:w-full  mx-auto py-10 max-ex:py-4 content-center grid grid-cols-3 gap-4 gap-y-6 max-yy:grid-cols-3 max-xl:grid-cols-2 max-ex:grid-cols-1 place-items-center">
+
+            <div
+                class="relative  z-50 w-4/5 max-ex:w-full  mx-auto py-10 max-ex:py-4 content-center grid grid-cols-3 gap-4 gap-y-6 max-yy:grid-cols-3 max-xl:grid-cols-2 max-ex:grid-cols-1 place-items-center">
                 @foreach ($photoactivity as $photo)
                     {{-- @dd($photo) --}}
                     <a href="{{ url('activity/detail/' . $photo->id) }}" target="_blank"
                         class="shadow-md  shadow-[#C6E2F6] flex justify-center h-[100%] rounded-xl hover:scale-95"
                         data-aos="fade-up" data-aos-duration="1500">
-                        <div class="bg-white w-[350px] max-2xl:w-[320px] max-xl:w-[350px] max-lg:w-[300px] max-sm:w-[350px] rounded-[15px] z-0 flex flex-col justify-center gap-y-4  ">
+                        <div
+                            class="bg-white w-[350px] max-2xl:w-[320px] max-xl:w-[350px] max-lg:w-[300px] max-sm:w-[350px] rounded-[15px] z-0 flex flex-col justify-center gap-y-4  ">
                             <div class="w-full h-[300px] mx-auto rounded-t-xl relative">
                                 <img src="{{ url($photo->thumbnail_link) }}" alt=""
                                     class="w-full h-full object-cover rounded-t-xl">
-                                    <div class="absolute inset-0 rounded-t-xl bg-gradient-to-b from-[#ffffff] to-[#84B750] opacity-0 hover:opacity-50 flex justify-center items-center transition-opacity duration-300"></div>
+                                <div
+                                    class="absolute inset-0 rounded-t-xl bg-gradient-to-b from-[#ffffff] to-[#84B750] opacity-0 hover:opacity-50 flex justify-center items-center transition-opacity duration-300">
+                                </div>
                             </div>
 
 
