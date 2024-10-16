@@ -26,7 +26,7 @@
                     data-aos-anchor-placement="center-bottom" data-aos-duration="3000">
                     <div class="flex flex-col gap-4 p-6 items-start justify-center w-[70%] max-sm:w-full max-sm:order-2">
                         <p class="text-[#23404A] group-hover:text-white font-bold text-start text-2xl max-md:text-xl ">{{$post->title}}</p>
-                        <p class="text-[#686868] group-hover:text-white text-start text-xl max-lg:text-lg max-sm:text-[1rem]">{{$post->description}}</p>
+                        <p class="text-[#686868] group-hover:text-white text-start text-xl max-lg:text-lg max-sm:text-[1rem]">{{$post->keyword}}</p>
                     </div>
                     <div class="rounded-2xl w-[550px] h-[300px] max-sm:w-[350px] max-sm:h-[250px] shadow-md">
                         <img src="{{url($post->thumbnail_link)}}" alt=""

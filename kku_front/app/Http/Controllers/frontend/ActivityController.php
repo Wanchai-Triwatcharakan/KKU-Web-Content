@@ -24,7 +24,7 @@ class ActivityController extends Controller
 
         $images = $post->images()
             ->orderBy('position', 'asc') // เรียงตามลำดับจากน้อยไปมาก
-            ->paginate(2); // แบ่งหน้า 10 รูปต่อหน้า
+            ->paginate(10); // แบ่งหน้า 10 รูปต่อหน้า
 
         return view('frontend.pages.activity.detail', compact('post', 'images'));
     }

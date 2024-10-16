@@ -11,7 +11,7 @@
             class="absolute w-[60%] max-2xl:w-[80%] h-[350px] max-xl:h-[300px] max-sm:h-[250px]  mx-auto bg-white inset-0 top-12 z-50 flex flex-col justify-center  gap-y-4 max-sm:gap-y-2 border rounded-xl shadow-md">
             <div class="w-[60%] max-sm:w-full flex flex-col gap-6 px-8 items-start justify-center  z-20">
                 <p class="text-[#84B750] font-semibold text-start text-6xl max-xl:text-3xl ">{{$post->title}}</p>
-                <p class="text-[#686868] text-start text-2xl max-2xl:text-xl max-lg:text-lg max-sm:text-[1rem]">{{$post->description}}</p>
+                <p class="text-[#686868] text-start text-2xl max-2xl:text-xl max-lg:text-lg max-sm:text-[1rem]">{{$post->keyword}}</p>
             </div>
             <div class="flex justify-end w-[50%] h-full max-sm:w-full right-0  absolute z-10 items-end max-sm:opacity-30">
                 <img src="{{url($post->thumbnail_link)}}" alt="" class="w-full h-full rounded-r-xl object-cover shadow-md"
