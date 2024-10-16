@@ -112,11 +112,11 @@
     <div id="swiperPopup" class="fixed inset-0 bg-black bg-opacity-70 hidden justify-center items-center z-[99]">
         <div class="h-screen flex flex-col justify-center items-center">
             <div
-                class="swiper-container mx-auto my-auto w-[900px] h-[700px] max-lg:w-[750px] max-lg:h-[550px] max-xs:w-[400px] max-es:w-[350px] max-sm:h-[350px] relative flex justify-center flex-col items-center">
+                class="swiper-container mx-auto my-auto  w-[900px] h-[700px] max-2xl:w-[600px] max-2xl:h-[500px] max-lg:w-[750px] max-lg:h-[550px] max-md:w-[500px] max-md:mx-2 max-xs:w-[400px] max-es:w-[350px] max-sm:h-[350px] relative flex justify-center flex-col items-center">
                 <div class="swiper-wrapper">
                 </div>
                 <p id="closeModal"
-                    class="text-white text-lg hover:scale-105 -bottom-12 relative cursor-pointer transition-all ease-in-out before:transition-[width] before:ease-in-out before:duration-700 before:absolute before:bg-[#bceb77] before:origin-center before:h-[2px] before:w-0 hover:before:w-[50%] before:bottom-0 before:left-[50%] after:transition-[width] after:ease-in-out after:duration-700 after:absolute after:bg-[#bceb77] after:origin-center after:h-[2px] after:w-0 hover:after:w-[50%] after:bottom-0 after:right-[50%]">
+                    class="text-white text-lg hover:scale-105 -bottom-8 relative cursor-pointer transition-all ease-in-out before:transition-[width] before:ease-in-out before:duration-700 before:absolute before:bg-[#bceb77] before:origin-center before:h-[2px] before:w-0 hover:before:w-[50%] before:bottom-0 before:left-[50%] after:transition-[width] after:ease-in-out after:duration-700 after:absolute after:bg-[#bceb77] after:origin-center after:h-[2px] after:w-0 hover:after:w-[50%] after:bottom-0 after:right-[50%]">
                     ปิด X</p>
 
                 <div class="swiper-button-next"></div>
