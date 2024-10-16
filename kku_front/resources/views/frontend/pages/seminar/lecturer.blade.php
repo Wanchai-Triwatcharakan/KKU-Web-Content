@@ -21,10 +21,9 @@
 
     <section class="flex flex-col gap-4 pt-32 max-sm:pt-20 bg-white ">
         <p class="text-[#23404A] font-bold text-center text-3xl max-md:text-xl max-sm:text-lg z-40 max-md:px-2"
-            data-aos="zoom-in" data-aos-duration="3000">วิทยากร
-        </p>
+            data-aos="zoom-in" data-aos-duration="3000">{{$lect_seo->title}}</p>
         <p class="text-[#23404A] font-medium text-center text-2xl max-2xl:text-xl max-lg:text-lg max-sm:text-[1rem] z-40 max-md:px-2"
-            data-aos="zoom-in" data-aos-duration="3000">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            data-aos="zoom-in" data-aos-duration="3000">{{$lect_seo->description}}</p>
 
         <div
             class=" grid grid-cols-4 gap-4 max-yy:grid-cols-3 max-dm:grid-cols-2 max-ex:grid-cols-1 w-[70%] max-2xl:w-[80%] mx-auto my-12 items-center place-items-center">

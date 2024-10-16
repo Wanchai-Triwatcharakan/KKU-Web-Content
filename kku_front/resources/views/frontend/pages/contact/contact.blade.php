@@ -24,15 +24,15 @@
                         สามารถกรอกข้อมูลเพือให้ทางเจ้าหน้าที่ติดต่อกลับ</p>
                 </div>
                 <div class="flex gap-4 max-sm:justify-center">
-                    <a href="" class="bg-white rounded-full p-2 w-12 h-12 border hover:bg-[#84B750] shadow-md group">
+                    <a href="{{ $webInfo->contact->link_facebook->link }}" target="_bank" class="bg-white rounded-full p-2 w-12 h-12 border hover:bg-[#84B750] shadow-md group">
                         <img src="/images/icon/facebook.png" alt=""
                             class="w-full h-full group-hover:filter group-hover:invert group-hover:saturate-12 group-hover:hue-rotate-237 group-hover:brightness-0 group-hover:contrast-30">
                     </a>
-                    <a href="" class="bg-white rounded-full p-2 w-12 h-12 border hover:bg-[#84B750] shadow-md group">
+                    <a href="{{ $webInfo->contact->link_line->link }}" target="_bank" class="bg-white rounded-full p-2 w-12 h-12 border hover:bg-[#84B750] shadow-md group">
                         <img src="/images/icon/jam_line.png" alt=""
                             class="w-full h-full group-hover:filter group-hover:invert group-hover:saturate-12 group-hover:hue-rotate-237 group-hover:brightness-0 group-hover:contrast-30">
                     </a>
-                    <a href="mailto:example@email.com"
+                    <a href="mailto:{{ $webInfo->contact->email->value }}" target="_bank"
                         class="bg-white rounded-full p-2 w-12 h-12 border hover:bg-[#84B750] shadow-md group">
                         <img src="/images/icon/mail.png" alt=""
                             class="w-full h-full group-hover:filter group-hover:invert group-hover:saturate-12 group-hover:hue-rotate-237 group-hover:brightness-0 group-hover:contrast-30">
@@ -87,7 +87,7 @@
                 </div>
                 <p class="w-full">{{ $webInfo->contact->link_line->value }}</p>
             </a>
-            <a href="{{ $webInfo->location->google_map->link }}"
+            <a href="{{ $webInfo->location->google_map->link }}" target="_bank"
                 class="flex justify-between w-full sm:gap-8 gap-4 items-center group">
 
                 <div class="w-[20%]">

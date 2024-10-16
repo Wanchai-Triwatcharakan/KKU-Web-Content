@@ -1,10 +1,10 @@
 @extends('frontend.layouts.layout-main')
 @section('title', 'Post')
 @section('head')
-    <meta property="og:title" content="ชื่อเรื่องของคุณ" />
-    <meta property="og:description" content="รายละเอียดของคุณ" />
-    <meta property="og:image" content="https://cdn.pixabay.com/photo/2024/08/06/10/43/wine-8949009_1280.jpg" />
-    <meta property="og:url" content="http://127.0.0.1:8000/post/detail" />
+    <meta property="og:title" content="{{ $news->title }}" />
+    <meta property="og:description" content="{{ $news->description }}" />
+    <meta property="og:image" content="{{ url($news->thumbnail_link) }}" />
+    <meta property="og:url" content="{{ url('post/detail/' . $news->id) }}" />
 @endsection
 @section('content')
 

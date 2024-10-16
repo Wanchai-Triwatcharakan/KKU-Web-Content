@@ -28,11 +28,12 @@ class SeminarController extends Controller
         return view('frontend.pages.seminar.seminar', compact('post', 'postManage', 'postsupport'));
     }
     public function indexPage() {
+        $lect_seo = Post::where('id', 47)->first();
         $allLecturer = Post::where('category', ',10,')
             ->where('status_display', true)
             ->OrderBy('priority')
             ->paginate(12);
         // return view('frontend.pages.seminar.seminar');
-        return view('frontend.pages.seminar.lecturer', compact('allLecturer'));
+        return view('frontend.pages.seminar.lecturer', compact('allLecturer', 'lect_seo'));
     }
 }
