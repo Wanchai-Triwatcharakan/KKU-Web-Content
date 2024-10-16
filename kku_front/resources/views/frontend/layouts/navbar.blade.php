@@ -1,4 +1,5 @@
 <nav class="bg-white border-b shadow-sm border-gray-200 w-full fixed top-0 z-[99] px-4 max-md:px-2">
+    {{$path}}
     <div class="max-w-screen-2xl flex items-center justify-between mx-auto ">
         <a href="{{ url('/') }}" class="flex items-center">
             <img src="{{ url($webInfo->detail->image_1->link) }}" class="h-[3.7rem]" alt="kku Logo" />

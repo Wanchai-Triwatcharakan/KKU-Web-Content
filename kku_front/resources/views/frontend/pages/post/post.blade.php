@@ -19,7 +19,8 @@
     <section class="w-4/5 max-xl:w-full mx-auto pt-32 pb-20 max-sm:pt-20 max-sm:pb-8 bg-white">
         <div class="flex gap-6 max-lg:flex-col max-2xl:px-4">
             <div class="w-[40%] max-lg:w-full flex flex-col gap-4" data-aos="fade-up"ata-aos-duration="3000">
-                <form class="flex items-center w-full mx-auto">
+                <form action="{{ route('post.index') }}" method="GET" class="flex items-center w-full mx-auto">
+                    @csrf
                     <label for="simple-search" class="sr-only">Search</label>
                     <div class="relative w-full">
                         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none text-[#929292]">
@@ -29,9 +30,10 @@
                                     d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                             </svg>
                         </div>
-                        <input type="text" id="simple-search"
+                        <input type="text" name="search" id="simple-search"
                             class="no-underline bg-white border border-gray-300 text-gray-900 text-sm rounded-lg block w-full ps-10 p-2.5 focus:outline-none"
-                            placeholder="Search" required />
+                            value="{{isset($_GET['search']) ? $_GET['search'] : ""}}"
+                            placeholder="Search" />
                     </div>
                     <button type="submit"
                         class="p-2 w-28 ms-2 text-[1rem] font-medium text-white bg-[#BCEB77] rounded-lg border border-[#BCEB77] hover:bg-[#cbf191]">

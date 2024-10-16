@@ -9,18 +9,23 @@ use App\Models\Post;
 class PostController extends Controller
 {
     
-    public function indexPagePost() {
+    public function indexPagePost(Request $request) {
+
         $pinnedNews = Post::where('category', ',5,')
                 ->where('status_display', true)
                 ->where('pin', true)
                 ->limit(5)
                 ->get();
 
-        $allnews = Post::where('category', ',5,')
-                    ->where('status_display', true)
+        $allnews = Post::where('category', ',5,');
+            if ($request->search) {
+                $allnews = $allnews->where('title', 'LIKE', '%' . $request->search . '%');
+            }
+            $allnews = $allnews->where('status_display', true)
                     ->paginate(10);
         return view('frontend.pages.post.post', compact('allnews', 'pinnedNews'));
     }
+
     public function dataDetail($id) {
         $news = Post::where('id', $id)
             ->where('category', ',5,')

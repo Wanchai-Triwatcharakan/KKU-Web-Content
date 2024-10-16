@@ -19,12 +19,14 @@ class ShareWebData extends Controller
      */
     public function handle(Request $request, Closure $next)
     {
+        $path = $request->path();
         $infos = $this->getWebInfo('', '');
         $webInfo = $this->infoSetting($infos);
         // View::share('datatest', $datatest);
         $main_cate = Category::where('is_menu', true)->OrderBy('cate_priority')->get();
         View::share('webInfo', $webInfo);
         View::share('main_cate', $main_cate);
+        View::share('path', $path);
         return $next($request);
     }
 }

@@ -4,7 +4,6 @@
     {{-- <link rel="stylesheet" href="/css/aboutus.min.css"> --}}
 @endsection
 @section('content')
-    {{-- @dd($webInfo) --}}
     <section class="mt-[4.5rem] max-xl:mt-[3rem] w-full h-[500px] max-xl:h-[350px] max-sm:h-[250px] relative z-50">
         <div class="absolute inset-0 z-50 flex flex-col justify-center items-center gap-y-4 max-sm:gap-y-2 px-4">
             <p class="text-white text-6xl max-xl:text-3xl  font-bold text-center" data-aos="zoom-in" data-aos-duration="3000">
@@ -78,7 +77,6 @@
 
                 <p class="w-full">{{ $webInfo->contact->phone->value }}</p>
             </a>
-            {{-- @dd($webInfo->contact); --}}
             <a href="{{ $webInfo->contact->link_line->link }}" target="_blank"
                 class="flex justify-between w-full sm:gap-8 gap-4 items-center group">
                 <div class="w-[20%]">
@@ -113,5 +111,3 @@
     @vite('resources/js/accom/accom.js')
 
 @endsection
-
-Lorem ipsum dolor sit amet consectetur adipisicing elit
