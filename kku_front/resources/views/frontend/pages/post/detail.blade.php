@@ -106,7 +106,7 @@
                 </a>
             @else
                 <a href="#"
-                    class="bg-[#BCEB77] flex gap-4 items-center justify-center p-2 rounded-md w-[120px] font-medium text-[#27363C] text-[1rem] hover:bg-[#E7E7E7] group"data-aos="fade-left"
+                    class="bg-[#E7E7E7] flex gap-4 items-center justify-center p-2 rounded-md w-[120px] font-medium text-[#27363C] text-[1rem] group"data-aos="fade-left"
                     data-aos-duration="3000">
                     <div class="w-6 h-6">
                         <svg fill="currentColor" class="flex-shrink-0 w-full h-full text-[#23404A] transition duration-75"
@@ -156,7 +156,7 @@
                 </a>
             @else
                 <a href="#"
-                    class="bg-[#BCEB77] flex gap-4 items-center justify-center p-2 rounded-md font-medium w-[120px] text-[#27363C] text-[1rem] hover:bg-[#E7E7E7] group"
+                    class="bg-[#E7E7E7] flex gap-4 items-center justify-center p-2 rounded-md font-medium w-[120px] text-[#27363C] text-[1rem] group"
                     data-aos="fade-right" data-aos-duration="3000">
                     ถัดไป
                     <div class="w-6 h-6">
