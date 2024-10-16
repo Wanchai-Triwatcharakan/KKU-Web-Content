@@ -69,7 +69,7 @@
         class="w-4/5 mx-auto relative bg-white flex flex-col justify-center items-center gap-4 Z-50 pb-12">
         <p class="text-[#23404A] font-bold text-center text-4xl max-md:text-2xl z-50 max-md:px-2 pt-16 max-sm:pt-8"
             data-aos="zoom-in" data-aos-duration="3000">{{ $location->keyword }}</p>
-        <div class="mt-4 shadow-md w-[800px] h-[800px] max-h-[80%] max-lg:h-full max-sm:h-[50%] max-lg:w-full boeder relative cursor-pointer previewImage"
+        <div class="mt-4 shadow-md  yy:w-[1000px] w-auto h-full  boeder relative cursor-pointer previewImage"
             id="previewImage" data-aos="zoom-in" data-aos-duration="3000">
             <img src="{{$location->thumbnail_link}}" alt="" class="w-full h-full hadow-md ">
             <div
@@ -80,7 +80,7 @@
         
 
         @foreach ($location['images'] as $image)
-            <div class="mt-4 shadow-md w-[800px] h-[800px] max-h-[70%] max-yi:w-[700px] max-yi:h-[700px] max-lg:h-full max-sm:h-[50%] max-lg:w-full border relative cursor-pointer previewImage"
+            <div class="mt-4 shadow-md  yy:w-[1000px] w-auto h-full  border relative cursor-pointer previewImage" 
                 data-aos="zoom-in" data-aos-duration="3000">
                 <img src="{{ $image->image_link }}" alt="" class="w-full h-full shadow-md ">
                 <div
@@ -95,8 +95,8 @@
     <!-- Modal -->
      @foreach($location['images'] as $image)
      <div id="imageModal" class="fixed inset-0 flex items-center justify-center hidden bg-black bg-opacity-75 z-[999]">
-         <div class="relative my-6 w-[850px] h-[850px]  max-h-full max-lg:h-[80%] max-sm:h-[50%] max-es:h-[45%] max-sm:w-full max-lg:w-full max-lg:mx-6 max-sm:mx-2 mx-auto ">
-             <button class="absolute top-5 right-2 text-white text-[2rem] bg-red-500 w-[30px] h-[30px] px-2 rounded-full flex justify-center items-center hover:scale-110" id="closeModal">&times;</button>
+         <div class="relative my-6 w-auto h-full max-yy:w-auto max-yy:h-[700px] max-lg:w-full max-lg:h-auto max-yy:py-8  max-2xl:mx-6 max-sm:mx-2 mx-auto ">
+             <button class="absolute yy:top-5 top-0 right-0 pb-1 text-white text-[2rem] bg-red-500 w-[30px] h-[30px] px-2 rounded-full flex justify-center items-center hover:scale-110" id="closeModal">&times;</button>
              <img src="{{$image->image_link}}" alt="Image Preview" class="w-full h-full py-[1rem]" id="modalImage">
          </div>
      </div>

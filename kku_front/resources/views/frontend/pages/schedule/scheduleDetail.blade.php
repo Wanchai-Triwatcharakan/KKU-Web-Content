@@ -77,27 +77,6 @@
                         @endforeach
                     </div>
 
-                    {{-- ข้อมูล --}}
-                    {{-- @for ($room->id = 1; $room->id <= 5; $room->id++)
-                    <div class="room-data flex flex-col bg-[#F7FAF3] rounded-lg p-6 w-full {{ $room->id == 1 ? '' : 'hidden' }}"
-                        data-room="{{ $room->id }}">
-                        <p class="text-xl font-medium text-[#23404A] mb-4">ห้องที่ {{ $room->id }} Update Knowledge and
-                            Innovation Trends in</p>
-                        @for ($j = 0; $j <= 5; $j++)
-                            <div
-                                class="flex py-4 gap-4 justify-start text-lg max-lg:text-[1rem] text-[#23404A] max-sm:flex-col">
-                                <p class="font-medium w-[20%] max-lg:w-[50%]">08:30 - 08:45 น.</p>
-                                <p>Forum I: Perspective View: Trends & Driving Role of Innovation in Health & Wellness
-                                    Industry
-                                    (รมต /ผู้แทน ที่เกี่ยวข้องใน supply chain) <br>Moderator : ศ.ดร.ศุภชัย ปทุมนากุล
-                                    รองปลัดกระทรวงอุดมศึกษา
-                                    วิทยาศาสตร์ วิจัยและนวัตกรรม (อว.)
-                                </p>
-                            </div>
-                            <hr>
-                        @endfor
-                    </div>
-                @endfor --}}
                     @foreach ($rooms as $room)
                         <div class="room-data flex flex-col bg-[#F7FAF3] rounded-lg p-6 w-full {{ $room->id == 1 ? '' : 'hidden' }}"
                             data-room="{{ $room->id }}">

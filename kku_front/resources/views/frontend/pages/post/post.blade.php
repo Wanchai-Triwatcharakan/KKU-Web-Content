@@ -141,7 +141,7 @@
         </div>
     </section>
 
-    <div class="flex justify-center items-center gap-2 mb-12">
+    <div class="flex justify-center items-center gap-2 mb-12 relative z-50">
         {{-- ปุ่มไปหน้าก่อนหน้า --}}
         @if ($allnews->onFirstPage())
             <span
