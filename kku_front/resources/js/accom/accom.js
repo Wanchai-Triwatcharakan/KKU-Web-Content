@@ -29,6 +29,10 @@ document.addEventListener('DOMContentLoaded', function() {
         spaceBetween: 130,
         loop: true,
         grabCursor: true,
+        autoplay: {
+            delay: 6000, 
+            disableOnInteraction: false, 
+        },
         pagination: {
             el: '.swiper-pagination',
             clickable: true,
