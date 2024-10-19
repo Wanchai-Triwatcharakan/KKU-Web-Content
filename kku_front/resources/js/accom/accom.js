@@ -20,3 +20,22 @@ window.addEventListener('click', (e) => {
         imageModal.classList.add('hidden');
     }
 });
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    var swiper = new Swiper(".swiper-container", {
+        slidesPerView: 1,
+        spaceBetween: 130,
+        loop: true,
+        grabCursor: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        // navigation: {
+        //     nextEl: '.swiper-button-next',
+        //     prevEl: '.swiper-button-prev',
+        // },
+    });
+});

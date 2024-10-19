@@ -32,7 +32,6 @@
 }
 
 .swiper-button-next:hover ,.swiper-button-prev:hover {
-    color: #FF864E !important;
-    border: 4px solid #ffffff !important;
+    background-color: rgba(0, 0, 0, 0.8) !important;
     font-size: 20px !important;
 }
