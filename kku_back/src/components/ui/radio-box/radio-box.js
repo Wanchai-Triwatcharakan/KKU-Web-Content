@@ -20,13 +20,13 @@ const RadioBoxUI = (props) => {
                         name="controlled-radio-buttons-group"
                         value={value}
                         onChange={handleChange} >  
-                         {/* <FormControlLabel
+                         <FormControlLabel
                             title={`level 0`}
                             style={{"--level": 0}}
                             className="box-item main-cate"
                             value={0}
                             control={<Radio />} 
-                            label={`Main Category`} /> */}
+                            label={`หมวดหมู่หลัก`} />
                         {data && <RadioBoxChild data={data} disabledId={disabledId} /> }
                     </RadioGroup>
                 </FormControl>

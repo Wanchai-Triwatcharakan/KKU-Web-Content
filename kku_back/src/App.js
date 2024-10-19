@@ -31,6 +31,7 @@ import ActivityPhoto from './pages/activityphoto/activityphoto.js';
 import PostContentPage from './pages/postcontent/postcontent.js';
 import SeminarSchedule from './pages/seminarSchedule/seminarschedule.js';
 import RoomSeminar from './pages/roomseminar/roomseminar.js';
+import HotelPost from './pages/hotelpost/postcontent.js';
 
 function App() {
   const pagesAllow = useSelector((state) => state.app.pages)
@@ -53,6 +54,7 @@ function App() {
             {pagesAllow.designs && <Route path="designs" element={<DesignPage />} /> }
             {pagesAllow.posts && <Route path="posts" element={<PostPage />} /> }
             {pagesAllow.postscontent && <Route path="postscontent" element={<PostContentPage />} /> }
+            {pagesAllow.hotelpost && <Route path="hotelpost" element={<HotelPost />} /> }
             {pagesAllow.seminarSchedule && <Route path="seminarschedule" element={<SeminarSchedule />} /> }
             {pagesAllow.roomSeminar && <Route path="roomseminar" element={<RoomSeminar />} /> }
             {pagesAllow.lecturers && <Route path="lecturers" element={<LecturePage />} /> }

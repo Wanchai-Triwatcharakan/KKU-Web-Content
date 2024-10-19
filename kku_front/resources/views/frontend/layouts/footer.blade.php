@@ -62,12 +62,11 @@
                 <div class="flex w-full max-xl:flex-col gap-4">
                     <div class="flex justify-start items-center gap-4 ">
                         {{-- <div class="w-[150px] h-[90px]"> --}}
-                        <img src="/images/home/LOGO-new.png" alt="" class="">
+                        <img src="{{url($webInfo->detail->image_4->link)}}" alt="" class="">
                         {{-- </div> --}}
                         <div class="flex flex-col">
-                            <p class="text-xl text-white text-wrap">First Conference and Exhibition on Health
-                                and Wellness Innovation</p>
-                            <p class="text-md text-white">“Empowering Invention to Innovation for Quality of Life” </p>
+                            <p class="text-xl text-white text-wrap">{!! nl2br(e($webInfo->footer->Footer_Detail->value)) !!}</p>
+                            {{-- <p class="text-md text-white">“Empowering Invention to Innovation for Quality of Life” </p> --}}
                         </div>
                     </div>
                     <div class="w-full items-center hidden sm:block">

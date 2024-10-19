@@ -9,11 +9,11 @@
         <div class="absolute inset-0 z-50 flex flex-col justify-center items-center gap-y-4 max-sm:gap-y-2 px-4">
             <p class="text-white text-6xl max-xl:text-3xl max-md:text-2xl  font-bold text-center" data-aos="zoom-in"
                 data-aos-duration="3000">
-                ข่าวสาร
+                {{$cate->cate_title}}
             </p>
         </div>
 
-        <img src="/images/banner/image122.png" alt="" class="w-full h-full absolute object-cover">
+        <img src="{{ url($imageBanner->ad_image ?? 'images/banner/image122.png') }}" alt="" class="w-full h-full absolute object-cover">
     </section>
 
     <section class="w-4/5 max-xl:w-full mx-auto pt-32 pb-20 max-sm:pt-20 max-sm:pb-8 bg-white">

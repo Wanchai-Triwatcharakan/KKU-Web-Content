@@ -36,7 +36,7 @@
 			<div class="over-mob" style="max-height:0; margin: 0 auto; text-align: center;">
 				<img class="reset" height="300" border="0" alt="" style="width: 100%;vertical-align: middle;background-color:#B17036;"/>
 			</div>
-            <img src="<?php echo(\Request::root());?>/{{ $web_info->detail->image_1->link }}" style="margin-top: 1rem; margin-bottom: 0.5rem" alt="">
+            <img src="<?php echo(\Request::root());?>/{{ $web_info->detail->image_1->link }}" style="margin-top: 1rem; margin-bottom: 0.5rem; max-width:97%" alt="">
 			<table role="presentation" class="faux-absolute reset" align="center" border="0" cellpadding="0" cellspacing="0" width="650" style="position:relative; opacity:0.999;padding: 2rem;">
                 <tr>
                     <td valign="top">
@@ -53,9 +53,9 @@
                                     <div class="">
                                         <span style="margin: 0; font-size:1em; color:#222222; mso-line-height-rule: exactly; line-height: 1.5;">
                                         <h3>Hi {{$user_account->firstname}} {{$user_account->lastname}}, </h3>
-                                        <p>You recently requested to reset the password for your Tamarind account. Click the button below to proceed.</p>
+                                        <p>You recently requested to reset the password for your Thaiwellhealth account. Click the button below to proceed.</p>
                                         <p>If you did not request a password reset, please ignore this email or reply to let us know. This password reset was create at {{date('H:i d/m/Y', strtotime($reset_token->created_at))}}.</p>
-                                        <h4>Thanks, the Tamarind support team</h4>
+                                        <h4>Thanks, the Thaiwellhealth support team</h4>
                                         </span>
                                     </div>
                                 </td>

@@ -15,7 +15,7 @@ import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock, faImages }  from "@fortawesome/free-regular-svg-icons"; 
-import { faAd, faArrowDownShortWide, faEyeSlash, faFolderOpen, faLanguage, faPenNib, faStopwatch } from "@fortawesome/free-solid-svg-icons";
+import { faAd, faArrowDownShortWide, faLink, faEyeSlash, faFolderOpen, faLanguage, faPenNib, faStopwatch } from "@fortawesome/free-solid-svg-icons";
 import { TablePagination } from "@mui/material";
 
 import Swal from "sweetalert2";
@@ -31,7 +31,7 @@ const tabLists = [
 ]
  
 const SlideTab = (props) => {
-  const {slideModalAdd, setSlideModalAdd, tabSelect, slideData, isRowDisplay, pageControl} = props
+  const {slideModalAdd, setSlideModalAdd, tabSelect, slideData, isRowDisplay, pageControl, categoriesData} = props
 
   const dispatch = useDispatch()
   const { t } = useTranslation('slide-page')
@@ -181,6 +181,12 @@ const SlideTab = (props) => {
                           <span className="fa-icon" title="language"><FontAwesomeIcon icon={faLanguage} /></span>
                           <b>{item.language.toUpperCase()}</b> 
                           <span className="fa-icon" title="priority"><FontAwesomeIcon icon={faArrowDownShortWide} /><b>{item.priority}</b> </span>
+                        </p>  
+                        <p className="cate">
+                          <span className="fa-icon" title="category"> <FontAwesomeIcon icon={faLink} /></span>
+                          <span>
+                            {categoriesData.find(category => category.id === item.pageId)?.cate_title || "ไม่พบข้อมูล"}
+                          </span>
                         </p>   
                       </ContentCardUI>
                     ))}
@@ -204,14 +210,18 @@ const SlideTab = (props) => {
           totalData={totalData} 
           positionList={props.positionList} 
           isOpen={slideModalAdd} 
-          setClose={setSlideModalAdd} /> }
+          setClose={setSlideModalAdd} 
+          categoriesData={categoriesData}
+        /> }
       {slideModalEdit.isOpen && 
         <SlideModalEdit 
           setRefreshData={props.setRefreshData} 
           positionList={props.positionList} 
           isOpen={slideModalEdit.isOpen} 
           isEdit={slideModalEdit.isEdit} 
-          setClose={setSlideModalEdit} /> }
+          setClose={setSlideModalEdit} 
+          categoriesData={categoriesData}
+        /> }
    
       
     </Fragment>

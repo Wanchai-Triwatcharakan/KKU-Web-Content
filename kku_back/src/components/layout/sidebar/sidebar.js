@@ -33,6 +33,7 @@ import {
   faAddressBook,
   faHouseUser,
   faBook,
+  faHotel,
   faTable,
   faPeopleRoof,
   faImage,
@@ -345,6 +346,20 @@ const SidebarComponent = (props) => {
                     <FontAwesomeIcon icon={faPeopleRoof} />
                     </span>
                     <span className="menu-title">{t("จัดการห้องสัมมนา")}</span>
+                  </NavLink>
+                )}
+                {pagesAllow.hotelpost && (
+                  <NavLink
+                    onClick={closeSidebarhandler}
+                    to="/hotelpost"
+                    className={`navlink `}
+                    title={t("ที่พักและเส้นทาง")}
+                    liClass="menu-link"
+                  >
+                    <span className="collap-title">
+                      <FontAwesomeIcon icon={faHotel} />
+                    </span>
+                    <span className="menu-title">{t("ที่พักและเส้นทาง")}</span>
                   </NavLink>
                 )}
                 {pagesAllow.postscontent && (

@@ -9,6 +9,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Category;
 
 class SlideController extends BaseController
 {
@@ -16,6 +17,7 @@ class SlideController extends BaseController
         try {
             $slideData = $this->getSlideList($request->language); 
             $sliedPos = AdSlidePosition::orderBy('position','ASC')->get()->all();
+            $category = Category::where('cate_status_display', true)->get();
             $positionList = [];
             foreach( $sliedPos as $val){
                 array_push($positionList, [
@@ -26,7 +28,8 @@ class SlideController extends BaseController
             return response([
                 'message' => 'ok',
                 'data' => $slideData,
-                'positionList' => $positionList
+                'positionList' => $positionList,
+                'category' => $category
             ]);
         } catch (Exception $e) { 
             return response([

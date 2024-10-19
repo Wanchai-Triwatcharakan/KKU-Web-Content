@@ -25,7 +25,7 @@ import PostTab from "./post-tab/post-tab";
 import { getMenuList, getPosts } from "../../services/post.service";
 import { appActions } from "../../store/app-slice";
 
-const PostContentPage = () => {
+const HotelPost = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation(["post-page"]);
   const pageAvailable = useSelector(
@@ -74,9 +74,7 @@ const PostContentPage = () => {
     dispatch(appActions.isSpawnActive(true));
     getPosts(language).then((res) => {
       if (res.status) {
-        const filtered = res.data.filter(item => 
-          item.category.split(',').filter(Boolean).every(cat => !['4', '5', '6', '10'].includes(cat))
-        );
+        const filtered = res.data.filter(item => item.category.split(',').filter(Boolean).some(cat => ['7'].includes(cat)));
         setPostData(filtered);
       }
       dispatch(appActions.isSpawnActive(false));
@@ -100,9 +98,9 @@ const PostContentPage = () => {
   return (
     <section id="post-page">
       <HeadPageComponent
-        h1={t("โพสต์")}
+        h1={t("ที่พักและเส้นทาง")}
         icon={<FontAwesomeIcon icon={faNewspaper} />}
-        breadcrums={[{ title: t("โพสต์"), link: false }]}
+        breadcrums={[{ title: t("ที่พักและเส้นทาง"), link: false }]}
       />
       <div className="card-control fixed-width">
         <div style={{ paddingBottom: "0" }} className="card-head">
@@ -121,7 +119,7 @@ const PostContentPage = () => {
               isRowDisplay={isRowDisplay}
               setIsRowDisplay={setIsRowDisplay}
             />
-            <FormControl className="searchpage" variant="standard">
+            {/* <FormControl className="searchpage" variant="standard">
               <InputLabel id="filter-pgae">{t("จำกัดหน้า")}</InputLabel>
               <Select labelId="post-pgae"
                 autoWidth
@@ -141,7 +139,7 @@ const PostContentPage = () => {
                     </MenuItem>
                   ))}
               </Select>
-            </FormControl> 
+            </FormControl>  */}
             {(isSuerperAdmin || isAdmin) && (
               <ButtonUI
                 onClick={() => setPostModalAdd(true)}
@@ -205,4 +203,4 @@ const PostContentPage = () => {
   );
 };
 
-export default PostContentPage;
+export default HotelPost;

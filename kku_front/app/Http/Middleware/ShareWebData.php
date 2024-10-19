@@ -21,7 +21,8 @@ class ShareWebData extends Controller
     public function handle(Request $request, Closure $next)
     {
         $cate = Category::where('cate_url', $request->path())->first();
-        // $imageBanner = AdSlide::where('page_id', $cate->id)->first();
+        $imageBanner = AdSlide::where('page_id', $cate->id)->first();
+        // print_r($imageBanner);
         $infos = $this->getWebInfo('', '');
         $webInfo = $this->infoSetting($infos);
         // View::share('datatest', $datatest);
@@ -29,7 +30,7 @@ class ShareWebData extends Controller
         View::share('webInfo', $webInfo);
         View::share('main_cate', $main_cate);
         View::share('cate', $cate);
-        // View::share('imageBanner', $imageBanner);
+        View::share('imageBanner', $imageBanner);
         return $next($request);
     }
 }

@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const getSlides = (language) => {
     return axios.get(`slide/data?language=${language}`).then( 
-      (res) => { return { status: true, data: res.data.data, positionList: res.data.positionList }} , 
+      (res) => { return { status: true, data: res.data.data, positionList: res.data.positionList, categories: res.data.category}} , 
       (error) => { return { status: false, description: (!error.response.data)?"Something went wrong.": error.response.data.description } }
     )
 }

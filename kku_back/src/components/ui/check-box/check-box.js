@@ -6,7 +6,6 @@ import { useTranslation } from 'react-i18next';
 
 const CheckBoxUI = (props) => {
   const { t, data, menuList, disabled = null , error = false} = props 
-  console.log(data) 
   const changeHandler = (level, rootId, cateId, isChecked) => {
     const result = data.map((d)=> {
       if(d.level <= level && d.rootId === rootId){

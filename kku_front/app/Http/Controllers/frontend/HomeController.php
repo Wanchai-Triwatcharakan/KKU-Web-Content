@@ -16,20 +16,19 @@ class HomeController extends Controller
             ->where('ad_position_id', 2)
             ->OrderBy('ad_priority')->get();
         $allPost = Post::where('status_display', true)->OrderBy('priority')->get();
-        $regispost = $allPost->filter(function($post) {
-            return strpos($post->category, ',3,') !== false;
-        })->take(4);
+        $regispost = $allPost->where('category', ',3,')->where('pin', true);
         $allnews = $allPost->where('category', ',5,')->where('pin', true);
         $photoactivity = $allPost->where('category', ',6,')->where('pin', true);
         $lecturer = $allPost->where('category', ',10,')->where('pin', true);
         $location = $allPost->where('id', 12)->first();
-        // dd($allPost);
+        // ผู้สนับสนุน
         $postsupport = Post::where('id', 5)
             ->where('status_display', true)
             ->with(['images' => function($query) {
-                $query->orderBy('position', 'asc'); // สั่งเรียงตามฟิลด์ position ตามลำดับจากน้อยไปมาก
+                $query->orderBy('position', 'asc');
             }])
             ->first();
+        // บทความที่มา
         $postOrigin = Post::where('id', 6)
             ->with(['images' => function($query) {
                 $query->orderBy('position', 'asc');

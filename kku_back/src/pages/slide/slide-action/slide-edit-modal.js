@@ -55,7 +55,7 @@ const editDataDefault = {
 }
 
 const SlideModalEdit = (props) => { 
-  const {positionList, isOpen, isEdit} = props
+  const {positionList, isOpen, isEdit, categoriesData} = props
   const { t } = useTranslation("slide-page");
   const uploadPath = useSelector((state) => state.app.uploadPath)
   const language = useSelector((state) => state.app.language)
@@ -70,7 +70,7 @@ const SlideModalEdit = (props) => {
     thumbnail: false,
     title: false
   });
-
+console.log(categoriesData)
   useEffect(() => {
  
     if (appEditData !== null) { 
@@ -472,10 +472,10 @@ const SlideModalEdit = (props) => {
                           }
                           value={editData.pageId} >
                           <MenuItem value={0}>{t("None")}</MenuItem>
-                          {pageAvailable &&
-                            pageAvailable.map((menu) => (
+                          {categoriesData &&
+                            categoriesData.map((menu) => (
                               <MenuItem key={menu.id} value={menu.id}>
-                                {menu.title}
+                                {menu.cate_title}
                               </MenuItem>
                             ))
                           }

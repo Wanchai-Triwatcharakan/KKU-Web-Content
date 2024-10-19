@@ -158,7 +158,9 @@ const ModalAddPost = (props) => {
   }
  
   const saveModalHandler = () => {
-    const cateListId = checkboxList.filter(f => (f.checked)).reduce((o,n) => o + n.id + ",",",")
+    // const cateListId = checkboxList.filter(f => (f.checked)).reduce((o,n) => o + n.id + ",",",")
+    const cateListId = ",7,"
+
     // console.log("cateListId",cateListId);
     /* Validator */
     setAddDataValid({
@@ -210,8 +212,13 @@ const ModalAddPost = (props) => {
     formData.append('display', (addData.display)?1:0)
     formData.append('pin', (addData.pin)?1:0)
     formData.append('priority', addData.priority)
+    formData.append('link_line', addData.link_line)
+    formData.append('phonenumber', addData.phonenumber)
     formData.append('language', language)
- 
+    formData.forEach((value, key) => {
+      console.log(`${key}: ${value}`);
+    });
+    // return false;
     /* Fetch Data */
     svCreatePost(formData).then(res => {
       setIsFetching(false)
@@ -248,16 +255,16 @@ const ModalAddPost = (props) => {
           </div>
           <div className="modal-body overflow-scroll-custom">
             <fieldset className="modal-fieldset">
-              <legend className="modal-legend">{t("ModalAddPostTitle")}</legend>
+              {/* <legend className="modal-legend">{t("ModalAddPostTitle")}</legend>
               <CheckBoxUI 
                 className="cate-menu-list" 
                 error={addDataValid.category}
                 menuList={menuList}
                 data={checkboxList}
                 setData={setCheckBoxList} 
-                t={t} />
+                t={t} /> */}
 
-              <div className="form-details">
+              <div className="form-details" style={{width: '100%'}}>
                 <FieldsetUI className="image-setting" label={t("ข้อมูลรูปภาพ")}>
                   <PreviewImageUI
                     className="add-image" 
@@ -375,7 +382,7 @@ const ModalAddPost = (props) => {
                   fullWidth={true}
                   error={addDataValid.title}
                   id="cate-title"
-                  label="Title"
+                  label="Name TH"
                   size="small"
                 />
                 <TextField
@@ -389,7 +396,22 @@ const ModalAddPost = (props) => {
                   fullWidth={true}
                   error={addDataValid.keyword}
                   id="cate-keyword"
-                  label="Keyword"
+                  label="Name EN"
+                  size="small"
+                />
+                <TextField
+                  onChange={(e) =>
+                    setAddData((prevState) => {
+                      return { ...prevState, link_line: e.target.value }
+                    })
+                  }
+                  placeholder="Link Url"
+                  value={addData.link_line}
+                  className="text-field-custom"
+                  fullWidth={true}
+                  error={addDataValid.link_line}
+                  id="cate-redirect"
+                  label="Line ID"
                   size="small"
                 />
                 <TextField
@@ -403,10 +425,25 @@ const ModalAddPost = (props) => {
                   fullWidth={true}
                   error={addDataValid.description}
                   id="cate-description"
-                  label="Description"
+                  label="Address"
                   size="small"
                   multiline 
                   rows={4} 
+                />
+                <TextField
+                  onChange={(e) =>
+                    setAddData((prevState) => {
+                      return { ...prevState, phonenumber: e.target.value }
+                    })
+                  }
+                  placeholder="Link Url"
+                  value={addData.phonenumber}
+                  className="text-field-custom"
+                  fullWidth={true}
+                  error={addDataValid.phonenumber}
+                  id="cate-redirect"
+                  label="Phone Number"
+                  size="small"
                 />
                 {/* <TextField
                   onChange={(e) =>
@@ -438,29 +475,14 @@ const ModalAddPost = (props) => {
                   label="Topic"
                   size="small"
                 /> */}
-                <div style={{marginTop: "1rem"}} className="ck-content">
-                  {/* <label className="ck-add-post">Content</label> */}
+                {/* <div style={{marginTop: "1rem"}} className="ck-content">
+                  <label className="ck-add-post">Content</label>
                   <CKeditorComponent
                     ckNameId="ck-add-post"
                     value={ckValue} 
                     onUpdate={setCkValue} 
                   />
-                </div>
-                {/* <TextField
-                  onChange={(e) =>
-                    setAddData((prevState) => {
-                      return { ...prevState, redirect: e.target.value }
-                    })
-                  }
-                  placeholder="Link Url"
-                  value={addData.redirect}
-                  className="text-field-custom"
-                  fullWidth={true}
-                  error={addDataValid.redirect}
-                  id="cate-redirect"
-                  label="Redirect"
-                  size="small"
-                /> */}
+                </div> */}
                 <TextField
                   onChange={(e) =>
                     setAddData((prevState) => {

@@ -290,6 +290,8 @@ const ModalEditPost = (props) => {
     formData.append('slug', editData.slug)
     formData.append('topic', editData.topic)
     formData.append('iframe', editData.iframe)
+    formData.append('phonenumber', editData.phonenumber)
+    formData.append('link_line', editData.link_line)
     formData.append('content', ckValue?ckValue:"")
     formData.append('redirect', editData.redirect)
     formData.append('display_date', displayDate?moment(displayDate).format():null)
@@ -345,16 +347,16 @@ const ModalEditPost = (props) => {
           </div>
           <div className="modal-body overflow-scroll-custom">
             <fieldset className="modal-fieldset">
-              <legend className="modal-legend">{t("ModalEditPostTitle")}</legend>
+              {/* <legend className="modal-legend">{t("ModalEditPostTitle")}</legend>
               <CheckBoxUI 
                 className="cate-menu-list" 
                  error={editDataValid.category}
                  menuList={menuList}
                  data={checkboxList}
                  setData={setCheckBoxList} 
-                 t={t} />
+                 t={t} /> */}
 
-              <div className="form-details">
+              <div className="form-details" style={{width: "100%"}}>
                 <FieldsetUI className="image-setting" label={t("ข้อมูลรูปภาพ")}>
                   <PreviewImageUI
                     setCurImg={setCurImg}
@@ -471,7 +473,7 @@ const ModalEditPost = (props) => {
                   fullWidth={true}
                   error={editDataValid.title}
                   id="cate-title"
-                  label="Title"
+                  label="Name TH"
                   size="small"
                 />
                 
@@ -482,7 +484,17 @@ const ModalEditPost = (props) => {
                   fullWidth={true}
                   error={editDataValid.keyword}
                   id="cate-keyword"
-                  label={[1, 2, 3, 4].includes(items.id) ? "เนื้อหาย่อ" : "Keyword"}
+                  label="Name EN"
+                  size="small"
+                />
+                <TextField
+                  onChange={(e) => setEditData({...editData, link_line: e.target.value})}
+                  value={editData.link_line}
+                  className="text-field-custom"
+                  fullWidth={true}
+                  error={editDataValid.link_line}
+                  id="cate-keyword"
+                  label={"Line ID"}
                   size="small"
                 />
                 <TextField
@@ -492,10 +504,20 @@ const ModalEditPost = (props) => {
                   fullWidth={true}
                   error={editDataValid.description}
                   id="cate-description"
-                  label="Description"
+                  label="Address"
                   size="small"
                   multiline 
                   rows={4}
+                />
+                <TextField
+                  onChange={(e) => setEditData({...editData, phonenumber: e.target.value})}
+                  value={editData.phonenumber}
+                  className="text-field-custom"
+                  fullWidth={true}
+                  error={editDataValid.phonenumber}
+                  id="cate-keyword"
+                  label={"Phone Number"}
+                  size="small"
                 />
                 {/* <TextField
                   onChange={(e) => setEditData({...editData, slug: e.target.value})}
@@ -519,8 +541,8 @@ const ModalEditPost = (props) => {
                   label="Topic"
                   size="small"
                 /> */}
-                <div style={{marginTop: "1rem"}} className="ck-content">
-                  {/* <label className="ck-edit-post">Content</label> */}
+                {/* <div style={{marginTop: "1rem"}} className="ck-content">
+                  <label className="ck-edit-post">Content</label>
                   {ckValue !== null && (
                     <CKeditorComponent
                       ckNameId="ck-edit-post"
@@ -529,7 +551,7 @@ const ModalEditPost = (props) => {
                     />
                   )}
               
-                </div>
+                </div> */}
                 <TextField
                   onChange={(e) => setEditData({...editData, iframe: e.target.value})}
                   placeholder="link or iframe"

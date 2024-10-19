@@ -47,7 +47,7 @@ const addDataDefault = {
 
 const SlideModalAdd = (props) => {
   const { t } = useTranslation("slide-page");
-  const {positionList, isOpen, totalData} = props;
+  const {positionList, isOpen, totalData, categoriesData} = props;
   const language = useSelector(state => state.app.language)
   const pageAvailable = useSelector((state) => state.app.frontOffice.pageAvailable)
   const [previews, setPreviews] = useState({ src: "", file: null, name: null });
@@ -363,9 +363,9 @@ const SlideModalAdd = (props) => {
                           onChange={(e) => setAddData({...addData, pageId: e.target.value }) }
                         >
                           <MenuItem value={0}>{t("None")}</MenuItem>
-                          {pageAvailable &&
-                            pageAvailable.map((menu) => (
-                              <MenuItem key={menu.id} value={menu.id}>{menu.title}</MenuItem>
+                          {categoriesData &&
+                            categoriesData.map((menu) => (
+                              <MenuItem key={menu.id} value={menu.id}>{menu.cate_title}</MenuItem>
                             ))}
                         </Select>
                       </FormControl>

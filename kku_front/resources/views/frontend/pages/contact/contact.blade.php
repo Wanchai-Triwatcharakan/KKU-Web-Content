@@ -7,11 +7,11 @@
     <section class="mt-[4.5rem] max-xl:mt-[3rem] w-full h-[500px] max-xl:h-[350px] max-sm:h-[250px] relative z-50">
         <div class="absolute inset-0 z-50 flex flex-col justify-center items-center gap-y-4 max-sm:gap-y-2 px-4">
             <p class="text-white text-6xl max-xl:text-3xl  font-bold text-center" data-aos="zoom-in" data-aos-duration="3000">
-                ติดต่อเรา
+                {{$cate->cate_title}}
             </p>
         </div>
 
-        <img src="/images/banner/image122.png" alt="" class="w-full h-full absolute object-cover ">
+        <img src="{{ url($imageBanner->ad_image ?? 'images/banner/image122.png') }}" alt="" class="w-full h-full absolute object-cover ">
     </section>
 
     <section class="w-4/5 max-sm:w-[90%] mx-auto pt-20 max-sm:pt-12">

@@ -25,7 +25,8 @@ class SeminarController extends Controller
                 $query->orderBy('position', 'asc'); // สั่งเรียงตามฟิลด์ position ตามลำดับจากน้อยไปมาก
             }])
             ->first();
-        return view('frontend.pages.seminar.seminar', compact('post', 'postManage', 'postsupport'));
+        $seo = Post::find(49);
+        return view('frontend.pages.seminar.seminar', compact('post', 'postManage', 'postsupport', 'seo'));
     }
     public function indexPage() {
         $lect_seo = Post::where('id', 47)->first();

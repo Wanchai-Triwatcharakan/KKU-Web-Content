@@ -12,7 +12,7 @@
             </p>
         </div>
 
-        <img src="/images/banner/image121.png" alt="" class="w-full h-full absolute object-cover">
+        <img src="{{ url($imageBanner->ad_image ?? 'images/banner/image122.png') }}" alt="" class="w-full h-full absolute object-cover">
     </section>
 
 

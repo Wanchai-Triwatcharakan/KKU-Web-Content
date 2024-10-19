@@ -8,17 +8,12 @@
     <section class="mt-[4.5rem] max-xl:mt-[3rem] w-full h-[500px] max-xl:h-[350px] max-sm:h-[250px] relative z-50">
         <div class="absolute inset-0 z-50 flex flex-col justify-center items-center gap-y-4 max-sm:gap-y-2 px-4">
             <p class="text-white text-6xl max-xl:text-3xl max-md:text-2xl  font-bold text-center" data-aos="zoom-in"
-                data-aos-duration="3000">
-                การประชุมและนิทรรศการครั้งที่ 1
-            </p>
+                data-aos-duration="3000">{{$seo->title}}</p>
             <p class="text-white text-2xl max-2xl:text-xl max-lg:text-lg max-sm:text-[1rem] font-medium text-center"
-                data-aos="zoom-in" data-aos-duration="3000">
-                เกี่ยวกับนวัตกรรมเพื่อสุขภาพและความเป็นอยู่ที่ดี :<br>
-                เสริมพลังการประดิษฐ์สู่นวัตกรรมเพื่อคุณภาพชีวิต
-            </p>
+                data-aos="zoom-in" data-aos-duration="3000">{!! nl2br(e($seo->description)) !!}</p>
         </div>
 
-        <img src="/images/banner/image1.png" alt="" class="w-full h-full absolute object-cover">
+        <img src="{{ url($imageBanner->ad_image ?? 'images/banner/image122.png') }}" alt="" class="w-full h-full absolute object-cover">
     </section>
 
 

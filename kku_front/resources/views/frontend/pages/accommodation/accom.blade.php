@@ -8,11 +8,11 @@
     <section class="mt-[4.5rem] max-xl:mt-[3rem] w-full h-[500px] max-xl:h-[350px] max-sm:h-[250px] relative z-50">
         <div class="absolute inset-0 z-50 flex flex-col justify-center items-center gap-y-4 max-sm:gap-y-2 px-4">
             <p class="text-white text-6xl max-xl:text-3xl  font-bold text-center" data-aos="zoom-in" data-aos-duration="3000">
-                ที่พักและเส้นทาง
+                {{$cate->cate_title}}
             </p>
         </div>
 
-        <img src="/images/banner/image122.png" alt="" class="w-full h-full absolute object-cover ">
+        <img src="{{ url($imageBanner->ad_image ?? 'images/banner/image122.png') }}" alt="" class="w-full h-full absolute object-cover ">
     </section>
 
     <section class="w-4/5 max-sm:w-[90%] mx-auto relative h-[100vh] items-center flex justify-center">
@@ -20,41 +20,42 @@
             <div class="bg-[#B8D88F] w-[150px] h-[100vh] "></div>
         </div>
 
+        @foreach($hotels as $hotel)
         <div class="max-lg:flex max-lg:flex-col gap-y-6 max-lg:relative max-lg:py-10">
             <div data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="3000"
                 class="bg-white border px-8 rounded-lg shadow-lg lg:absolute z-30 flex flex-col gap-y-6 justify-center w-[690px] h-[500px] max-uu:w-[550px]  max-uu:h-[450px] right-[25rem]  max-uu:right-[15rem] max-yi:right-0 max-yy:right-[5rem] max-uu:top-[20rem]  max-xl:right-0 max-xl:max-w-[450px]  max-xl:max-h-[350px] max-sm:max-w-[350px]  max-sm:max-h-[350px] ">
                 <div class="">
-                    <p class="text-[#84B750] text-3xl max-md:text-2xl font-semibold">โรงแรมโฆษะ ขอนแก่น</p>
-                    <p class="text-[#23404A] text-lg max-md:text-[1rem] font-medium">Kosa Hotel Khonkaen</p>
+                    <p class="text-[#84B750] text-3xl max-md:text-2xl font-semibold">{{$hotel->title}}</p>
+                    <p class="text-[#23404A] text-lg max-md:text-[1rem] font-medium">{{$hotel->keyword}}</p>
                 </div>
 
                 <div class="flex flex-col gap-2">
                     <div class="flex gap-2 items-center">
                         <img src="/images/icon/line1.png" alt="" class="w-6 h-6">
-                        <p>kosahotel khonkaen LINE ID: @kosahotel</p>
+                        <p>LINE ID: {{$hotel->link_line}}</p>
                     </div>
                     <div class="flex gap-2 items-center">
                         <img src="/images/icon/90.png" alt="" class="w-6 h-6">
-                        <p>ที่อยู่ : 250 252 ถนนศรีจันทร์ ตำบลในเมือง
-                            อำเภอเมืองขอนแก่น ขอนแก่น 40000</p>
+                        <p>ที่อยู่ : {{$hotel->description}}</p>
                     </div>
                     <a href="tel:043-320-320" class="flex  gap-2 items-center">
                         <img src="/images/icon/tel.png" alt="" class="w-6 h-6">
 
-                        <p>โทรศัพท์ : 043-320-320</p>
+                        <p>โทรศัพท์ : {{$hotel->phonenumber}}</p>
                     </a>
-                    <a href="https://maps.app.goo.gl/oDGBgfHj72SbTPHJ6" target="_blank" class="flex gap-2 items-center">
+                    <a href="/{{$hotel->iframe}}" target="_blank" class="flex gap-2 items-center">
                         <img src="/images/icon/map.png" alt="" class="w-6 h-6">
-                        <p>ลิ้งก์แผนที่ : maps.app.goo.gl/UNQt1RFwmxrMy1Aa7</p>
+                        <p>ลิ้งก์แผนที่ : {{$hotel->iframe}}</p>
                     </a>
                 </div>
             </div>
 
             <div data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="3000"
                 class=" max-uu:w-[550px]  max-uu:h-[450px] lg:absolute rounded-lg shadow-lg left-[20rem] top-[15rem] max-uu:left-[15rem] max-uu:top-24 max-yy:left-[5rem] max-yi:left-0  max-yy:top-[6rem] max-xl:left-0 max-xl:w-[450px]  max-xl:h-[350px] max-sm:max-w-[350px]  max-sm:max-h-[350px]">
-                <img src="/images/Rectangle 199.png" alt="" class="w-full h-full rounded-lg object-cover">
+                <img src="{{url($hotel->thumbnail_link)}}" alt="" class="w-full h-full rounded-lg object-cover">
             </div>
         </div>
+        @endforeach
     </section>
 
     <section class="relative bg-[#F4FCFF] flex flex-col gap-4 Z-50 pb-4">

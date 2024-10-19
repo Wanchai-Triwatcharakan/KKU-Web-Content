@@ -22,6 +22,7 @@ const SlidePage = () => {
   const [tabSelect, setTabSelect] = useState("0");
   const [slideData, setSlideData] = useState([])
   const [positionList, setPositionList ] = useState([]) 
+  const [categories, setCategories] = useState([]);
   const [pageControl, setPageControl] = useState("");
   const [isRowDisplay, setIsRowDisplay ] = useState(true) 
   const [slideModalAdd, setSlideModalAdd ] = useState(false) 
@@ -30,6 +31,7 @@ const SlidePage = () => {
   useEffect(() => { 
     dispatch(appActions.isSpawnActive(true)) 
     getSlides(language).then(res => {
+      // console.log(res)
       if(res.status){
         const slideData = res.data.map(d => {
           return {
@@ -59,9 +61,11 @@ const SlidePage = () => {
         })
         setSlideData(slideData)
         setPositionList(res.positionList)
+        setCategories(res.categories)
       } else {
         setSlideData([])
         setPositionList([])
+        setCategories([])
       }
       dispatch(appActions.isSpawnActive(false)) 
     })
@@ -98,8 +102,8 @@ const SlidePage = () => {
                   onChange={(e) => setPageControl(e.target.value)}
                   value={pageControl} >
                   <MenuItem value="">{t("selectPageControlNone")}</MenuItem>
-                  {pageAvailable && pageAvailable.map((menu) => (
-                    <MenuItem key={menu.id} value={menu.id}> {menu.title} </MenuItem>
+                  {categories && categories.map((menu) => (
+                    <MenuItem key={menu.id} value={menu.id}> {menu.cate_title} </MenuItem>
                   ))}
                 </Select>
               </FormControl>  
@@ -125,7 +129,9 @@ const SlidePage = () => {
             tabSelect={tabSelect} 
             pageControl={pageControl} 
             setTabSelect={setTabSelect} 
-            slideData={slideData} />
+            slideData={slideData} 
+            categoriesData={categories}
+          />
 
         </div>
     </section>
