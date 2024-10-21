@@ -55,7 +55,7 @@
                         </div>
                         <!-- Image Slider -->
                         <div
-                            class="max-lg:order-1 w-[650px] h-[450px] max-uu:w-[550px]  max-uu:h-[380px] lg:absolute rounded-lg shadow-lg left-[20rem] top-[15rem] max-uu:left-[15rem] max-uu:top-[12rem] max-yy:left-[5rem] max-yi:left-0  max-yy:top-[6rem] max-xl:left-0 max-xl:w-[450px]  max-xl:h-[350px] max-sm:max-w-[350px]  max-sm:max-h-[350px]">
+                            class="max-lg:order-1 w-[690px] h-[550px] max-uu:w-[550px]  max-uu:h-[380px] lg:absolute rounded-lg shadow-lg left-[20rem] top-[15rem] max-uu:left-[15rem] max-uu:top-[12rem] max-yy:left-[5rem] max-yi:left-0  max-yy:top-[6rem] max-xl:left-0 max-xl:w-[450px]  max-xl:h-[350px] max-sm:max-w-[350px]  max-sm:max-h-[350px]">
                             <img src="{{ url($hotel->thumbnail_link) }}" alt=""
                                 class="w-full h-full rounded-lg object-cover">
                         </div>

@@ -49,7 +49,7 @@
                                         {{ $lect->topic }}</p>
                                 </div>
                                 <p
-                                    class="text-[#686868] font-[300] text-[1rem] max-md:text-md text-start h-[150px] overflow-auto">
+                                    class="text-[#686868] font-[300] text-[1rem] max-md:text-md text-start h-[110px] overflow-auto">
                                     {{ $lect->description }}
                                 </p>
                             </div>

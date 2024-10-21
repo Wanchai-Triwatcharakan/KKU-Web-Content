@@ -21,7 +21,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 600px;
+        height: 700px;
 
     }
 
@@ -29,12 +29,12 @@
         display: block;
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        /* object-fit: cover; */
     }
 
     @media (max-width: 1281px) {
         swiper-slide {
-            max-height: 460px;
+            max-height: 400px;
           
         }
       
@@ -54,8 +54,8 @@
         }
         swiper-slide img {
             width: 100%;
-            height: 180px;
-            object-fit: cover;
+            height: 150px;
+            /* object-fit: cover; */
         }
     }
 </style>
