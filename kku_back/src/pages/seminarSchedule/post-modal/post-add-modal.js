@@ -617,7 +617,7 @@ const ModalAddPost = (props) => {
                             </div>
 
                             <div className="ck-content" style={{ marginTop: "1rem" }}>
-                              {currentSchedule !== null && (
+                              {currentSchedule !== null && scheduleList[currentSchedule] && (
                                 <CKeditorComponent
                                   ckNameId="ck-add-post"
                                   value={scheduleList[currentSchedule].details}  // แสดง description ตาม schedule ที่คลิก

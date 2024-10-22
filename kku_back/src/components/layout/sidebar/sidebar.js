@@ -404,13 +404,13 @@ const SidebarComponent = (props) => {
                     onClick={closeSidebarhandler}
                     to="slides"
                     className={`navlink `}
-                    title={t("SlidesPage")}
+                    title={t("ภาพและโฆษณา")}
                     liClass="menu-link"
                   >
                     <figure className="faIcon">
                       <FontAwesomeIcon icon={faImages} />
                     </figure>
-                    <div className="menu-title">{t("SlidesPage")}</div>
+                    <div className="menu-title">{t("ภาพและโฆษณา")}</div>
                   </NavLink>
                 )}
 
@@ -419,13 +419,13 @@ const SidebarComponent = (props) => {
                     onClick={closeSidebarhandler}
                     to="/webinfo"
                     className={`navlink `}
-                    title={t("WebInfoPage")}
+                    title={t("ตั้งค่าข้อมูลเว็บไซต์")}
                     liClass="menu-link"
                   >
                     <figure className="faIcon">
                       <FontAwesomeIcon icon={faCircleInfo} />
                     </figure>
-                    <div className="menu-title">{t("WebInfoPage")}</div>
+                    <div className="menu-title">{t("ตั้งค่าข้อมูลเว็บไซต์")}</div>
                   </NavLink>
                 )}
 
@@ -437,13 +437,13 @@ const SidebarComponent = (props) => {
                       onClick={closeSidebarhandler}
                       to="/admins"
                       className={`navlink `}
-                      title={t("AdminPage")}
+                      title={t("ตั้งค่าผู้ดูแลระบบ")}
                       liClass="menu-link"
                     >
                       <figure className="faIcon">
                         <FontAwesomeIcon icon={faUserShield} />
                       </figure>
-                      <div className="menu-title">{t("AdminPage")}</div>
+                      <div className="menu-title">{t("ตั้งค่าผู้ดูแลระบบ")}</div>
                     </NavLink>
                   )}
 
@@ -467,13 +467,13 @@ const SidebarComponent = (props) => {
                     onClick={closeSidebarhandler}
                     to="/configs"
                     className={`navlink `}
-                    title={t("ConfigPage")}
+                    title={t("ตั้งค่าระบบ")}
                     liClass="menu-link"
                   >
                     <figure className="faIcon">
                       <FontAwesomeIcon icon={faTools} />
                     </figure>
-                    <div className="menu-title">{t("ConfigPage")}</div>
+                    <div className="menu-title">{t("ตั้งค่าระบบ")}</div>
                   </NavLink>
                 )}
                 <div className="menu-link">
@@ -506,12 +506,12 @@ const SidebarComponent = (props) => {
             href={webPath}
             target="_blank"
             className="navlink pink-btn "
-            title={t("GoToWebSite")}
+            title={t("เข้าสู่เว็บไซต์")}
           >
             <figure className="faIcon">
               <FontAwesomeIcon icon={faHome} />
             </figure>
-            <span className="menu-title">{t("GoToWebSite")}</span>
+            <span className="menu-title">{t("เข้าสู่เว็บไซต์")}</span>
           </a>
         </li>
       </ul>

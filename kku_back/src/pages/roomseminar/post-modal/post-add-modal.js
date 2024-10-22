@@ -144,11 +144,9 @@ const ModalAddPost = (props) => {
     setScheduleList(newList);
   };
 
-  const handleRemoveSecondRow = () => {
-    // if (scheduleList.length > 1) {
-    const newList = scheduleList.filter((_, i) => i !== 1);
+  const handleRemoveSecondRow = (index) => {
+    const newList = scheduleList.filter((_, i) => i !== index);
     setScheduleList(newList);
-    // }
   };
 
   const addMoreImage = (data) => {
@@ -499,7 +497,7 @@ const ModalAddPost = (props) => {
                             </div>
 
                             <div className="ck-content" style={{ marginTop: "1rem" }}>
-                              {currentSchedule !== null && (
+                              {currentSchedule !== null && scheduleList[currentSchedule] && (
                                 <CKeditorComponent
                                   ckNameId="ck-add-post"
                                   value={scheduleList[currentSchedule].details}  // แสดง description ตาม schedule ที่คลิก
@@ -534,7 +532,7 @@ const ModalAddPost = (props) => {
                         className="param-generator"
                         color="error"
                         sx={{ p: "10px" }}
-                        onClick={handleRemoveSecondRow}
+                        onClick={() => handleRemoveSecondRow(index)}
                       >
                         <FontAwesomeIcon icon={faXmark} />
                       </IconButton>

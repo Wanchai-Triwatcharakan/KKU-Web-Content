@@ -230,11 +230,10 @@ const ModalEditPost = (props) => {
     setScheduleList(newList);
   };
 
-  const handleRemoveSecondRow = () => {
-    // if (scheduleList.length > 1) {
-    const newList = scheduleList.filter((_, i) => i !== 1);
-    setScheduleList(newList);
-    // }
+  const handleRemoveSecondRow = (index) => {
+    console.log(index); // ดูค่า index ที่ถูกส่งเข้ามา
+    const newList = scheduleList.filter((_, i) => i !== index); // กรองรายการที่ไม่ใช่ index ที่ถูกกด
+    setScheduleList(newList); // อัปเดตรายการใหม่
   };
 
   const addMoreImage = (data) => {
@@ -772,14 +771,14 @@ const ModalEditPost = (props) => {
                             </div>
 
                             <div className="ck-content" style={{ marginTop: "1rem" }}>
-                                {currentSchedule !== null && (
-                                  <CKeditorComponent
-                                    ckNameId="ck-add-post"
-                                    value={scheduleList[currentSchedule].description}  // แสดง description ตาม schedule ที่คลิก
-                                    onUpdate={(value) => handleCKEditorChange(currentSchedule, value)}  // เรียกฟังก์ชัน handleCKEditorChange เมื่อ CKEditor เปลี่ยนค่า
-                                  />
-                                )}
-                              </div>
+                              {currentSchedule !== null && scheduleList[currentSchedule] && (
+                                <CKeditorComponent
+                                  ckNameId="ck-add-post"
+                                  value={scheduleList[currentSchedule].description} // แสดง description ตาม schedule ที่คลิก
+                                  onUpdate={(value) => handleCKEditorChange(currentSchedule, value)} // เรียกฟังก์ชัน handleCKEditorChange เมื่อ CKEditor เปลี่ยนค่า
+                                />
+                              )}
+                            </div>
 
                             <div className="modal-footer">
                               <ButtonUI
@@ -806,7 +805,7 @@ const ModalEditPost = (props) => {
                         className="param-generator"
                         color="error"
                         sx={{ p: "10px" }}
-                        onClick={handleRemoveSecondRow}
+                        onClick={() => handleRemoveSecondRow(index)}
                       >
                         <FontAwesomeIcon icon={faXmark} />
                       </IconButton>

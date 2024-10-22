@@ -186,7 +186,11 @@ const PostTab = (props) => {
                     <p className="desc">{item.description}</p>   
                     <p className="cate">
                       <span className="fa-icon" title="category"> <FontAwesomeIcon icon={faLink} /></span>
-                      <span>{item.cateLists.map((c,index) => (index>0)?` , ${c.title}`:c.title) }</span>
+                      <span>
+                        {item.cateLists.map((c, index) =>
+                          (c && c.title) ? (index > 0 ? ` , ${c.title}` : c.title) : null
+                        )}
+                      </span>
                     </p>  
                     <p className="display">
                     { item.date_begin_display !== null && (

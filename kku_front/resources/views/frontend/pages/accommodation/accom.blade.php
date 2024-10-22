@@ -47,7 +47,7 @@
                                     <img src="/images/icon/tel.png" alt="" class="w-6 h-6">
                                     <p class="text-[1rem]">โทรศัพท์ : {{ $hotel->phonenumber }}</p>
                                 </a>
-                                <a href="/{{ $hotel->iframe }}" target="_blank" class="flex gap-2 justify-center items-strat">
+                                <a href="{{ $hotel->iframe }}" target="_blank" class="flex gap-2 justify-center items-strat">
                                     <img src="/images/icon/map.png" alt="" class="w-6 h-6">
                                     <p class="text-[1rem]">ลิ้งก์แผนที่ : {{ $hotel->iframe }}</p>
                                 </a>

@@ -75,7 +75,7 @@ const PostContentPage = () => {
     getPosts(language).then((res) => {
       if (res.status) {
         const filtered = res.data.filter(item => 
-          item.category.split(',').filter(Boolean).every(cat => !['4', '5', '6', '10'].includes(cat))
+          item.category.split(',').filter(Boolean).every(cat => !['4', '5', '6', '7', '10'].includes(cat))
         );
         setPostData(filtered);
       }

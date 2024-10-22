@@ -11,7 +11,7 @@ class HomeController extends Controller
 {
     //
     public function indexPage() {
-        $adslide = AdSlide::where('ad_type', 1)
+        $adslide = AdSlide::where('ad_type', 2)
             ->where('ad_status_display', true)
             ->where('ad_position_id', 2)
             ->OrderBy('ad_priority')->get();

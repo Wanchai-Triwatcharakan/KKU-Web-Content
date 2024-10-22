@@ -21,7 +21,13 @@ class ShareWebData extends Controller
     public function handle(Request $request, Closure $next)
     {
         $cate = Category::where('cate_url', $request->path())->first();
-        $imageBanner = AdSlide::where('page_id', $cate->id)->first();
+        if ($cate) {
+            // ถ้า $cate ไม่ใช่ null
+            $imageBanner = AdSlide::where('page_id', $cate->id)->first();
+        } else {
+            // ถ้า $cate เป็น null
+            $imageBanner = null; // หรือกำหนดค่า default อะไรก็ได้
+        }
         // print_r($imageBanner);
         $infos = $this->getWebInfo('', '');
         $webInfo = $this->infoSetting($infos);

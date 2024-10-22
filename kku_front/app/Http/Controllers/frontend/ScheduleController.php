@@ -22,12 +22,18 @@ class ScheduleController extends Controller
     }
     public function dataDetail($id) {
         $seo = Post::where('id', 19)->first();
-        $post = Post::where('id', $id)->with('scheduleTimes')->first();
+        $post = Post::where('id', $id)
+            ->with(['scheduleTimes' => function ($query) {
+                $query->orderBy('time_start', 'asc'); // หรือ 'desc' สำหรับเรียงจากมากไปน้อย
+            }])
+            ->first();
         $tagsArray = json_decode($post->tags, true);
         if (is_array($tagsArray)) {
             $rooms = SeminarRoom::where('status_display', true)
                 ->whereIn('id', $tagsArray)
-                ->with('scheduleTimes')
+                ->with(['scheduleTimes' => function ($query) {
+                    $query->orderBy('time_start', 'asc'); // หรือ 'desc' สำหรับเรียงจากมากไปน้อย
+                }])
                 ->get();
         } else {
             $rooms = [];
