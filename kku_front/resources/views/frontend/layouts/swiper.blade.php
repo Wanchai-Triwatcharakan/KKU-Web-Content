@@ -32,17 +32,32 @@
         /* object-fit: cover; */
     }
 
-    @media (max-width: 1281px) {
+    @media (max-width: 1536px) {
         swiper-slide {
-            max-height: 400px;
+            height: 580px;
           
         }
       
     }
 
-    @media (max-width: 1023px) {
+    @media (max-width: 1281px) {
         swiper-slide {
-            max-height: 300px;
+            height: 450px;
+          
+        }
+      
+    }
+
+    @media (max-width: 1024px) {
+        swiper-slide {
+            height: 400px;
+          
+        }
+      
+    }
+    @media (max-width: 820px) {
+        swiper-slide {
+            max-height:320px;
           
         }
       
@@ -50,7 +65,7 @@
 
     @media (max-width: 720px) {
         swiper-slide {
-            height: 180px;
+            height: 160px;
         }
         swiper-slide img {
             width: 100%;
