@@ -40,7 +40,7 @@
       
     }
 
-    @media (max-width: 1281px) {
+    @media (max-width: 1280px) {
         swiper-slide {
             height: 450px;
           
